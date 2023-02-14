@@ -10,7 +10,9 @@ const Home: FC = () => {
             <Head>
                 <title>Movies</title>
             </Head>
-            content
+            <main>
+                content
+            </main>
         </>
     );
 };

@@ -1,0 +1,12 @@
+.layout {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.layoutContent {
+    display: grid;
+    background-color: aqua;
+    grid-auto-rows: auto 1fr auto;
+    width: 100%;
+}

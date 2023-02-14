@@ -1,0 +1,10 @@
+.navbarList {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbarList a {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}

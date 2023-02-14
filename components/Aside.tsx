@@ -1,13 +1,15 @@
+import Navbar from './Navbar/Navbar';
 import Image from 'next/image';
 import logo from '../public/logo.png';
 
 const Aside = () => {
     return (
-        <div>
+        <aside>
             <div>
-                <Image src={logo} alt='Movies' />
+                <Image width={200} height={80} src={logo} alt='Movies' />
             </div>
-        </div>
+            <Navbar />
+        </aside>
     )
 }
 
