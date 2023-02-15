@@ -16,6 +16,7 @@ export const loadFilms = createAsyncThunk('forecast/getForecastWeather', async (
 
 const initialState = {
     films: [],
+    pageId: 1,
 };
 
 /**
@@ -29,9 +30,13 @@ const filmsSlice = createSlice({
             console.log(action.payload)
             state.films = action.payload;
         },
+        setPageId(state, action) {
+            console.log(action.payload)
+            state.pageId = action.payload
+        }
     },
 });
 
-export const {setFilms} = filmsSlice.actions;
+export const {setFilms, setPageId} = filmsSlice.actions;
 
 export default filmsSlice.reducer;

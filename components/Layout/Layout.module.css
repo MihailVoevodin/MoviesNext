@@ -6,7 +6,6 @@
 
 .layoutContent {
     display: grid;
-    background-color: aqua;
     grid-auto-rows: auto 1fr auto;
     width: 100%;
 }

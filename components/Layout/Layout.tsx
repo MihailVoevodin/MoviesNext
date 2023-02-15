@@ -1,7 +1,7 @@
 import {FC, ReactNode} from 'react';
 import Footer from 'components/Footer';
 import Header from 'components/Header';
-import Aside from 'components/Aside';
+import Aside from 'components/Aside/Aside';
 import styles from 'components/Layout/Layout.module.css';
 
 interface IProps {

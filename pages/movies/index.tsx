@@ -1,29 +1,28 @@
-import axios from 'axios';
-import {useEffect, useState} from 'react';
+import Link from 'next/link';
+import {useRouter} from 'next/router';
+import {useEffect} from 'react';
 import { Pagination } from 'antd';
-import {loadFilms} from 'store/filmsSlice';
+import {loadFilms, setPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 
-axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
-
-const Movies = ({data}: any) => {
+const Movies = () => {
+    const router = useRouter();
+    console.log(router)
     const dispatch = useAppDispatch();
-    const {films} = useAppSelector(state => state.films)
-    const [page, setPage] = useState(1);
+    const {films, pageId} = useAppSelector(state => state.films)
 
     useEffect(() => {
-        dispatch(loadFilms(page));
-    }, [page])
+        dispatch(loadFilms(pageId));
+    }, [pageId])
 
-    const onChange = (page: number) => {
-        console.log(page)
-        setPage(page);
+    const onChange = (pageId: number) => {
+        dispatch(setPageId(pageId));
     }
 
     return (
         <div>
-            {films.map((film: any) => <div key={film.filmId}>{film.filmId}</div>)}
-            <Pagination current={page} onChange={onChange} total={250} defaultPageSize={20} showSizeChanger={false} />
+            {films.map((film: any) => <div key={film.filmId}><Link href={`movies/${film.filmId}`}>{film.filmId}</Link></div>)}
+            <Pagination current={pageId} onChange={onChange} total={250} defaultPageSize={20} showSizeChanger={false} />
         </div>
     )
 };

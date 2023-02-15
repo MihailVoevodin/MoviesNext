@@ -1,11 +1,12 @@
 import Link from 'next/link';
-import styles from './Navbar.module.css';
+import styles from 'components/Navbar/Navbar.module.css';
 
 const Navbar = () => {
+
     const NavigationItems = [
         {id: '1', title: 'Home', path: '/'},
         {id: '2', title: 'Movies', path: '/movies'},
-        {id: '2', title: 'Series', path: '/series'},
+        {id: '3', title: 'Series', path: '/series'},
     ]
 
     return (
