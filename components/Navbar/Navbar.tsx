@@ -5,7 +5,7 @@ const Navbar = () => {
 
     const NavigationItems = [
         {id: '1', title: 'Home', path: '/'},
-        {id: '2', title: 'Movies', path: '/movies'},
+        {id: '2', title: 'Movies', path: '/movies/page/1'},
         {id: '3', title: 'Series', path: '/series'},
     ]
 
