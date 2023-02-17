@@ -1,11 +1,13 @@
 import Link from 'next/link';
 import styles from 'components/Navbar/Navbar.module.css';
+import {useAppSelector} from 'store/hooks';
 
 const Navbar = () => {
+    const {pageId} = useAppSelector(state => state.films)
 
     const NavigationItems = [
         {id: '1', title: 'Home', path: '/'},
-        {id: '2', title: 'Movies', path: '/movies/page/1'},
+        {id: '2', title: 'Movies', path: `/movies/page/${pageId}`},
         {id: '3', title: 'Series', path: '/series'},
     ]
 

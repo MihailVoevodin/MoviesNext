@@ -1,0 +1,14 @@
+.movies {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.moviesItem {
+    text-align: center;
+}
+
+.moviesItemName {
+    display: block;
+    padding-top: 5px;
+}

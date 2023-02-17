@@ -1,9 +1,12 @@
 import {Pagination} from 'antd';
 import axios from 'axios';
+import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 import {useRouter} from 'next/router';
 import {setPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
+import styles from 'pages/movies/page/Movies.module.css';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
@@ -20,6 +23,7 @@ const Movie = ({movies}: any) => {
     const router = useRouter()
     const dispatch = useAppDispatch();
     const {pageId} = useAppSelector(state => state.films)
+    console.log(movies)
 
     const onChange = (pageId: number) => {
         dispatch(setPageId(pageId));
@@ -27,10 +31,23 @@ const Movie = ({movies}: any) => {
     }
 
     return (
-        <div>
-            {movies.map((movie: any) => <div key={movie.filmId}><Link href={`/movies/movie/${movie.filmId}`}>{movie.filmId}</Link></div>)}
+        <>
+            <Head>
+                <title>Movies App</title>
+            </Head>
+            <div className={styles.movies}>
+                {movies.map((movie: any) =>
+                    <div className={styles.moviesItem} key={movie.filmId}>
+                        <Link href={`/movies/movie/${movie.filmId}`}>
+                            <Image width={200} height={300} src={movie.posterUrl} alt='.' />
+                            <span className={styles.moviesItemName}>{movie.nameRu}</span>
+                        </Link>
+
+                    </div>
+                )}
+            </div>
             <Pagination current={pageId} onChange={onChange} total={250} defaultPageSize={20} showSizeChanger={false} />
-        </div>
+        </>
     )
 };
 
