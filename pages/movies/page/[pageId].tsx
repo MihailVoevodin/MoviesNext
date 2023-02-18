@@ -1,4 +1,4 @@
-import {Pagination} from 'antd';
+import {ConfigProvider, Pagination} from 'antd';
 import axios from 'axios';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -35,25 +35,38 @@ const Movie = ({movies}: any) => {
             <Head>
                 <title>Movies App</title>
             </Head>
-            <div className={styles.movies}>
-                {movies.map((movie: any) =>
-                    <div className={styles.moviesItem} key={movie.filmId}>
-                        <div className={styles.moviesItemContent}>
-                            <Link href={`/movies/movie/${movie.filmId}`}>
-                                <div className={styles.moviesItemInnerContent}>
-                                    <div className={styles.movieItemRating}>{movie.rating}</div>
-                                    <div>{movie.year}</div>
-                                    <div>{movie.countries[0].country}</div>
-                                    <div>{movie.filmLength}</div>
-                                </div>
-                                <Image className={styles.movieItemImg} width={200} height={300} src={movie.posterUrl} alt='.' />
-                                <div className={styles.moviesItemName}>{movie.nameRu}</div>
-                            </Link>
+            <ConfigProvider
+                theme={{
+                    components: {
+                        Pagination: {
+                            colorPrimary: 'black',
+                            colorText: 'white',
+                            colorBgTextHover: '#ff6200',
+                            colorPrimaryHover: '#ff6200',
+                        }
+                    }
+                }}
+            >
+                <div className={styles.movies}>
+                    {movies.map((movie: any) =>
+                        <div className={styles.moviesItem} key={movie.filmId}>
+                            <div className={styles.moviesItemContent}>
+                                <Link href={`/movies/movie/${movie.filmId}`}>
+                                    <div className={styles.moviesItemInnerContent}>
+                                        <div className={styles.movieItemRating}>{movie.rating}</div>
+                                        <div>{movie.year}</div>
+                                        <div>{movie.countries[0].country}</div>
+                                        <div>{movie.filmLength}</div>
+                                    </div>
+                                    <Image className={styles.movieItemImg} width={200} height={300} src={movie.posterUrl} alt='.' />
+                                    <div className={styles.moviesItemName}>{movie.nameRu}</div>
+                                </Link>
+                            </div>
                         </div>
-                    </div>
-                )}
-            </div>
-            <Pagination className={styles.pagination} current={pageId} onChange={onChange} total={250} defaultPageSize={20} showSizeChanger={false} />
+                    )}
+                </div>
+                <Pagination className={styles.pagination} current={pageId} onChange={onChange} total={250} defaultPageSize={20} showSizeChanger={false} />
+            </ConfigProvider>
         </>
     )
 };

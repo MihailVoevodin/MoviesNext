@@ -2,6 +2,7 @@
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(5, 1fr);
+    padding-right: 20px;
 }
 
 .moviesItem {
@@ -33,6 +34,9 @@
       .movieItemImg {
         opacity: 0.2;
       }
+      .moviesItemName {
+        text-decoration: underline;
+      }
     }
  }
 
@@ -51,5 +55,5 @@
 }
 
 .pagination {
-  margin: 20px auto;
+    margin: 30px auto;
 }
