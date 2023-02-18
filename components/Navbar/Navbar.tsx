@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import styles from 'components/Navbar/Navbar.module.css';
+import styles from 'components/Navbar/Navbar.module.scss';
 import {useAppSelector} from 'store/hooks';
 
 const Navbar = () => {

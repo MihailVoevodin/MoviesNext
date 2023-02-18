@@ -1,0 +1,16 @@
+.navbarList {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    :hover {
+        background-color: chocolate;
+    }
+}
+
+.navbarList {
+    a {
+        text-align: center;
+        padding: 10px;
+        margin: 10px;
+    }
+}

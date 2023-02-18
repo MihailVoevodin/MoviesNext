@@ -23,7 +23,6 @@ const Movie = ({movies}: any) => {
     const router = useRouter()
     const dispatch = useAppDispatch();
     const {pageId} = useAppSelector(state => state.films)
-    console.log(movies)
 
     const onChange = (pageId: number) => {
         dispatch(setPageId(pageId));
@@ -47,25 +46,27 @@ const Movie = ({movies}: any) => {
                     }
                 }}
             >
-                <div className={styles.movies}>
-                    {movies.map((movie: any) =>
-                        <div className={styles.moviesItem} key={movie.filmId}>
-                            <div className={styles.moviesItemContent}>
-                                <Link href={`/movies/movie/${movie.filmId}`}>
-                                    <div className={styles.moviesItemInnerContent}>
-                                        <div className={styles.movieItemRating}>{movie.rating}</div>
-                                        <div>{movie.year}</div>
-                                        <div>{movie.countries[0].country}</div>
-                                        <div>{movie.filmLength}</div>
-                                    </div>
-                                    <Image className={styles.movieItemImg} width={200} height={300} src={movie.posterUrl} alt='.' />
-                                    <div className={styles.moviesItemName}>{movie.nameRu}</div>
-                                </Link>
+                <main>
+                    <div className={styles.movies}>
+                        {movies.map((movie: any) =>
+                            <div className={styles.moviesItem} key={movie.filmId}>
+                                <div className={styles.moviesItemContent}>
+                                    <Link href={`/movies/movie/${movie.filmId}`}>
+                                        <div className={styles.moviesItemInnerContent}>
+                                            <div className={styles.movieItemRating}>{movie.rating}</div>
+                                            <div>{movie.year}</div>
+                                            <div>{movie.countries[0].country}</div>
+                                            <div>{movie.filmLength}</div>
+                                        </div>
+                                        <Image className={styles.movieItemImg} width={200} height={300} src={movie.posterUrl} alt='.' />
+                                        <div className={styles.moviesItemName}>{movie.nameRu}</div>
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
-                    )}
-                </div>
-                <Pagination className={styles.pagination} current={pageId} onChange={onChange} total={250} defaultPageSize={20} showSizeChanger={false} />
+                        )}
+                    </div>
+                    <Pagination className={styles.pagination} current={pageId} onChange={onChange} total={250} defaultPageSize={20} showSizeChanger={false} />
+                </main>
             </ConfigProvider>
         </>
     )

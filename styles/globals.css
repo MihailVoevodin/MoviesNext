@@ -6,7 +6,6 @@
 }
 
 body {
-  width: 100vw;
   height: 100vh;
   color: white;
 }
@@ -18,5 +17,16 @@ a {
 
 header,
 footer {
-  min-height: 80px;
+  background-color: black;
+}
+
+footer {
+  text-align: center;
+}
+
+main {
+  max-width: 1280px;
+  margin: 0 auto;
+  background-color: #292727;
+  padding: 20px 15px;
 }
