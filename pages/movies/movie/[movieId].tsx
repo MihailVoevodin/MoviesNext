@@ -25,10 +25,17 @@ const Movie = ({movie, movieBox}: any) => {
 
     return (
         <main>
+            <div className={styles.background}>
+                <div className={styles.movieMain}>
+                    <div className={styles.movieCoverImg}>
+                        <Image width={700} height={500} src={movie.coverUrl} alt='.' />
+                        <div className={styles.gradient}></div>
+                    </div>
+                </div>
+            </div>
             <Link href={`/movies/page/${pageId}`}>назад</Link>
             <div className={styles.movie}>
                 <div>
-                    <Image width={400} height={600} src={movie.posterUrl} alt='.' />
                 </div>
             </div>
             {movie.nameRu}

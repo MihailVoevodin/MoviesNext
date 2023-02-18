@@ -8,6 +8,7 @@
 body {
   height: 100vh;
   color: white;
+  background-color: black;
 }
 
 a {
@@ -17,7 +18,7 @@ a {
 
 header,
 footer {
-  background-color: black;
+  background-color: #292727;
 }
 
 footer {
@@ -25,8 +26,7 @@ footer {
 }
 
 main {
-  max-width: 1280px;
+  max-width: 1170px;
   margin: 0 auto;
-  background-color: #292727;
-  padding: 20px 15px;
+  padding: 0 15px;
 }
