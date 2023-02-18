@@ -9,5 +9,6 @@
     grid-auto-rows: auto 1fr auto;
     width: 100%;
     color: white;
-    background-color: black;
+    background-color: #222623;
+    padding-left: 200px;
 }

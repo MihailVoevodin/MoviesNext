@@ -4,4 +4,7 @@
 
 .aside {
     background-color: #ff6200;
+    min-width: 200px;
+    position: fixed;
+    height: 100vh;
 }

@@ -6,7 +6,7 @@ import Image from 'next/image';
 import {useRouter} from 'next/router';
 import {setPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
-import styles from 'pages/movies/page/Movies.module.css';
+import styles from 'pages/movies/page/Movies.module.scss';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
@@ -38,15 +38,22 @@ const Movie = ({movies}: any) => {
             <div className={styles.movies}>
                 {movies.map((movie: any) =>
                     <div className={styles.moviesItem} key={movie.filmId}>
-                        <Link href={`/movies/movie/${movie.filmId}`}>
-                            <Image width={200} height={300} src={movie.posterUrl} alt='.' />
-                            <span className={styles.moviesItemName}>{movie.nameRu}</span>
-                        </Link>
-
+                        <div className={styles.moviesItemContent}>
+                            <Link href={`/movies/movie/${movie.filmId}`}>
+                                <div className={styles.moviesItemInnerContent}>
+                                    <div className={styles.movieItemRating}>{movie.rating}</div>
+                                    <div>{movie.year}</div>
+                                    <div>{movie.countries[0].country}</div>
+                                    <div>{movie.filmLength}</div>
+                                </div>
+                                <Image className={styles.movieItemImg} width={200} height={300} src={movie.posterUrl} alt='.' />
+                                <div className={styles.moviesItemName}>{movie.nameRu}</div>
+                            </Link>
+                        </div>
                     </div>
                 )}
             </div>
-            <Pagination current={pageId} onChange={onChange} total={250} defaultPageSize={20} showSizeChanger={false} />
+            <Pagination className={styles.pagination} current={pageId} onChange={onChange} total={250} defaultPageSize={20} showSizeChanger={false} />
         </>
     )
 };
