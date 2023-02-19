@@ -1,0 +1,45 @@
+.movieInfo {
+    display: flex;
+    justify-content: space-between;
+}
+
+.movieMainInfo {
+    max-width: 600px;
+}
+
+.movieName {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.movieNameOriginal {
+    font-size: 18px;
+    opacity: .6;
+    margin: 16px 0;
+    span {
+        margin-right: 10px;
+    }
+}
+
+.kinopoiskUrl {
+    margin-top: 20px;
+    color: #ff6200;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.ratingKinopoisk {
+    font-size: 32px;
+    span {
+        font-size: 18px;
+        padding-left: 10px;
+        vertical-align: center;
+    }
+}
+
+.voteCount {
+    font-size: 13px;
+    opacity: .6;
+
+}

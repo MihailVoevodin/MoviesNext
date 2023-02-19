@@ -42,8 +42,10 @@ const Movie = ({movies}: any) => {
                             colorText: 'white',
                             colorBgTextHover: '#ff6200',
                             colorPrimaryHover: '#ff6200',
-                        }
-                    }
+                            colorTextDisabled: '#363836',
+                        },
+
+                    },
                 }}
             >
                 <main>
