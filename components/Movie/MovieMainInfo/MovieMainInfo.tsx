@@ -16,7 +16,6 @@ const MovieMainInfo = ({movie}: any) => {
             <div className={styles.movieRatingInfo}>
                 <div className={styles.ratingKinopoisk}>
                     {movie.ratingKinopoisk}
-                    <span>Топ 250</span>
                 </div>
                 <div className={styles.voteCount}>{movie.ratingKinopoiskVoteCount} оценок</div>
             </div>

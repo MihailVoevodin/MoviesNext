@@ -55,22 +55,11 @@ const MovieAbout = ({movie, movieStaff, movieBox}: any) => {
                 <div className={styles.aboutItemText}>Монтаж</div>
                 <div className={styles.aboutItemContent}><MovieAboutStaff array={movieStaff} profession={'EDITOR'} /></div>
             </div>
-            <div className={styles.aboutItem}>
-                <div className={styles.aboutItemText}>Бюджет</div>
-                <div className={styles.aboutItemContent}><MovieAboutBox array={movieBox.items} boxType={'BUDGET'} /></div>
-            </div>
-            <div className={styles.aboutItem}>
-                <div className={styles.aboutItemText}>Маркетинг</div>
-                <div className={styles.aboutItemContent}><MovieAboutBox array={movieBox.items} boxType={'MARKETING'} /></div>
-            </div>
-            <div className={styles.aboutItem}>
-                <div className={styles.aboutItemText}>Сборы в США</div>
-                <div className={styles.aboutItemContent}><MovieAboutBox array={movieBox.items} boxType={'USA'} /></div>
-            </div>
-            <div className={styles.aboutItem}>
-                <div className={styles.aboutItemText}>Сборы в мире</div>
-                <div className={styles.aboutItemContent}><MovieAboutBox array={movieBox.items} boxType={'WORLD'} /></div>
-            </div>
+            <MovieAboutBox array={movieBox.items} boxType={'BUDGET'} boxText={'Бюджет'} />
+            <MovieAboutBox array={movieBox.items} boxType={'MARKETING'} boxText={'Маркетинг'} />
+            <MovieAboutBox array={movieBox.items} boxType={'USA'} boxText={'Сборы в США'} />
+            <MovieAboutBox array={movieBox.items} boxType={'RUS'} boxText={'Сборы в России'} />
+            <MovieAboutBox array={movieBox.items} boxType={'WORLD'} boxText={'Сборы в мире'} />
         </div>
     )
 }
