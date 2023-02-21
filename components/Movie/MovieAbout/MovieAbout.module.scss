@@ -9,9 +9,15 @@
   display: flex;
   font-size: 13px;
   padding: 8px 0;
+  align-items: center;
 }
 
 .aboutItemText {
   width: 160px;
   opacity: .6;
+}
+
+.aboutItemBorder {
+  border: 1px solid #fff;
+  padding: 2px;
 }
