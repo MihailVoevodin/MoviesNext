@@ -65,7 +65,7 @@ const Movie = ({movie, movieBox, movieStaff}: any) => {
                     <ul className={styles.movieTabsList}>
                         <li className={styles.movieListDefault}>Обзор</li>
                         <li><Link href={`/movie/${movie.kinopoiskId}/awards`}>Награды</Link></li>
-                        <li><Link href={`/movie/${movie.kinopoiskId}/premiers`}>Премьеры</Link></li>
+                        <li><Link href={`/movie/${movie.kinopoiskId}/distributions`}>Прокат</Link></li>
                         <li><Link href={`/movie/${movie.kinopoiskId}/images`}>Изображения</Link></li>
                         <li><Link href={`/movie/${movie.kinopoiskId}/videos`}>Трейлеры</Link></li>
                         <li><Link href={`/movie/${movie.kinopoiskId}/facts`}>Факты</Link></li>

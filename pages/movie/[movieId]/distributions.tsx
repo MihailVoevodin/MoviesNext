@@ -20,23 +20,22 @@ export async function getServerSideProps(context: any) {
 const Awards = ({movieAwards, movieName}: any) => {
     const router = useRouter();
     const {items} = movieAwards;
-    console.log(items)
 
     return (
         <>
             <Head>
-                <title>Награды: {movieName}</title>
+                <title>Прокат: {movieName}</title>
             </Head>
             <div className='movieDetailsPage'>
                 <div className='movieDetailsContainer'>
-                    <div className='movieDetailsTitle'><span>Награды</span> / {movieName}</div>
+                    <div className='movieDetailsTitle'><span>Прокат</span> / {movieName}</div>
                     <div className='backToMovieContainer'>
                         <hr/>
                         <span className='backToMovie' onClick={() => router.back()}>Информация о фильме</span>
                         <hr/>
                     </div>
                     <div>
-                        {T.awardsTypeArray.map((type, id) => <MovieAward key={id} awardsArray={items} awardType={type} />)}
+
                     </div>
                 </div>
             </div>

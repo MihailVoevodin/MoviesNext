@@ -32,7 +32,7 @@ const Movie = ({movies}: any) => {
     return (
         <>
             <Head>
-                <title>Movies App</title>
+                <title>Фильмы: Топ 250</title>
             </Head>
             <ConfigProvider
                 theme={{
