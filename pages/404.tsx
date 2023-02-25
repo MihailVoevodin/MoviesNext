@@ -2,13 +2,6 @@ import {useRouter} from 'next/router';
 import {useEffect} from 'react';
 
 const PathErrorPage = () => {
-    const router = useRouter();
-    console.log(router)
-    useEffect(() => {
-        setTimeout(() => {
-            router.push('/');
-        }, 3000)
-    })
 
     return (
         <>

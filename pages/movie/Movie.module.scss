@@ -63,3 +63,40 @@
   gap: 30px;
   grid-template-columns: 300px 1fr;
 }
+
+.movieDetails {
+  background-color: #ffffff;
+  color: black;
+  padding: 30px 0;
+}
+
+.movieDetailsContainer {
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.movieTabsList {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  li {
+    list-style: none;
+  }
+  a {
+    margin-left: 20px;
+    transition: all .5s;
+    &:hover {
+      color: #ff6200;
+    }
+  }
+}
+
+.movieListDefault {
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 5px;
+}

@@ -31,8 +31,7 @@ main {
   padding: 0 15px;
 }
 
-[data-icon] {
+[data-icon="double-right"],
+[data-icon="double-left"] {
   fill: white;
 }
-
-

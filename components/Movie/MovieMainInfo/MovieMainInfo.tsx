@@ -5,9 +5,9 @@ const MovieMainInfo = ({movie}: any) => {
     return (
         <div className={styles.movieInfo}>
             <div className={styles.movieMainInfo}>
-                <div className={styles.movieName}>{movie.nameRu} ({movie.year})</div>
+                <div className={styles.movieName}>{movie.nameRu} ({movie.serial ? movie.startYear - movie.endYear : movie.year})</div>
                 <div className={styles.movieNameOriginal}>
-                    <span>{movie.nameOriginal}</span>
+                    {movie.nameOriginal && <span>{movie.nameOriginal}</span>}
                     <span>{movie.ratingAgeLimits.slice(3, 5)}+</span>
                 </div>
                 <p className={styles.movieDescription}>{movie.shortDescription}</p>

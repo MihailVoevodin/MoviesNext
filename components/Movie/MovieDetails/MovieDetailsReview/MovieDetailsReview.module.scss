@@ -1,0 +1,68 @@
+.movieReview {
+  max-width: 750px;
+  margin: 20px auto;
+}
+
+.ratingContainer,
+.criticsContainer {
+  margin: 30px 0;
+  span {
+    font-size: 22px;
+    font-weight: 700;
+  }
+}
+
+.ratingContent {
+  display: flex;
+  align-items: center;
+}
+
+.ratingNumbers {
+  margin-left: 50px;
+}
+
+.ratingKinopoisk {
+  font-size: 48px;
+}
+
+.ratingCount {
+  display: flex;
+  margin-top: 5px;
+  font-size: 13px;
+  opacity: .6;
+  .ratingImdb {
+    margin-left: 10px;
+    span {
+      font-size: 13px;
+    }
+  }
+}
+
+.criticsContainer {
+  display: flex;
+  align-items: center;
+  span {
+    font-size: 18px;
+  }
+}
+
+.criticsRf {
+  margin-left: 75px;
+}
+
+.criticsWorldInfo {
+  display: flex;
+  align-items: center;
+  &:nth-child(2) {
+    font-size: 18px;
+  }
+}
+
+.criticsVotePercent {
+  font-size: 24px;
+  margin-right: 20px;
+  span {
+    font-size: 13px;
+    opacity: .6;
+  }
+}

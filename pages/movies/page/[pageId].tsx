@@ -26,7 +26,7 @@ const Movie = ({movies}: any) => {
 
     const onChange = (pageId: number) => {
         dispatch(setPageId(pageId));
-        router.replace(`/movies/page/${pageId}`);
+        void router.replace(`/movies/page/${pageId}`);
     }
 
     return (
@@ -53,7 +53,7 @@ const Movie = ({movies}: any) => {
                         {movies.map((movie: any) =>
                             <div className={styles.moviesItem} key={movie.filmId}>
                                 <div className={styles.moviesItemContent}>
-                                    <Link href={`/movies/movie/${movie.filmId}`}>
+                                    <Link href={`/movie/${movie.filmId}`}>
                                         <div className={styles.moviesItemInnerContent}>
                                             <div className={styles.movieItemRating}>{movie.rating}</div>
                                             <div>{movie.year}</div>

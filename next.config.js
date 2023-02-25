@@ -7,16 +7,16 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'kinopoiskapiunofficial.tech',
         port: '',
-        pathname: '/images/posters/**',
+        pathname: '/images/posters/**'
       },
       {
         protocol: 'https',
         hostname: 'avatars.mds.yandex.net',
         port: '',
-        pathname: '/get-ott/**',
-      },
-    ],
-  },
+        pathname: '/get-ott/**'
+      }
+    ]
+  }
 }
 
 module.exports = nextConfig
