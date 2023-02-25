@@ -28,10 +28,10 @@ const MovieDetailsReview = ({movie}: any) => {
                         <div><StarFilled /> {movie.ratingFilmCritics}</div>
                     </div>
                 </div>
-                <div className={styles.criticsRf}>
+                {movie.ratingRfCritics && <div className={styles.criticsRf}>
                     <span>В России</span>
                     <div className={styles.criticsVotePercent}>{movie.ratingRfCritics}% <span>{movie.ratingRfCriticsVoteCount} оценок</span></div>
-                </div>
+                </div>}
             </div>
         </div>
     )

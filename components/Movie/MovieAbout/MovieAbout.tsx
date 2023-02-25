@@ -1,6 +1,7 @@
 import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
 import {MovieAboutStaff} from 'Helpers/MovieAboutStaff';
 import {MovieAboutBox} from 'Helpers/MovieAboutBox';
+import {T} from 'Common/Text';
 
 const MovieAbout = ({movie, movieStaff, movieBox}: any) => {
 
@@ -27,18 +28,8 @@ const MovieAbout = ({movie, movieStaff, movieBox}: any) => {
                 <div className={styles.aboutItemText}>Слоган</div>
                 <div>{movie.slogan ? <span>&#171;{movie.slogan}&#187;</span> : <span>&#8212;</span>}</div>
             </div>
-            <MovieAboutStaff array={movieStaff} profession={'DIRECTOR'} text={'Режиссер'}/>
-            <MovieAboutStaff array={movieStaff} profession={'WRITER'} text={'Сценарий'}/>
-            <MovieAboutStaff array={movieStaff} profession={'PRODUCER'} text={'Продюсер'}/>
-            <MovieAboutStaff array={movieStaff} profession={'OPERATOR'} text={'Оператор'}/>
-            <MovieAboutStaff array={movieStaff} profession={'COMPOSER'} text={'Композитор'}/>
-            <MovieAboutStaff array={movieStaff} profession={'DESIGN'} text={'Художник'}/>
-            <MovieAboutStaff array={movieStaff} profession={'EDITOR'} text={'Монтаж'}/>
-            <MovieAboutBox array={movieBox.items} boxType={'BUDGET'} boxText={'Бюджет'} />
-            <MovieAboutBox array={movieBox.items} boxType={'MARKETING'} boxText={'Маркетинг'} />
-            <MovieAboutBox array={movieBox.items} boxType={'USA'} boxText={'Сборы в США'} />
-            <MovieAboutBox array={movieBox.items} boxType={'RUS'} boxText={'Сборы в России'} />
-            <MovieAboutBox array={movieBox.items} boxType={'WORLD'} boxText={'Сборы в мире'} />
+            {T.staffTextArray.map((person: any) => <MovieAboutStaff key={person.id} array={movieStaff} profession={person.profession} text={person.text} />)}
+            {T.boxTextArray.map((box: any) => <MovieAboutBox key={box.id} array={movieBox.items} boxType={box.boxType} boxText={box.boxText} />)}
             <div className={styles.aboutItem}>
                 <div className={styles.aboutItemText}>Возраст</div>
                 <div className={styles.aboutItemBorder}>{movie.ratingAgeLimits.slice(3, 5)}+</div>
