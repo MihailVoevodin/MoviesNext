@@ -7,7 +7,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'kinopoiskapiunofficial.tech',
         port: '',
-        pathname: '/images/posters/**'
+        pathname: '/images/**'
       },
       {
         protocol: 'https',

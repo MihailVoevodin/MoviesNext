@@ -8,7 +8,7 @@ export const MovieAboutBox = ({array, boxType, boxText}: any) => {
             {filteredArray.length > 0 &&
                 <div className={styles.aboutItem}>
                     <div className={styles.aboutItemText}>{boxText}</div>
-                    <div>{filteredArray.map((a: any, id: number) => <span key={id}>{a.symbol} {a.amount.toLocaleString('ru')}</span>)}</div>
+                    <div className={styles.aboutItemContent}>{filteredArray.map((a: any, id: number) => <span key={id}>{a.symbol} {a.amount.toLocaleString('ru')}</span>)}</div>
                 </div>
             }
         </>

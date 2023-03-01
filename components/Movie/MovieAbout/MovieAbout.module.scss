@@ -1,5 +1,9 @@
-.about {
+.aboutContainer {
+  display: flex;
   margin: 30px 0;
+}
+
+.about {
   h3 {
     padding-bottom: 20px;
   }
@@ -12,6 +16,10 @@
   align-items: center;
 }
 
+.aboutItemContent {
+  width: 440px;
+}
+
 .aboutItemText {
   width: 160px;
   opacity: .6;
@@ -20,4 +28,25 @@
 .aboutItemBorder {
   border: 1px solid #fff;
   padding: 2px;
+}
+
+.actors {
+  margin-left: 20px;
+}
+
+.actorsList {
+  margin-top: 20px;
+  li {
+    list-style: none;
+    font-size: 13px;
+    padding-bottom: 5px;
+    &:hover {
+      color: #ff6200;
+    }
+  }
+}
+
+.actorsCount {
+  margin-top: 20px;
+  color: #ff6200;
 }

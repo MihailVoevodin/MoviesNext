@@ -1,3 +1,5 @@
+import {Popover} from 'antd';
+import {MovieAboutPersonCard} from 'components/Movie/MoviePersonCard/MovieAboutPersonCard';
 import Link from 'next/link';
 import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
 
@@ -9,10 +11,13 @@ export const MovieAboutStaff = ({array, profession, text}: any) => {
             <>
                 <div className={styles.aboutItem}>
                     <div className={styles.aboutItemText}>{text}</div>
-                    <div>
-                        {filteredArray.slice(0, 3).map((a: any, id: number) =>
-                            <Link key={id} href={`/name/${a.staffId}`}>
-                                {a.nameRu}{id !== filteredArray.length - 1 ? ', ' : ''}
+                    <div className={styles.aboutItemContent}>
+                        {filteredArray.slice(0, 3).map((person: any, id: number) =>
+                            <Link key={id} href={`/name/${person.staffId}`}>
+                                <Popover content={<MovieAboutPersonCard person={person} />}>
+                                    {person.nameRu}
+                                </Popover>
+                                {id !== filteredArray.length - 1 ? ', ' : ''}
                             </Link>)}
                         <span> ...</span>
                     </div>
@@ -26,10 +31,13 @@ export const MovieAboutStaff = ({array, profession, text}: any) => {
         <>
             {filteredArray.length > 0 && <div className={styles.aboutItem}>
                 <div className={styles.aboutItemText}>{text}</div>
-                <div>
-                    {filteredArray.slice(0, 3).map((a: any, id: number) =>
-                        <Link key={id} href={`/name/${a.staffId}`}>
-                            {a.nameRu}{id !== filteredArray.length - 1 ? ', ' : ''}
+                <div className={styles.aboutItemContent}>
+                    {filteredArray.slice(0, 3).map((person: any, id: number) =>
+                        <Link key={id} href={`/name/${person.staffId}`}>
+                            <Popover content={<MovieAboutPersonCard person={person} />}>
+                                {person.nameRu}
+                            </Popover>
+                            {id !== filteredArray.length - 1 ? ', ' : ''}
                         </Link>)}
                 </div>
             </div>}
