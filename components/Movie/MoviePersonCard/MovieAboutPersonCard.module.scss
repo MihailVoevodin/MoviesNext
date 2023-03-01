@@ -1,4 +1,18 @@
 .personCard {
   display: flex;
-  align-items: center;
+}
+
+.personContent {
+  margin-left: 10px;
+  a:hover {
+    color: inherit;
+  }
+  .personName {
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+.personDescription {
+  opacity: .6;
 }
