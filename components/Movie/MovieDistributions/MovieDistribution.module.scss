@@ -1,0 +1,25 @@
+.container {
+  margin: 20px;
+  border: 1px solid #000000;
+  padding: 10px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.list {
+  list-style: none;
+  margin-top: 15px;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.date {
+  width: 200px;
+}

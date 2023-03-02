@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {MovieDistribution} from 'components/Movie/MovieDistributions/MovieDistribution';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {MovieAward} from 'components/Movie/MovieAwards/MovieAward';
@@ -9,17 +10,18 @@ axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 export async function getServerSideProps(context: any) {
     const {movieId} = context.params
     const responseFilm = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}`);
-    const responseAwards = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}/awards`);
+    const responseDistributions = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}/distributions`);
     const movieName = responseFilm.data.nameRu
-    const movieAwards = responseAwards.data;
+    const movieDistributions = responseDistributions.data;
     return {
-        props: {movieAwards, movieName},
+        props: {movieDistributions, movieName},
     }
 }
 
-const Awards = ({movieAwards, movieName}: any) => {
+const Awards = ({movieDistributions, movieName}: any) => {
     const router = useRouter();
-    const {items} = movieAwards;
+    const {items} = movieDistributions;
+    console.log(items)
 
     return (
         <>
@@ -35,7 +37,7 @@ const Awards = ({movieAwards, movieName}: any) => {
                         <hr/>
                     </div>
                     <div>
-
+                        {T.distributionsTextArray.map((distrib: any) => <MovieDistribution key={distrib.id} array={items} type={distrib.type} text={distrib.text} />)}
                     </div>
                 </div>
             </div>
