@@ -33,7 +33,7 @@ main {
 
 [data-icon="double-right"],
 [data-icon="double-left"] {
-  fill: white;
+  fill: #9c9a9a;
 }
 
 .movieDetailsPage {
@@ -68,4 +68,14 @@ main {
 
 .backToMovie:hover {
   text-decoration: underline;
+}
+
+.imagesType.activeImagesType {
+  background-color: #000000;
+  color: white;
+}
+
+.pagination {
+  margin: 30px 0;
+  text-align: center;
 }

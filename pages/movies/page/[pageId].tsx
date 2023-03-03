@@ -67,7 +67,7 @@ const Movie = ({movies}: any) => {
                             </div>
                         )}
                     </div>
-                    <Pagination className={styles.pagination} current={pageId} onChange={onChange} total={250} defaultPageSize={20} showSizeChanger={false} />
+                    <Pagination className={'pagination'} current={pageId} onChange={onChange} total={250} defaultPageSize={20} showSizeChanger={false} />
                 </main>
             </ConfigProvider>
         </>

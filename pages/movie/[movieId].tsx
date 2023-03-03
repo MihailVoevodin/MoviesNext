@@ -5,7 +5,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
 import {ArrowLeftOutlined} from '@ant-design/icons';
-import {useAppSelector} from 'store/hooks';
+import {useEffect} from 'react';
+import {setImagesPageId} from 'store/filmsSlice';
+import {useAppDispatch, useAppSelector} from 'store/hooks';
 import styles from 'pages/movie/Movie.module.scss';
 import {MovieDetailsReview} from 'components/Movie/MovieDetails/MovieDetailsReview/MovieDetailsReview';
 
@@ -26,10 +28,12 @@ export async function getServerSideProps(context: any) {
 }
 
 const Movie = ({movie, movieBox, movieStaff}: any) => {
+    const dispatch = useAppDispatch();
     const {pageId} = useAppSelector(state => state.films)
-    console.log(movie)
-    console.log(movieBox)
-    console.log(movieStaff)
+
+    useEffect(() => {
+        dispatch(setImagesPageId(1));
+    })
 
     return (
         <>
@@ -66,7 +70,7 @@ const Movie = ({movie, movieBox, movieStaff}: any) => {
                         <li className={styles.movieListDefault}>Обзор</li>
                         <li><Link href={`/movie/${movie.kinopoiskId}/awards`}>Награды</Link></li>
                         <li><Link href={`/movie/${movie.kinopoiskId}/distributions`}>Прокат</Link></li>
-                        <li><Link href={`/movie/${movie.kinopoiskId}/images`}>Изображения</Link></li>
+                        <li><Link href={`/movie/${movie.kinopoiskId}/images/stills/1`}>Изображения</Link></li>
                         <li><Link href={`/movie/${movie.kinopoiskId}/videos`}>Трейлеры</Link></li>
                         <li><Link href={`/movie/${movie.kinopoiskId}/facts`}>Факты</Link></li>
                         <li><Link href={`/movie/${movie.kinopoiskId}/reviews`}>Рецензии</Link></li>

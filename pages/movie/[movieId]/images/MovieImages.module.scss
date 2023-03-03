@@ -1,0 +1,14 @@
+.titlesList {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  a {
+    margin: 10px 5px;
+    padding: 10px 15px;
+    background-color: #aaaaaa;
+    border-radius: 20px;
+    &:hover {
+      background-color: #888888;
+    }
+  }
+}

@@ -90,4 +90,51 @@ export const T = {
             text: 'На DVD',
         },
     ],
+    imagesTextArray: [
+        {
+            id: 1,
+            type: 'stills',
+            text: 'Кадры',
+        },
+        {
+            id: 2,
+            type: 'shooting',
+            text: 'Съемки',
+        },
+        {
+            id: 3,
+            type: 'poster',
+            text: 'Постеры',
+        },
+        {
+            id: 4,
+            type: 'fan_art',
+            text: 'Фан-арты',
+        },
+        {
+            id: 5,
+            type: 'promo',
+            text: 'Промо',
+        },
+        {
+            id: 6,
+            type: 'concept',
+            text: 'Концепты',
+        },
+        {
+            id: 7,
+            type: 'wallpaper',
+            text: 'Обои',
+        },
+        {
+            id: 8,
+            type: 'cover',
+            text: 'Обложки',
+        },
+        {
+            id: 9,
+            type: 'screenshot',
+            text: 'Скриншоты',
+        },
+    ],
 }

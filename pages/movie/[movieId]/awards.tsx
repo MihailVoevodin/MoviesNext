@@ -20,7 +20,6 @@ export async function getServerSideProps(context: any) {
 const Awards = ({movieAwards, movieName}: any) => {
     const router = useRouter();
     const {items} = movieAwards;
-    console.log(items)
 
     return (
         <>
@@ -32,7 +31,7 @@ const Awards = ({movieAwards, movieName}: any) => {
                     <div className='movieDetailsTitle'><span>Награды</span> / {movieName}</div>
                     <div className='backToMovieContainer'>
                         <hr/>
-                        <span className='backToMovie' onClick={() => router.back()}>Информация о фильме</span>
+                        <span className='backToMovie' onClick={() => router.replace(`/movie/${router.query.movieId}`)}>Информация о фильме</span>
                         <hr/>
                     </div>
                     <div>
