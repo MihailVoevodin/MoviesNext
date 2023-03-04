@@ -15,10 +15,12 @@ const Images = ({movieName, movieImages}: any) => {
     const dispatch = useAppDispatch();
     const {imagesPageId} = useAppSelector(state => state.films)
     const {total, totalPages, items} = movieImages
+    const imagesType = router.pathname.split('/')[4]
+    console.log(imagesType)
 
     const onChange = (pageId: number) => {
         dispatch(setImagesPageId(pageId));
-        void router.replace(`/movie/${router.query.movieId}/images/stills/${pageId}`);
+        void router.replace(`/movie/${router.query.movieId}/images/${imagesType}/${pageId}`);
     }
 
     return (

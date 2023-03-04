@@ -26,6 +26,11 @@ export async function getServerSideProps(context: any) {
 }
 
 const Images = ({movieName, movieImages}: any) => {
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(setImagesPageId(1));
+    }, [])
 
     return <MovieImagesComponent movieName={movieName} movieImages={movieImages} />
 };

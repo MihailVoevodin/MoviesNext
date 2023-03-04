@@ -1,6 +1,7 @@
 import {ConfigProvider, Pagination} from 'antd';
 import axios from 'axios';
 import {T} from 'Common/Text';
+import MovieImagesComponent from 'Helpers/MovieImagesComponent';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -25,69 +26,13 @@ export async function getServerSideProps(context: any) {
 }
 
 const Images = ({movieName, movieImages}: any) => {
-    const router = useRouter()
-    console.log(router.pathname)
     const dispatch = useAppDispatch();
-    const {imagesPageId} = useAppSelector(state => state.films)
-    const {total, totalPages, items} = movieImages
 
     useEffect(() => {
         dispatch(setImagesPageId(1));
-    })
+    }, [])
 
-    const onChange = (pageId: number) => {
-        dispatch(setImagesPageId(pageId));
-        void router.replace(`/movie/${router.query.movieId}/images/stills/${pageId}`);
-    }
-
-    return (
-        <>
-            <Head>
-                <title>Кадры: {movieName}</title>
-            </Head>
-            <ConfigProvider
-                theme={{
-                    components: {
-                        Pagination: {
-                            colorPrimary: 'black',
-                            colorText: 'black',
-                            colorBgTextHover: '#ff6200',
-                            colorPrimaryHover: '#ff6200',
-                            colorTextDisabled: '#363836',
-                        },
-
-                    },
-                }}
-            >
-                <div className='movieDetailsPage'>
-                    <div className='movieDetailsContainer'>
-                        <div className='movieDetailsTitle'><span>Изображения</span> / {movieName}</div>
-                        <div className='backToMovieContainer'>
-                            <hr/>
-                            <span className='backToMovie' onClick={() => router.replace(`/movie/${router.query.movieId}`)}>Информация о фильме</span>
-                            <hr/>
-                        </div>
-                        <div>
-                            <ul className={styles.titlesList}>
-                                {T.imagesTextArray.map((type: any) => {
-                                    return (
-                                        <Link
-                                            key={type.id} href={`/movie/${router.query.movieId}/images/${type.type}/1`}
-                                            className={router.pathname.includes(type.type) ? 'imagesType activeImagesType': 'imagesType'}
-                                        >
-                                            <li>{type.text} {router.pathname.includes(type.type) && total}</li>
-                                        </Link>
-                                    )
-                                })}
-                            </ul>
-                            {items.map((image: any, id: number) => <Image key={id} width={200} height={150} src={image.previewUrl} alt='.' />)}
-                            {totalPages > 1 && <Pagination className={'pagination'} current={imagesPageId} total={total} onChange={onChange} defaultPageSize={20} showSizeChanger={false} />}
-                        </div>
-                    </div>
-                </div>
-            </ConfigProvider>
-        </>
-    )
+    return <MovieImagesComponent movieName={movieName} movieImages={movieImages} />
 };
 
 export default Images;

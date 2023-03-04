@@ -2,7 +2,7 @@ import axios from 'axios';
 import MovieImagesComponent from 'Helpers/MovieImagesComponent';
 import {useEffect} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
-import {useAppDispatch} from 'store/hooks';
+import {useAppDispatch, useAppSelector} from 'store/hooks';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
@@ -19,6 +19,11 @@ export async function getServerSideProps(context: any) {
 }
 
 const Images = ({movieName, movieImages}: any) => {
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        dispatch(setImagesPageId(1));
+    }, [])
 
     return <MovieImagesComponent movieName={movieName} movieImages={movieImages} />
 };
