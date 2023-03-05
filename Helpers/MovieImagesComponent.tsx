@@ -1,15 +1,17 @@
 import {ConfigProvider, Pagination} from 'antd';
+import {CloseIcon} from 'Common/Close';
 import {T} from 'Common/Text';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import styles from 'pages/movie/[movieId]/images/MovieImages.module.scss';
-import {useEffect} from 'react';
+import {useState} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 
 const Images = ({movieName, movieImages}: any) => {
+    const [image, setImage] = useState<string>('')
     const router = useRouter()
     console.log(router.pathname)
     const dispatch = useAppDispatch();
@@ -17,6 +19,14 @@ const Images = ({movieName, movieImages}: any) => {
     const {total, totalPages, items} = movieImages
     const imagesType = router.pathname.split('/')[4]
     console.log(imagesType)
+
+    const handleOpenImage = (image: any) => {
+        setImage(image.imageUrl)
+    }
+
+    const handleCloseImage = () => {
+        setImage('')
+    }
 
     const onChange = (pageId: number) => {
         dispatch(setImagesPageId(pageId));
@@ -63,7 +73,18 @@ const Images = ({movieName, movieImages}: any) => {
                                     )
                                 })}
                             </ul>
-                            {items.map((image: any, id: number) => <Image key={id} width={200} height={150} src={image.previewUrl} alt='.' />)}
+                            <div className={styles.container}>
+                                {items.map((image: any, id: number) => <div key={id}>
+                                    <Image className={styles.image} onClick={() => handleOpenImage(image)} width={200} height={150} src={image.previewUrl} alt='.' />
+                                </div>
+                                )}
+                                {image && <div className={styles.modal}>
+                                    <div className={styles.modalContainer}>
+                                        <img className={styles.modalImage} src={image} alt='.' />
+                                    </div>
+                                    <div className={styles.modalClose} onClick={handleCloseImage}><CloseIcon /></div>
+                                </div>}
+                            </div>
                             {totalPages > 1 && <Pagination className={'pagination'} current={imagesPageId} total={total} onChange={onChange} defaultPageSize={20} showSizeChanger={false} />}
                         </div>
                     </div>
