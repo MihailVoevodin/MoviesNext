@@ -1,5 +1,5 @@
 import axios from 'axios';
-import MovieImagesComponent from 'Helpers/MovieImagesComponent';
+import MovieAboutImages from 'Helpers/MovieAboutImages';
 import {useEffect} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch} from 'store/hooks';
@@ -25,7 +25,7 @@ const Images = ({movieName, movieImages}: any) => {
         dispatch(setImagesPageId(1));
     }, [])
 
-    return <MovieImagesComponent movieName={movieName} movieImages={movieImages} />
+    return <MovieAboutImages movieName={movieName} movieImages={movieImages} />
 };
 
 export default Images;

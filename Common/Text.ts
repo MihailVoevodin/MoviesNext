@@ -137,4 +137,16 @@ export const T = {
             text: 'Скриншоты',
         },
     ],
+    factsTextArray: [
+        {
+            id: 1,
+            type: 'BLOOPER',
+            text: 'Ляпы',
+        },
+        {
+            id: 2,
+            type: 'FACT',
+            text: 'Факты',
+        },
+    ],
 }
