@@ -3,6 +3,7 @@ import {createSlice} from '@reduxjs/toolkit';
 const initialState = {
     pageId: 1,
     imagesPageId: 1,
+    reviewsPageId: 1,
 };
 
 /**
@@ -17,10 +18,13 @@ const filmsSlice = createSlice({
         },
         setImagesPageId(state, action) {
             state.imagesPageId = action.payload
+        },
+        setReviewsPageId(state, action) {
+            state.reviewsPageId = action.payload
         }
     },
 });
 
-export const {setPageId, setImagesPageId} = filmsSlice.actions;
+export const {setPageId, setImagesPageId, setReviewsPageId} = filmsSlice.actions;
 
 export default filmsSlice.reducer;

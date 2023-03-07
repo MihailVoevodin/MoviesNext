@@ -18,7 +18,7 @@ export async function getServerSideProps(context: any) {
     }
 }
 
-const Awards = ({movieDistributions, movieName}: any) => {
+const Distributions = ({movieDistributions, movieName}: any) => {
     const router = useRouter();
     const {items} = movieDistributions;
 
@@ -44,4 +44,4 @@ const Awards = ({movieDistributions, movieName}: any) => {
     )
 }
 
-export default Awards
+export default Distributions

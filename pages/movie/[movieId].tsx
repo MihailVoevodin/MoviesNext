@@ -73,7 +73,7 @@ const Movie = ({movie, movieBox, movieStaff}: any) => {
                         <li><Link href={`/movie/${movie.kinopoiskId}/images/stills/1`}>Изображения</Link></li>
                         <li><Link href={`/movie/${movie.kinopoiskId}/videos`}>Трейлеры</Link></li>
                         <li><Link href={`/movie/${movie.kinopoiskId}/facts`}>Факты</Link></li>
-                        <li><Link href={`/movie/${movie.kinopoiskId}/reviews`}>Рецензии</Link></li>
+                        <li><Link href={`/movie/${movie.kinopoiskId}/reviews/1`} shallow={true}>Рецензии</Link></li>
                     </ul>
                     <hr/>
                     <MovieDetailsReview movie={movie} />

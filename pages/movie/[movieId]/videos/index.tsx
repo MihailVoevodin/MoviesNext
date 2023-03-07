@@ -17,7 +17,7 @@ export async function getServerSideProps(context: any) {
     }
 }
 
-const Index = ({movieVideos, movieName}: any) => {
+const Videos = ({movieVideos, movieName}: any) => {
     const router = useRouter();
     console.log(movieVideos)
 
@@ -48,4 +48,4 @@ const Index = ({movieVideos, movieName}: any) => {
     )
 }
 
-export default Index
+export default Videos

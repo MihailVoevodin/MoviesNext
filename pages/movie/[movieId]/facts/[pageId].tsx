@@ -17,7 +17,7 @@ export async function getServerSideProps(context: any) {
     }
 }
 
-const Index = ({movieFacts, movieName}: any) => {
+const Facts = ({movieFacts, movieName}: any) => {
     const router = useRouter();
     const {items} = movieFacts;
 
@@ -43,4 +43,4 @@ const Index = ({movieFacts, movieName}: any) => {
     )
 }
 
-export default Index
+export default Facts
