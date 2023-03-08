@@ -79,3 +79,7 @@ main {
   margin: 30px 0;
   text-align: center;
 }
+
+.ant-select-item-option-selected {
+  background-color: #ff6200 !important;
+}
