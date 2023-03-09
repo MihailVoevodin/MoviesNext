@@ -1,5 +1,6 @@
 import {ConfigProvider, Pagination, Select} from 'antd';
 import axios from 'axios';
+import {MovieAboutReview} from 'Helpers/MovieAboutReview';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {useEffect, useState} from 'react';
@@ -30,7 +31,7 @@ const Reviews = ({movieReviews, movieName}: any) => {
     const [filter, setFilter] = useState('DATE_ASC')
 
     useEffect(() => {
-        void router.push(`/movie/${router.query.movieId}/reviews/${router.query.pageId}/?&order=${filter}`);
+        void router.push(`/movie/${router.query.movieId}/reviews/${reviewsPageId}/?&order=${filter}`);
     }, [filter])
 
 
@@ -41,6 +42,7 @@ const Reviews = ({movieReviews, movieName}: any) => {
 
     const handleFilterChange = (value: string) => {
         setFilter(value)
+        dispatch(setReviewsPageId(1));
     }
 
     return (
@@ -79,20 +81,23 @@ const Reviews = ({movieReviews, movieName}: any) => {
                                 <div>Негативные <span>{totalNegativeReviews}</span></div>
                                 <div>Нейтральные <span>{totalNeutralReviews}</span></div>
                             </div>
-                            <Select
-                                defaultValue="DATE_ASC"
-                                style={{ width: 300 }}
-                                onChange={handleFilterChange}
-                                options={[
-                                    { value: 'DATE_ASC', label: 'По возрастанию даты' },
-                                    { value: 'DATE_DESC', label: 'По убыванию даты' },
-                                    { value: 'USER_POSITIVE_RATING_ASC', label: 'По возрастанию позитивных рецензий' },
-                                    { value: 'USER_POSITIVE_RATING_DESC', label: 'По убыванию позитивных рецензий' },
-                                    { value: 'USER_NEGATIVE_RATING_ASC', label: 'По возрастанию негативных рецензий' },
-                                    { value: 'USER_NEGATIVE_RATING_DESC', label: 'По убыванию негативных рецензий' },
-                                ]}
-                            />
-                            {items.map((review: any) => <div key={review.kinopoiskId}>{review.author}</div>)}
+                            <div className={styles.sorting}>
+                                <span className={styles.text}>Сортировать:</span>
+                                <Select
+                                    defaultValue="DATE_ASC"
+                                    style={{ width: 300 }}
+                                    onChange={handleFilterChange}
+                                    options={[
+                                        { value: 'DATE_ASC', label: 'По возрастанию даты' },
+                                        { value: 'DATE_DESC', label: 'По убыванию даты' },
+                                        { value: 'USER_POSITIVE_RATING_ASC', label: 'По возрастанию позитивных рецензий' },
+                                        { value: 'USER_POSITIVE_RATING_DESC', label: 'По убыванию позитивных рецензий' },
+                                        { value: 'USER_NEGATIVE_RATING_ASC', label: 'По возрастанию негативных рецензий' },
+                                        { value: 'USER_NEGATIVE_RATING_DESC', label: 'По убыванию негативных рецензий' },
+                                    ]}
+                                />
+                            </div>
+                            {items.map((review: any) => <MovieAboutReview key={review.kinopoiskId} review={review} />)}
                             <Pagination className={'pagination'} current={reviewsPageId} total={total} defaultPageSize={20} onChange={onChange} showSizeChanger={false} />
                         </div>
                     </div>

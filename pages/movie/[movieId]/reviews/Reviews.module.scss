@@ -7,3 +7,40 @@
     display: block;
   }
 }
+
+.sorting {
+  margin: 20px 0;
+  .text {
+    margin-right: 30px;
+  }
+}
+
+.review {
+  margin-bottom: 20px;
+  padding: 40px;
+}
+
+.reviewAbout {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.reviewAuthor {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 700;
+  img {
+    margin-right: 10px;
+  }
+}
+
+.reviewTitle {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.reviewDescription {
+  text-align: justify;
+}
