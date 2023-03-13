@@ -70,7 +70,7 @@ const Movie = ({movie, movieBox, movieStaff}: any) => {
                         <li className={styles.movieListDefault}>Обзор</li>
                         <li><Link href={`/movie/${movie.kinopoiskId}/awards`}>Награды</Link></li>
                         <li><Link href={`/movie/${movie.kinopoiskId}/distributions`}>Прокат</Link></li>
-                        <li><Link href={`/movie/${movie.kinopoiskId}/images/stills/1`}>Изображения</Link></li>
+                        <li><Link href={`/movie/${movie.kinopoiskId}/images/1?&type=STILL`}>Изображения</Link></li>
                         <li><Link href={`/movie/${movie.kinopoiskId}/videos`}>Трейлеры</Link></li>
                         <li><Link href={`/movie/${movie.kinopoiskId}/facts`}>Факты</Link></li>
                         <li><Link href={`/movie/${movie.kinopoiskId}/reviews/1?&order=DATE_ASC`} shallow={true}>Рецензии</Link></li>

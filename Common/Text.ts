@@ -93,47 +93,47 @@ export const T = {
     imagesTextArray: [
         {
             id: 1,
-            type: 'stills',
+            type: 'STILL',
             text: 'Кадры',
         },
         {
             id: 2,
-            type: 'shooting',
+            type: 'SHOOTING',
             text: 'Съемки',
         },
         {
             id: 3,
-            type: 'poster',
+            type: 'POSTER',
             text: 'Постеры',
         },
         {
             id: 4,
-            type: 'fan_art',
+            type: 'FAN_ART',
             text: 'Фан-арты',
         },
         {
             id: 5,
-            type: 'promo',
+            type: 'PROMO',
             text: 'Промо',
         },
         {
             id: 6,
-            type: 'concept',
+            type: 'CONCEPT',
             text: 'Концепты',
         },
         {
             id: 7,
-            type: 'wallpaper',
+            type: 'WALLPAPER',
             text: 'Обои',
         },
         {
             id: 8,
-            type: 'cover',
+            type: 'COVER',
             text: 'Обложки',
         },
         {
             id: 9,
-            type: 'screenshot',
+            type: 'SCREENSHOT',
             text: 'Скриншоты',
         },
     ],

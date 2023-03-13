@@ -70,6 +70,17 @@ main {
   text-decoration: underline;
 }
 
+.imagesType {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.imagesType:not(:first-child) {
+  margin-left: 9px;
+}
+
+
 .imagesType.activeImagesType {
   background-color: #000000;
   color: white;
