@@ -34,7 +34,6 @@ const Reviews = ({movieReviews, movieName}: any) => {
         void router.push(`/movie/${router.query.movieId}/reviews/${reviewsPageId}/?&order=${filter}`);
     }, [filter])
 
-
     const onChange = (pageId: number) => {
         dispatch(setReviewsPageId(pageId));
         void router.replace(`/movie/${router.query.movieId}/reviews/${pageId}/?&order=${filter}`);
@@ -75,7 +74,7 @@ const Reviews = ({movieReviews, movieName}: any) => {
                             <hr/>
                         </div>
                         <div>
-                            <div className={styles.countsContainer}>
+                            <div className={styles.countsReviewsContainer}>
                                 <div>Всего <span>{total}</span></div>
                                 <div>Позитивные <span>{totalPositiveReviews}</span></div>
                                 <div>Негативные <span>{totalNegativeReviews}</span></div>
@@ -97,6 +96,7 @@ const Reviews = ({movieReviews, movieName}: any) => {
                                     ]}
                                 />
                             </div>
+                            <Pagination className={'pagination'} current={reviewsPageId} total={total} defaultPageSize={20} onChange={onChange} showSizeChanger={false} />
                             {items.map((review: any) => <MovieAboutReview key={review.kinopoiskId} review={review} />)}
                             <Pagination className={'pagination'} current={reviewsPageId} total={total} defaultPageSize={20} onChange={onChange} showSizeChanger={false} />
                         </div>
