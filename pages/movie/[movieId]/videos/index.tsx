@@ -19,7 +19,6 @@ export async function getServerSideProps(context: any) {
 
 const Videos = ({movieVideos, movieName}: any) => {
     const router = useRouter();
-    console.log(movieVideos)
 
     return (
         <>

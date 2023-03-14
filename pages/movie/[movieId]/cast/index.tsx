@@ -1,7 +1,8 @@
 import axios from 'axios';
+import {MovieAboutCast} from 'Helpers/MovieAboutCast';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
-import {MovieAward} from 'components/Movie/MovieAwards/MovieAward';
+import styles from 'pages/movie/[movieId]/cast/Cast.module.scss';
 import {T} from 'Common/Text';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
@@ -9,7 +10,7 @@ axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 export async function getServerSideProps(context: any) {
     const {movieId} = context.params
     const responseFilm = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}`);
-    const responseStaff = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}/awards`);
+    const responseStaff = await axios.get(`https://kinopoiskapiunofficial.tech/api/v1/staff?filmId=${movieId}`);
     const movieName = responseFilm.data.nameRu
     const movieStaff = responseStaff.data;
     return {
@@ -17,14 +18,14 @@ export async function getServerSideProps(context: any) {
     }
 }
 
-const Staff = ({movieStaff, movieName}: any) => {
+const Cast = ({movieStaff, movieName}: any) => {
     const router = useRouter();
-    const {items} = movieStaff;
+    console.log(movieStaff)
 
     return (
         <>
             <Head>
-                <title>Актеры и съемочная группа: {movieName}</title>
+                <title>Создатели: {movieName}</title>
             </Head>
             <div className='movieDetailsPage'>
                 <div className='movieDetailsContainer'>
@@ -35,7 +36,7 @@ const Staff = ({movieStaff, movieName}: any) => {
                         <hr/>
                     </div>
                     <div>
-
+                        {T.castTextArray.map((profession: any) => <MovieAboutCast key={profession.id} array={movieStaff} type={profession.type} text={profession.text} /> )}
                     </div>
                 </div>
             </div>
@@ -43,4 +44,4 @@ const Staff = ({movieStaff, movieName}: any) => {
     )
 }
 
-export default Staff
+export default Cast

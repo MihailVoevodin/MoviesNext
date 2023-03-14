@@ -15,7 +15,6 @@ axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 export async function getServerSideProps(context: any) {
     const {movieId, pageId} = context.params
     const {type} = context.query
-    console.log(context.query)
     const responseFilm = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}`);
     const responseImages = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}/images?type=${type}&page=${pageId}`);
     const movieName = responseFilm.data.nameRu;
@@ -28,7 +27,6 @@ export async function getServerSideProps(context: any) {
 const Images = ({movieName, movieImages}: any) => {
     const [image, setImage] = useState<string>('')
     const router = useRouter()
-    console.log(router.query)
     const {imagesPageId} = useAppSelector(state => state.films)
     const {total, totalPages, items} = movieImages
     const dispatch = useAppDispatch();

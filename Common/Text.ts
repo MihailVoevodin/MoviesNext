@@ -149,4 +149,66 @@ export const T = {
             text: 'Факты',
         },
     ],
+    castTextArray: [
+        {
+            id: 1,
+            type: 'DIRECTOR',
+            text: ['Режиссер', 'Режиссеры'],
+        },
+        {
+            id: 2,
+            type: 'ACTOR',
+            text: ['Актер', 'Актеры'],
+        },
+        {
+            id: 3,
+            type: 'PRODUCER',
+            text: ['Продюсер', 'Продюсеры'],
+        },
+        {
+            id: 4,
+            type: 'WRITER',
+            text: ['Сценарист', 'Сценаристы'],
+        },
+        {
+            id: 5,
+            type: 'OPERATOR',
+            text: ['Оператор', 'Операторы'],
+        },
+        {
+            id: 6,
+            type: 'COMPOSER',
+            text: ['Композитор', 'Композиторы'],
+        },
+        {
+            id: 7,
+            type: 'DESIGN',
+            text: ['Художник', 'Художники'],
+        },
+        {
+            id: 8,
+            type: 'EDITOR',
+            text: ['Монтажер', 'Монтажеры'],
+        },
+        {
+            id: 9,
+            type: 'PRODUCER_USSR',
+            text: ['Директор фильма', 'Директора фильма'],
+        },
+        {
+            id: 10,
+            type: 'TRANSLATOR',
+            text: ['Переводчик', 'Переводчики'],
+        },
+        {
+            id: 11,
+            type: 'VOICE_DIRECTOR',
+            text: ['Режиссер дубляжа', 'Режиссеры дубляжа'],
+        },
+        {
+            id: 12,
+            type: 'UNKNOWN',
+            text: ['Другой', 'Другие'],
+        },
+    ],
 }
