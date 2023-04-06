@@ -4,7 +4,7 @@ import {PersonAbout} from 'components/Person/PersonAbout';
 import Head from 'next/head';
 import Image from 'next/image';
 import {useRouter} from 'next/router';
-import styles from 'pages/movie/Movie.module.scss';
+import styles from 'pages/name/Name.module.scss';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
@@ -33,8 +33,8 @@ const Person = ({person}: any) => {
                         <ArrowLeftOutlined />
                     </button>
                 </div>
-                <div className={styles.movie}>
-                    <div className={styles.movieContainer}>
+                <div className={styles.person}>
+                    <div className={styles.personContainer}>
                         <div>
                             <Image width={300} height={450} src={person.posterUrl} alt="." />
                         </div>

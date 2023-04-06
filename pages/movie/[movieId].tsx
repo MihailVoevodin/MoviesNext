@@ -8,7 +8,7 @@ import {ArrowLeftOutlined} from '@ant-design/icons';
 import {useRouter} from 'next/router';
 import {useEffect} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
-import {useAppDispatch, useAppSelector} from 'store/hooks';
+import {useAppDispatch} from 'store/hooks';
 import styles from 'pages/movie/Movie.module.scss';
 import {MovieDetailsReview} from 'components/Movie/MovieDetails/MovieDetailsReview/MovieDetailsReview';
 

@@ -1,4 +1,5 @@
 import styles from 'components/Movie/MovieMainInfo/MovieMainInfo.module.scss';
+import Link from 'next/link';
 
 const MovieMainInfo = ({movie}: any) => {
     return (
@@ -13,7 +14,7 @@ const MovieMainInfo = ({movie}: any) => {
                 </div>
                 <p className={styles.movieDescription}>{movie.shortDescription}</p>
                 <div className={styles.kinopoiskUrl}>
-                    <a href={movie.webUrl}>Открыть на Кинопоиске</a>
+                    <Link href={movie.webUrl}>Открыть на Кинопоиске</Link>
                 </div>
             </div>
             <div className={styles.movieRatingInfo}>

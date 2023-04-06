@@ -1,0 +1,32 @@
+.personNameRu {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.personNameOriginal {
+    font-size: 18px;
+    opacity: .6;
+    margin: 16px 0;
+    span {
+        margin-right: 10px;
+    }
+}
+
+.personItem {
+    display: flex;
+    font-size: 13px;
+    padding: 8px 0;
+    align-items: center;
+}
+
+.personItemText {
+    width: 160px;
+    opacity: .6;
+}
+
+.personItemContent {
+    width: 440px;
+    a:hover {
+        color: #ff6200;
+    }
+}
