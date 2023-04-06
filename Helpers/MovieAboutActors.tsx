@@ -4,7 +4,7 @@ import {MovieAboutPersonCard} from 'components/Movie/MoviePersonCard/MovieAboutP
 import Link from 'next/link';
 
 export const MovieAboutActors = ({array, professionKey}: any) => {
-    const filteredArray = array.filter((a: any) => a.professionKey == professionKey)
+    const filteredArray = array.filter((a: any) => a.professionKey == professionKey);
 
     return (
         <ul className={styles.actorsList}>
@@ -12,13 +12,11 @@ export const MovieAboutActors = ({array, professionKey}: any) => {
                 return (
                     <li key={actor.staffId}>
                         <Link href={`/name/${actor.staffId}`}>
-                            <Popover content={<MovieAboutPersonCard person={actor} />}>
-                                {actor.nameRu}
-                            </Popover>
+                            <Popover content={<MovieAboutPersonCard person={actor} />}>{actor.nameRu}</Popover>
                         </Link>
                     </li>
-                    )}
-                )}
+                );
+            })}
         </ul>
-    )
-}
+    );
+};

@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { FC } from "react";
+import {FC} from 'react';
 
 const Home: FC = () => {
     return (
@@ -7,9 +7,7 @@ const Home: FC = () => {
             <Head>
                 <title>Movies</title>
             </Head>
-            <main>
-                content
-            </main>
+            <main>content</main>
         </>
     );
 };

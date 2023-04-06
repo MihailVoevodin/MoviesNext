@@ -14,8 +14,7 @@ const Layout: FC<IProps> = ({children}) => {
             {children}
             <Footer />
         </div>
-    )
-
-}
+    );
+};
 
 export default Layout;

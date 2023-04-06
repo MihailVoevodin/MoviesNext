@@ -8,12 +8,12 @@ const Header = () => {
         <header>
             <div className={styles.header}>
                 <div className={styles.logo}>
-                    <Image width={200} height={80} src={logo} priority={true} alt='Movies' />
+                    <Image width={200} height={80} src={logo} priority={true} alt="Movies" />
                 </div>
                 <Navbar />
             </div>
         </header>
-    )
+    );
 };
 
 export default Header;

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Head from 'next/head';
 import {ArrowLeftOutlined} from '@ant-design/icons';
+import {useRouter} from 'next/router';
 import {useEffect} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
@@ -14,7 +15,7 @@ import {MovieDetailsReview} from 'components/Movie/MovieDetails/MovieDetailsRevi
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
 export async function getServerSideProps(context: any) {
-    const {movieId} = context.params
+    const {movieId} = context.params;
     const responseFilm = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}`);
     const responseBox = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}/box_office`);
     const responseStaff = await axios.get(`https://kinopoiskapiunofficial.tech/api/v1/staff?filmId=${movieId}`);
@@ -24,16 +25,16 @@ export async function getServerSideProps(context: any) {
 
     return {
         props: {movie, movieBox, movieStaff},
-    }
+    };
 }
 
 const Movie = ({movie, movieBox, movieStaff}: any) => {
     const dispatch = useAppDispatch();
-    const {pageId} = useAppSelector(state => state.films)
+    const router = useRouter();
 
     useEffect(() => {
         dispatch(setImagesPageId(1));
-    })
+    });
 
     return (
         <>
@@ -44,22 +45,24 @@ const Movie = ({movie, movieBox, movieStaff}: any) => {
                 <div className={styles.background}>
                     <div className={styles.movieMain}>
                         <div className={styles.movieCoverImg}>
-                            <Image width={700} height={500} src={movie.coverUrl} alt='.' />
+                            <Image width={700} height={500} src={movie.coverUrl} alt="." />
                             <div className={styles.gradient}></div>
                         </div>
                     </div>
                 </div>
-                <div className={styles.backLink}>
-                    <Link href={`/movies/page/${pageId}`}><ArrowLeftOutlined /></Link>
+                <div className="backBtn">
+                    <button onClick={() => router.back()}>
+                        <ArrowLeftOutlined />
+                    </button>
                 </div>
                 <div className={styles.movie}>
                     <div className={styles.movieContainer}>
                         <div>
-                            <Image width={300} height={450} src={movie.posterUrl} alt='.' />
+                            <Image width={300} height={450} src={movie.posterUrl} alt="." />
                         </div>
                         <div>
                             <MovieMainInfo movie={movie} />
-                            <MovieAbout movie={movie} movieStaff={movieStaff} movieBox={movieBox}/>
+                            <MovieAbout movie={movie} movieStaff={movieStaff} movieBox={movieBox} />
                         </div>
                     </div>
                 </div>
@@ -68,19 +71,33 @@ const Movie = ({movie, movieBox, movieStaff}: any) => {
                 <div className={styles.movieDetailsContainer}>
                     <ul className={styles.movieTabsList}>
                         <li className={styles.movieListDefault}>Обзор</li>
-                        <li><Link href={`/movie/${movie.kinopoiskId}/awards`}>Награды</Link></li>
-                        <li><Link href={`/movie/${movie.kinopoiskId}/distributions`}>Прокат</Link></li>
-                        <li><Link href={`/movie/${movie.kinopoiskId}/images/1?&type=STILL`}>Изображения</Link></li>
-                        <li><Link href={`/movie/${movie.kinopoiskId}/videos`}>Трейлеры</Link></li>
-                        <li><Link href={`/movie/${movie.kinopoiskId}/facts`}>Факты</Link></li>
-                        <li><Link href={`/movie/${movie.kinopoiskId}/reviews/1?&order=DATE_ASC`} shallow={true}>Рецензии</Link></li>
+                        <li>
+                            <Link href={`/movie/${movie.kinopoiskId}/awards`}>Награды</Link>
+                        </li>
+                        <li>
+                            <Link href={`/movie/${movie.kinopoiskId}/distributions`}>Прокат</Link>
+                        </li>
+                        <li>
+                            <Link href={`/movie/${movie.kinopoiskId}/images/1?&type=STILL`}>Изображения</Link>
+                        </li>
+                        <li>
+                            <Link href={`/movie/${movie.kinopoiskId}/videos`}>Трейлеры</Link>
+                        </li>
+                        <li>
+                            <Link href={`/movie/${movie.kinopoiskId}/facts`}>Факты</Link>
+                        </li>
+                        <li>
+                            <Link href={`/movie/${movie.kinopoiskId}/reviews/1?&order=DATE_ASC`} shallow={true}>
+                                Рецензии
+                            </Link>
+                        </li>
                     </ul>
-                    <hr/>
+                    <hr />
                     <MovieDetailsReview movie={movie} />
                 </div>
             </div>
         </>
-    )
+    );
 };
 
 export default Movie;

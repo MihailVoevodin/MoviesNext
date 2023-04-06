@@ -9,32 +9,34 @@ import styles from 'pages/movie/Movie.module.scss';
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
 export async function getServerSideProps(context: any) {
-    const {nameId} = context.params
+    const {nameId} = context.params;
     const response = await axios.get(`https://kinopoiskapiunofficial.tech/api/v1/staff/${nameId}`);
     const person = response.data;
     return {
         props: {person},
-    }
+    };
 }
 
 const Person = ({person}: any) => {
     const router = useRouter();
-    console.log(router)
+    console.log(router);
 
-    console.log(person)
+    console.log(person);
     return (
         <>
             <Head>
                 <title>{person.nameRu}</title>
             </Head>
             <main>
-                <div className='backBtn'>
-                    <button onClick={() => router.back()}><ArrowLeftOutlined /></button>
+                <div className="backBtn">
+                    <button onClick={() => router.back()}>
+                        <ArrowLeftOutlined />
+                    </button>
                 </div>
                 <div className={styles.movie}>
                     <div className={styles.movieContainer}>
                         <div>
-                            <Image width={300} height={450} src={person.posterUrl} alt='.' />
+                            <Image width={300} height={450} src={person.posterUrl} alt="." />
                         </div>
                         <div>
                             <PersonAbout person={person} />
@@ -43,7 +45,7 @@ const Person = ({person}: any) => {
                 </div>
             </main>
         </>
-    )
-}
+    );
+};
 
-export default Person
+export default Person;

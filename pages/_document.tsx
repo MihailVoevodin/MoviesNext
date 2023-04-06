@@ -1,15 +1,19 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import {Html, Head, Main, NextScript} from 'next/document';
 
 export default function Document() {
     return (
         <Html>
             <Head>
-                <link href="//db.onlinewebfonts.com/c/a1750a4dae8db954fdd595f313b3b34e?family=Graphik+Kinopoisk+LC+Web+SB" rel="stylesheet" type="text/css"/>
+                <link
+                    href="//db.onlinewebfonts.com/c/a1750a4dae8db954fdd595f313b3b34e?family=Graphik+Kinopoisk+LC+Web+SB"
+                    rel="stylesheet"
+                    type="text/css"
+                />
             </Head>
             <body>
-            <Main />
-            <NextScript />
+                <Main />
+                <NextScript />
             </body>
         </Html>
-    )
+    );
 }

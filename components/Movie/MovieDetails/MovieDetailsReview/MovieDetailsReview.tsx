@@ -3,7 +3,6 @@ import {Rate} from 'antd';
 import {StarFilled} from '@ant-design/icons';
 
 const MovieDetailsReview = ({movie}: any) => {
-
     return (
         <div className={styles.movieReview}>
             <div>{movie.description}</div>
@@ -15,7 +14,9 @@ const MovieDetailsReview = ({movie}: any) => {
                         <div className={styles.ratingKinopoisk}>{movie.ratingKinopoisk}</div>
                         <div className={styles.ratingCount}>
                             <div>{movie.ratingKinopoiskVoteCount} оценки</div>
-                            <div className={styles.ratingImdb}><span>IMDb: {movie.ratingImdb}</span> {movie.ratingImdbVoteCount} оценки</div>
+                            <div className={styles.ratingImdb}>
+                                <span>IMDb: {movie.ratingImdb}</span> {movie.ratingImdbVoteCount} оценки
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -24,19 +25,25 @@ const MovieDetailsReview = ({movie}: any) => {
                 <div>
                     <span>Рейтинг кинокритиков в мире</span>
                     <div className={styles.criticsWorldInfo}>
-                        <div className={styles.criticsVotePercent}>{Math.floor(movie.ratingGoodReview)}% <span>{movie.ratingFilmCriticsVoteCount} оценок</span></div>
-                        <div><StarFilled /> {movie.ratingFilmCritics}</div>
+                        <div className={styles.criticsVotePercent}>
+                            {Math.floor(movie.ratingGoodReview)}% <span>{movie.ratingFilmCriticsVoteCount} оценок</span>
+                        </div>
+                        <div>
+                            <StarFilled /> {movie.ratingFilmCritics}
+                        </div>
                     </div>
                 </div>
-                {movie.ratingRfCritics && <div className={styles.criticsRf}>
-                    <span>В России</span>
-                    <div className={styles.criticsVotePercent}>{movie.ratingRfCritics}% <span>{movie.ratingRfCriticsVoteCount} оценок</span></div>
-                </div>}
+                {movie.ratingRfCritics && (
+                    <div className={styles.criticsRf}>
+                        <span>В России</span>
+                        <div className={styles.criticsVotePercent}>
+                            {movie.ratingRfCritics}% <span>{movie.ratingRfCriticsVoteCount} оценок</span>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
-    )
+    );
+};
 
-
-}
-
-export {MovieDetailsReview}
+export {MovieDetailsReview};

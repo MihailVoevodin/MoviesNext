@@ -11,23 +11,23 @@ import styles from 'pages/movies/page/Movies.module.scss';
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
 export async function getServerSideProps(context: any) {
-    const {pageId} = context.params
+    const {pageId} = context.params;
     const response = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=${pageId}`);
     const movies = response.data.films;
     return {
         props: {movies},
-    }
+    };
 }
 
 const Movie = ({movies}: any) => {
-    const router = useRouter()
+    const router = useRouter();
     const dispatch = useAppDispatch();
-    const {pageId} = useAppSelector(state => state.films)
+    const {pageId} = useAppSelector((state) => state.films);
 
     const onChange = (pageId: number) => {
         dispatch(setPageId(pageId));
         void router.replace(`/movies/page/${pageId}`);
-    }
+    };
 
     return (
         <>
@@ -44,13 +44,12 @@ const Movie = ({movies}: any) => {
                             colorPrimaryHover: '#ff6200',
                             colorTextDisabled: '#363836',
                         },
-
                     },
                 }}
             >
                 <main>
                     <div className={styles.movies}>
-                        {movies.map((movie: any) =>
+                        {movies.map((movie: any) => (
                             <div className={styles.moviesItem} key={movie.filmId}>
                                 <div className={styles.moviesItemContent}>
                                     <Link href={`/movie/${movie.filmId}`}>
@@ -60,18 +59,25 @@ const Movie = ({movies}: any) => {
                                             <div>{movie.countries[0].country}</div>
                                             <div>{movie.filmLength}</div>
                                         </div>
-                                        <Image className={styles.movieItemImg} width={200} height={300} src={movie.posterUrl} alt='.' />
+                                        <Image className={styles.movieItemImg} width={200} height={300} src={movie.posterUrl} alt="." />
                                         <div className={styles.moviesItemName}>{movie.nameRu}</div>
                                     </Link>
                                 </div>
                             </div>
-                        )}
+                        ))}
                     </div>
-                    <Pagination className={'pagination'} current={pageId} onChange={onChange} total={250} defaultPageSize={20} showSizeChanger={false} />
+                    <Pagination
+                        className={'pagination'}
+                        current={pageId}
+                        onChange={onChange}
+                        total={250}
+                        defaultPageSize={20}
+                        showSizeChanger={false}
+                    />
                 </main>
             </ConfigProvider>
         </>
-    )
+    );
 };
 
 export default Movie;

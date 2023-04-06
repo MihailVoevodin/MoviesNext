@@ -6,7 +6,7 @@ export const MovieAboutPersonCard = ({person}: any) => {
     return (
         <div className={styles.personCard}>
             <Link href={`/name/${person.staffId}`}>
-                <Image width={100} height={150} src={person.posterUrl} alt='.' />
+                <Image width={100} height={150} src={person.posterUrl} alt="." />
             </Link>
             <div className={styles.personContent}>
                 <Link href={`/name/${person.staffId}`}>
@@ -16,5 +16,5 @@ export const MovieAboutPersonCard = ({person}: any) => {
                 </Link>
             </div>
         </div>
-    )
-}
+    );
+};
