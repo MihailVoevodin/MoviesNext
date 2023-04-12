@@ -1,4 +1,4 @@
-export const MovieAboutReviewBgColor = (type: string) => {
+export const MovieReviewBgColor = (type: string) => {
     if (type === 'POSITIVE') {
         return '#daf1db';
     }

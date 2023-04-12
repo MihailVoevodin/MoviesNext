@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import styles from 'components/Movie/MoviePersonCard/MovieAboutPersonCard.module.scss';
+import styles from 'components/Movie/MovieAbout/components/MovieAboutPersonPopover/MovieAboutPersonPopover.module.scss';
 import Link from 'next/link';
 
-export const MovieAboutPersonCard = ({person}: any) => {
+export const MovieAboutPersonPopover = ({person}: any) => {
     return (
         <div className={styles.personCard}>
             <Link href={`/name/${person.staffId}`}>

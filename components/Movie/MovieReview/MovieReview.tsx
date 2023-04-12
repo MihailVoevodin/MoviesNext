@@ -1,4 +1,4 @@
-import {MovieAboutReviewBgColor} from 'Helpers/MovieAboutReviewBgColor';
+import {MovieReviewBgColor} from 'components/Movie/MovieReview/MovieReviewBgColor';
 import {LikeOutlined, DislikeOutlined} from '@ant-design/icons';
 import Image from 'next/image';
 import User from 'public/User.png';
@@ -8,7 +8,7 @@ import 'moment/locale/ru';
 import {useEffect, useState} from 'react';
 moment.locale('ru');
 
-export const MovieAboutReview = ({review}: any) => {
+export const MovieReview = ({review}: any) => {
     const [colors, setColors] = useState(['none', 'none']);
 
     useEffect(() => {
@@ -21,7 +21,7 @@ export const MovieAboutReview = ({review}: any) => {
     }, []);
 
     return (
-        <div style={{backgroundColor: MovieAboutReviewBgColor(review.type)}} className={styles.review}>
+        <div style={{backgroundColor: MovieReviewBgColor(review.type)}} className={styles.review}>
             <div className={styles.reviewAbout}>
                 <div className={styles.reviewAuthor}>
                     <Image src={User} alt={'.'} /> <span>{review.author}</span>

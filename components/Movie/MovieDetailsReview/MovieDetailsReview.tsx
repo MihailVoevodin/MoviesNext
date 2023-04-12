@@ -1,4 +1,4 @@
-import styles from 'components/Movie/MovieDetails/MovieDetailsReview/MovieDetailsReview.module.scss';
+import styles from 'components/Movie/MovieDetailsReview/MovieDetailsReview.module.scss';
 import {Rate} from 'antd';
 import {StarFilled} from '@ant-design/icons';
 

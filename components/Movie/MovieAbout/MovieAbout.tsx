@@ -1,8 +1,8 @@
 import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
 import {RightOutlined} from '@ant-design/icons';
-import {MovieAboutActors} from 'Helpers/MovieAboutActors';
-import {MovieAboutStaff} from 'Helpers/MovieAboutStaff';
-import {MovieAboutBox} from 'Helpers/MovieAboutBox';
+import {MovieAboutActors} from 'components/Movie/MovieAbout/components/MovieAboutActors';
+import {MovieAboutCast} from 'components/Movie/MovieAbout/components/MovieAboutCast';
+import {MovieAboutBox} from 'components/Movie/MovieAbout/components/MovieAboutBox';
 import {T} from 'Common/Text';
 import Link from 'next/link';
 
@@ -46,7 +46,7 @@ const MovieAbout = ({movie, movieStaff, movieBox}: any) => {
                     </div>
                 </div>
                 {T.staffTextArray.map((person: any) => (
-                    <MovieAboutStaff key={person.id} array={movieStaff} profession={person.profession} text={person.text} />
+                    <MovieAboutCast key={person.id} array={movieStaff} profession={person.profession} text={person.text} />
                 ))}
                 {T.boxTextArray.map((box: any) => (
                     <MovieAboutBox key={box.id} array={movieBox.items} boxType={box.boxType} boxText={box.boxText} />

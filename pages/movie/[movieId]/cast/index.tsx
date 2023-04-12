@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {MovieAboutCast} from 'Helpers/MovieAboutCast';
+import {MovieCast} from 'components/Movie/MovieCast/MovieCast';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {T} from 'Common/Text';
@@ -39,7 +39,7 @@ const Cast = ({movieStaff, movieName}: any) => {
                     </div>
                     <div>
                         {T.castTextArray.map((profession: any) => (
-                            <MovieAboutCast key={profession.id} array={movieStaff} type={profession.type} text={profession.text} />
+                            <MovieCast key={profession.id} array={movieStaff} type={profession.type} text={profession.text} />
                         ))}
                     </div>
                 </div>

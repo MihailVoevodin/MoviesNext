@@ -1,6 +1,6 @@
 import {ConfigProvider, Pagination, Select} from 'antd';
 import axios from 'axios';
-import {MovieAboutReview} from 'Helpers/MovieAboutReview';
+import {MovieReview} from 'components/Movie/MovieReview/MovieReview';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {useEffect, useState} from 'react';
@@ -118,7 +118,7 @@ const Reviews = ({movieReviews, movieName}: any) => {
                                 showSizeChanger={false}
                             />
                             {items.map((review: any) => (
-                                <MovieAboutReview key={review.kinopoiskId} review={review} />
+                                <MovieReview key={review.kinopoiskId} review={review} />
                             ))}
                             <Pagination
                                 className={'pagination'}

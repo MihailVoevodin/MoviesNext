@@ -7,7 +7,7 @@ import Image from 'next/image';
 import {useRouter} from 'next/router';
 import styles from 'pages/movie/[movieId]/images/MovieImages.module.scss';
 import {useEffect, useState} from 'react';
-import {setImagesPageId, setReviewsPageId} from 'store/filmsSlice';
+import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';

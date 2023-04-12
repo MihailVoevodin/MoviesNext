@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
     pageId: 1,
@@ -10,7 +10,7 @@ const initialState = {
  * Срез списка фильмов.
  */
 const filmsSlice = createSlice({
-    name: "films",
+    name: 'films',
     initialState: initialState,
     reducers: {
         setPageId(state, action) {
@@ -25,7 +25,6 @@ const filmsSlice = createSlice({
     },
 });
 
-export const { setPageId, setImagesPageId, setReviewsPageId } =
-    filmsSlice.actions;
+export const {setPageId, setImagesPageId, setReviewsPageId} = filmsSlice.actions;
 
 export default filmsSlice.reducer;

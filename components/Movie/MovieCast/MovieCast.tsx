@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from 'pages/movie/[movieId]/cast/Cast.module.scss';
 
-export const MovieAboutCast = ({array, type, text}: any) => {
+export const MovieCast = ({array, type, text}: any) => {
     const filteredArray = array.filter((profession: any) => profession.professionKey === type);
 
     if (filteredArray.length === 0) {

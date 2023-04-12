@@ -10,7 +10,7 @@ import {useEffect} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch} from 'store/hooks';
 import styles from 'pages/movie/Movie.module.scss';
-import {MovieDetailsReview} from 'components/Movie/MovieDetails/MovieDetailsReview/MovieDetailsReview';
+import {MovieDetailsReview} from 'components/Movie/MovieDetailsReview/MovieDetailsReview';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 

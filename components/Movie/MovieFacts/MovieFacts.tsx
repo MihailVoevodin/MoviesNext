@@ -1,6 +1,6 @@
 import styles from 'pages/movie/[movieId]/facts/Facts.module.scss';
 
-export const MovieAboutFacts = ({array, type, text}: any) => {
+export const MovieFacts = ({array, type, text}: any) => {
     const filteredArray = array.filter((a: any) => a.type == type);
 
     return (
