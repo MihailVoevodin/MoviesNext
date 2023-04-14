@@ -1,0 +1,9 @@
+export enum EMovieStaff {
+    DIRECTOR = 'DIRECTOR',
+    WRITER = 'WRITER',
+    PRODUCER = 'PRODUCER',
+    OPERATOR = 'OPERATOR',
+    COMPOSER = 'COMPOSER',
+    DESIGN = 'DESIGN',
+    EDITOR = 'EDITOR',
+}

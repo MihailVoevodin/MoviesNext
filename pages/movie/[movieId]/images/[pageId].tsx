@@ -1,6 +1,6 @@
 import {ConfigProvider, Pagination} from 'antd';
 import axios from 'axios';
-import {CloseIcon} from 'Common/Close';
+import {CloseIcon} from 'Common/CloseIcon';
 import {T} from 'Common/Text';
 import Head from 'next/head';
 import Image from 'next/image';

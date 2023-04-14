@@ -1,3 +1,4 @@
+import {STAFF_DICTIONARY} from 'Common/Consts';
 import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
 import {RightOutlined} from '@ant-design/icons';
 import {MovieAboutActors} from 'components/Movie/MovieAbout/components/MovieAboutActors';
@@ -45,8 +46,8 @@ const MovieAbout = ({movie, movieStaff, movieBox}: any) => {
                         {movie.slogan ? <span>&#171;{movie.slogan}&#187;</span> : <span>&#8212;</span>}
                     </div>
                 </div>
-                {T.staffTextArray.map((person: any) => (
-                    <MovieAboutCast key={person.id} array={movieStaff} profession={person.profession} text={person.text} />
+                {STAFF_DICTIONARY.map((person: any) => (
+                    <MovieAboutCast key={person.id} array={movieStaff} profession={person.id} text={person.text} />
                 ))}
                 {T.boxTextArray.map((box: any) => (
                     <MovieAboutBox key={box.id} array={movieBox.items} boxType={box.boxType} boxText={box.boxText} />

@@ -1,41 +1,15 @@
+import {EMovieStaff} from 'Common/Enums';
+
 export const T = {
-    staffTextArray: [
-        {
-            id: 1,
-            profession: 'DIRECTOR',
-            text: 'Режиссер',
-        },
-        {
-            id: 2,
-            profession: 'WRITER',
-            text: 'Сценарий',
-        },
-        {
-            id: 3,
-            profession: 'PRODUCER',
-            text: 'Продюсер',
-        },
-        {
-            id: 4,
-            profession: 'OPERATOR',
-            text: 'Оператор',
-        },
-        {
-            id: 5,
-            profession: 'COMPOSER',
-            text: 'Композитор',
-        },
-        {
-            id: 6,
-            profession: 'DESIGN',
-            text: 'Художник',
-        },
-        {
-            id: 7,
-            profession: 'EDITOR',
-            text: 'Монтаж',
-        },
-    ],
+    MovieStaffDictionary: {
+        [EMovieStaff.DIRECTOR]: 'Режиссер',
+        [EMovieStaff.WRITER]: 'Сценарий',
+        [EMovieStaff.PRODUCER]: 'Продюсер',
+        [EMovieStaff.OPERATOR]: 'Оператор',
+        [EMovieStaff.COMPOSER]: 'Композитор',
+        [EMovieStaff.DESIGN]: 'Художник',
+        [EMovieStaff.EDITOR]: 'Монтаж',
+    },
     boxTextArray: [
         {
             id: 1,
