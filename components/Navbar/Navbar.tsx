@@ -6,9 +6,9 @@ const Navbar = () => {
     const {pageId} = useAppSelector((state) => state.films);
 
     const NavigationItems = [
-        {id: '1', title: 'Главная', path: '/'},
-        {id: '2', title: 'Фильмы', path: `/movies/page/${pageId}`},
-        {id: '3', title: 'Сериалы', path: '/series'},
+        {id: 1, title: 'Главная', path: '/'},
+        {id: 2, title: 'Фильмы', path: `/movies/page/${pageId}`},
+        {id: 3, title: 'Сериалы', path: '/series'},
     ];
 
     return (

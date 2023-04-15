@@ -2,7 +2,7 @@ import axios from 'axios';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {MovieAward} from 'components/Movie/MovieAwards/MovieAward';
-import {T} from 'Common/Text';
+import {AWARDS_DICTIONARY} from 'Common/Consts';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
@@ -39,8 +39,8 @@ const Awards = ({movieAwards, movieName}: any) => {
                         <hr />
                     </div>
                     <div>
-                        {T.awardsTypeArray.map((type, id) => (
-                            <MovieAward key={id} awardsArray={items} awardType={type} />
+                        {AWARDS_DICTIONARY.map((award) => (
+                            <MovieAward key={award.type} awardsArray={items} awardType={award.text} />
                         ))}
                     </div>
                 </div>

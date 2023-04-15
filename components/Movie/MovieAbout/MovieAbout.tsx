@@ -1,4 +1,4 @@
-import {STAFF_DICTIONARY} from 'Common/Consts';
+import {BOX_DICTIONARY, MAIN_STAFF_DICTIONARY} from 'Common/Consts';
 import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
 import {RightOutlined} from '@ant-design/icons';
 import {MovieAboutActors} from 'components/Movie/MovieAbout/components/MovieAboutActors';
@@ -46,11 +46,11 @@ const MovieAbout = ({movie, movieStaff, movieBox}: any) => {
                         {movie.slogan ? <span>&#171;{movie.slogan}&#187;</span> : <span>&#8212;</span>}
                     </div>
                 </div>
-                {STAFF_DICTIONARY.map((person: any) => (
-                    <MovieAboutCast key={person.id} array={movieStaff} profession={person.id} text={person.text} />
+                {MAIN_STAFF_DICTIONARY.map((person) => (
+                    <MovieAboutCast key={person.type} array={movieStaff} profession={person.type} text={person.text} />
                 ))}
-                {T.boxTextArray.map((box: any) => (
-                    <MovieAboutBox key={box.id} array={movieBox.items} boxType={box.boxType} boxText={box.boxText} />
+                {BOX_DICTIONARY.map((box) => (
+                    <MovieAboutBox key={box.type} array={movieBox.items} boxType={box.type} boxText={box.text} />
                 ))}
                 <div className={styles.aboutItem}>
                     <div className={styles.aboutItemText}>Возраст</div>

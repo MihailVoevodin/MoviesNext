@@ -3,17 +3,17 @@ import {CaretRightFilled} from '@ant-design/icons';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export const MovieAward = ({awardsArray, awardType}: any): any => {
-    const awardsArrayFiltered = awardsArray.filter((award: any) => award.name === awardType);
-    const AwardsArrayWin = awardsArray.filter((award: any) => award.name === awardType && award.win === true);
-    const AwardsArrayLose = awardsArray.filter((award: any) => award.name === awardType && award.win === false);
+export const MovieAward = ({awardsArray, awardText}: any): any => {
+    const awardsArrayFiltered = awardsArray.filter((award: any) => award.name === awardText);
+    const AwardsArrayWin = awardsArray.filter((award: any) => award.name === awardText && award.win === true);
+    const AwardsArrayLose = awardsArray.filter((award: any) => award.name === awardText && award.win === false);
 
     return (
         <>
             {awardsArrayFiltered.length > 0 && (
                 <div className={styles.awardContainer}>
                     <div className={styles.awardTitle}>
-                        {awardType}, {awardsArrayFiltered[0].year} год
+                        {awardText}, {awardsArrayFiltered[0].year} год
                     </div>
                     {awardsArrayFiltered[0].imageUrl && (
                         <Image className={styles.awardImage} width={50} height={100} src={awardsArrayFiltered[0].imageUrl} alt="." />
