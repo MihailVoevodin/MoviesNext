@@ -1,7 +1,7 @@
 import {ConfigProvider, Pagination} from 'antd';
 import axios from 'axios';
 import {CloseIcon} from 'Common/CloseIcon';
-import {T} from 'Common/Text';
+import {IMAGES_DICTIONARY} from 'Common/Consts';
 import Head from 'next/head';
 import Image from 'next/image';
 import {useRouter} from 'next/router';
@@ -92,10 +92,10 @@ const Images = ({movieName, movieImages}: any) => {
                         </div>
                         <div>
                             <ul className={styles.titlesList}>
-                                {T.imagesTextArray.map((type: any) => {
+                                {IMAGES_DICTIONARY.map((type) => {
                                     return (
                                         <li
-                                            key={type.id}
+                                            key={type.type}
                                             className={router.query.type === type.type ? 'imagesType activeImagesType' : 'imagesType'}
                                             onClick={() => handleChangeFilter(type.type)}
                                         >

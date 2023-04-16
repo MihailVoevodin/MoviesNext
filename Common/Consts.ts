@@ -1,4 +1,4 @@
-import {EMovieAwards, EMovieBox, EMovieMainStaff} from 'Common/Enums';
+import {EMovieAwards, EMovieBox, EMovieDistributions, EMovieImages, EMovieMainStaff, EMovieFacts, EMovieStaff} from 'Common/Enums';
 import {T} from 'Common/Text';
 
 /** Словарь для профессий деталей фильма. */
@@ -154,5 +154,129 @@ export const AWARDS_DICTIONARY = [
     {
         type: EMovieAwards.SUNDANCE_FILM_FESTIVAL,
         text: T.MovieAwardsDictionary[EMovieAwards.SUNDANCE_FILM_FESTIVAL],
+    },
+];
+
+/** Словарь для типов премьер. */
+export const DISTRIBUTIONS_DICTIONARY = [
+    {
+        type: EMovieDistributions.COUNTRY_SPECIFIC,
+        text: T.MovieDistributionsDictionary[EMovieDistributions.COUNTRY_SPECIFIC],
+    },
+    {
+        type: EMovieDistributions.WORLD_PREMIER,
+        text: T.MovieDistributionsDictionary[EMovieDistributions.WORLD_PREMIER],
+    },
+    {
+        type: EMovieDistributions.PREMIERE,
+        text: T.MovieDistributionsDictionary[EMovieDistributions.PREMIERE],
+    },
+    {
+        type: EMovieDistributions.ALL,
+        text: T.MovieDistributionsDictionary[EMovieDistributions.ALL],
+    },
+];
+
+/** Словарь для типов изображений. */
+export const IMAGES_DICTIONARY = [
+    {
+        type: EMovieImages.STILL,
+        text: T.MovieImagesDictionary[EMovieImages.STILL],
+    },
+    {
+        type: EMovieImages.SHOOTING,
+        text: T.MovieImagesDictionary[EMovieImages.SHOOTING],
+    },
+    {
+        type: EMovieImages.POSTER,
+        text: T.MovieImagesDictionary[EMovieImages.POSTER],
+    },
+    {
+        type: EMovieImages.FAN_ART,
+        text: T.MovieImagesDictionary[EMovieImages.FAN_ART],
+    },
+    {
+        type: EMovieImages.PROMO,
+        text: T.MovieImagesDictionary[EMovieImages.PROMO],
+    },
+    {
+        type: EMovieImages.CONCEPT,
+        text: T.MovieImagesDictionary[EMovieImages.CONCEPT],
+    },
+    {
+        type: EMovieImages.WALLPAPER,
+        text: T.MovieImagesDictionary[EMovieImages.WALLPAPER],
+    },
+    {
+        type: EMovieImages.COVER,
+        text: T.MovieImagesDictionary[EMovieImages.COVER],
+    },
+    {
+        type: EMovieImages.SCREENSHOT,
+        text: T.MovieImagesDictionary[EMovieImages.SCREENSHOT],
+    },
+];
+
+/** Словарь для типов фактов. */
+export const FACTS_DICTIONARY = [
+    {
+        type: EMovieFacts.BLOOPER,
+        text: T.MovieFactsDictionary[EMovieFacts.BLOOPER],
+    },
+    {
+        type: EMovieFacts.FACT,
+        text: T.MovieFactsDictionary[EMovieFacts.FACT],
+    },
+];
+
+/** Словарь для типов профессий для отдельной страницы. */
+export const STAFF_DICTIONARY = [
+    {
+        type: EMovieStaff.DIRECTOR,
+        text: T.MovieStaffDictionary[EMovieStaff.DIRECTOR],
+    },
+    {
+        type: EMovieStaff.ACTOR,
+        text: T.MovieStaffDictionary[EMovieStaff.ACTOR],
+    },
+    {
+        type: EMovieStaff.PRODUCER,
+        text: T.MovieStaffDictionary[EMovieStaff.PRODUCER],
+    },
+    {
+        type: EMovieStaff.WRITER,
+        text: T.MovieStaffDictionary[EMovieStaff.WRITER],
+    },
+    {
+        type: EMovieStaff.OPERATOR,
+        text: T.MovieStaffDictionary[EMovieStaff.OPERATOR],
+    },
+    {
+        type: EMovieStaff.COMPOSER,
+        text: T.MovieStaffDictionary[EMovieStaff.COMPOSER],
+    },
+    {
+        type: EMovieStaff.DESIGN,
+        text: T.MovieStaffDictionary[EMovieStaff.DESIGN],
+    },
+    {
+        type: EMovieStaff.EDITOR,
+        text: T.MovieStaffDictionary[EMovieStaff.EDITOR],
+    },
+    {
+        type: EMovieStaff.PRODUCER_USSR,
+        text: T.MovieStaffDictionary[EMovieStaff.PRODUCER_USSR],
+    },
+    {
+        type: EMovieStaff.TRANSLATOR,
+        text: T.MovieStaffDictionary[EMovieStaff.TRANSLATOR],
+    },
+    {
+        type: EMovieStaff.VOICE_DIRECTOR,
+        text: T.MovieStaffDictionary[EMovieStaff.VOICE_DIRECTOR],
+    },
+    {
+        type: EMovieStaff.UNKNOWN,
+        text: T.MovieStaffDictionary[EMovieStaff.UNKNOWN],
     },
 ];

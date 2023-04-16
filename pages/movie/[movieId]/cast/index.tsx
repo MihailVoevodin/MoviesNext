@@ -1,8 +1,8 @@
 import axios from 'axios';
+import {STAFF_DICTIONARY} from 'Common/Consts';
 import {MovieCast} from 'components/Movie/MovieCast/MovieCast';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
-import {T} from 'Common/Text';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
@@ -38,8 +38,8 @@ const Cast = ({movieStaff, movieName}: any) => {
                         <hr />
                     </div>
                     <div>
-                        {T.castTextArray.map((profession: any) => (
-                            <MovieCast key={profession.id} array={movieStaff} type={profession.type} text={profession.text} />
+                        {STAFF_DICTIONARY.map((profession) => (
+                            <MovieCast key={profession.type} array={movieStaff} type={profession.type} text={profession.text} />
                         ))}
                     </div>
                 </div>

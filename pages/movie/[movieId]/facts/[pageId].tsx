@@ -1,8 +1,8 @@
 import axios from 'axios';
+import {FACTS_DICTIONARY} from 'Common/Consts';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {MovieFacts} from 'components/Movie/MovieFacts/MovieFacts';
-import {T} from 'Common/Text';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
@@ -39,8 +39,8 @@ const Facts = ({movieFacts, movieName}: any) => {
                         <hr />
                     </div>
                     <div>
-                        {T.factsTextArray.map((fact: any) => (
-                            <MovieFacts key={fact.id} array={items} type={fact.type} text={fact.text} />
+                        {FACTS_DICTIONARY.map((fact) => (
+                            <MovieFacts key={fact.type} array={items} type={fact.type} text={fact.text} />
                         ))}
                     </div>
                 </div>

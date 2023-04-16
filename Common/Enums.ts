@@ -80,3 +80,60 @@ export enum EMovieAwards {
     /** Сандэнс */
     SUNDANCE_FILM_FESTIVAL = 'SUNDANCE_FILM_FESTIVAL',
 }
+
+/**
+ * Енам типов премьер.
+ */
+export enum EMovieDistributions {
+    /** Премьера в России */
+    COUNTRY_SPECIFIC = 'COUNTRY_SPECIFIC',
+    /** Мировая премьера */
+    WORLD_PREMIER = 'WORLD_PREMIER',
+    /** Премьеры в странах */
+    PREMIERE = 'PREMIERE',
+    /** Премьеры на DVD */
+    ALL = 'ALL',
+}
+
+/**
+ * Енам типов изображений.
+ */
+export enum EMovieImages {
+    STILL = 'STILL',
+    SHOOTING = 'SHOOTING',
+    POSTER = 'POSTER',
+    FAN_ART = 'FAN_ART',
+    PROMO = 'PROMO',
+    CONCEPT = 'CONCEPT',
+    WALLPAPER = 'WALLPAPER',
+    COVER = 'COVER',
+    SCREENSHOT = 'SCREENSHOT',
+}
+
+/**
+ * Енам типов фактов.
+ */
+export enum EMovieFacts {
+    /** Ляпы */
+    BLOOPER = 'BLOOPER',
+    /** Факты */
+    FACT = 'FACT',
+}
+
+/**
+ * Енам типов профессий для отдельной страницы.
+ */
+export enum EMovieStaff {
+    DIRECTOR = 'DIRECTOR',
+    ACTOR = 'ACTOR',
+    PRODUCER = 'PRODUCER',
+    WRITER = 'WRITER',
+    OPERATOR = 'OPERATOR',
+    COMPOSER = 'COMPOSER',
+    DESIGN = 'DESIGN',
+    EDITOR = 'EDITOR',
+    PRODUCER_USSR = 'PRODUCER_USSR',
+    TRANSLATOR = 'TRANSLATOR',
+    VOICE_DIRECTOR = 'VOICE_DIRECTOR',
+    UNKNOWN = 'UNKNOWN',
+}

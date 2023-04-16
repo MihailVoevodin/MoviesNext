@@ -1,8 +1,8 @@
 import axios from 'axios';
+import {DISTRIBUTIONS_DICTIONARY} from 'Common/Consts';
 import {MovieDistribution} from 'components/Movie/MovieDistributions/MovieDistribution';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
-import {T} from 'Common/Text';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
@@ -39,8 +39,8 @@ const Distributions = ({movieDistributions, movieName}: any) => {
                         <hr />
                     </div>
                     <div>
-                        {T.distributionsTextArray.map((distrib: any) => (
-                            <MovieDistribution key={distrib.id} array={items} type={distrib.type} text={distrib.text} />
+                        {DISTRIBUTIONS_DICTIONARY.map((distribution) => (
+                            <MovieDistribution key={distribution.type} array={items} type={distribution.type} text={distribution.text} />
                         ))}
                     </div>
                 </div>
