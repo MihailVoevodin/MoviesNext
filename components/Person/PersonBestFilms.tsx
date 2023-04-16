@@ -1,11 +1,17 @@
+import {IPersonFilm} from 'Common/Models';
 import Link from 'next/link';
+import React from 'react';
 
-export const PersonBestFilms = ({films}: any) => {
-    let arr: any = [];
+type Props = {
+    films: IPersonFilm[];
+};
+
+export const PersonBestFilms: React.FC<Props> = ({films}) => {
+    let arr: IPersonFilm[] = [];
 
     function itemCheck(item: any) {
         if (arr.indexOf(item.nameRu) === -1) {
-            if (item.general === true) {
+            if (item.general) {
                 arr.push(item.nameRu);
                 return true;
             }
@@ -13,13 +19,13 @@ export const PersonBestFilms = ({films}: any) => {
         return false;
     }
 
-    const filteredFilms = films.filter((film: any) => itemCheck(film)).sort((prev: any, next: any) => next.rating - prev.rating);
+    const filteredFilms = films.filter((film) => itemCheck(film)).sort((prev, next) => Number(next.rating) - Number(prev.rating));
 
     console.log(filteredFilms);
 
     return (
         <ul>
-            {filteredFilms.slice(0, 5).map((film: any) => {
+            {filteredFilms.slice(0, 5).map((film) => {
                 return (
                     <li key={film.filmId}>
                         <Link href={`/movie/${film.filmId}`}>{film.nameRu}</Link>

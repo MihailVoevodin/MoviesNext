@@ -1,13 +1,26 @@
 import axios from 'axios';
 import {STAFF_DICTIONARY} from 'Common/Consts';
-import {MovieCast} from 'components/Movie/MovieCast/MovieCast';
+import {IMovieStaff} from 'Common/Models';
+import {MovieStaff} from 'components/Movie/MovieStaff/MovieStaff';
+import {GetServerSideProps} from 'next';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
+import {ParsedUrlQuery} from 'querystring';
+import React from 'react';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
-export async function getServerSideProps(context: any) {
-    const {movieId} = context.params;
+type Props = {
+    movieName: string;
+    movieStaff: IMovieStaff[];
+};
+
+interface Params extends ParsedUrlQuery {
+    movieId: string;
+}
+
+export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
+    const {movieId} = context.params!;
     const responseFilm = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}`);
     const responseStaff = await axios.get(`https://kinopoiskapiunofficial.tech/api/v1/staff?filmId=${movieId}`);
     const movieName = responseFilm.data.nameRu;
@@ -15,9 +28,9 @@ export async function getServerSideProps(context: any) {
     return {
         props: {movieStaff, movieName},
     };
-}
+};
 
-const Cast = ({movieStaff, movieName}: any) => {
+const Cast: React.FC<Props> = ({movieStaff, movieName}) => {
     const router = useRouter();
 
     return (
@@ -32,14 +45,14 @@ const Cast = ({movieStaff, movieName}: any) => {
                     </div>
                     <div className="backToMovieContainer">
                         <hr />
-                        <span className="backToMovie" onClick={() => router.back()}>
+                        <span className="backToMovie" onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
                             Информация о фильме
                         </span>
                         <hr />
                     </div>
                     <div>
                         {STAFF_DICTIONARY.map((profession) => (
-                            <MovieCast key={profession.type} array={movieStaff} type={profession.type} text={profession.text} />
+                            <MovieStaff key={profession.type} movieStaff={movieStaff} type={profession.type} text={profession.text} />
                         ))}
                     </div>
                 </div>

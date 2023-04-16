@@ -1,27 +1,34 @@
+import {IMovieAward} from 'Common/Models';
 import styles from 'components/Movie/MovieAwards/MovieAward.module.scss';
 import {CaretRightFilled} from '@ant-design/icons';
 import Link from 'next/link';
 import Image from 'next/image';
+import React from 'react';
 
-export const MovieAward = ({awardsArray, awardText}: any): any => {
-    const awardsArrayFiltered = awardsArray.filter((award: any) => award.name === awardText);
-    const AwardsArrayWin = awardsArray.filter((award: any) => award.name === awardText && award.win === true);
-    const AwardsArrayLose = awardsArray.filter((award: any) => award.name === awardText && award.win === false);
+type Props = {
+    movieAwards: IMovieAward[];
+    text: string;
+};
+
+export const MovieAward: React.FC<Props> = ({movieAwards, text}) => {
+    const filteredMovieAwards = movieAwards.filter((award) => award.name === text);
+    const filteredMovieAwardsWin = movieAwards.filter((award) => award.name === text && award.win);
+    const filteredMovieAwardsLose = movieAwards.filter((award) => award.name === text && !award.win);
 
     return (
         <>
-            {awardsArrayFiltered.length > 0 && (
+            {filteredMovieAwards.length > 0 && (
                 <div className={styles.awardContainer}>
                     <div className={styles.awardTitle}>
-                        {awardText}, {awardsArrayFiltered[0].year} год
+                        {text}, {filteredMovieAwards[0].year} год
                     </div>
-                    {awardsArrayFiltered[0].imageUrl && (
-                        <Image className={styles.awardImage} width={50} height={100} src={awardsArrayFiltered[0].imageUrl} alt="." />
+                    {filteredMovieAwards[0].imageUrl && (
+                        <Image className={styles.awardImage} width={50} height={100} src={filteredMovieAwards[0].imageUrl} alt="." />
                     )}
-                    {AwardsArrayWin.length > 0 && (
+                    {filteredMovieAwardsWin.length > 0 && (
                         <div>
-                            <div className={styles.awardResults}>Победитель ({AwardsArrayWin.length}):</div>
-                            {AwardsArrayWin.map((award: any, id: number) => {
+                            <div className={styles.awardResults}>Победитель ({filteredMovieAwardsWin.length}):</div>
+                            {filteredMovieAwardsWin.map((award, id: number) => {
                                 return (
                                     <div key={id} className={styles.awardList}>
                                         <CaretRightFilled />
@@ -31,7 +38,7 @@ export const MovieAward = ({awardsArray, awardText}: any): any => {
                                                 <span>
                                                     {' '}
                                                     (
-                                                    {award.persons.map((person: any, id: number) => {
+                                                    {award.persons.map((person, id: number) => {
                                                         return (
                                                             <Link key={id} href={`/name/${person.kinopoiskId}`}>
                                                                 {person.nameRu || person.nameEn}
@@ -48,10 +55,10 @@ export const MovieAward = ({awardsArray, awardText}: any): any => {
                             })}
                         </div>
                     )}
-                    {AwardsArrayLose.length > 0 && (
+                    {filteredMovieAwardsLose.length > 0 && (
                         <div>
-                            <div className={styles.awardResults}>Номинация ({AwardsArrayLose.length}):</div>
-                            {AwardsArrayLose.map((award: any, id: number) => {
+                            <div className={styles.awardResults}>Номинация ({filteredMovieAwardsLose.length}):</div>
+                            {filteredMovieAwardsLose.map((award, id: number) => {
                                 return (
                                     <div key={id} className={styles.awardList}>
                                         <CaretRightFilled />
@@ -61,7 +68,7 @@ export const MovieAward = ({awardsArray, awardText}: any): any => {
                                                 <span>
                                                     {' '}
                                                     (
-                                                    {award.persons.map((person: any, id: number) => {
+                                                    {award.persons.map((person, id: number) => {
                                                         return (
                                                             <Link key={id} href={`/name/${person.kinopoiskId}`}>
                                                                 {person.nameRu || person.nameEn}

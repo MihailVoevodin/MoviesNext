@@ -1,13 +1,20 @@
 import {BOX_DICTIONARY, MAIN_STAFF_DICTIONARY} from 'Common/Consts';
+import {IMovieBox, IMovieDetails, IMovieStaff} from 'Common/Models';
 import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
 import {RightOutlined} from '@ant-design/icons';
 import {MovieAboutActors} from 'components/Movie/MovieAbout/components/MovieAboutActors';
-import {MovieAboutCast} from 'components/Movie/MovieAbout/components/MovieAboutCast';
+import {MovieAboutStaff} from 'components/Movie/MovieAbout/components/MovieAboutStaff';
 import {MovieAboutBox} from 'components/Movie/MovieAbout/components/MovieAboutBox';
-import {T} from 'Common/Text';
 import Link from 'next/link';
+import React from 'react';
 
-const MovieAbout = ({movie, movieStaff, movieBox}: any) => {
+type Props = {
+    movie: IMovieDetails;
+    movieBox: IMovieBox;
+    movieStaff: IMovieStaff[];
+};
+
+const MovieAbout: React.FC<Props> = ({movie, movieStaff, movieBox}) => {
     return (
         <div className={styles.aboutContainer}>
             <div className={styles.about}>
@@ -21,7 +28,7 @@ const MovieAbout = ({movie, movieStaff, movieBox}: any) => {
                 <div className={styles.aboutItem}>
                     <div className={styles.aboutItemText}>Страна</div>
                     <div className={styles.aboutItemContent}>
-                        {movie.countries.map((item: any, id: number) => (
+                        {movie.countries.map((item, id: number) => (
                             <span key={id}>
                                 {item.country}
                                 {id !== movie.countries.length - 1 ? ', ' : ''}
@@ -32,7 +39,7 @@ const MovieAbout = ({movie, movieStaff, movieBox}: any) => {
                 <div className={styles.aboutItem}>
                     <div className={styles.aboutItemText}>Жанр</div>
                     <div className={styles.aboutItemContent}>
-                        {movie.genres.map((item: any, id: number) => (
+                        {movie.genres.map((item, id: number) => (
                             <span key={id}>
                                 {item.genre}
                                 {id !== movie.genres.length - 1 ? ', ' : ''}
@@ -47,10 +54,10 @@ const MovieAbout = ({movie, movieStaff, movieBox}: any) => {
                     </div>
                 </div>
                 {MAIN_STAFF_DICTIONARY.map((person) => (
-                    <MovieAboutCast key={person.type} array={movieStaff} profession={person.type} text={person.text} />
+                    <MovieAboutStaff key={person.type} movieStaff={movieStaff} type={person.type} text={person.text} />
                 ))}
                 {BOX_DICTIONARY.map((box) => (
-                    <MovieAboutBox key={box.type} array={movieBox.items} boxType={box.type} boxText={box.text} />
+                    <MovieAboutBox key={box.type} movieBox={movieBox.items} type={box.type} text={box.text} />
                 ))}
                 <div className={styles.aboutItem}>
                     <div className={styles.aboutItemText}>Возраст</div>
@@ -71,15 +78,15 @@ const MovieAbout = ({movie, movieStaff, movieBox}: any) => {
                 </div>
             </div>
             <div className={styles.actors}>
-                <Link href={`/movie/${movie.kinopoiskId}/cast`}>
+                <Link href={`/movie/${movie.kinopoiskId}/staff`}>
                     <h3>
                         В ролях <RightOutlined />
                     </h3>
                 </Link>
-                <MovieAboutActors array={movieStaff} professionKey={'ACTOR'} />
+                <MovieAboutActors movieStaff={movieStaff} professionKey={'ACTOR'} />
                 <div className={styles.actorsCount}>
-                    <Link href={`/movie/${movie.kinopoiskId}/cast`}>
-                        {movieStaff.filter((person: any) => person.professionKey == 'ACTOR').length} актеров
+                    <Link href={`/movie/${movie.kinopoiskId}/staff`}>
+                        {movieStaff.filter((person) => person.professionKey == 'ACTOR').length} актеров
                     </Link>
                 </div>
             </div>

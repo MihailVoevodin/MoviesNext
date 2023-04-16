@@ -1,5 +1,9 @@
+import React from 'react';
 import {ConfigProvider, Pagination} from 'antd';
 import axios from 'axios';
+import {IMovie} from 'Common/Models';
+import {GetServerSideProps} from 'next';
+import {ParsedUrlQuery} from 'querystring';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -10,16 +14,24 @@ import styles from 'pages/movies/page/Movies.module.scss';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
-export async function getServerSideProps(context: any) {
-    const {pageId} = context.params;
+type Props = {
+    movies: IMovie[];
+};
+
+interface Params extends ParsedUrlQuery {
+    pageId: string;
+}
+
+export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
+    const {pageId} = context.params!;
     const response = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=${pageId}`);
     const movies = response.data.films;
     return {
         props: {movies},
     };
-}
+};
 
-const Movie = ({movies}: any) => {
+const Movie: React.FC<Props> = ({movies}) => {
     const router = useRouter();
     const dispatch = useAppDispatch();
     const {pageId} = useAppSelector((state) => state.films);
@@ -49,7 +61,7 @@ const Movie = ({movies}: any) => {
             >
                 <main>
                     <div className={styles.movies}>
-                        {movies.map((movie: any) => (
+                        {movies.map((movie) => (
                             <div className={styles.moviesItem} key={movie.filmId}>
                                 <div className={styles.moviesItemContent}>
                                     <Link href={`/movie/${movie.filmId}`}>

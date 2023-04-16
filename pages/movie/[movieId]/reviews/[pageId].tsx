@@ -1,17 +1,30 @@
 import {ConfigProvider, Pagination, Select} from 'antd';
 import axios from 'axios';
+import {IMovieReviews} from 'Common/Models';
 import {MovieReview} from 'components/Movie/MovieReview/MovieReview';
+import {GetServerSideProps} from 'next';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
-import {useEffect, useState} from 'react';
+import {ParsedUrlQuery} from 'querystring';
+import React, {useEffect, useState} from 'react';
 import {setReviewsPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import styles from 'pages/movie/[movieId]/reviews/Reviews.module.scss';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
-export async function getServerSideProps(context: any) {
-    const {movieId, pageId} = context.params;
+type Props = {
+    movieName: string;
+    movieReviews: IMovieReviews;
+};
+
+interface Params extends ParsedUrlQuery {
+    movieId: string;
+    pageId: string;
+}
+
+export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
+    const {movieId, pageId} = context.params!;
     const {order} = context.query;
     const responseFilm = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}`);
     const responseReviews = await axios.get(
@@ -22,14 +35,14 @@ export async function getServerSideProps(context: any) {
     return {
         props: {movieReviews, movieName},
     };
-}
+};
 
-const Reviews = ({movieReviews, movieName}: any) => {
+const Reviews: React.FC<Props> = ({movieReviews, movieName}) => {
     const router = useRouter();
     const {total, totalPositiveReviews, totalNegativeReviews, totalNeutralReviews, items} = movieReviews;
     const dispatch = useAppDispatch();
     const {reviewsPageId} = useAppSelector((state) => state.films);
-    const [filter, setFilter] = useState('DATE_ASC');
+    const [filter, setFilter] = useState<string>('DATE_ASC');
 
     useEffect(() => {
         void router.push(`/movie/${router.query.movieId}/reviews/${reviewsPageId}/?&order=${filter}`);
@@ -117,7 +130,7 @@ const Reviews = ({movieReviews, movieName}: any) => {
                                 onChange={onChange}
                                 showSizeChanger={false}
                             />
-                            {items.map((review: any) => (
+                            {items.map((review) => (
                                 <MovieReview key={review.kinopoiskId} review={review} />
                             ))}
                             <Pagination

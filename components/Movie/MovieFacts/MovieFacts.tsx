@@ -1,19 +1,28 @@
+import {EMovieFacts} from 'Common/Enums';
+import {IMovieFact} from 'Common/Models';
 import styles from 'pages/movie/[movieId]/facts/Facts.module.scss';
+import React from 'react';
 
-export const MovieFacts = ({array, type, text}: any) => {
-    const filteredArray = array.filter((a: any) => a.type == type);
+type Props = {
+    movieFacts: IMovieFact[];
+    type: EMovieFacts;
+    text: string;
+};
+
+export const MovieFacts: React.FC<Props> = ({movieFacts, type, text}) => {
+    const filteredMovieFacts = movieFacts.filter((fact) => fact.type == type);
 
     return (
         <>
-            {filteredArray.length > 0 && (
+            {filteredMovieFacts.length > 0 && (
                 <div className={styles.container}>
                     <div className={styles.title}>{text}</div>
                     <hr />
                     <ul className={styles.list}>
-                        {filteredArray.map((a: any, id: number) => (
+                        {filteredMovieFacts.map((fact, id: number) => (
                             <>
                                 <li key={id} className={styles.listItem}>
-                                    {a.text.replace(/<[^>]+>|&[^>]+;/g, '')}
+                                    {fact.text.replace(/<[^>]+>|&[^>]+;/g, '')}
                                 </li>
                                 <hr />
                             </>

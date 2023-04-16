@@ -1,19 +1,28 @@
+import {IMovieStaff} from 'Common/Models';
+import {EMovieStaff} from 'Common/Enums';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from 'pages/movie/[movieId]/cast/Cast.module.scss';
+import styles from 'pages/movie/[movieId]/staff/Staff.module.scss';
+import React from 'react';
 
-export const MovieCast = ({array, type, text}: any) => {
-    const filteredArray = array.filter((profession: any) => profession.professionKey === type);
+type Props = {
+    movieStaff: IMovieStaff[];
+    type: EMovieStaff;
+    text: string[];
+};
 
-    if (filteredArray.length === 0) {
+export const MovieStaff: React.FC<Props> = ({movieStaff, type, text}) => {
+    const filteredMovieStaff = movieStaff.filter((person) => person.professionKey === type);
+
+    if (filteredMovieStaff.length === 0) {
         return null;
     }
 
     return (
         <div className={styles.castTypeContainer}>
-            <div className={styles.castTypeTitle}>{filteredArray.length > 1 ? text[1] : text[0]}</div>
+            <div className={styles.castTypeTitle}>{filteredMovieStaff.length > 1 ? text[1] : text[0]}</div>
             <ol className={styles.castTypeList}>
-                {filteredArray.map((person: any) => {
+                {filteredMovieStaff.map((person) => {
                     return (
                         <li className={styles.castPerson} key={person.staffId}>
                             <Image src={person.posterUrl} width={70} height={100} alt="." />

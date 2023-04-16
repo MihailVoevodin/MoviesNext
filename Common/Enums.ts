@@ -20,11 +20,11 @@ export enum EMovieBox {
     /** Маркетинг */
     MARKETING = 'MARKETING',
     /** Сборы в США */
-    USA_BOX_OFFICE = 'USA_BOX_OFFICE',
+    USA = 'USA',
     /** Сборы в России */
-    RUS_BOX_OFFICE = 'RUS_BOX_OFFICE',
+    RUS = 'RUS',
     /** Сборы в мире */
-    WORLD_BOX_OFFICE = 'WORLD_BOX_OFFICE',
+    WORLD = 'WORLD',
 }
 
 /**

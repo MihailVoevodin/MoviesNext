@@ -1,8 +1,15 @@
+import {IMovieDetails} from 'Common/Models';
 import styles from 'components/Movie/MovieDetailsReview/MovieDetailsReview.module.scss';
 import {Rate} from 'antd';
 import {StarFilled} from '@ant-design/icons';
+import React from 'react';
 
-const MovieDetailsReview = ({movie}: any) => {
+type Props = {
+    movie: IMovieDetails;
+};
+
+const MovieDetailsReview: React.FC<Props> = ({movie}) => {
+    console.log(movie);
     return (
         <div className={styles.movieReview}>
             <div>{movie.description}</div>

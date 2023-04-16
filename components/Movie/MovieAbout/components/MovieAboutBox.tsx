@@ -1,17 +1,26 @@
+import {EMovieBox} from 'Common/Enums';
+import {IMovieBoxItem} from 'Common/Models';
 import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
+import React from 'react';
 
-export const MovieAboutBox = ({array, boxType, boxText}: any) => {
-    const filteredArray = array.filter((a: any) => a.type == boxType);
+type Props = {
+    movieBox: IMovieBoxItem[];
+    type: EMovieBox;
+    text: string;
+};
+
+export const MovieAboutBox: React.FC<Props> = ({movieBox, type, text}) => {
+    const filteredMovieBox = movieBox.filter((box) => box.type == type);
 
     return (
         <>
-            {filteredArray.length > 0 && (
+            {filteredMovieBox.length > 0 && (
                 <div className={styles.aboutItem}>
-                    <div className={styles.aboutItemText}>{boxText}</div>
+                    <div className={styles.aboutItemText}>{text}</div>
                     <div className={styles.aboutItemContent}>
-                        {filteredArray.map((a: any, id: number) => (
+                        {filteredMovieBox.map((box, id: number) => (
                             <span key={id}>
-                                {a.symbol} {a.amount.toLocaleString('ru')}
+                                {box.symbol} {box.amount.toLocaleString('ru')}
                             </span>
                         ))}
                     </div>

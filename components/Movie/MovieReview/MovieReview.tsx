@@ -1,3 +1,4 @@
+import {IMovieReview} from 'Common/Models';
 import {MovieReviewBgColor} from 'components/Movie/MovieReview/MovieReviewBgColor';
 import {LikeOutlined, DislikeOutlined} from '@ant-design/icons';
 import Image from 'next/image';
@@ -5,10 +6,14 @@ import User from 'public/User.png';
 import styles from 'pages/movie/[movieId]/reviews/Reviews.module.scss';
 import moment from 'moment';
 import 'moment/locale/ru';
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 moment.locale('ru');
 
-export const MovieReview = ({review}: any) => {
+type Props = {
+    review: IMovieReview;
+};
+
+export const MovieReview: React.FC<Props> = ({review}) => {
     const [colors, setColors] = useState(['none', 'none']);
 
     useEffect(() => {

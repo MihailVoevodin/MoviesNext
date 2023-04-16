@@ -1,12 +1,18 @@
+import {IPerson} from 'Common/Models';
 import styles from 'components/Person/PersonAbout.module.scss';
 import stylesMain from 'components/Movie/MovieMainInfo/MovieMainInfo.module.scss';
 import {PersonBestFilms} from 'components/Person/PersonBestFilms';
 import moment from 'moment';
 import 'moment/locale/ru';
 import Link from 'next/link';
+import React from 'react';
 moment.locale('ru');
 
-export const PersonAbout = ({person}: any) => {
+type Props = {
+    person: IPerson;
+};
+
+export const PersonAbout: React.FC<Props> = ({person}) => {
     console.log(new Date(person.birthday).getTime());
 
     return (
@@ -48,7 +54,7 @@ export const PersonAbout = ({person}: any) => {
                     <div className={styles.personItem}>
                         <div className={styles.personItemText}>{person.spouses.length === 1 ? 'Супруга' : 'Супруги'}</div>
                         <div>
-                            {person.spouses.map((spouse: any) => (
+                            {person.spouses.map((spouse) => (
                                 <div key={spouse.personId}>
                                     {spouse.name} {spouse.divorced && spouse.divorcedReason}{' '}
                                     {spouse.children > 0 && `${spouse.children} ${spouse.children === 1 ? 'ребёнок' : 'детей'}`}

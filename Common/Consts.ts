@@ -44,16 +44,16 @@ export const BOX_DICTIONARY = [
         text: T.MovieBoxDictionary[EMovieBox.MARKETING],
     },
     {
-        type: EMovieBox.USA_BOX_OFFICE,
-        text: T.MovieBoxDictionary[EMovieBox.USA_BOX_OFFICE],
+        type: EMovieBox.USA,
+        text: T.MovieBoxDictionary[EMovieBox.USA],
     },
     {
-        type: EMovieBox.RUS_BOX_OFFICE,
-        text: T.MovieBoxDictionary[EMovieBox.RUS_BOX_OFFICE],
+        type: EMovieBox.RUS,
+        text: T.MovieBoxDictionary[EMovieBox.RUS],
     },
     {
-        type: EMovieBox.WORLD_BOX_OFFICE,
-        text: T.MovieBoxDictionary[EMovieBox.WORLD_BOX_OFFICE],
+        type: EMovieBox.WORLD,
+        text: T.MovieBoxDictionary[EMovieBox.WORLD],
     },
 ];
 

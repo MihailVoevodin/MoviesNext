@@ -2,18 +2,31 @@ import {ConfigProvider, Pagination} from 'antd';
 import axios from 'axios';
 import {CloseIcon} from 'Common/CloseIcon';
 import {IMAGES_DICTIONARY} from 'Common/Consts';
+import {IMovieImages, IMovieImage} from 'Common/Models';
+import {GetServerSideProps} from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import {useRouter} from 'next/router';
 import styles from 'pages/movie/[movieId]/images/MovieImages.module.scss';
-import {useEffect, useState} from 'react';
+import {ParsedUrlQuery} from 'querystring';
+import React, {useEffect, useState} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
-export async function getServerSideProps(context: any) {
-    const {movieId, pageId} = context.params;
+type Props = {
+    movieName: string;
+    movieImages: IMovieImages;
+};
+
+interface Params extends ParsedUrlQuery {
+    movieId: string;
+    pageId: string;
+}
+
+export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
+    const {movieId, pageId} = context.params!;
     const {type} = context.query;
     const responseFilm = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}`);
     const responseImages = await axios.get(
@@ -24,15 +37,15 @@ export async function getServerSideProps(context: any) {
     return {
         props: {movieName, movieImages},
     };
-}
+};
 
-const Images = ({movieName, movieImages}: any) => {
+const Images: React.FC<Props> = ({movieName, movieImages}) => {
     const [image, setImage] = useState<string>('');
     const router = useRouter();
     const {imagesPageId} = useAppSelector((state) => state.films);
     const {total, totalPages, items} = movieImages;
     const dispatch = useAppDispatch();
-    const [filter, setFilter] = useState('STILL');
+    const [filter, setFilter] = useState<string>('STILL');
 
     useEffect(() => {
         dispatch(setImagesPageId(1));
@@ -47,7 +60,7 @@ const Images = ({movieName, movieImages}: any) => {
         dispatch(setImagesPageId(1));
     };
 
-    const handleOpenImage = (image: any) => {
+    const handleOpenImage = (image: IMovieImage) => {
         setImage(image.imageUrl);
     };
 
@@ -105,7 +118,7 @@ const Images = ({movieName, movieImages}: any) => {
                                 })}
                             </ul>
                             <div className={styles.container}>
-                                {items.map((image: any, id: number) => (
+                                {items.map((image, id: number) => (
                                     <div key={id}>
                                         <Image
                                             className={styles.image}

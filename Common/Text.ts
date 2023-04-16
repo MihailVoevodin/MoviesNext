@@ -13,9 +13,9 @@ export const T = {
     MovieBoxDictionary: {
         [EMovieBox.BUDGET]: 'Бюджет',
         [EMovieBox.MARKETING]: 'Маркетинг',
-        [EMovieBox.USA_BOX_OFFICE]: 'Сборы в США',
-        [EMovieBox.RUS_BOX_OFFICE]: 'Сборы в России',
-        [EMovieBox.WORLD_BOX_OFFICE]: 'Сборы в мире',
+        [EMovieBox.USA]: 'Сборы в США',
+        [EMovieBox.RUS]: 'Сборы в России',
+        [EMovieBox.WORLD]: 'Сборы в мире',
     },
     MovieAwardsDictionary: {
         [EMovieAwards.OSCAR]: 'Оскар',
