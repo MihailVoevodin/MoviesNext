@@ -4,6 +4,7 @@ import axios from 'axios';
 import {IMovie} from 'Common/Models';
 import {GetServerSideProps} from 'next';
 import {ParsedUrlQuery} from 'querystring';
+import {paginationTheme} from 'Common/Consts';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -11,6 +12,7 @@ import {useRouter} from 'next/router';
 import {setPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import styles from 'pages/movies/page/Movies.module.scss';
+import mainStyles from 'styles/main.module.scss';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
@@ -46,19 +48,7 @@ const Movie: React.FC<Props> = ({movies}) => {
             <Head>
                 <title>Фильмы: Топ 250</title>
             </Head>
-            <ConfigProvider
-                theme={{
-                    components: {
-                        Pagination: {
-                            colorPrimary: 'black',
-                            colorText: 'white',
-                            colorBgTextHover: '#ff6200',
-                            colorPrimaryHover: '#ff6200',
-                            colorTextDisabled: '#363836',
-                        },
-                    },
-                }}
-            >
+            <ConfigProvider theme={paginationTheme}>
                 <main>
                     <div className={styles.movies}>
                         {movies.map((movie) => (
@@ -79,7 +69,7 @@ const Movie: React.FC<Props> = ({movies}) => {
                         ))}
                     </div>
                     <Pagination
-                        className={'pagination'}
+                        className={mainStyles.pagination}
                         current={pageId}
                         onChange={onChange}
                         total={250}

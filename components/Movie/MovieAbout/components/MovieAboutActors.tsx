@@ -1,5 +1,4 @@
 import {Popover} from 'antd';
-import {EMovieMainStaff} from 'Common/Enums';
 import {IMovieStaff} from 'Common/Models';
 import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
 import {MovieAboutPersonPopover} from 'components/Movie/MovieAbout/components/MovieAboutPersonPopover/MovieAboutPersonPopover';

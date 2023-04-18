@@ -7,6 +7,7 @@ import {MovieAward} from 'components/Movie/MovieAwards/MovieAward';
 import {AWARDS_DICTIONARY} from 'Common/Consts';
 import {ParsedUrlQuery} from 'querystring';
 import React from 'react';
+import mainStyles from 'styles/main.module.scss';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
@@ -39,14 +40,14 @@ const Awards: React.FC<Props> = ({movieAwards, movieName}) => {
             <Head>
                 <title>Награды: {movieName}</title>
             </Head>
-            <div className="movieDetailsPage">
-                <div className="movieDetailsContainer">
-                    <div className="movieDetailsTitle">
-                        <span>Награды</span> / {movieName}
+            <div className={mainStyles.movieDetailsPage}>
+                <div className={mainStyles.movieDetailsContainer}>
+                    <div className={mainStyles.movieDetailsTitle}>
+                        <span>Рецензии</span> / {movieName}
                     </div>
-                    <div className="backToMovieContainer">
+                    <div className={mainStyles.backToMovieContainer}>
                         <hr />
-                        <span className="backToMovie" onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
+                        <span className={mainStyles.backToMovie} onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
                             Информация о фильме
                         </span>
                         <hr />

@@ -7,6 +7,7 @@ import {ParsedUrlQuery} from 'querystring';
 import React from 'react';
 import ReactPlayer from 'react-player';
 import styles from 'pages/movie/[movieId]/videos/videos.module.scss';
+import mainStyles from 'styles/main.module.scss';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
@@ -37,14 +38,14 @@ const Videos: React.FC<Props> = ({movieVideos, movieName}) => {
             <Head>
                 <title>Видео: {movieName}</title>
             </Head>
-            <div className="movieDetailsPage">
-                <div className="movieDetailsContainer">
-                    <div className="movieDetailsTitle">
+            <div className={mainStyles.movieDetailsPage}>
+                <div className={mainStyles.movieDetailsContainer}>
+                    <div className={mainStyles.movieDetailsTitle}>
                         <span>Видео</span> / {movieName}
                     </div>
-                    <div className="backToMovieContainer">
+                    <div className={mainStyles.backToMovieContainer}>
                         <hr />
-                        <span className="backToMovie" onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
+                        <span className={mainStyles.backToMovie} onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
                             Информация о фильме
                         </span>
                         <hr />

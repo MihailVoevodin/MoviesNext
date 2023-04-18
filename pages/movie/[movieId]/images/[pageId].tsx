@@ -1,13 +1,14 @@
 import {ConfigProvider, Pagination} from 'antd';
 import axios from 'axios';
 import {CloseIcon} from 'Common/CloseIcon';
-import {IMAGES_DICTIONARY} from 'Common/Consts';
+import {IMAGES_DICTIONARY, paginationTheme} from 'Common/Consts';
 import {IMovieImages, IMovieImage} from 'Common/Models';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import {useRouter} from 'next/router';
 import styles from 'pages/movie/[movieId]/images/MovieImages.module.scss';
+import mainStyles from 'styles/main.module.scss';
 import {ParsedUrlQuery} from 'querystring';
 import React, {useEffect, useState} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
@@ -45,7 +46,7 @@ const Images: React.FC<Props> = ({movieName, movieImages}) => {
     const {imagesPageId} = useAppSelector((state) => state.films);
     const {total, totalPages, items} = movieImages;
     const dispatch = useAppDispatch();
-    const [filter, setFilter] = useState<string>('STILL');
+    const [filter, setFilter] = useState<string>(IMAGES_DICTIONARY[0].type);
 
     useEffect(() => {
         dispatch(setImagesPageId(1));
@@ -78,27 +79,15 @@ const Images: React.FC<Props> = ({movieName, movieImages}) => {
             <Head>
                 <title>Изображения: {movieName}</title>
             </Head>
-            <ConfigProvider
-                theme={{
-                    components: {
-                        Pagination: {
-                            colorPrimary: 'black',
-                            colorText: 'black',
-                            colorBgTextHover: '#ff6200',
-                            colorPrimaryHover: '#ff6200',
-                            colorTextDisabled: '#363836',
-                        },
-                    },
-                }}
-            >
-                <div className="movieDetailsPage">
-                    <div className="movieDetailsContainer">
-                        <div className="movieDetailsTitle">
+            <ConfigProvider theme={paginationTheme}>
+                <div className={mainStyles.movieDetailsPage}>
+                    <div className={mainStyles.movieDetailsContainer}>
+                        <div className={mainStyles.movieDetailsTitle}>
                             <span>Изображения</span> / {movieName}
                         </div>
-                        <div className="backToMovieContainer">
+                        <div className={mainStyles.backToMovieContainer}>
                             <hr />
-                            <span className="backToMovie" onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
+                            <span className={mainStyles.backToMovie} onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
                                 Информация о фильме
                             </span>
                             <hr />
@@ -109,7 +98,11 @@ const Images: React.FC<Props> = ({movieName, movieImages}) => {
                                     return (
                                         <li
                                             key={type.type}
-                                            className={router.query.type === type.type ? 'imagesType activeImagesType' : 'imagesType'}
+                                            className={
+                                                router.query.type === type.type
+                                                    ? `${mainStyles.imagesType} ${mainStyles.activeImagesType}`
+                                                    : `${mainStyles.imagesType}`
+                                            }
                                             onClick={() => handleChangeFilter(type.type)}
                                         >
                                             {type.text} {router.query.type === type.type && total}
@@ -143,7 +136,7 @@ const Images: React.FC<Props> = ({movieName, movieImages}) => {
                             </div>
                             {totalPages > 1 && (
                                 <Pagination
-                                    className={'pagination'}
+                                    className={mainStyles.pagination}
                                     current={imagesPageId}
                                     total={total}
                                     onChange={onChange}

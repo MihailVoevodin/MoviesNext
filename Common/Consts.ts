@@ -1,4 +1,13 @@
-import {EMovieAwards, EMovieBox, EMovieDistributions, EMovieImages, EMovieMainStaff, EMovieFacts, EMovieStaff} from 'Common/Enums';
+import {
+    EMovieAwards,
+    EMovieBox,
+    EMovieDistributions,
+    EMovieImages,
+    EMovieMainStaff,
+    EMovieFacts,
+    EMovieStaff,
+    EReviewsSelect,
+} from 'Common/Enums';
 import {T} from 'Common/Text';
 
 /** Словарь для профессий деталей фильма. */
@@ -280,3 +289,42 @@ export const STAFF_DICTIONARY = [
         text: T.MovieStaffDictionary[EMovieStaff.UNKNOWN],
     },
 ];
+
+export const REVIEWS_SELECT_DICTIONARY = [
+    {
+        value: EReviewsSelect.DATE_ASC,
+        label: T.ReviewsSelectDictionary[EReviewsSelect.DATE_ASC],
+    },
+    {
+        value: EReviewsSelect.DATE_DESC,
+        label: T.ReviewsSelectDictionary[EReviewsSelect.DATE_DESC],
+    },
+    {
+        value: EReviewsSelect.USER_POSITIVE_RATING_ASC,
+        label: T.ReviewsSelectDictionary[EReviewsSelect.USER_POSITIVE_RATING_ASC],
+    },
+    {
+        value: EReviewsSelect.USER_POSITIVE_RATING_DESC,
+        label: T.ReviewsSelectDictionary[EReviewsSelect.USER_POSITIVE_RATING_DESC],
+    },
+    {
+        value: EReviewsSelect.USER_NEGATIVE_RATING_ASC,
+        label: T.ReviewsSelectDictionary[EReviewsSelect.USER_NEGATIVE_RATING_ASC],
+    },
+    {
+        value: EReviewsSelect.USER_NEGATIVE_RATING_DESC,
+        label: T.ReviewsSelectDictionary[EReviewsSelect.USER_NEGATIVE_RATING_DESC],
+    },
+];
+
+export const paginationTheme = {
+    components: {
+        Pagination: {
+            colorPrimary: 'black',
+            colorText: 'white',
+            colorBgTextHover: '#ff6200',
+            colorPrimaryHover: '#ff6200',
+            colorTextDisabled: '#363836',
+        },
+    },
+};

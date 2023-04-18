@@ -1,4 +1,13 @@
-import {EMovieMainStaff, EMovieBox, EMovieAwards, EMovieDistributions, EMovieImages, EMovieFacts, EMovieStaff} from 'Common/Enums';
+import {
+    EMovieMainStaff,
+    EMovieBox,
+    EMovieAwards,
+    EMovieDistributions,
+    EMovieImages,
+    EMovieFacts,
+    EMovieStaff,
+    EReviewsSelect,
+} from 'Common/Enums';
 
 export const T = {
     MovieMainStaffDictionary: {
@@ -77,5 +86,13 @@ export const T = {
         [EMovieStaff.TRANSLATOR]: ['Переводчик', 'Переводчики'],
         [EMovieStaff.VOICE_DIRECTOR]: ['Режиссер дубляжа', 'Режиссеры дубляжа'],
         [EMovieStaff.UNKNOWN]: ['Другой', 'Другие'],
+    },
+    ReviewsSelectDictionary: {
+        [EReviewsSelect.DATE_ASC]: 'По возрастанию даты',
+        [EReviewsSelect.DATE_DESC]: 'По убыванию даты',
+        [EReviewsSelect.USER_POSITIVE_RATING_ASC]: 'По возрастанию позитивных рецензий',
+        [EReviewsSelect.USER_POSITIVE_RATING_DESC]: 'По убыванию позитивных рецензий',
+        [EReviewsSelect.USER_NEGATIVE_RATING_ASC]: 'По возрастанию негативных рецензий',
+        [EReviewsSelect.USER_NEGATIVE_RATING_DESC]: 'По убыванию негативных рецензий',
     },
 };

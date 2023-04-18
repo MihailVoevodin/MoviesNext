@@ -137,3 +137,21 @@ export enum EMovieStaff {
     VOICE_DIRECTOR = 'VOICE_DIRECTOR',
     UNKNOWN = 'UNKNOWN',
 }
+
+/**
+ * Енам для селекта фильтров рецензий.
+ */
+export enum EReviewsSelect {
+    /** По возрастанию даты */
+    DATE_ASC = 'DATE_ASC',
+    /** По убыванию даты */
+    DATE_DESC = 'DATE_DESC',
+    /** По возрастанию позитивных рецензий */
+    USER_POSITIVE_RATING_ASC = 'USER_POSITIVE_RATING_ASC',
+    /** По убыванию позитивных рецензий */
+    USER_POSITIVE_RATING_DESC = 'USER_POSITIVE_RATING_DESC',
+    /** По возрастанию негативных рецензий */
+    USER_NEGATIVE_RATING_ASC = 'USER_NEGATIVE_RATING_ASC',
+    /** По убыванию негативных рецензий */
+    USER_NEGATIVE_RATING_DESC = 'USER_NEGATIVE_RATING_DESC',
+}

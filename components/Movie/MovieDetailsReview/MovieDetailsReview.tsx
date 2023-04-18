@@ -9,7 +9,6 @@ type Props = {
 };
 
 const MovieDetailsReview: React.FC<Props> = ({movie}) => {
-    console.log(movie);
     return (
         <div className={styles.movieReview}>
             <div>{movie.description}</div>
