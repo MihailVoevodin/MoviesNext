@@ -25,7 +25,7 @@ export const MovieStaff: React.FC<Props> = ({movieStaff, type, text}) => {
                 {filteredMovieStaff.map((person) => {
                     return (
                         <li className={styles.castPerson} key={person.staffId}>
-                            <Image src={person.posterUrl} width={70} height={100} alt="." />
+                            <Image src={person.posterUrl} width={70} height={100} alt={person.nameRu} />
                             <div className={styles.castPersonAbout}>
                                 <Link href={`/name/${person.staffId}`} className={styles.castPersonNameRu}>
                                     {person.nameRu}

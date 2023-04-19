@@ -47,7 +47,7 @@ const Person: React.FC<Props> = ({person}) => {
                 <div className={styles.person}>
                     <div className={styles.personContainer}>
                         <div>
-                            <Image width={300} height={450} src={person.posterUrl} alt="." />
+                            <Image width={300} height={450} src={person.posterUrl} alt={person.nameRu} />
                         </div>
                         <div>
                             <PersonAbout person={person} />

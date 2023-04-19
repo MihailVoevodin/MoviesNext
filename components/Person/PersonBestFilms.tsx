@@ -9,6 +9,7 @@ type Props = {
 export const PersonBestFilms: React.FC<Props> = ({films}) => {
     let arr: IPersonFilm[] = [];
 
+    //TODO: перенести в сервисы и другие похожие функции
     function itemCheck(item: any) {
         if (arr.indexOf(item.nameRu) === -1) {
             if (item.general) {

@@ -14,7 +14,7 @@ type Props = {
 
 export const MovieDistribution: React.FC<Props> = ({movieDistributions, type, text}) => {
     const filteredMovieDistributions = movieDistributions.filter((distribution) => distribution.type == type);
-
+    //TODO: текстовка для даты
     return (
         <>
             {filteredMovieDistributions.length > 0 && (

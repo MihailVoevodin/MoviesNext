@@ -11,7 +11,7 @@ type Props = {
 
 export const MovieFacts: React.FC<Props> = ({movieFacts, type, text}) => {
     const filteredMovieFacts = movieFacts.filter((fact) => fact.type == type);
-
+    //TODO:сделать константы для регулярок
     return (
         <>
             {filteredMovieFacts.length > 0 && (
@@ -22,7 +22,7 @@ export const MovieFacts: React.FC<Props> = ({movieFacts, type, text}) => {
                         {filteredMovieFacts.map((fact, id: number) => (
                             <>
                                 <li key={id} className={styles.listItem}>
-                                    {fact.text.replace(/<[^>]+>|&[^>]+;/g, '')}
+                                    /{fact.text.replace(/<[^>]+>|&[^>]+;/g, '')}
                                 </li>
                                 <hr />
                             </>

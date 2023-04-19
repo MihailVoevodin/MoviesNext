@@ -61,7 +61,13 @@ const Movie: React.FC<Props> = ({movies}) => {
                                             <div>{movie.countries[0].country}</div>
                                             <div>{movie.filmLength}</div>
                                         </div>
-                                        <Image className={styles.movieItemImg} width={200} height={300} src={movie.posterUrl} alt="." />
+                                        <Image
+                                            className={styles.movieItemImg}
+                                            width={200}
+                                            height={300}
+                                            src={movie.posterUrl}
+                                            alt={movie.nameRu}
+                                        />
                                         <div className={styles.moviesItemName}>{movie.nameRu}</div>
                                     </Link>
                                 </div>

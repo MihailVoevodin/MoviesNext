@@ -1,6 +1,6 @@
 import {ConfigProvider, Pagination, Select} from 'antd';
 import axios from 'axios';
-import {REVIEWS_SELECT_DICTIONARY} from 'Common/Consts';
+import {REVIEWS_SELECT_DICTIONARY, reviewsTheme} from 'Common/Consts';
 import {IMovieReviews} from 'Common/Models';
 import {MovieReview} from 'components/Movie/MovieReview/MovieReview';
 import {GetServerSideProps} from 'next';
@@ -65,22 +65,7 @@ const Reviews: React.FC<Props> = ({movieReviews, movieName}) => {
             <Head>
                 <title>Рецензии: {movieName}</title>
             </Head>
-            <ConfigProvider
-                theme={{
-                    components: {
-                        Pagination: {
-                            colorPrimary: 'black',
-                            colorText: 'black',
-                            colorBgTextHover: '#ff6200',
-                            colorPrimaryHover: '#ff6200',
-                            colorTextDisabled: '#363836',
-                        },
-                        Select: {
-                            colorPrimaryHover: '#ff6200',
-                        },
-                    },
-                }}
-            >
+            <ConfigProvider theme={reviewsTheme}>
                 <div className={mainStyles.movieDetailsPage}>
                     <div className={mainStyles.movieDetailsContainer}>
                         <div className={mainStyles.movieDetailsTitle}>

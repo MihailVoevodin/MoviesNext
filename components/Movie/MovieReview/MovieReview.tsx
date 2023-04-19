@@ -16,6 +16,7 @@ type Props = {
 export const MovieReview: React.FC<Props> = ({review}) => {
     const [colors, setColors] = useState(['none', 'none']);
 
+    //TODO: сделать тут текстовки
     useEffect(() => {
         if (review.type === 'POSITIVE') {
             setColors(['green', 'none']);

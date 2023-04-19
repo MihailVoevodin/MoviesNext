@@ -12,7 +12,7 @@ export const MovieAboutPersonPopover: React.FC<Props> = ({person}) => {
     return (
         <div className={styles.personCard}>
             <Link href={`/name/${person.staffId}`}>
-                <Image width={100} height={150} src={person.posterUrl} alt="." />
+                <Image width={100} height={150} src={person.posterUrl} alt={person.nameRu} />
             </Link>
             <div className={styles.personContent}>
                 <Link href={`/name/${person.staffId}`}>

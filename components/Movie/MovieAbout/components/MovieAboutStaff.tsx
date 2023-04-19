@@ -14,7 +14,7 @@ type Props = {
 
 export const MovieAboutStaff: React.FC<Props> = ({movieStaff, type, text}) => {
     const filteredMovieStaff = movieStaff.filter((person) => person.professionKey == type);
-
+    //TODO: сократить отрисовку для условия только на спан
     if (filteredMovieStaff.length > 3) {
         return (
             <>

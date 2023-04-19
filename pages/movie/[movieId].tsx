@@ -71,7 +71,7 @@ const Movie: React.FC<Props> = ({movie, movieBox, movieStaff}) => {
                 <div className={styles.movie}>
                     <div className={styles.movieContainer}>
                         <div>
-                            <Image width={300} height={450} src={movie.posterUrl} alt="." />
+                            <Image width={300} height={450} src={movie.posterUrl} alt={movie.nameRu} />
                         </div>
                         <div>
                             <MovieMainInfo movie={movie} />
