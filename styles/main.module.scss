@@ -43,6 +43,26 @@
     }
 }
 
+
+.backBtn {
+    display: inline-block;
+    margin: 30px 10px;
+    button {
+        background-color: transparent;
+        border: none;
+    }
+    svg {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        fill: white;
+        transition: all .5s;
+        &:hover {
+            fill: #ff6200;
+        }
+    }
+}
+
 .pagination {
     margin: 30px 0;
     text-align: center;

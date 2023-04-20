@@ -19,12 +19,12 @@ export const PersonAbout: React.FC<Props> = ({person}) => {
         <>
             <div className={styles.personNameRu}>{person.nameRu}</div>
             <div className={styles.personNameOriginal}>{person.nameEn}</div>
-            <div className={stylesMain.kinopoiskUrl}>
+            <div className={styles.kinopoiskUrl}>
                 <Link href={person.webUrl}>Открыть на Кинопоиске</Link>
             </div>
-            <div>
+            <div className={styles.personAboutContainer}>
                 <div>
-                    <h3>О персоне</h3>
+                    <h3 className={styles.personAboutTitle}>О персоне</h3>
                     <div className={styles.personItem}>
                         <div className={styles.personItemText}>Карьера</div>
                         <div>{person.profession}</div>
@@ -68,7 +68,7 @@ export const PersonAbout: React.FC<Props> = ({person}) => {
                     </div>
                 </div>
                 <div>
-                    <h3>Лучшие фильмы</h3>
+                    <h3 className={styles.personAboutTitle}>Лучшие фильмы</h3>
                     <PersonBestFilms films={person.films} />
                 </div>
             </div>

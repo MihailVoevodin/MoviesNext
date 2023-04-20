@@ -7,8 +7,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import {useRouter} from 'next/router';
 import styles from 'pages/name/Name.module.scss';
+import mainStyles from 'styles/main.module.scss';
 import {ParsedUrlQuery} from 'querystring';
-import React from 'react';
+import React, {ReactNode} from 'react';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
@@ -39,7 +40,7 @@ const Person: React.FC<Props> = ({person}) => {
                 <title>{person.nameRu}</title>
             </Head>
             <main>
-                <div className="backBtn">
+                <div className={mainStyles.backBtn}>
                     <button onClick={() => router.back()}>
                         <ArrowLeftOutlined />
                     </button>
@@ -52,6 +53,16 @@ const Person: React.FC<Props> = ({person}) => {
                         <div>
                             <PersonAbout person={person} />
                         </div>
+                    </div>
+                    <div className={styles.personFacts}>
+                        <h3 className={styles.personFactsTitle}>Факты</h3>
+                        <ul>
+                            {person.facts.map((fact, id: number) => (
+                                <li key={id} className={styles.personFact}>
+                                    {fact}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </main>

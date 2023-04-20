@@ -30,3 +30,33 @@
         color: #ff6200;
     }
 }
+
+.kinopoiskUrl {
+    margin-top: 20px;
+    color: #ff6200;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.personAboutTitle {
+    padding-bottom: 20px;
+}
+
+.personAboutContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.personBestFilmsList {
+    list-style: none;
+}
+
+.personBestFilmsItem {
+    font-size: 13px;
+    padding-bottom: 5px;
+    :hover {
+        color: #ff6200;
+    }
+}

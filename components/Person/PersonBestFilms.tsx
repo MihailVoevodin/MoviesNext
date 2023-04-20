@@ -1,5 +1,6 @@
 import {IPersonFilm} from 'Common/Models';
 import Link from 'next/link';
+import styles from 'components/Person/PersonAbout.module.scss';
 import React from 'react';
 
 type Props = {
@@ -25,10 +26,10 @@ export const PersonBestFilms: React.FC<Props> = ({films}) => {
     console.log(filteredFilms);
 
     return (
-        <ul>
+        <ul className={styles.personBestFilmsList}>
             {filteredFilms.slice(0, 5).map((film) => {
                 return (
-                    <li key={film.filmId}>
+                    <li className={styles.personBestFilmsItem} key={film.filmId}>
                         <Link href={`/movie/${film.filmId}`}>{film.nameRu}</Link>
                     </li>
                 );
