@@ -1,4 +1,4 @@
-import {IMovieAward} from 'Common/Models';
+import {IMovieAward, IPerson} from 'Common/Models';
 import styles from 'components/Movie/MovieAwards/MovieAward.module.scss';
 import {CaretRightFilled} from '@ant-design/icons';
 import Link from 'next/link';
@@ -23,70 +23,56 @@ export const MovieAward: React.FC<Props> = ({movieAwards, text}) => {
                         {text}, {filteredMovieAwards[0].year} год
                     </div>
                     {filteredMovieAwards[0].imageUrl && (
-                        <Image className={styles.awardImage} width={50} height={100} src={filteredMovieAwards[0].imageUrl} alt="." />
+                        <Image className={styles.awardImage} width={50} height={100} src={filteredMovieAwards[0].imageUrl} alt={text} />
                     )}
                     {filteredMovieAwardsWin.length > 0 && (
                         <div>
                             <div className={styles.awardResults}>Победитель ({filteredMovieAwardsWin.length}):</div>
-                            {filteredMovieAwardsWin.map((award, id: number) => {
-                                return (
-                                    <div key={id} className={styles.awardList}>
-                                        <CaretRightFilled />
-                                        <div>
-                                            {award.nominationName}
-                                            {award.persons.length > 0 && (
-                                                <span>
-                                                    {' '}
-                                                    (
-                                                    {award.persons.map((person, id: number) => {
-                                                        return (
-                                                            <Link key={id} href={`/name/${person.kinopoiskId}`}>
-                                                                {person.nameRu || person.nameEn}
-                                                                {id !== award.persons.length - 1 ? ', ' : ''}
-                                                            </Link>
-                                                        );
-                                                    })}
-                                                    )
-                                                </span>
-                                            )}
-                                        </div>
-                                    </div>
-                                );
-                            })}
+                            {filteredMovieAwardsWin.map((award, id: number) => (
+                                <Award key={id} award={award} />
+                            ))}
                         </div>
                     )}
                     {filteredMovieAwardsLose.length > 0 && (
                         <div>
                             <div className={styles.awardResults}>Номинация ({filteredMovieAwardsLose.length}):</div>
-                            {filteredMovieAwardsLose.map((award, id: number) => {
-                                return (
-                                    <div key={id} className={styles.awardList}>
-                                        <CaretRightFilled />
-                                        <div>
-                                            {award.nominationName}
-                                            {award.persons.length > 0 && (
-                                                <span>
-                                                    {' '}
-                                                    (
-                                                    {award.persons.map((person, id: number) => {
-                                                        return (
-                                                            <Link key={id} href={`/name/${person.kinopoiskId}`}>
-                                                                {person.nameRu || person.nameEn}
-                                                                {id !== award.persons.length - 1 ? ', ' : ''}
-                                                            </Link>
-                                                        );
-                                                    })}
-                                                    )
-                                                </span>
-                                            )}
-                                        </div>
-                                    </div>
-                                );
-                            })}
+                            {filteredMovieAwardsLose.map((award, id: number) => (
+                                <Award key={id} award={award} />
+                            ))}
                         </div>
                     )}
                 </div>
             )}
         </>
+    );
+};
+
+type AwardProps = {
+    award: IMovieAward;
+};
+
+const Award: React.FC<AwardProps> = ({award}) => {
+    return (
+        <div className={styles.awardList}>
+            <CaretRightFilled />
+            <div>
+                {award.nominationName}
+                {award.persons.length > 0 && (
+                    <span>
+                        {' '}
+                        (
+                        {award.persons.map((person: IPerson, id: number) => {
+                            return (
+                                <Link key={id} href={`/name/${person.kinopoiskId}`}>
+                                    {person.nameRu || person.nameEn}
+                                    {id !== award.persons.length - 1 ? ', ' : ''}
+                                </Link>
+                            );
+                        })}
+                        )
+                    </span>
+                )}
+            </div>
+        </div>
     );
 };

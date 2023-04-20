@@ -21,8 +21,8 @@ export const MovieFacts: React.FC<Props> = ({movieFacts, type, text}) => {
                     <ul className={styles.list}>
                         {filteredMovieFacts.map((fact, id: number) => (
                             <>
-                                <li key={id} className={styles.listItem}>
-                                    /{fact.text.replace(/<[^>]+>|&[^>]+;/g, '')}
+                                <li key={type + id} className={styles.listItem}>
+                                    {fact.text.replace(/<[^>]+>|&[^>]+;/g, '')}
                                 </li>
                                 <hr />
                             </>
