@@ -7,6 +7,7 @@ import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {ParsedUrlQuery} from 'querystring';
 import React from 'react';
+import {T} from 'Common/Text';
 import mainStyles from 'styles/main.module.scss';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
@@ -37,17 +38,19 @@ const Cast: React.FC<Props> = ({movieStaff, movieName}) => {
     return (
         <>
             <Head>
-                <title>Создатели: {movieName}</title>
+                <title>
+                    {T.Pages.Staff.label}: {movieName}
+                </title>
             </Head>
             <div className={mainStyles.movieDetailsPage}>
                 <div className={mainStyles.movieDetailsContainer}>
                     <div className={mainStyles.movieDetailsTitle}>
-                        <span>Создатели</span> / {movieName}
+                        <span>{T.Pages.Staff.label}</span> / {movieName}
                     </div>
                     <div className={mainStyles.backToMovieContainer}>
                         <hr />
                         <span className={mainStyles.backToMovie} onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
-                            Информация о фильме
+                            {T.BackToMovie.label}
                         </span>
                         <hr />
                     </div>

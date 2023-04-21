@@ -10,6 +10,96 @@ import {
 } from 'Common/Enums';
 
 export const T = {
+    Pages: {
+        Default: {
+            label: 'Обзор',
+        },
+        Facts: {
+            label: 'Факты',
+            route: 'facts',
+        },
+        Images: {
+            label: 'Изображения',
+            route: 'images',
+        },
+        Reviews: {
+            label: 'Рецензии',
+            route: 'reviews',
+        },
+        Staff: {
+            label: 'Создатели',
+            route: 'staff',
+        },
+        Videos: {
+            label: 'Видео',
+            route: 'videos',
+        },
+        Awards: {
+            label: 'Награды',
+            route: 'awards',
+        },
+        Distributions: {
+            label: 'Прокат',
+            route: 'distributions',
+        },
+    },
+    BackToMovie: {
+        label: 'Информация о фильме',
+    },
+    Reviews: {
+        Types: {
+            All: {
+                label: 'Всего',
+            },
+            Positive: {
+                label: 'Позитивные',
+            },
+            Negative: {
+                label: 'Негативные',
+            },
+            Neutral: {
+                label: 'Нейтральные',
+            },
+        },
+    },
+    PersonPage: {
+        Title: {
+            label: 'О персоне',
+        },
+        Profession: {
+            label: 'Карьера',
+        },
+        Growth: {
+            label: 'Рост',
+        },
+        Birthday: {
+            label: 'Дата рождения',
+        },
+        BirthPlace: {
+            label: 'Место рождения',
+        },
+        Death: {
+            label: 'Дата смерти',
+        },
+        DeathPlace: {
+            label: 'Место смерти',
+        },
+        Spouses: {
+            FemaleLabel: 'Супруга',
+            MaleLabel: 'Супруг',
+            PluralLabel: 'Супруги',
+            Childs: {
+                SingleLabel: 'ребёнок',
+                PluralLabel: 'детей',
+            },
+        },
+        FilmsCount: {
+            label: 'Всего фильмов',
+        },
+        BestFilms: {
+            label: 'Лучшие фильмы',
+        },
+    },
     MovieMainStaffDictionary: {
         [EMovieMainStaff.DIRECTOR]: 'Режиссер',
         [EMovieMainStaff.WRITER]: 'Сценарий',

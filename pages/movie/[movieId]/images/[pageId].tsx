@@ -13,6 +13,7 @@ import {ParsedUrlQuery} from 'querystring';
 import React, {useEffect, useState} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
+import {T} from 'Common/Text';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
@@ -53,7 +54,7 @@ const Images: React.FC<Props> = ({movieName, movieImages}) => {
     }, []);
 
     useEffect(() => {
-        void router.push(`/movie/${router.query.movieId}/images/${imagesPageId}?&type=${filter}`);
+        void router.push(`/movie/${router.query.movieId}/${T.Pages.Images.route}/${imagesPageId}?&type=${filter}`);
     }, [filter]);
 
     const handleChangeFilter = (type: string) => {
@@ -71,24 +72,26 @@ const Images: React.FC<Props> = ({movieName, movieImages}) => {
 
     const onChange = (pageId: number) => {
         dispatch(setImagesPageId(pageId));
-        void router.replace(`/movie/${router.query.movieId}/images/${pageId}?&type=${filter}`);
+        void router.replace(`/movie/${router.query.movieId}/${T.Pages.Images.route}/${pageId}?&type=${filter}`);
     };
 
     return (
         <>
             <Head>
-                <title>Изображения: {movieName}</title>
+                <title>
+                    {T.Pages.Images.label}: {movieName}
+                </title>
             </Head>
             <ConfigProvider theme={paginationTheme}>
                 <div className={mainStyles.movieDetailsPage}>
                     <div className={mainStyles.movieDetailsContainer}>
                         <div className={mainStyles.movieDetailsTitle}>
-                            <span>Изображения</span> / {movieName}
+                            <span>{T.Pages.Images.label}</span> / {movieName}
                         </div>
                         <div className={mainStyles.backToMovieContainer}>
                             <hr />
                             <span className={mainStyles.backToMovie} onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
-                                Информация о фильме
+                                {T.BackToMovie.label}
                             </span>
                             <hr />
                         </div>

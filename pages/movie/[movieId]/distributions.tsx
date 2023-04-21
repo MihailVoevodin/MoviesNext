@@ -6,6 +6,7 @@ import {GetServerSideProps} from 'next';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {ParsedUrlQuery} from 'querystring';
+import {T} from 'Common/Text';
 import React from 'react';
 import mainStyles from 'styles/main.module.scss';
 
@@ -38,17 +39,19 @@ const Distributions: React.FC<Props> = ({movieDistributions, movieName}) => {
     return (
         <>
             <Head>
-                <title>Прокат: {movieName}</title>
+                <title>
+                    {T.Pages.Distributions.label}: {movieName}
+                </title>
             </Head>
             <div className={mainStyles.movieDetailsPage}>
                 <div className={mainStyles.movieDetailsContainer}>
                     <div className={mainStyles.movieDetailsTitle}>
-                        <span>Прокат</span> / {movieName}
+                        <span>{T.Pages.Distributions.label}</span> / {movieName}
                     </div>
                     <div className={mainStyles.backToMovieContainer}>
                         <hr />
                         <span className={mainStyles.backToMovie} onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
-                            Информация о фильме
+                            {T.BackToMovie.label}
                         </span>
                         <hr />
                     </div>

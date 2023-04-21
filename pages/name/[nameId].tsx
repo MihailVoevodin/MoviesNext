@@ -9,7 +9,8 @@ import {useRouter} from 'next/router';
 import styles from 'pages/name/Name.module.scss';
 import mainStyles from 'styles/main.module.scss';
 import {ParsedUrlQuery} from 'querystring';
-import React, {ReactNode} from 'react';
+import React from 'react';
+import {T} from 'Common/Text';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
@@ -55,7 +56,7 @@ const Person: React.FC<Props> = ({person}) => {
                         </div>
                     </div>
                     <div className={styles.personFacts}>
-                        <h3 className={styles.personFactsTitle}>Факты</h3>
+                        <h3 className={styles.personFactsTitle}>{T.Pages.Facts.label}</h3>
                         <ul>
                             {person.facts.map((fact, id: number) => (
                                 <li key={id} className={styles.personFact}>

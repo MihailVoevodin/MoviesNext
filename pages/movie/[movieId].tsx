@@ -12,6 +12,7 @@ import {ParsedUrlQuery} from 'querystring';
 import React, {useEffect} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch} from 'store/hooks';
+import {T} from 'Common/Text';
 import styles from 'pages/movie/Movie.module.scss';
 import mainStyles from 'styles/main.module.scss';
 import {MovieDetailsReview} from 'components/Movie/MovieDetailsReview/MovieDetailsReview';
@@ -84,25 +85,25 @@ const Movie: React.FC<Props> = ({movie, movieBox, movieStaff}) => {
             <div className={styles.movieDetails}>
                 <div className={styles.movieDetailsContainer}>
                     <ul className={styles.movieTabsList}>
-                        <li className={styles.movieListDefault}>Обзор</li>
+                        <li className={styles.movieListDefault}>{T.Pages.Default.label}</li>
                         <li>
-                            <Link href={`/movie/${movie.kinopoiskId}/awards`}>Награды</Link>
+                            <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Awards.route}`}>{T.Pages.Awards.label}</Link>
                         </li>
                         <li>
-                            <Link href={`/movie/${movie.kinopoiskId}/distributions`}>Прокат</Link>
+                            <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Distributions.route}`}>{T.Pages.Distributions.label}</Link>
                         </li>
                         <li>
-                            <Link href={`/movie/${movie.kinopoiskId}/images/1?&type=STILL`}>Изображения</Link>
+                            <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Images.route}/1?&type=STILL`}>{T.Pages.Images.label}</Link>
                         </li>
                         <li>
-                            <Link href={`/movie/${movie.kinopoiskId}/videos`}>Трейлеры</Link>
+                            <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Videos.route}`}>{T.Pages.Videos.label}</Link>
                         </li>
                         <li>
-                            <Link href={`/movie/${movie.kinopoiskId}/facts`}>Факты</Link>
+                            <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Facts.route}`}>{T.Pages.Facts.label}</Link>
                         </li>
                         <li>
-                            <Link href={`/movie/${movie.kinopoiskId}/reviews/1?&order=DATE_ASC`} shallow={true}>
-                                Рецензии
+                            <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Reviews.route}/1?&order=DATE_ASC`} shallow={true}>
+                                {T.Pages.Reviews.label}
                             </Link>
                         </li>
                     </ul>

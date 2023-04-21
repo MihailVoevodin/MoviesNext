@@ -1,6 +1,7 @@
 import {ConfigProvider, Pagination, Select} from 'antd';
 import axios from 'axios';
 import {REVIEWS_SELECT_DICTIONARY, reviewsTheme} from 'Common/Consts';
+import {EReviewsSelect} from 'Common/Enums';
 import {IMovieReviews} from 'Common/Models';
 import {MovieReview} from 'components/Movie/MovieReview/MovieReview';
 import {GetServerSideProps} from 'next';
@@ -12,6 +13,7 @@ import {setReviewsPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import styles from 'pages/movie/[movieId]/reviews/Reviews.module.scss';
 import mainStyles from 'styles/main.module.scss';
+import {T} from 'Common/Text';
 
 axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
@@ -44,7 +46,7 @@ const Reviews: React.FC<Props> = ({movieReviews, movieName}) => {
     const {total, totalPositiveReviews, totalNegativeReviews, totalNeutralReviews, items} = movieReviews;
     const dispatch = useAppDispatch();
     const {reviewsPageId} = useAppSelector((state) => state.films);
-    const [filter, setFilter] = useState<string>('DATE_ASC');
+    const [filter, setFilter] = useState<string>(EReviewsSelect.DATE_ASC);
 
     useEffect(() => {
         void router.push(`/movie/${router.query.movieId}/reviews/${reviewsPageId}/?&order=${filter}`);
@@ -63,34 +65,44 @@ const Reviews: React.FC<Props> = ({movieReviews, movieName}) => {
     return (
         <>
             <Head>
-                <title>Рецензии: {movieName}</title>
+                <title>
+                    {T.Pages.Reviews.label}: {movieName}
+                </title>
             </Head>
             <ConfigProvider theme={reviewsTheme}>
                 <div className={mainStyles.movieDetailsPage}>
                     <div className={mainStyles.movieDetailsContainer}>
                         <div className={mainStyles.movieDetailsTitle}>
-                            <span>Рецензии</span> / {movieName}
+                            <span>{T.Pages.Reviews.label}</span> / {movieName}
                         </div>
                         <div className={mainStyles.backToMovieContainer}>
                             <hr />
                             <span className={mainStyles.backToMovie} onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
-                                Информация о фильме
+                                {T.BackToMovie.label}
                             </span>
                             <hr />
                         </div>
                         <div>
                             <div className={styles.countsReviewsContainer}>
                                 <div>
-                                    Всего <span>{total}</span>
+                                    <>
+                                        {T.Reviews.Types.All} <span>{total}</span>
+                                    </>
                                 </div>
                                 <div>
-                                    Позитивные <span>{totalPositiveReviews}</span>
+                                    <>
+                                        {T.Reviews.Types.Positive} <span>{totalPositiveReviews}</span>
+                                    </>
                                 </div>
                                 <div>
-                                    Негативные <span>{totalNegativeReviews}</span>
+                                    <>
+                                        {T.Reviews.Types.Negative} <span>{totalNegativeReviews}</span>
+                                    </>
                                 </div>
                                 <div>
-                                    Нейтральные <span>{totalNeutralReviews}</span>
+                                    <>
+                                        {T.Reviews.Types.Neutral} <span>{totalNeutralReviews}</span>
+                                    </>
                                 </div>
                             </div>
                             <div className={styles.sorting}>

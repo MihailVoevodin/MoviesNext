@@ -6,6 +6,7 @@ import {useRouter} from 'next/router';
 import {MovieAward} from 'components/Movie/MovieAwards/MovieAward';
 import {AWARDS_DICTIONARY} from 'Common/Consts';
 import {ParsedUrlQuery} from 'querystring';
+import {T} from 'Common/Text';
 import React from 'react';
 import mainStyles from 'styles/main.module.scss';
 
@@ -38,17 +39,19 @@ const Awards: React.FC<Props> = ({movieAwards, movieName}) => {
     return (
         <>
             <Head>
-                <title>Награды: {movieName}</title>
+                <title>
+                    {T.Pages.Awards.label}: {movieName}
+                </title>
             </Head>
             <div className={mainStyles.movieDetailsPage}>
                 <div className={mainStyles.movieDetailsContainer}>
                     <div className={mainStyles.movieDetailsTitle}>
-                        <span>Рецензии</span> / {movieName}
+                        <span>{T.Pages.Awards.label}</span> / {movieName}
                     </div>
                     <div className={mainStyles.backToMovieContainer}>
                         <hr />
                         <span className={mainStyles.backToMovie} onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
-                            Информация о фильме
+                            {T.BackToMovie.label}
                         </span>
                         <hr />
                     </div>

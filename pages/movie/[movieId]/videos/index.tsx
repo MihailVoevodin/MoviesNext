@@ -6,6 +6,7 @@ import {useRouter} from 'next/router';
 import {ParsedUrlQuery} from 'querystring';
 import React from 'react';
 import ReactPlayer from 'react-player';
+import {T} from 'Common/Text';
 import styles from 'pages/movie/[movieId]/videos/videos.module.scss';
 import mainStyles from 'styles/main.module.scss';
 
@@ -36,17 +37,19 @@ const Videos: React.FC<Props> = ({movieVideos, movieName}) => {
     return (
         <>
             <Head>
-                <title>Видео: {movieName}</title>
+                <title>
+                    {T.Pages.Videos.label}: {movieName}
+                </title>
             </Head>
             <div className={mainStyles.movieDetailsPage}>
                 <div className={mainStyles.movieDetailsContainer}>
                     <div className={mainStyles.movieDetailsTitle}>
-                        <span>Видео</span> / {movieName}
+                        <span>{T.Pages.Videos.label}</span> / {movieName}
                     </div>
                     <div className={mainStyles.backToMovieContainer}>
                         <hr />
                         <span className={mainStyles.backToMovie} onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
-                            Информация о фильме
+                            {T.BackToMovie.label}
                         </span>
                         <hr />
                     </div>
