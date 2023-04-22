@@ -78,7 +78,7 @@ const Reviews: React.FC<Props> = ({movieReviews, movieName}) => {
                         <div className={mainStyles.backToMovieContainer}>
                             <hr />
                             <span className={mainStyles.backToMovie} onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
-                                {T.BackToMovie.label}
+                                {T.Pages.backToMovie}
                             </span>
                             <hr />
                         </div>
@@ -86,22 +86,22 @@ const Reviews: React.FC<Props> = ({movieReviews, movieName}) => {
                             <div className={styles.countsReviewsContainer}>
                                 <div>
                                     <>
-                                        {T.Reviews.Types.All} <span>{total}</span>
+                                        {T.Movie.Reviews.Types.all} <span>{total}</span>
                                     </>
                                 </div>
                                 <div>
                                     <>
-                                        {T.Reviews.Types.Positive} <span>{totalPositiveReviews}</span>
+                                        {T.Movie.Reviews.Types.positive} <span>{totalPositiveReviews}</span>
                                     </>
                                 </div>
                                 <div>
                                     <>
-                                        {T.Reviews.Types.Negative} <span>{totalNegativeReviews}</span>
+                                        {T.Movie.Reviews.Types.negative} <span>{totalNegativeReviews}</span>
                                     </>
                                 </div>
                                 <div>
                                     <>
-                                        {T.Reviews.Types.Neutral} <span>{totalNeutralReviews}</span>
+                                        {T.Movie.Reviews.Types.neutral} <span>{totalNeutralReviews}</span>
                                     </>
                                 </div>
                             </div>

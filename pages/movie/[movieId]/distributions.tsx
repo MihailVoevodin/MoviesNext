@@ -51,7 +51,7 @@ const Distributions: React.FC<Props> = ({movieDistributions, movieName}) => {
                     <div className={mainStyles.backToMovieContainer}>
                         <hr />
                         <span className={mainStyles.backToMovie} onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
-                            {T.BackToMovie.label}
+                            {T.Pages.backToMovie}
                         </span>
                         <hr />
                     </div>

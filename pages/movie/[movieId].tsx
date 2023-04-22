@@ -85,7 +85,7 @@ const Movie: React.FC<Props> = ({movie, movieBox, movieStaff}) => {
             <div className={styles.movieDetails}>
                 <div className={styles.movieDetailsContainer}>
                     <ul className={styles.movieTabsList}>
-                        <li className={styles.movieListDefault}>{T.Pages.Default.label}</li>
+                        <li className={styles.movieListDefault}>{T.Pages.default}</li>
                         <li>
                             <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Awards.route}`}>{T.Pages.Awards.label}</Link>
                         </li>

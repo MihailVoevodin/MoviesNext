@@ -22,35 +22,35 @@ export const PersonAbout: React.FC<Props> = ({person}) => {
             </div>
             <div className={styles.personAboutContainer}>
                 <div>
-                    <h3 className={styles.personAboutTitle}>{T.PersonPage.Title.label}</h3>
+                    <h3 className={styles.personAboutTitle}>{T.Person.title}</h3>
                     <div className={styles.personItem}>
-                        <div className={styles.personItemText}>{T.PersonPage.Profession.label}</div>
+                        <div className={styles.personItemText}>{T.Person.profession}</div>
                         <div>{person.profession}</div>
                     </div>
                     <div className={styles.personItem}>
-                        <div className={styles.personItemText}>{T.PersonPage.Growth.label}</div>
+                        <div className={styles.personItemText}>{T.Person.growth}</div>
                         <div>{person.growth / 100} м</div>
                     </div>
                     <div className={styles.personItem}>
-                        <div className={styles.personItemText}>{T.PersonPage.Birthday.label}</div>
+                        <div className={styles.personItemText}>{T.Person.birthday}</div>
                         <div>
                             {moment(person.birthday).format('D MMMM, YYYY')} {!person.death && `• ${moment(person.birthday).fromNow(true)}`}
                         </div>
                     </div>
                     <div className={styles.personItem}>
-                        <div className={styles.personItemText}>{T.PersonPage.BirthPlace.label}</div>
+                        <div className={styles.personItemText}>{T.Person.birthPlace}</div>
                         <div>{person.birthplace}</div>
                     </div>
                     {person.death && (
                         <>
                             <div className={styles.personItem}>
-                                <div className={styles.personItemText}>{T.PersonPage.Death.label}</div>
+                                <div className={styles.personItemText}>{T.Person.death}</div>
                                 <div>
                                     {moment(person.death).format('D MMMM, YYYY')} • {moment(person.death).from(person.birthday, true)}
                                 </div>
                             </div>
                             <div className={styles.personItem}>
-                                <div className={styles.personItemText}>{T.PersonPage.DeathPlace.label}</div>
+                                <div className={styles.personItemText}>{T.Person.deathPlace}</div>
                                 <div>{person.deathplace}</div>
                             </div>
                         </>
@@ -60,9 +60,9 @@ export const PersonAbout: React.FC<Props> = ({person}) => {
                             <div className={styles.personItemText}>
                                 {person.spouses.length === 1
                                     ? person.sex === 'MALE'
-                                        ? T.PersonPage.Spouses.FemaleLabel
-                                        : T.PersonPage.Spouses.MaleLabel
-                                    : T.PersonPage.Spouses.PluralLabel}
+                                        ? T.Person.Spouses.female
+                                        : T.Person.Spouses.male
+                                    : T.Person.Spouses.plural}
                             </div>
                             <div>
                                 {person.spouses.map((spouse) => (
@@ -70,9 +70,7 @@ export const PersonAbout: React.FC<Props> = ({person}) => {
                                         {spouse.name} {spouse.divorced && spouse.divorcedReason}{' '}
                                         {spouse.children > 0 &&
                                             `(${spouse.children} ${
-                                                spouse.children === 1
-                                                    ? T.PersonPage.Spouses.Childs.SingleLabel
-                                                    : T.PersonPage.Spouses.Childs.PluralLabel
+                                                spouse.children === 1 ? T.Person.Spouses.childs.single : T.Person.Spouses.childs.plural
                                             })`}
                                     </div>
                                 ))}
@@ -80,12 +78,12 @@ export const PersonAbout: React.FC<Props> = ({person}) => {
                         </div>
                     )}
                     <div className={styles.personItem}>
-                        <div className={styles.personItemText}>{T.PersonPage.FilmsCount.label}</div>
+                        <div className={styles.personItemText}>{T.Person.filmsCount}</div>
                         <div>{person.films.length}</div>
                     </div>
                 </div>
                 <div>
-                    <h3 className={styles.personAboutTitle}>{T.PersonPage.BestFilms.label}</h3>
+                    <h3 className={styles.personAboutTitle}>{T.Person.bestFilms}</h3>
                     <PersonBestFilms films={person.films} />
                 </div>
             </div>

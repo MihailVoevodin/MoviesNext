@@ -20,15 +20,15 @@ const MovieAbout: React.FC<Props> = ({movie, movieStaff, movieBox}) => {
     return (
         <div className={styles.aboutContainer}>
             <div className={styles.about}>
-                <h3>{movie.serial ? 'О сериале' : 'О фильме'}</h3>
+                <h3>{movie.serial ? T.Movie.movieTitle : T.Movie.serialTitle}</h3>
                 <div className={styles.aboutItem}>
-                    <div className={styles.aboutItemText}>Год производства</div>
+                    <div className={styles.aboutItemText}>{T.Movie.year}</div>
                     <div>
                         {movie.year} {movie.serial && movie.endYear - movie.startYear + 'сезонов'}
                     </div>
                 </div>
                 <div className={styles.aboutItem}>
-                    <div className={styles.aboutItemText}>Страна</div>
+                    <div className={styles.aboutItemText}>{T.Movie.country}</div>
                     <div className={styles.aboutItemContent}>
                         {movie.countries.map((item, id: number) => (
                             <span key={id}>
@@ -39,7 +39,7 @@ const MovieAbout: React.FC<Props> = ({movie, movieStaff, movieBox}) => {
                     </div>
                 </div>
                 <div className={styles.aboutItem}>
-                    <div className={styles.aboutItemText}>Жанр</div>
+                    <div className={styles.aboutItemText}>{T.Movie.genre}</div>
                     <div className={styles.aboutItemContent}>
                         {movie.genres.map((item, id: number) => (
                             <span key={id}>
@@ -50,7 +50,7 @@ const MovieAbout: React.FC<Props> = ({movie, movieStaff, movieBox}) => {
                     </div>
                 </div>
                 <div className={styles.aboutItem}>
-                    <div className={styles.aboutItemText}>Слоган</div>
+                    <div className={styles.aboutItemText}>{T.Movie.slogan}</div>
                     <div className={styles.aboutItemContent}>
                         {movie.slogan ? <span>&#171;{movie.slogan}&#187;</span> : <span>&#8212;</span>}
                     </div>
@@ -62,17 +62,17 @@ const MovieAbout: React.FC<Props> = ({movie, movieStaff, movieBox}) => {
                     <MovieAboutBox key={box.type} movieBox={movieBox.items} type={box.type} text={box.text} />
                 ))}
                 <div className={styles.aboutItem}>
-                    <div className={styles.aboutItemText}>Возраст</div>
+                    <div className={styles.aboutItemText}>{T.Movie.age}</div>
                     <div className={styles.aboutItemBorder}>{movie.ratingAgeLimits.slice(3, 5)}+</div>
                 </div>
                 {movie.ratingMpaa && (
                     <div className={styles.aboutItem}>
-                        <div className={styles.aboutItemText}>Рейтинг MPAA</div>
+                        <div className={styles.aboutItemText}>{T.Movie.ratingMPAA}</div>
                         <div className={styles.aboutItemBorder}>{movie.ratingMpaa.toUpperCase()}</div>
                     </div>
                 )}
                 <div className={styles.aboutItem}>
-                    <div className={styles.aboutItemText}>Время</div>
+                    <div className={styles.aboutItemText}>{T.Movie.duration}</div>
                     <div>
                         {movie.filmLength} мин. / {Math.floor(movie.filmLength / 60)}:{movie.filmLength % 60 < 10 && 0}
                         {movie.filmLength % 60}
@@ -82,7 +82,7 @@ const MovieAbout: React.FC<Props> = ({movie, movieStaff, movieBox}) => {
             <div className={styles.actors}>
                 <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Staff.route}`}>
                     <h3>
-                        В ролях <RightOutlined />
+                        {T.Movie.castTitle} <RightOutlined />
                     </h3>
                 </Link>
                 <MovieAboutActors movieStaff={movieStaff} professionKey={EMovieStaff.ACTOR} />
