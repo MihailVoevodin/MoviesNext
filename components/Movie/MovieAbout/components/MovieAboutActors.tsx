@@ -1,7 +1,7 @@
 import {Popover} from 'antd';
 import {IMovieStaff} from 'Common/Models';
-import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
 import {MovieAboutPersonPopover} from 'components/Movie/MovieAbout/components/MovieAboutPersonPopover/MovieAboutPersonPopover';
+import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
 import Link from 'next/link';
 import React from 'react';
 

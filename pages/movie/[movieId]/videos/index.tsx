@@ -1,13 +1,13 @@
 import {IMovieVideo} from 'Common/Models';
 import {Services} from 'Common/Services';
+import {T} from 'Common/Text';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
+import styles from 'pages/movie/[movieId]/videos/videos.module.scss';
 import {ParsedUrlQuery} from 'querystring';
 import React from 'react';
 import ReactPlayer from 'react-player';
-import {T} from 'Common/Text';
-import styles from 'pages/movie/[movieId]/videos/videos.module.scss';
 import mainStyles from 'styles/main.module.scss';
 
 type Props = {

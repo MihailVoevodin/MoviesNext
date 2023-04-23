@@ -1,13 +1,13 @@
 import {STAFF_DICTIONARY} from 'Common/Consts';
 import {IMovieStaff} from 'Common/Models';
 import {Services} from 'Common/Services';
+import {T} from 'Common/Text';
 import {MovieStaff} from 'components/Movie/MovieStaff/MovieStaff';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {ParsedUrlQuery} from 'querystring';
 import React from 'react';
-import {T} from 'Common/Text';
 import mainStyles from 'styles/main.module.scss';
 
 type Props = {

@@ -1,9 +1,9 @@
 import {EMovieDistributions} from 'Common/Enums';
 import {IMovieDistribution} from 'Common/Models';
+import {T} from 'Common/Text';
 import styles from 'components/Movie/MovieDistributions/MovieDistribution.module.scss';
 import moment from 'moment';
 import 'moment/locale/ru';
-import {T} from 'Common/Text';
 import React from 'react';
 moment.locale('ru');
 

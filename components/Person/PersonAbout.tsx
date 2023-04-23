@@ -1,10 +1,10 @@
 import {IPerson} from 'Common/Models';
+import {T} from 'Common/Text';
 import styles from 'components/Person/PersonAbout.module.scss';
 import {PersonBestFilms} from 'components/Person/PersonBestFilms';
 import moment from 'moment';
 import 'moment/locale/ru';
 import Link from 'next/link';
-import {T} from 'Common/Text';
 import React from 'react';
 moment.locale('ru');
 

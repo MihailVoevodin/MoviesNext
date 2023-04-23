@@ -3,17 +3,17 @@ import {REVIEWS_SELECT_DICTIONARY, reviewsTheme} from 'Common/Consts';
 import {EReviewsSelect} from 'Common/Enums';
 import {IMovieReviews} from 'Common/Models';
 import {Services} from 'Common/Services';
+import {T} from 'Common/Text';
 import {MovieReview} from 'components/Movie/MovieReview/MovieReview';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
+import styles from 'pages/movie/[movieId]/reviews/Reviews.module.scss';
 import {ParsedUrlQuery} from 'querystring';
 import React, {useEffect, useState} from 'react';
 import {setReviewsPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
-import styles from 'pages/movie/[movieId]/reviews/Reviews.module.scss';
 import mainStyles from 'styles/main.module.scss';
-import {T} from 'Common/Text';
 
 type Props = {
     movieName: string;

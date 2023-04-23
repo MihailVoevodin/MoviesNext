@@ -1,9 +1,9 @@
 import 'styles/globals.scss';
 import Layout from 'components/Layout/Layout';
 import type {AppProps} from 'next/app';
+import NextNProgress from 'nextjs-progressbar';
 import {Provider} from 'react-redux';
 import {store} from 'store/Store';
-import NextNProgress from 'nextjs-progressbar';
 
 const App = ({Component, pageProps}: AppProps) => {
     return (

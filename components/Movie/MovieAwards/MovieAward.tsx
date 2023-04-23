@@ -1,8 +1,8 @@
+import {CaretRightFilled} from '@ant-design/icons';
 import {IMovieAward, IPerson} from 'Common/Models';
 import styles from 'components/Movie/MovieAwards/MovieAward.module.scss';
-import {CaretRightFilled} from '@ant-design/icons';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 type Props = {

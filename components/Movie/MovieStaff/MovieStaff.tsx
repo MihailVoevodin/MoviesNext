@@ -1,5 +1,5 @@
-import {IMovieStaff} from 'Common/Models';
 import {EMovieStaff} from 'Common/Enums';
+import {IMovieStaff} from 'Common/Models';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from 'pages/movie/[movieId]/staff/Staff.module.scss';

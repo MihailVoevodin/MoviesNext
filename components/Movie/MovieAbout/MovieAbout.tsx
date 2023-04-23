@@ -1,13 +1,13 @@
+import {RightOutlined} from '@ant-design/icons';
 import {BOX_DICTIONARY, MAIN_STAFF_DICTIONARY} from 'Common/Consts';
 import {EMovieStaff} from 'Common/Enums';
 import {IMovieBox, IMovieDetails, IMovieStaff} from 'Common/Models';
-import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
-import {RightOutlined} from '@ant-design/icons';
-import {MovieAboutActors} from 'components/Movie/MovieAbout/components/MovieAboutActors';
-import {MovieAboutStaff} from 'components/Movie/MovieAbout/components/MovieAboutStaff';
-import {MovieAboutBox} from 'components/Movie/MovieAbout/components/MovieAboutBox';
-import Link from 'next/link';
 import {T} from 'Common/Text';
+import {MovieAboutActors} from 'components/Movie/MovieAbout/components/MovieAboutActors';
+import {MovieAboutBox} from 'components/Movie/MovieAbout/components/MovieAboutBox';
+import {MovieAboutStaff} from 'components/Movie/MovieAbout/components/MovieAboutStaff';
+import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
+import Link from 'next/link';
 import React from 'react';
 
 type Props = {

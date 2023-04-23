@@ -1,21 +1,21 @@
+import {ArrowLeftOutlined} from '@ant-design/icons';
 import {IMovieDetails, IMovieBox, IMovieStaff} from 'Common/Models';
 import {Services} from 'Common/Services';
+import {T} from 'Common/Text';
 import {MovieAbout} from 'components/Movie/MovieAbout/MovieAbout';
+import {MovieDetailsReview} from 'components/Movie/MovieDetailsReview/MovieDetailsReview';
 import {MovieMainInfo} from 'components/Movie/MovieMainInfo/MovieMainInfo';
 import {GetServerSideProps} from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
 import Head from 'next/head';
-import {ArrowLeftOutlined} from '@ant-design/icons';
+import Image from 'next/image';
+import Link from 'next/link';
 import {useRouter} from 'next/router';
+import styles from 'pages/movie/Movie.module.scss';
 import {ParsedUrlQuery} from 'querystring';
 import React, {useEffect} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch} from 'store/hooks';
-import {T} from 'Common/Text';
-import styles from 'pages/movie/Movie.module.scss';
 import mainStyles from 'styles/main.module.scss';
-import {MovieDetailsReview} from 'components/Movie/MovieDetailsReview/MovieDetailsReview';
 
 type Props = {
     movie: IMovieDetails;

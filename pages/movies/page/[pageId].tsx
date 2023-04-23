@@ -1,17 +1,17 @@
-import {Services} from 'Common/Services';
-import React from 'react';
 import {ConfigProvider, Pagination} from 'antd';
-import {IMovie} from 'Common/Models';
-import {GetServerSideProps} from 'next';
-import {ParsedUrlQuery} from 'querystring';
 import {paginationTheme} from 'Common/Consts';
+import {IMovie} from 'Common/Models';
+import {Services} from 'Common/Services';
+import {GetServerSideProps} from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import {useRouter} from 'next/router';
+import styles from 'pages/movies/page/Movies.module.scss';
+import {ParsedUrlQuery} from 'querystring';
+import React from 'react';
 import {setPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
-import styles from 'pages/movies/page/Movies.module.scss';
 import mainStyles from 'styles/main.module.scss';
 
 type Props = {

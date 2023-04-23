@@ -1,11 +1,11 @@
-import {IMovieReview} from 'Common/Models';
-import {MovieReviewBgColor} from 'components/Movie/MovieReview/MovieReviewBgColor';
 import {LikeOutlined, DislikeOutlined} from '@ant-design/icons';
-import Image from 'next/image';
-import User from 'public/User.png';
-import styles from 'pages/movie/[movieId]/reviews/Reviews.module.scss';
+import {IMovieReview} from 'Common/Models';
 import {T} from 'Common/Text';
+import {MovieReviewBgColor} from 'components/Movie/MovieReview/MovieReviewBgColor';
 import moment from 'moment';
+import Image from 'next/image';
+import styles from 'pages/movie/[movieId]/reviews/Reviews.module.scss';
+import User from 'public/User.png';
 import 'moment/locale/ru';
 import React, {useEffect, useState} from 'react';
 moment.locale('ru');

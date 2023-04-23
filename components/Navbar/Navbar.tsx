@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import styles from 'components/Navbar/Navbar.module.scss';
+import Link from 'next/link';
 import React from 'react';
 import {useAppSelector} from 'store/hooks';
 
