@@ -1,6 +1,6 @@
-import axios from 'axios';
 import {STAFF_DICTIONARY} from 'Common/Consts';
 import {IMovieStaff} from 'Common/Models';
+import {Services} from 'Common/Services';
 import {MovieStaff} from 'components/Movie/MovieStaff/MovieStaff';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
@@ -9,8 +9,6 @@ import {ParsedUrlQuery} from 'querystring';
 import React from 'react';
 import {T} from 'Common/Text';
 import mainStyles from 'styles/main.module.scss';
-
-axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
 type Props = {
     movieName: string;
@@ -23,10 +21,10 @@ interface Params extends ParsedUrlQuery {
 
 export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
     const {movieId} = context.params!;
-    const responseFilm = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}`);
-    const responseStaff = await axios.get(`https://kinopoiskapiunofficial.tech/api/v1/staff?filmId=${movieId}`);
-    const movieName = responseFilm.data.nameRu;
-    const movieStaff = responseStaff.data;
+    const movieResponse = await Services.getMovie(movieId);
+    const staffResponse = await Services.getMovieStaff(movieId);
+    const movieName = movieResponse.data.nameRu;
+    const movieStaff = staffResponse.data;
     return {
         props: {movieStaff, movieName},
     };

@@ -1,5 +1,5 @@
-import axios from 'axios';
-import {IMovieAwards} from 'Common/Models';
+import {IMovieAward} from 'Common/Models';
+import {Services} from 'Common/Services';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
@@ -10,11 +10,9 @@ import {T} from 'Common/Text';
 import React from 'react';
 import mainStyles from 'styles/main.module.scss';
 
-axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
-
 type Props = {
     movieName: string;
-    movieAwards: IMovieAwards;
+    movieAwards: IMovieAward[];
 };
 
 interface Params extends ParsedUrlQuery {
@@ -23,10 +21,10 @@ interface Params extends ParsedUrlQuery {
 
 export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
     const {movieId} = context.params!;
-    const responseFilm = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}`);
-    const responseAwards = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}/awards`);
-    const movieName = responseFilm.data.nameRu;
-    const movieAwards = responseAwards.data;
+    const movieResponse = await Services.getMovie(movieId);
+    const awardsResponse = await Services.getMovieAwards(movieId);
+    const movieName = movieResponse.data.nameRu;
+    const movieAwards = awardsResponse.data.items;
     return {
         props: {movieAwards, movieName},
     };
@@ -34,7 +32,6 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
 
 const Awards: React.FC<Props> = ({movieAwards, movieName}) => {
     const router = useRouter();
-    const {items} = movieAwards;
 
     return (
         <>
@@ -57,7 +54,7 @@ const Awards: React.FC<Props> = ({movieAwards, movieName}) => {
                     </div>
                     <div>
                         {AWARDS_DICTIONARY.map((award) => (
-                            <MovieAward key={award.type} movieAwards={items} text={award.text} />
+                            <MovieAward key={award.type} movieAwards={movieAwards} text={award.text} />
                         ))}
                     </div>
                 </div>

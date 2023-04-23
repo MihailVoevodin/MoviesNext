@@ -4,6 +4,7 @@ import {LikeOutlined, DislikeOutlined} from '@ant-design/icons';
 import Image from 'next/image';
 import User from 'public/User.png';
 import styles from 'pages/movie/[movieId]/reviews/Reviews.module.scss';
+import {T} from 'Common/Text';
 import moment from 'moment';
 import 'moment/locale/ru';
 import React, {useEffect, useState} from 'react';
@@ -33,7 +34,7 @@ export const MovieReview: React.FC<Props> = ({review}) => {
                     <Image src={User} alt={'.'} /> <span>{review.author}</span>
                 </div>
                 <div>
-                    <div>{moment(review.date).format('DD MMMM YYYY | hh:mm')}</div>
+                    <div>{moment(review.date).format(T.dateAndTime)}</div>
                     <div className={styles.reviewType}>
                         <span>Тип рецензии: </span>
                         <LikeOutlined style={{color: colors[0]}} />

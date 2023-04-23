@@ -1,8 +1,8 @@
 import {ConfigProvider, Pagination} from 'antd';
-import axios from 'axios';
 import {CloseIcon} from 'Common/CloseIcon';
 import {IMAGES_DICTIONARY, paginationTheme} from 'Common/Consts';
 import {IMovieImages, IMovieImage} from 'Common/Models';
+import {Services} from 'Common/Services';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -14,8 +14,6 @@ import React, {useEffect, useState} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {T} from 'Common/Text';
-
-axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
 type Props = {
     movieName: string;
@@ -30,12 +28,10 @@ interface Params extends ParsedUrlQuery {
 export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
     const {movieId, pageId} = context.params!;
     const {type} = context.query;
-    const responseFilm = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}`);
-    const responseImages = await axios.get(
-        `https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}/images?type=${type}&page=${pageId}`
-    );
-    const movieName = responseFilm.data.nameRu;
-    const movieImages = responseImages.data;
+    const movieResponse = await Services.getMovie(movieId);
+    const imagesResponse = await Services.getMovieImages(movieId, type, pageId);
+    const movieName = movieResponse.data.nameRu;
+    const movieImages = imagesResponse.data;
     return {
         props: {movieName, movieImages},
     };

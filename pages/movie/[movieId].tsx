@@ -1,5 +1,5 @@
-import axios from 'axios';
 import {IMovieDetails, IMovieBox, IMovieStaff} from 'Common/Models';
+import {Services} from 'Common/Services';
 import {MovieAbout} from 'components/Movie/MovieAbout/MovieAbout';
 import {MovieMainInfo} from 'components/Movie/MovieMainInfo/MovieMainInfo';
 import {GetServerSideProps} from 'next';
@@ -17,8 +17,6 @@ import styles from 'pages/movie/Movie.module.scss';
 import mainStyles from 'styles/main.module.scss';
 import {MovieDetailsReview} from 'components/Movie/MovieDetailsReview/MovieDetailsReview';
 
-axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
-
 type Props = {
     movie: IMovieDetails;
     movieBox: IMovieBox;
@@ -31,10 +29,10 @@ interface Params extends ParsedUrlQuery {
 
 export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
     const {movieId} = context.params!;
-    const responseFilm = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}`);
-    const responseBox = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}/box_office`);
-    const responseStaff = await axios.get(`https://kinopoiskapiunofficial.tech/api/v1/staff?filmId=${movieId}`);
-    const movie = responseFilm.data;
+    const movieResponse = await Services.getMovie(movieId);
+    const responseBox = await Services.getMovieBox(movieId);
+    const responseStaff = await Services.getMovieStaff(movieId);
+    const movie = movieResponse.data;
     const movieBox = responseBox.data;
     const movieStaff = responseStaff.data;
 

@@ -34,7 +34,7 @@ export const PersonAbout: React.FC<Props> = ({person}) => {
                     <div className={styles.personItem}>
                         <div className={styles.personItemText}>{T.Person.birthday}</div>
                         <div>
-                            {moment(person.birthday).format('D MMMM, YYYY')} {!person.death && `• ${moment(person.birthday).fromNow(true)}`}
+                            {moment(person.birthday).format(T.date)} {!person.death && `• ${moment(person.birthday).fromNow(true)}`}
                         </div>
                     </div>
                     <div className={styles.personItem}>
@@ -46,7 +46,7 @@ export const PersonAbout: React.FC<Props> = ({person}) => {
                             <div className={styles.personItem}>
                                 <div className={styles.personItemText}>{T.Person.death}</div>
                                 <div>
-                                    {moment(person.death).format('D MMMM, YYYY')} • {moment(person.death).from(person.birthday, true)}
+                                    {moment(person.death).format(T.date)} • {moment(person.death).from(person.birthday, true)}
                                 </div>
                             </div>
                             <div className={styles.personItem}>

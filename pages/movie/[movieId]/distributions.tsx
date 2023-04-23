@@ -1,6 +1,6 @@
-import axios from 'axios';
 import {DISTRIBUTIONS_DICTIONARY} from 'Common/Consts';
-import {IMovieDistributions} from 'Common/Models';
+import {IMovieDistribution} from 'Common/Models';
+import {Services} from 'Common/Services';
 import {MovieDistribution} from 'components/Movie/MovieDistributions/MovieDistribution';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
@@ -10,11 +10,9 @@ import {T} from 'Common/Text';
 import React from 'react';
 import mainStyles from 'styles/main.module.scss';
 
-axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
-
 type Props = {
     movieName: string;
-    movieDistributions: IMovieDistributions;
+    movieDistributions: IMovieDistribution[];
 };
 
 interface Params extends ParsedUrlQuery {
@@ -23,10 +21,10 @@ interface Params extends ParsedUrlQuery {
 
 export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
     const {movieId} = context.params!;
-    const responseFilm = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}`);
-    const responseDistributions = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}/distributions`);
-    const movieName = responseFilm.data.nameRu;
-    const movieDistributions = responseDistributions.data;
+    const movieResponse = await Services.getMovie(movieId);
+    const distributionsResponse = await Services.getMovieDistributions(movieId);
+    const movieName = movieResponse.data.nameRu;
+    const movieDistributions = distributionsResponse.data.items;
     return {
         props: {movieDistributions, movieName},
     };
@@ -34,7 +32,6 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
 
 const Distributions: React.FC<Props> = ({movieDistributions, movieName}) => {
     const router = useRouter();
-    const {items} = movieDistributions;
 
     return (
         <>
@@ -59,7 +56,7 @@ const Distributions: React.FC<Props> = ({movieDistributions, movieName}) => {
                         {DISTRIBUTIONS_DICTIONARY.map((distribution) => (
                             <MovieDistribution
                                 key={distribution.type}
-                                movieDistributions={items}
+                                movieDistributions={movieDistributions}
                                 type={distribution.type}
                                 text={distribution.text}
                             />

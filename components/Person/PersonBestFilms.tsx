@@ -16,9 +16,11 @@ export const PersonBestFilms: React.FC<Props> = ({films}) => {
             if (item.general) {
                 arr.push(item.nameRu);
                 return true;
+            } else {
+                arr.push(item.nameRu);
+                return true;
             }
         }
-        return false;
     }
 
     const filteredFilms = films.filter((film) => itemCheck(film)).sort((prev, next) => Number(next.rating) - Number(prev.rating));

@@ -1,6 +1,6 @@
 import {ArrowLeftOutlined} from '@ant-design/icons';
-import axios from 'axios';
 import {IPerson} from 'Common/Models';
+import {Services} from 'Common/Services';
 import {PersonAbout} from 'components/Person/PersonAbout';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
@@ -12,8 +12,6 @@ import {ParsedUrlQuery} from 'querystring';
 import React from 'react';
 import {T} from 'Common/Text';
 
-axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
-
 type Props = {
     person: IPerson;
 };
@@ -24,8 +22,8 @@ interface Params extends ParsedUrlQuery {
 
 export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
     const {nameId} = context.params!;
-    const response = await axios.get(`https://kinopoiskapiunofficial.tech/api/v1/staff/${nameId}`);
-    const person = response.data;
+    const personResponse = await Services.getPerson(nameId);
+    const person = personResponse.data;
     return {
         props: {person},
     };
@@ -55,16 +53,18 @@ const Person: React.FC<Props> = ({person}) => {
                             <PersonAbout person={person} />
                         </div>
                     </div>
-                    <div className={styles.personFacts}>
-                        <h3 className={styles.personFactsTitle}>{T.Pages.Facts.label}</h3>
-                        <ul>
-                            {person.facts.map((fact, id: number) => (
-                                <li key={id} className={styles.personFact}>
-                                    {fact}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                    {person.facts.length > 0 && (
+                        <div className={styles.personFacts}>
+                            <h3 className={styles.personFactsTitle}>{T.Pages.Facts.label}</h3>
+                            <ul>
+                                {person.facts.map((fact, id: number) => (
+                                    <li key={id} className={styles.personFact}>
+                                        {fact}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    )}
                 </div>
             </main>
         </>

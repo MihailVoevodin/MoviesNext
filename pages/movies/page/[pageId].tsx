@@ -1,6 +1,6 @@
+import {Services} from 'Common/Services';
 import React from 'react';
 import {ConfigProvider, Pagination} from 'antd';
-import axios from 'axios';
 import {IMovie} from 'Common/Models';
 import {GetServerSideProps} from 'next';
 import {ParsedUrlQuery} from 'querystring';
@@ -14,8 +14,6 @@ import {useAppDispatch, useAppSelector} from 'store/hooks';
 import styles from 'pages/movies/page/Movies.module.scss';
 import mainStyles from 'styles/main.module.scss';
 
-axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
-
 type Props = {
     movies: IMovie[];
 };
@@ -26,8 +24,8 @@ interface Params extends ParsedUrlQuery {
 
 export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
     const {pageId} = context.params!;
-    const response = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=${pageId}`);
-    const movies = response.data.films;
+    const moviesResponse = await Services.getMoviesTop_250(pageId);
+    const movies = moviesResponse.data.films;
     return {
         props: {movies},
     };

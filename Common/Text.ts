@@ -10,6 +10,8 @@ import {
 } from 'Common/Enums';
 
 export const T = {
+    date: 'D MMMM YYYY',
+    dateAndTime: 'DD MMMM YYYY | hh:mm',
     Pages: {
         backToMovie: 'Информация о фильме',
         default: 'Обзор',

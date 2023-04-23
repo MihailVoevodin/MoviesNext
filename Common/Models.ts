@@ -76,20 +76,10 @@ export interface IMovieStaff {
     professionText: string;
 }
 
-export interface IMovieFacts {
-    total: number;
-    items: IMovieFact[];
-}
-
 export interface IMovieFact {
     text: string;
     type: string;
     spoiler: boolean;
-}
-
-export interface IMovieAwards {
-    total: number;
-    items: IMovieAward[];
 }
 
 export interface IMovieAward {
@@ -99,11 +89,6 @@ export interface IMovieAward {
     nominationName: string;
     year: number;
     persons: IPerson[];
-}
-
-export interface IMovieDistributions {
-    total: number;
-    items: IMovieDistribution[];
 }
 
 export interface IMovieDistribution {

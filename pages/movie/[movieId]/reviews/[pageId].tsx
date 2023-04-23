@@ -1,8 +1,8 @@
 import {ConfigProvider, Pagination, Select} from 'antd';
-import axios from 'axios';
 import {REVIEWS_SELECT_DICTIONARY, reviewsTheme} from 'Common/Consts';
 import {EReviewsSelect} from 'Common/Enums';
 import {IMovieReviews} from 'Common/Models';
+import {Services} from 'Common/Services';
 import {MovieReview} from 'components/Movie/MovieReview/MovieReview';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
@@ -14,8 +14,6 @@ import {useAppDispatch, useAppSelector} from 'store/hooks';
 import styles from 'pages/movie/[movieId]/reviews/Reviews.module.scss';
 import mainStyles from 'styles/main.module.scss';
 import {T} from 'Common/Text';
-
-axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
 
 type Props = {
     movieName: string;
@@ -30,10 +28,8 @@ interface Params extends ParsedUrlQuery {
 export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
     const {movieId, pageId} = context.params!;
     const {order} = context.query;
-    const responseFilm = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}`);
-    const responseReviews = await axios.get(
-        `https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}/reviews?page=${pageId}&order=${order}`
-    );
+    const responseFilm = await Services.getMovie(movieId);
+    const responseReviews = await Services.getMovieReviews(movieId, pageId, order);
     const movieName = responseFilm.data.nameRu;
     const movieReviews = responseReviews.data;
     return {
@@ -49,12 +45,12 @@ const Reviews: React.FC<Props> = ({movieReviews, movieName}) => {
     const [filter, setFilter] = useState<string>(EReviewsSelect.DATE_ASC);
 
     useEffect(() => {
-        void router.push(`/movie/${router.query.movieId}/reviews/${reviewsPageId}/?&order=${filter}`);
+        void router.push(`/movie/${router.query.movieId}/${T.Pages.Reviews.route}/${reviewsPageId}/?&order=${filter}`);
     }, [filter]);
 
     const onChange = (pageId: number) => {
         dispatch(setReviewsPageId(pageId));
-        void router.replace(`/movie/${router.query.movieId}/reviews/${pageId}/?&order=${filter}`);
+        void router.replace(`/movie/${router.query.movieId}/${T.Pages.Reviews.route}/${pageId}/?&order=${filter}`);
     };
 
     const handleFilterChange = (value: string) => {
@@ -106,7 +102,7 @@ const Reviews: React.FC<Props> = ({movieReviews, movieName}) => {
                                 </div>
                             </div>
                             <div className={styles.sorting}>
-                                <span className={styles.text}>Сортировать:</span>
+                                <span className={styles.text}>{T.Movie.Reviews.SortingSelect.label}</span>
                                 <Select
                                     defaultValue={REVIEWS_SELECT_DICTIONARY[0].value}
                                     style={{width: 300}}

@@ -1,20 +1,18 @@
-import axios from 'axios';
 import {FACTS_DICTIONARY} from 'Common/Consts';
-import {IMovieFacts} from 'Common/Models';
+import {IMovieFact} from 'Common/Models';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {MovieFacts} from 'components/Movie/MovieFacts/MovieFacts';
 import {ParsedUrlQuery} from 'querystring';
+import {Services} from 'Common/Services';
 import React from 'react';
 import mainStyles from 'styles/main.module.scss';
 import {T} from 'Common/Text';
 
-axios.defaults.headers['X-API-KEY'] = 'ba2becc0-f421-4ef5-bf44-ebac95a88660';
-
 type Props = {
     movieName: string;
-    movieFacts: IMovieFacts;
+    movieFacts: IMovieFact[];
 };
 
 interface Params extends ParsedUrlQuery {
@@ -23,11 +21,11 @@ interface Params extends ParsedUrlQuery {
 
 export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
     const {movieId} = context.params!;
-    const responseFilm = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}`);
-    const responseFacts = await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}/facts`);
-    const movieName = responseFilm.data.nameRu;
-    const movieFacts = responseFacts.data;
-    console.log(movieFacts);
+    const movieResponse = await Services.getMovie(movieId);
+    const factsResponse = await Services.getMovieFacts(movieId);
+    const movieName = movieResponse.data.nameRu;
+    const movieFacts = factsResponse.data.items;
+
     return {
         props: {movieFacts, movieName},
     };
@@ -35,7 +33,6 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
 
 const Facts: React.FC<Props> = ({movieFacts, movieName}) => {
     const router = useRouter();
-    const {items} = movieFacts;
 
     return (
         <>
@@ -58,7 +55,7 @@ const Facts: React.FC<Props> = ({movieFacts, movieName}) => {
                     </div>
                     <div>
                         {FACTS_DICTIONARY.map((fact) => (
-                            <MovieFacts key={fact.type} movieFacts={items} type={fact.type} text={fact.text} />
+                            <MovieFacts key={fact.type} movieFacts={movieFacts} type={fact.type} text={fact.text} />
                         ))}
                     </div>
                 </div>
