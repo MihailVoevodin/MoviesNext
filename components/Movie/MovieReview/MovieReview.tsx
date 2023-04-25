@@ -1,4 +1,5 @@
 import {LikeOutlined, DislikeOutlined} from '@ant-design/icons';
+import {Regulars} from 'Common/Consts';
 import {IMovieReview} from 'Common/Models';
 import {T} from 'Common/Text';
 import {MovieReviewBgColor} from 'components/Movie/MovieReview/MovieReviewBgColor';
@@ -43,7 +44,7 @@ export const MovieReview: React.FC<Props> = ({review}) => {
                 </div>
             </div>
             <div className={styles.reviewTitle}>{review.title}</div>
-            <div className={styles.reviewDescription}>{review.description.replace(/<[^>]+>|&[^>]+;/g, '')}</div>
+            <div className={styles.reviewDescription}>{review.description.replace(Regulars.fixTagsInText, '')}</div>
             <div className={styles.reviewBenefits}>
                 Полезная рецензия? Да / Нет
                 <span>{review.positiveRating}</span>

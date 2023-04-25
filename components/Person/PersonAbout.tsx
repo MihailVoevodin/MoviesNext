@@ -27,20 +27,26 @@ export const PersonAbout: React.FC<Props> = ({person}) => {
                         <div className={styles.personItemText}>{T.Person.profession}</div>
                         <div>{person.profession}</div>
                     </div>
-                    <div className={styles.personItem}>
-                        <div className={styles.personItemText}>{T.Person.growth}</div>
-                        <div>{person.growth / 100} м</div>
-                    </div>
-                    <div className={styles.personItem}>
-                        <div className={styles.personItemText}>{T.Person.birthday}</div>
-                        <div>
-                            {moment(person.birthday).format(T.date)} {!person.death && `• ${moment(person.birthday).fromNow(true)}`}
+                    {person.growth !== 0 && (
+                        <div className={styles.personItem}>
+                            <div className={styles.personItemText}>{T.Person.growth}</div>
+                            <div>{person.growth / 100} м</div>
                         </div>
-                    </div>
-                    <div className={styles.personItem}>
-                        <div className={styles.personItemText}>{T.Person.birthPlace}</div>
-                        <div>{person.birthplace}</div>
-                    </div>
+                    )}
+                    {person.birthday && (
+                        <div className={styles.personItem}>
+                            <div className={styles.personItemText}>{T.Person.birthday}</div>
+                            <div>
+                                {moment(person.birthday).format(T.date)} {!person.death && `• ${moment(person.birthday).fromNow(true)}`}
+                            </div>
+                        </div>
+                    )}
+                    {person.birthplace && (
+                        <div className={styles.personItem}>
+                            <div className={styles.personItemText}>{T.Person.birthPlace}</div>
+                            <div>{person.birthplace}</div>
+                        </div>
+                    )}
                     {person.death && (
                         <>
                             <div className={styles.personItem}>

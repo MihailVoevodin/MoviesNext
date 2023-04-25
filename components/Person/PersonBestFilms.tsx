@@ -8,28 +8,21 @@ type Props = {
 };
 
 export const PersonBestFilms: React.FC<Props> = ({films}) => {
-    let arr: IPersonFilm[] = [];
+    let filteredArray: any[] = [];
 
-    //TODO: перенести в сервисы и другие похожие функции
-    function itemCheck(item: any) {
-        if (arr.indexOf(item.nameRu) === -1) {
-            if (item.general) {
-                arr.push(item.nameRu);
-                return true;
-            } else {
-                arr.push(item.nameRu);
+    const sortedBestFilms = films
+        .filter((film) => {
+            if (filteredArray.indexOf(film.nameRu) === -1) {
+                filteredArray.push(film.nameRu);
                 return true;
             }
-        }
-    }
-
-    const filteredFilms = films.filter((film) => itemCheck(film)).sort((prev, next) => Number(next.rating) - Number(prev.rating));
-
-    console.log(filteredFilms);
+            return false;
+        })
+        .sort((prev, next) => Number(next.rating) - Number(prev.rating));
 
     return (
         <ul className={styles.personBestFilmsList}>
-            {filteredFilms.slice(0, 5).map((film) => {
+            {sortedBestFilms.slice(0, 10).map((film) => {
                 return (
                     <li className={styles.personBestFilmsItem} key={film.filmId}>
                         <Link href={`/movie/${film.filmId}`}>{film.nameRu}</Link>

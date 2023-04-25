@@ -343,3 +343,7 @@ export const paginationTheme = {
         },
     },
 };
+
+export const Regulars = {
+    fixTagsInText: /<[^>]+>|&[^>]+;/g,
+};
