@@ -37,12 +37,13 @@
     &:not(:first-child) {
         margin-left: 9px;
     }
-    .activeImagesType {
-        background-color: #000000;
-        color: white;
-    }
+
 }
 
+.activeImagesType {
+    background-color: #000000;
+    color: white;
+}
 
 .backBtn {
     display: inline-block;

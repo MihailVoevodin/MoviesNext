@@ -317,33 +317,6 @@ export const REVIEWS_SELECT_DICTIONARY = [
     },
 ];
 
-export const reviewsTheme = {
-    components: {
-        Pagination: {
-            colorPrimary: 'black',
-            colorText: 'white',
-            colorBgTextHover: '#ff6200',
-            colorPrimaryHover: '#ff6200',
-            colorTextDisabled: '#363836',
-        },
-        Select: {
-            colorPrimaryHover: '#ff6200',
-        },
-    },
-};
-
-export const paginationTheme = {
-    components: {
-        Pagination: {
-            colorPrimary: 'black',
-            colorText: 'white',
-            colorBgTextHover: '#ff6200',
-            colorPrimaryHover: '#ff6200',
-            colorTextDisabled: '#363836',
-        },
-    },
-};
-
 export const Regulars = {
     fixTagsInText: /<[^>]+>|&[^>]+;/g,
 };

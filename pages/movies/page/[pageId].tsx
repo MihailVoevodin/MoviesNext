@@ -1,5 +1,4 @@
 import {ConfigProvider, Pagination} from 'antd';
-import {paginationTheme} from 'Common/Consts';
 import {IMovie} from 'Common/Models';
 import {Services} from 'Common/Services';
 import {GetServerSideProps} from 'next';
@@ -46,7 +45,22 @@ const Movie: React.FC<Props> = ({movies}) => {
             <Head>
                 <title>Фильмы: Топ 250</title>
             </Head>
-            <ConfigProvider theme={paginationTheme}>
+            <ConfigProvider
+                theme={{
+                    components: {
+                        Pagination: {
+                            colorPrimary: 'black',
+                            colorText: 'white',
+                            colorBgTextHover: '#ff6200',
+                            colorPrimaryHover: '#ff6200',
+                            colorTextDisabled: '#363836',
+                        },
+                        Select: {
+                            colorPrimaryHover: '#ff6200',
+                        },
+                    },
+                }}
+            >
                 <main>
                     <div className={styles.movies}>
                         {movies.map((movie) => (

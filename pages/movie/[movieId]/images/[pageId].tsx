@@ -1,6 +1,6 @@
 import {ConfigProvider, Pagination} from 'antd';
 import {CloseIcon} from 'Common/CloseIcon';
-import {IMAGES_DICTIONARY, paginationTheme} from 'Common/Consts';
+import {IMAGES_DICTIONARY} from 'Common/Consts';
 import {IMovieImages, IMovieImage} from 'Common/Models';
 import {Services} from 'Common/Services';
 import {T} from 'Common/Text';
@@ -78,7 +78,19 @@ const Images: React.FC<Props> = ({movieName, movieImages}) => {
                     {T.Pages.Images.label}: {movieName}
                 </title>
             </Head>
-            <ConfigProvider theme={paginationTheme}>
+            <ConfigProvider
+                theme={{
+                    components: {
+                        Pagination: {
+                            colorPrimary: 'black',
+                            colorText: 'black',
+                            colorBgTextHover: '#ff6200',
+                            colorPrimaryHover: '#ff6200',
+                            colorTextDisabled: '#363836',
+                        },
+                    },
+                }}
+            >
                 <div className={mainStyles.movieDetailsPage}>
                     <div className={mainStyles.movieDetailsContainer}>
                         <div className={mainStyles.movieDetailsTitle}>

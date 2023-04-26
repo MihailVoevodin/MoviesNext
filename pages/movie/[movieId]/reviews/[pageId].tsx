@@ -1,5 +1,5 @@
 import {ConfigProvider, Pagination, Select} from 'antd';
-import {REVIEWS_SELECT_DICTIONARY, reviewsTheme} from 'Common/Consts';
+import {REVIEWS_SELECT_DICTIONARY} from 'Common/Consts';
 import {EReviewsSelect} from 'Common/Enums';
 import {IMovieReviews} from 'Common/Models';
 import {Services} from 'Common/Services';
@@ -65,7 +65,22 @@ const Reviews: React.FC<Props> = ({movieReviews, movieName}) => {
                     {T.Pages.Reviews.label}: {movieName}
                 </title>
             </Head>
-            <ConfigProvider theme={reviewsTheme}>
+            <ConfigProvider
+                theme={{
+                    components: {
+                        Pagination: {
+                            colorPrimary: 'black',
+                            colorText: 'black',
+                            colorBgTextHover: '#ff6200',
+                            colorPrimaryHover: '#ff6200',
+                            colorTextDisabled: '#363836',
+                        },
+                        Select: {
+                            colorPrimaryHover: '#ff6200',
+                        },
+                    },
+                }}
+            >
                 <div className={mainStyles.movieDetailsPage}>
                     <div className={mainStyles.movieDetailsContainer}>
                         <div className={mainStyles.movieDetailsTitle}>
