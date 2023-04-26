@@ -155,3 +155,10 @@ export enum EReviewsSelect {
     /** По убыванию негативных рецензий */
     USER_NEGATIVE_RATING_DESC = 'USER_NEGATIVE_RATING_DESC',
 }
+
+export enum EReviewsType {
+    /** Позитивные рецензии */
+    POSITIVE = 'POSITIVE',
+    /** Негативные рецензии */
+    NEGATIVE = 'NEGATIVE',
+}

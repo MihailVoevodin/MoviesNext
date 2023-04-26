@@ -1,3 +1,4 @@
+import {Regulars} from 'Common/Consts';
 import {EMovieFacts} from 'Common/Enums';
 import {IMovieFact} from 'Common/Models';
 import styles from 'pages/movie/[movieId]/facts/Facts.module.scss';
@@ -11,7 +12,7 @@ type Props = {
 
 export const MovieFacts: React.FC<Props> = ({movieFacts, type, text}) => {
     const filteredMovieFacts = movieFacts.filter((fact) => fact.type == type);
-    //TODO:сделать константы для регулярок
+
     return (
         <>
             {filteredMovieFacts.length > 0 && (
@@ -22,7 +23,7 @@ export const MovieFacts: React.FC<Props> = ({movieFacts, type, text}) => {
                         {filteredMovieFacts.map((fact, id: number) => (
                             <>
                                 <li key={type + id} className={styles.listItem}>
-                                    {fact.text.replace(/<[^>]+>|&[^>]+;/g, '')}
+                                    {fact.text.replace(Regulars.fixTagsInText, '')}
                                 </li>
                                 <hr />
                             </>

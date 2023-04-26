@@ -55,6 +55,11 @@ export const T = {
         ratingMPAA: 'Рейтинг MPAA',
         duration: 'Время',
         castTitle: 'В ролях',
+        countable: {
+            grade: ['оценка', 'оценки', 'оценок'],
+            actors: ['актер', 'актера', 'актеров'],
+            seasons: ['сезон', 'сезона', 'сезонов'],
+        },
         Reviews: {
             SortingSelect: {
                 label: 'Сортировать:',

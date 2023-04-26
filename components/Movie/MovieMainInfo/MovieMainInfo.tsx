@@ -1,4 +1,6 @@
+import {CountableTexts} from 'Common/Helpers';
 import {IMovieDetails} from 'Common/Models';
+import {T} from 'Common/Text';
 import styles from 'components/Movie/MovieMainInfo/MovieMainInfo.module.scss';
 import Link from 'next/link';
 import React from 'react';
@@ -25,7 +27,9 @@ const MovieMainInfo: React.FC<Props> = ({movie}) => {
             </div>
             <div className={styles.movieRatingInfo}>
                 <div className={styles.ratingKinopoisk}>{movie.ratingKinopoisk}</div>
-                <div className={styles.voteCount}>{movie.ratingKinopoiskVoteCount} оценок</div>
+                <div className={styles.voteCount}>
+                    {movie.ratingKinopoiskVoteCount} {CountableTexts(movie.ratingKinopoiskVoteCount, T.Movie.countable.grade)}
+                </div>
             </div>
         </div>
     );

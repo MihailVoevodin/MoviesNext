@@ -1,6 +1,8 @@
 import {StarFilled} from '@ant-design/icons';
 import {Rate} from 'antd';
+import {CountableTexts} from 'Common/Helpers';
 import {IMovieDetails} from 'Common/Models';
+import {T} from 'Common/Text';
 import styles from 'components/Movie/MovieDetailsReview/MovieDetailsReview.module.scss';
 import React from 'react';
 
@@ -19,9 +21,12 @@ const MovieDetailsReview: React.FC<Props> = ({movie}) => {
                     <div className={styles.ratingNumbers}>
                         <div className={styles.ratingKinopoisk}>{movie.ratingKinopoisk}</div>
                         <div className={styles.ratingCount}>
-                            <div>{movie.ratingKinopoiskVoteCount} оценки</div>
+                            <div>
+                                {movie.ratingKinopoiskVoteCount} {CountableTexts(movie.ratingKinopoiskVoteCount, T.Movie.countable.grade)}
+                            </div>
                             <div className={styles.ratingImdb}>
-                                <span>IMDb: {movie.ratingImdb}</span> {movie.ratingImdbVoteCount} оценки
+                                <span>IMDb: {movie.ratingImdb}</span> {movie.ratingImdbVoteCount}{' '}
+                                {CountableTexts(movie.ratingImdbVoteCount, T.Movie.countable.grade)}
                             </div>
                         </div>
                     </div>
@@ -32,7 +37,11 @@ const MovieDetailsReview: React.FC<Props> = ({movie}) => {
                     <span>Рейтинг кинокритиков в мире</span>
                     <div className={styles.criticsWorldInfo}>
                         <div className={styles.criticsVotePercent}>
-                            {Math.floor(movie.ratingGoodReview)}% <span>{movie.ratingFilmCriticsVoteCount} оценок</span>
+                            {Math.floor(movie.ratingGoodReview)}%{' '}
+                            <span>
+                                {movie.ratingFilmCriticsVoteCount}{' '}
+                                {CountableTexts(movie.ratingFilmCriticsVoteCount, T.Movie.countable.grade)}
+                            </span>
                         </div>
                         <div>
                             <StarFilled /> {movie.ratingFilmCritics}
@@ -43,7 +52,10 @@ const MovieDetailsReview: React.FC<Props> = ({movie}) => {
                     <div className={styles.criticsRf}>
                         <span>В России</span>
                         <div className={styles.criticsVotePercent}>
-                            {movie.ratingRfCritics}% <span>{movie.ratingRfCriticsVoteCount} оценок</span>
+                            {movie.ratingRfCritics}%{' '}
+                            <span>
+                                {movie.ratingRfCriticsVoteCount} {CountableTexts(movie.ratingRfCriticsVoteCount, T.Movie.countable.grade)}
+                            </span>
                         </div>
                     </div>
                 )}

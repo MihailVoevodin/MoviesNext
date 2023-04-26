@@ -1,6 +1,7 @@
 import {RightOutlined} from '@ant-design/icons';
 import {BOX_DICTIONARY, MAIN_STAFF_DICTIONARY} from 'Common/Consts';
 import {EMovieStaff} from 'Common/Enums';
+import {CountableTexts} from 'Common/Helpers';
 import {IMovieBox, IMovieDetails, IMovieStaff} from 'Common/Models';
 import {T} from 'Common/Text';
 import {MovieAboutActors} from 'components/Movie/MovieAbout/components/MovieAboutActors';
@@ -17,6 +18,8 @@ type Props = {
 };
 
 const MovieAbout: React.FC<Props> = ({movie, movieStaff, movieBox}) => {
+    const numberOfActors = movieStaff.filter((person) => person.professionKey == EMovieStaff.ACTOR).length;
+
     return (
         <div className={styles.aboutContainer}>
             <div className={styles.about}>
@@ -24,7 +27,13 @@ const MovieAbout: React.FC<Props> = ({movie, movieStaff, movieBox}) => {
                 <div className={styles.aboutItem}>
                     <div className={styles.aboutItemText}>{T.Movie.year}</div>
                     <div>
-                        {movie.year} {movie.serial && movie.endYear - movie.startYear + 'сезонов'}
+                        {movie.year}{' '}
+                        {movie.serial && (
+                            <span>
+                                {movie.endYear - movie.startYear}{' '}
+                                {CountableTexts(movie.endYear - movie.startYear, T.Movie.countable.seasons)}
+                            </span>
+                        )}
                     </div>
                 </div>
                 <div className={styles.aboutItem}>
@@ -88,7 +97,7 @@ const MovieAbout: React.FC<Props> = ({movie, movieStaff, movieBox}) => {
                 <MovieAboutActors movieStaff={movieStaff} professionKey={EMovieStaff.ACTOR} />
                 <div className={styles.actorsCount}>
                     <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Staff.route}`}>
-                        {movieStaff.filter((person) => person.professionKey == EMovieStaff.ACTOR).length} актеров
+                        {numberOfActors} {CountableTexts(numberOfActors, T.Movie.countable.actors)}
                     </Link>
                 </div>
             </div>

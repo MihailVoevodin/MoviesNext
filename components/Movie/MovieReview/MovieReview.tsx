@@ -1,5 +1,6 @@
 import {LikeOutlined, DislikeOutlined} from '@ant-design/icons';
 import {Regulars} from 'Common/Consts';
+import {EReviewsType} from 'Common/Enums';
 import {IMovieReview} from 'Common/Models';
 import {T} from 'Common/Text';
 import {MovieReviewBgColor} from 'components/Movie/MovieReview/MovieReviewBgColor';
@@ -16,14 +17,13 @@ type Props = {
 };
 
 export const MovieReview: React.FC<Props> = ({review}) => {
-    const [colors, setColors] = useState(['none', 'none']);
+    const [colors, setColors] = useState<string[]>(['none', 'none']);
 
-    //TODO: сделать тут текстовки
     useEffect(() => {
-        if (review.type === 'POSITIVE') {
+        if (review.type === EReviewsType.POSITIVE) {
             setColors(['green', 'none']);
         }
-        if (review.type === 'NEGATIVE') {
+        if (review.type === EReviewsType.NEGATIVE) {
             setColors(['none', 'red']);
         }
     }, []);
