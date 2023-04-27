@@ -1,3 +1,5 @@
+@import 'styles/variables';
+
 .personNameRu {
     font-size: 40px;
     font-weight: 700;
@@ -27,13 +29,13 @@
 .personItemContent {
     width: 440px;
     a:hover {
-        color: #ff6200;
+        color: $secondary;
     }
 }
 
 .kinopoiskUrl {
     margin-top: 20px;
-    color: #ff6200;
+    color: $secondary;
     &:hover {
         text-decoration: underline;
     }
@@ -57,6 +59,6 @@
     font-size: 13px;
     padding-bottom: 5px;
     :hover {
-        color: #ff6200;
+        color: $secondary;
     }
 }

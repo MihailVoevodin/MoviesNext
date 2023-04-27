@@ -1,3 +1,5 @@
+@import 'styles/variables';
+
 .background {
   position: absolute;
   z-index: -1;
@@ -54,8 +56,8 @@
 }
 
 .movieDetails {
-  background-color: #ffffff;
-  color: black;
+  background-color: $white;
+  color: $primary;
   padding: 30px 0;
 }
 
@@ -79,13 +81,13 @@
     margin-left: 20px;
     transition: all .5s;
     &:hover {
-      color: #ff6200;
+      color: $secondary;
     }
   }
 }
 
 .movieListDefault {
-  border: 1px solid #000;
+  border: 1px solid $primary;
   border-radius: 10px;
   padding: 5px;
 }

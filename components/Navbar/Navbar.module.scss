@@ -1,9 +1,11 @@
+@import 'styles/variables';
+
 .navbarList {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     :hover {
-        background-color: chocolate;
+        background-color: $secondary;
     }
 }
 

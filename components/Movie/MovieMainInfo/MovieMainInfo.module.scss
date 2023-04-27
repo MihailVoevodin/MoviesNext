@@ -1,3 +1,5 @@
+@import 'styles/variables';
+
 .movieInfo {
     display: flex;
     justify-content: space-between;
@@ -23,7 +25,7 @@
 
 .kinopoiskUrl {
     margin-top: 20px;
-    color: #ff6200;
+    color: $secondary;
     &:hover {
         text-decoration: underline;
     }

@@ -1,5 +1,7 @@
+@import 'styles/variables';
+
 .awardContainer {
-  border: 1px solid #999999;
+  border: 1px solid $grey;
   padding: 10px;
   margin-bottom: 20px;
   position: relative;

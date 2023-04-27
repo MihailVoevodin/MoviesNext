@@ -1,7 +1,9 @@
+@import 'styles/variables';
+
 .countsReviewsContainer {
   display: flex;
   justify-content: space-around;
-  background-color: #dddddd;
+  background-color: $lightGrey;
   padding: 10px 0;
   span {
     display: block;

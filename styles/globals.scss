@@ -1,3 +1,5 @@
+@import "variables";
+
 * {
   box-sizing: border-box;
   font-family: Graphik Kinopoisk LC Web SB, sans-serif;
@@ -7,8 +9,8 @@
 
 body {
   height: 100vh;
-  color: white;
-  background-color: black;
+  color: $white;
+  background-color: $primary;
 }
 
 a {
@@ -18,7 +20,7 @@ a {
 
 header,
 footer {
-  background-color: #292727;
+  background-color: $darkGrey;
 }
 
 footer {
@@ -33,9 +35,9 @@ main {
 
 [data-icon="double-right"],
 [data-icon="double-left"] {
-  fill: #9c9a9a;
+  fill: $grey;
 }
 
 .ant-select-item-option-selected {
-  background-color: #ff6200 !important;
+  background-color: $secondary !important;
 }

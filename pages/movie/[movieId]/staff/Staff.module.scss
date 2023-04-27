@@ -1,10 +1,12 @@
+@import 'styles/variables';
+
 .castTypeContainer {
   padding: 10px 0;
 }
 
 .castTypeTitle {
   padding-bottom: 3px;
-  border-bottom: 2px solid #f60;
+  border-bottom: 2px solid $secondary;
 }
 
 .castTypeList {

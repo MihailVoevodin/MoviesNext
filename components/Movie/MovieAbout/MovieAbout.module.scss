@@ -1,3 +1,5 @@
+@import 'styles/variables';
+
 .aboutContainer {
   display: flex;
   margin: 30px 0;
@@ -19,7 +21,7 @@
 .aboutItemContent {
   width: 440px;
   a:hover {
-    color: #ff6200;
+    color: $secondary;
   }
 }
 
@@ -29,7 +31,7 @@
 }
 
 .aboutItemBorder {
-  border: 1px solid #fff;
+  border: 1px solid $white;
   padding: 2px;
 }
 
@@ -44,12 +46,12 @@
     font-size: 13px;
     padding-bottom: 5px;
     &:hover {
-      color: #ff6200;
+      color: $secondary;
     }
   }
 }
 
 .actorsCount {
   margin-top: 20px;
-  color: #ff6200;
+  color: $secondary;
 }

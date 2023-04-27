@@ -1,3 +1,5 @@
+@import 'styles/variables';
+
 .titlesList {
   display: flex;
   flex-wrap: wrap;
@@ -5,10 +7,10 @@
   a {
     margin: 10px 5px;
     padding: 10px 15px;
-    background-color: #aaaaaa;
+    background-color: $lightGrey;
     border-radius: 20px;
     &:hover {
-      background-color: #888888;
+      background-color: $darkGrey;
     }
   }
 }
