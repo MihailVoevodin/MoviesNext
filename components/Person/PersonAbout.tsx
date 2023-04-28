@@ -5,14 +5,14 @@ import {PersonBestFilms} from 'components/Person/PersonBestFilms';
 import moment from 'moment';
 import 'moment/locale/ru';
 import Link from 'next/link';
-import React from 'react';
+import {FC} from 'react';
 moment.locale('ru');
 
 type Props = {
     person: IPerson;
 };
 
-export const PersonAbout: React.FC<Props> = ({person}) => {
+export const PersonAbout: FC<Props> = ({person}) => {
     return (
         <>
             <div className={styles.personNameRu}>{person.nameRu}</div>

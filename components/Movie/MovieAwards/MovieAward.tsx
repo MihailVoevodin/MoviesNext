@@ -3,14 +3,14 @@ import {IMovieAward, IPerson} from 'Common/Models';
 import styles from 'components/Movie/MovieAwards/MovieAward.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import {FC} from 'react';
 
 type Props = {
     movieAwards: IMovieAward[];
     text: string;
 };
 
-export const MovieAward: React.FC<Props> = ({movieAwards, text}) => {
+export const MovieAward: FC<Props> = ({movieAwards, text}) => {
     const filteredMovieAwards = movieAwards.filter((award) => award.name === text);
     const filteredMovieAwardsWin = movieAwards.filter((award) => award.name === text && award.win);
     const filteredMovieAwardsLose = movieAwards.filter((award) => award.name === text && !award.win);

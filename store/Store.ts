@@ -1,7 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit';
-import filmsSlice from 'store/filmsSlice';
+import filmsSlice, {IState} from 'store/filmsSlice';
 
-export const store = configureStore({
+export interface IAppState {
+    films: IState;
+}
+
+export const store = configureStore<IAppState>({
     reducer: {
         films: filmsSlice,
     },

@@ -6,7 +6,7 @@ import Head from 'next/head';
 import {useRouter} from 'next/router';
 import styles from 'pages/movie/[movieId]/videos/videos.module.scss';
 import {ParsedUrlQuery} from 'querystring';
-import React from 'react';
+import {FC} from 'react';
 import ReactPlayer from 'react-player';
 import mainStyles from 'styles/main.module.scss';
 
@@ -29,7 +29,7 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
     };
 };
 
-const Videos: React.FC<Props> = ({movieVideos, movieName}) => {
+const Videos: FC<Props> = ({movieVideos, movieName}) => {
     const router = useRouter();
 
     return (

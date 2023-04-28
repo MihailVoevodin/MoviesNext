@@ -9,7 +9,7 @@ import {MovieAboutBox} from 'components/Movie/MovieAbout/components/MovieAboutBo
 import {MovieAboutStaff} from 'components/Movie/MovieAbout/components/MovieAboutStaff';
 import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
 import Link from 'next/link';
-import React from 'react';
+import {FC} from 'react';
 
 type Props = {
     movie: IMovieDetails;
@@ -17,7 +17,7 @@ type Props = {
     movieStaff: IMovieStaff[];
 };
 
-const MovieAbout: React.FC<Props> = ({movie, movieStaff, movieBox}) => {
+const MovieAbout: FC<Props> = ({movie, movieStaff, movieBox}) => {
     const numberOfActors = movieStaff.filter((person) => person.professionKey == EMovieStaff.ACTOR).length;
 
     return (

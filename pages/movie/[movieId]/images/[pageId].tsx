@@ -10,7 +10,7 @@ import Image from 'next/image';
 import {useRouter} from 'next/router';
 import styles from 'pages/movie/[movieId]/images/MovieImages.module.scss';
 import {ParsedUrlQuery} from 'querystring';
-import React, {useEffect, useState} from 'react';
+import {FC, useEffect, useState} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import mainStyles from 'styles/main.module.scss';
@@ -37,7 +37,7 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
     };
 };
 
-const Images: React.FC<Props> = ({movieName, movieImages}) => {
+const Images: FC<Props> = ({movieName, movieImages}) => {
     const [image, setImage] = useState<string>('');
     const router = useRouter();
     const {imagesPageId} = useAppSelector((state) => state.films);

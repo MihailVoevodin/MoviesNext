@@ -1,14 +1,14 @@
 import {IPersonFilm} from 'Common/Models';
 import styles from 'components/Person/PersonAbout.module.scss';
 import Link from 'next/link';
-import React from 'react';
+import {FC} from 'react';
 
 type Props = {
     films: IPersonFilm[];
 };
 
-export const PersonBestFilms: React.FC<Props> = ({films}) => {
-    let filteredArray: any[] = [];
+export const PersonBestFilms: FC<Props> = ({films}) => {
+    let filteredArray: string[] = [];
 
     const sortedBestFilms = films
         .filter((film) => {

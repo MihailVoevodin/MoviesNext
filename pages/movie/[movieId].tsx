@@ -12,7 +12,7 @@ import Link from 'next/link';
 import {useRouter} from 'next/router';
 import styles from 'pages/movie/Movie.module.scss';
 import {ParsedUrlQuery} from 'querystring';
-import React, {useEffect} from 'react';
+import {FC, useEffect} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch} from 'store/hooks';
 import mainStyles from 'styles/main.module.scss';
@@ -41,7 +41,7 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
     };
 };
 
-const Movie: React.FC<Props> = ({movie, movieBox, movieStaff}) => {
+const Movie: FC<Props> = ({movie, movieBox, movieStaff}) => {
     const dispatch = useAppDispatch();
     const router = useRouter();
 

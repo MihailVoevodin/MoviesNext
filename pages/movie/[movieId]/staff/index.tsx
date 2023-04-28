@@ -7,7 +7,7 @@ import {GetServerSideProps} from 'next';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {ParsedUrlQuery} from 'querystring';
-import React from 'react';
+import {FC} from 'react';
 import mainStyles from 'styles/main.module.scss';
 
 type Props = {
@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
     };
 };
 
-const Cast: React.FC<Props> = ({movieStaff, movieName}) => {
+const Cast: FC<Props> = ({movieStaff, movieName}) => {
     const router = useRouter();
 
     return (

@@ -3,13 +3,13 @@ import {IMovieDetails} from 'Common/Models';
 import {T} from 'Common/Text';
 import styles from 'components/Movie/MovieMainInfo/MovieMainInfo.module.scss';
 import Link from 'next/link';
-import React from 'react';
+import {FC} from 'react';
 
 type Props = {
     movie: IMovieDetails;
 };
 
-const MovieMainInfo: React.FC<Props> = ({movie}) => {
+const MovieMainInfo: FC<Props> = ({movie}) => {
     return (
         <div className={styles.movieInfo}>
             <div className={styles.movieMainInfo}>

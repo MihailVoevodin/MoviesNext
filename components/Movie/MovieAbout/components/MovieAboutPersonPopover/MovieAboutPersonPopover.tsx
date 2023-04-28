@@ -2,13 +2,13 @@ import {IMovieStaff} from 'Common/Models';
 import styles from 'components/Movie/MovieAbout/components/MovieAboutPersonPopover/MovieAboutPersonPopover.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import {FC} from 'react';
 
 type Props = {
     person: IMovieStaff;
 };
 
-export const MovieAboutPersonPopover: React.FC<Props> = ({person}) => {
+export const MovieAboutPersonPopover: FC<Props> = ({person}) => {
     return (
         <div className={styles.personCard}>
             <Link href={`/name/${person.staffId}`}>

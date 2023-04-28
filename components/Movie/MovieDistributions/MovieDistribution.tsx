@@ -4,7 +4,7 @@ import {T} from 'Common/Text';
 import styles from 'components/Movie/MovieDistributions/MovieDistribution.module.scss';
 import moment from 'moment';
 import 'moment/locale/ru';
-import React from 'react';
+import {FC} from 'react';
 moment.locale('ru');
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
     text: string;
 };
 
-export const MovieDistribution: React.FC<Props> = ({movieDistributions, type, text}) => {
+export const MovieDistribution: FC<Props> = ({movieDistributions, type, text}) => {
     const filteredMovieDistributions = movieDistributions.filter((distribution) => distribution.type == type);
 
     return (

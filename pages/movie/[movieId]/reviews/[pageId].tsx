@@ -10,7 +10,7 @@ import Head from 'next/head';
 import {useRouter} from 'next/router';
 import styles from 'pages/movie/[movieId]/reviews/Reviews.module.scss';
 import {ParsedUrlQuery} from 'querystring';
-import React, {useEffect, useState} from 'react';
+import {FC, useEffect, useState} from 'react';
 import {setReviewsPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import mainStyles from 'styles/main.module.scss';
@@ -37,9 +37,9 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
     };
 };
 
-const Reviews: React.FC<Props> = ({movieReviews, movieName}) => {
+const Reviews: FC<Props> = ({movieReviews, movieName}) => {
     const router = useRouter();
-    const {total, totalPositiveReviews, totalNegativeReviews, totalNeutralReviews, items} = movieReviews;
+    const {total, totalPositiveReviews, totalNegativeReviews, totalNeutralReviews, items: reviews} = movieReviews;
     const dispatch = useAppDispatch();
     const {reviewsPageId} = useAppSelector((state) => state.films);
     const [filter, setFilter] = useState<string>(EReviewsSelect.DATE_ASC);
@@ -133,7 +133,7 @@ const Reviews: React.FC<Props> = ({movieReviews, movieName}) => {
                                 onChange={onChange}
                                 showSizeChanger={false}
                             />
-                            {items.map((review) => (
+                            {reviews.map((review) => (
                                 <MovieReview key={review.kinopoiskId} review={review} />
                             ))}
                             <Pagination

@@ -8,7 +8,7 @@ import Link from 'next/link';
 import {useRouter} from 'next/router';
 import styles from 'pages/movies/page/Movies.module.scss';
 import {ParsedUrlQuery} from 'querystring';
-import React from 'react';
+import {FC} from 'react';
 import {setPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import mainStyles from 'styles/main.module.scss';
@@ -30,7 +30,7 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
     };
 };
 
-const Movie: React.FC<Props> = ({movies}) => {
+const Movie: FC<Props> = ({movies}) => {
     const router = useRouter();
     const dispatch = useAppDispatch();
     const {pageId} = useAppSelector((state) => state.films);

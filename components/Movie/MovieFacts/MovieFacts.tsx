@@ -2,7 +2,7 @@ import {Regulars} from 'Common/Consts';
 import {EMovieFacts} from 'Common/Enums';
 import {IMovieFact} from 'Common/Models';
 import styles from 'pages/movie/[movieId]/facts/Facts.module.scss';
-import React from 'react';
+import {FC} from 'react';
 
 type Props = {
     movieFacts: IMovieFact[];
@@ -10,7 +10,7 @@ type Props = {
     text: string;
 };
 
-export const MovieFacts: React.FC<Props> = ({movieFacts, type, text}) => {
+export const MovieFacts: FC<Props> = ({movieFacts, type, text}) => {
     const filteredMovieFacts = movieFacts.filter((fact) => fact.type == type);
 
     return (

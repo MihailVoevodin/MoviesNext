@@ -4,13 +4,13 @@ import {CountableTexts} from 'Common/Helpers';
 import {IMovieDetails} from 'Common/Models';
 import {T} from 'Common/Text';
 import styles from 'components/Movie/MovieDetailsReview/MovieDetailsReview.module.scss';
-import React from 'react';
+import {FC} from 'react';
 
 type Props = {
     movie: IMovieDetails;
 };
 
-const MovieDetailsReview: React.FC<Props> = ({movie}) => {
+const MovieDetailsReview: FC<Props> = ({movie}) => {
     return (
         <div className={styles.movieReview}>
             <div>{movie.description}</div>

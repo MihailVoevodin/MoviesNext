@@ -3,7 +3,7 @@ import {IMovieStaff} from 'Common/Models';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from 'pages/movie/[movieId]/staff/Staff.module.scss';
-import React from 'react';
+import {FC} from 'react';
 
 type Props = {
     movieStaff: IMovieStaff[];
@@ -11,7 +11,7 @@ type Props = {
     text: string[];
 };
 
-export const MovieStaff: React.FC<Props> = ({movieStaff, type, text}) => {
+export const MovieStaff: FC<Props> = ({movieStaff, type, text}) => {
     const filteredMovieStaff = movieStaff.filter((person) => person.professionKey === type);
 
     if (filteredMovieStaff.length === 0) {

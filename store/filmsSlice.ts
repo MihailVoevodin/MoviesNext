@@ -1,6 +1,12 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-const initialState = {
+export interface IState {
+    pageId: number;
+    imagesPageId: number;
+    reviewsPageId: number;
+}
+
+const initialState: IState = {
     pageId: 1,
     imagesPageId: 1,
     reviewsPageId: 1,
@@ -13,13 +19,13 @@ const filmsSlice = createSlice({
     name: 'films',
     initialState: initialState,
     reducers: {
-        setPageId(state, action) {
+        setPageId(state, action: PayloadAction<number>) {
             state.pageId = action.payload;
         },
-        setImagesPageId(state, action) {
+        setImagesPageId(state, action: PayloadAction<number>) {
             state.imagesPageId = action.payload;
         },
-        setReviewsPageId(state, action) {
+        setReviewsPageId(state, action: PayloadAction<number>) {
             state.reviewsPageId = action.payload;
         },
     },

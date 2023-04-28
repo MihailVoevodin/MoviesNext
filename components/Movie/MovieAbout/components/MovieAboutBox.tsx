@@ -1,7 +1,7 @@
 import {EMovieBox} from 'Common/Enums';
 import {IMovieBoxItem} from 'Common/Models';
 import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
-import React from 'react';
+import {FC} from 'react';
 
 type Props = {
     movieBox: IMovieBoxItem[];
@@ -9,7 +9,7 @@ type Props = {
     text: string;
 };
 
-export const MovieAboutBox: React.FC<Props> = ({movieBox, type, text}) => {
+export const MovieAboutBox: FC<Props> = ({movieBox, type, text}) => {
     const filteredMovieBox = movieBox.filter((box) => box.type == type);
 
     return (

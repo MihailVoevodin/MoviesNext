@@ -4,7 +4,7 @@ import {IMovieStaff} from 'Common/Models';
 import {MovieAboutPersonPopover} from 'components/Movie/MovieAbout/components/MovieAboutPersonPopover/MovieAboutPersonPopover';
 import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
 import Link from 'next/link';
-import React from 'react';
+import {FC} from 'react';
 
 type Props = {
     movieStaff: IMovieStaff[];
@@ -12,7 +12,7 @@ type Props = {
     text: string;
 };
 
-export const MovieAboutStaff: React.FC<Props> = ({movieStaff, type, text}) => {
+export const MovieAboutStaff: FC<Props> = ({movieStaff, type, text}) => {
     const filteredMovieStaff = movieStaff.filter((person) => person.professionKey == type);
 
     return (

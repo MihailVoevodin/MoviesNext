@@ -1,6 +1,6 @@
-import React from 'react';
+import {FC} from 'react';
 
-const PathErrorPage: React.FC = () => {
+const PathErrorPage: FC = () => {
     return (
         <>
             <h1>Error 404</h1>

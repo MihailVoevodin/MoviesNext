@@ -9,7 +9,7 @@ import Image from 'next/image';
 import {useRouter} from 'next/router';
 import styles from 'pages/name/Name.module.scss';
 import {ParsedUrlQuery} from 'querystring';
-import React from 'react';
+import {FC} from 'react';
 import mainStyles from 'styles/main.module.scss';
 
 type Props = {
@@ -29,7 +29,7 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
     };
 };
 
-const Person: React.FC<Props> = ({person}) => {
+const Person: FC<Props> = ({person}) => {
     const router = useRouter();
     console.log(person);
 

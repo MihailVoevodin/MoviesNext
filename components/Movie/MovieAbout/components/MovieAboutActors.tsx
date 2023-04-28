@@ -3,14 +3,14 @@ import {IMovieStaff} from 'Common/Models';
 import {MovieAboutPersonPopover} from 'components/Movie/MovieAbout/components/MovieAboutPersonPopover/MovieAboutPersonPopover';
 import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
 import Link from 'next/link';
-import React from 'react';
+import {FC} from 'react';
 
 type Props = {
     movieStaff: IMovieStaff[];
     professionKey: string;
 };
 
-export const MovieAboutActors: React.FC<Props> = ({movieStaff, professionKey}) => {
+export const MovieAboutActors: FC<Props> = ({movieStaff, professionKey}) => {
     const filteredMovieStaff = movieStaff.filter((actor) => actor.professionKey == professionKey);
 
     return (
