@@ -1,6 +1,4 @@
 import {ConfigProvider, Pagination} from 'antd';
-import {IMovie} from 'Common/Models';
-import {Services} from 'Common/Services';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -12,6 +10,8 @@ import {FC} from 'react';
 import {setPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import mainStyles from 'styles/main.module.scss';
+import {IMovie} from 'Common/Models';
+import {Services} from 'Common/Services';
 
 type Props = {
     movies: IMovie[];

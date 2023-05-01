@@ -1,10 +1,10 @@
-import {StarFilled} from '@ant-design/icons';
 import {Rate} from 'antd';
+import styles from 'components/Movie/MovieDetailsReview/MovieDetailsReview.module.scss';
+import {FC} from 'react';
+import {StarFilled} from '@ant-design/icons';
 import {CountableTexts} from 'Common/Helpers';
 import {IMovieDetails} from 'Common/Models';
 import {T} from 'Common/Text';
-import styles from 'components/Movie/MovieDetailsReview/MovieDetailsReview.module.scss';
-import {FC} from 'react';
 
 type Props = {
     movie: IMovieDetails;

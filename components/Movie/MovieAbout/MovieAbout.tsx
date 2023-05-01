@@ -1,19 +1,19 @@
+import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
+import {MovieAboutActors} from 'components/Movie/MovieAbout/components/MovieAboutActors';
+import {MovieAboutBox} from 'components/Movie/MovieAbout/components/MovieAboutBox';
+import {MovieAboutStaff} from 'components/Movie/MovieAbout/components/MovieAboutStaff';
+import Link from 'next/link';
+import {FC} from 'react';
 import {RightOutlined} from '@ant-design/icons';
 import {BOX_DICTIONARY, MAIN_STAFF_DICTIONARY} from 'Common/Consts';
 import {EMovieStaff} from 'Common/Enums';
 import {CountableTexts} from 'Common/Helpers';
 import {IMovieBox, IMovieDetails, IMovieStaff} from 'Common/Models';
 import {T} from 'Common/Text';
-import {MovieAboutActors} from 'components/Movie/MovieAbout/components/MovieAboutActors';
-import {MovieAboutBox} from 'components/Movie/MovieAbout/components/MovieAboutBox';
-import {MovieAboutStaff} from 'components/Movie/MovieAbout/components/MovieAboutStaff';
-import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
-import Link from 'next/link';
-import {FC} from 'react';
 
 type Props = {
     movie: IMovieDetails;
-    movieBox: IMovieBox;
+    movieBox: IMovieBox[];
     movieStaff: IMovieStaff[];
 };
 
@@ -68,7 +68,7 @@ const MovieAbout: FC<Props> = ({movie, movieStaff, movieBox}) => {
                     <MovieAboutStaff key={person.type} movieStaff={movieStaff} type={person.type} text={person.text} />
                 ))}
                 {BOX_DICTIONARY.map((box) => (
-                    <MovieAboutBox key={box.type} movieBox={movieBox.items} type={box.type} text={box.text} />
+                    <MovieAboutBox key={box.type} movieBox={movieBox} type={box.type} text={box.text} />
                 ))}
                 <div className={styles.aboutItem}>
                     <div className={styles.aboutItemText}>{T.Movie.age}</div>

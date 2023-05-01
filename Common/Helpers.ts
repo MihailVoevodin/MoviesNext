@@ -1,5 +1,6 @@
 import {EReviewsType} from 'Common/Enums';
 
+/** Определение цвета заднего фона рецензии в зависимости от типа. */
 export const MovieReviewBgColor = (type: string) => {
     if (type === EReviewsType.POSITIVE) {
         return '#daf1db';
@@ -10,6 +11,7 @@ export const MovieReviewBgColor = (type: string) => {
     return '#f2f2f2';
 };
 
+/** Склонение существительных в зависимости от числа. */
 export const CountableTexts = (num: number, arr: string[]) => {
     const lastDigit = num % 10;
     if (lastDigit === 1) return arr[0];

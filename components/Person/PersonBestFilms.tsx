@@ -1,7 +1,7 @@
-import {IPersonFilm} from 'Common/Models';
 import styles from 'components/Person/PersonAbout.module.scss';
 import Link from 'next/link';
 import {FC} from 'react';
+import {IPersonFilm} from 'Common/Models';
 
 type Props = {
     films: IPersonFilm[];

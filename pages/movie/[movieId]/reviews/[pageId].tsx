@@ -1,9 +1,4 @@
 import {ConfigProvider, Pagination, Select} from 'antd';
-import {REVIEWS_SELECT_DICTIONARY} from 'Common/Consts';
-import {EReviewsSelect} from 'Common/Enums';
-import {IMovieReviews} from 'Common/Models';
-import {Services} from 'Common/Services';
-import {T} from 'Common/Text';
 import {MovieReview} from 'components/Movie/MovieReview/MovieReview';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
@@ -14,6 +9,11 @@ import {FC, useEffect, useState} from 'react';
 import {setReviewsPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import mainStyles from 'styles/main.module.scss';
+import {REVIEWS_SELECT_DICTIONARY} from 'Common/Consts';
+import {EReviewsSelect} from 'Common/Enums';
+import {IMovieReviews} from 'Common/Models';
+import {Services} from 'Common/Services';
+import {T} from 'Common/Text';
 
 type Props = {
     movieName: string;

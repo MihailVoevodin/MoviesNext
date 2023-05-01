@@ -1,8 +1,8 @@
-import {IMovieStaff} from 'Common/Models';
 import styles from 'components/Movie/MovieAbout/components/MovieAboutPersonPopover/MovieAboutPersonPopover.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import {FC} from 'react';
+import {IMovieStaff} from 'Common/Models';
 
 type Props = {
     person: IMovieStaff;

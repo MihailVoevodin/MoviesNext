@@ -1,10 +1,10 @@
-import {EMovieBox} from 'Common/Enums';
-import {IMovieBoxItem} from 'Common/Models';
 import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
 import {FC} from 'react';
+import {EMovieBox} from 'Common/Enums';
+import {IMovieBox} from 'Common/Models';
 
 type Props = {
-    movieBox: IMovieBoxItem[];
+    movieBox: IMovieBox[];
     type: EMovieBox;
     text: string;
 };

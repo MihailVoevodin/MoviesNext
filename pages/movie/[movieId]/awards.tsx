@@ -1,7 +1,3 @@
-import {AWARDS_DICTIONARY} from 'Common/Consts';
-import {IMovieAward} from 'Common/Models';
-import {Services} from 'Common/Services';
-import {T} from 'Common/Text';
 import {MovieAward} from 'components/Movie/MovieAwards/MovieAward';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
@@ -9,6 +5,10 @@ import {useRouter} from 'next/router';
 import {ParsedUrlQuery} from 'querystring';
 import {FC} from 'react';
 import mainStyles from 'styles/main.module.scss';
+import {AWARDS_DICTIONARY} from 'Common/Consts';
+import {IMovieAward} from 'Common/Models';
+import {Services} from 'Common/Services';
+import {T} from 'Common/Text';
 
 type Props = {
     movieName: string;

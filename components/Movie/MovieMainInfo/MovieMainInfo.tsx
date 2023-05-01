@@ -1,9 +1,9 @@
-import {CountableTexts} from 'Common/Helpers';
-import {IMovieDetails} from 'Common/Models';
-import {T} from 'Common/Text';
 import styles from 'components/Movie/MovieMainInfo/MovieMainInfo.module.scss';
 import Link from 'next/link';
 import {FC} from 'react';
+import {CountableTexts} from 'Common/Helpers';
+import {IMovieDetails} from 'Common/Models';
+import {T} from 'Common/Text';
 
 type Props = {
     movie: IMovieDetails;

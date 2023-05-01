@@ -1,15 +1,15 @@
+import moment from 'moment';
+import Image from 'next/image';
+import styles from 'pages/movie/[movieId]/reviews/Reviews.module.scss';
+import User from 'public/User.png';
+import {FC, useEffect, useState} from 'react';
 import {LikeOutlined, DislikeOutlined} from '@ant-design/icons';
 import {Regulars} from 'Common/Consts';
 import {EReviewsType} from 'Common/Enums';
 import {MovieReviewBgColor} from 'Common/Helpers';
 import {IMovieReview} from 'Common/Models';
 import {T} from 'Common/Text';
-import moment from 'moment';
-import Image from 'next/image';
-import styles from 'pages/movie/[movieId]/reviews/Reviews.module.scss';
-import User from 'public/User.png';
 import 'moment/locale/ru';
-import {FC, useEffect, useState} from 'react';
 moment.locale('ru');
 
 type Props = {

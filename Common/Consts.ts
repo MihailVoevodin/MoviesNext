@@ -290,6 +290,7 @@ export const STAFF_DICTIONARY = [
     },
 ];
 
+/** Словарь для селекта сортировки рецензий. */
 export const REVIEWS_SELECT_DICTIONARY = [
     {
         value: EReviewsSelect.DATE_ASC,
@@ -317,6 +318,7 @@ export const REVIEWS_SELECT_DICTIONARY = [
     },
 ];
 
+/** Константа для регулярных выражений. */
 export const Regulars = {
     fixTagsInText: /<[^>]+>|&[^>]+;/g,
 };

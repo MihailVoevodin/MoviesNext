@@ -1,7 +1,3 @@
-import {FACTS_DICTIONARY} from 'Common/Consts';
-import {IMovieFact} from 'Common/Models';
-import {Services} from 'Common/Services';
-import {T} from 'Common/Text';
 import {MovieFacts} from 'components/Movie/MovieFacts/MovieFacts';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
@@ -9,6 +5,10 @@ import {useRouter} from 'next/router';
 import {ParsedUrlQuery} from 'querystring';
 import {FC} from 'react';
 import mainStyles from 'styles/main.module.scss';
+import {FACTS_DICTIONARY} from 'Common/Consts';
+import {IMovieFact} from 'Common/Models';
+import {Services} from 'Common/Services';
+import {T} from 'Common/Text';
 
 type Props = {
     movieName: string;

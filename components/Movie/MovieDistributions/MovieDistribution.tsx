@@ -1,10 +1,10 @@
+import styles from 'components/Movie/MovieDistributions/MovieDistribution.module.scss';
+import moment from 'moment';
+import {FC} from 'react';
 import {EMovieDistributions} from 'Common/Enums';
 import {IMovieDistribution} from 'Common/Models';
 import {T} from 'Common/Text';
-import styles from 'components/Movie/MovieDistributions/MovieDistribution.module.scss';
-import moment from 'moment';
 import 'moment/locale/ru';
-import {FC} from 'react';
 moment.locale('ru');
 
 type Props = {

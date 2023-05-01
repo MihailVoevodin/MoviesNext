@@ -1,7 +1,6 @@
 import {DISTRIBUTIONS_DICTIONARY} from 'Common/Consts';
 import {IMovieDistribution} from 'Common/Models';
 import {Services} from 'Common/Services';
-import {T} from 'Common/Text';
 import {MovieDistribution} from 'components/Movie/MovieDistributions/MovieDistribution';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
@@ -9,6 +8,7 @@ import {useRouter} from 'next/router';
 import {ParsedUrlQuery} from 'querystring';
 import {FC} from 'react';
 import mainStyles from 'styles/main.module.scss';
+import {T} from 'Common/Text';
 
 type Props = {
     movieName: string;

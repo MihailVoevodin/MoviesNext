@@ -1,5 +1,5 @@
-import {configureStore} from '@reduxjs/toolkit';
 import filmsSlice, {IState} from 'store/filmsSlice';
+import {configureStore} from '@reduxjs/toolkit';
 
 export interface IAppState {
     films: IState;

@@ -1,3 +1,4 @@
+/** Иконка крестика для закрытия модального окна. */
 export const CloseIcon = () => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 50 50" width="40px" height="40px">

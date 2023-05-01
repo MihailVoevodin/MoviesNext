@@ -1,7 +1,3 @@
-import {ArrowLeftOutlined} from '@ant-design/icons';
-import {IPerson} from 'Common/Models';
-import {Services} from 'Common/Services';
-import {T} from 'Common/Text';
 import {PersonAbout} from 'components/Person/PersonAbout';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
@@ -11,6 +7,10 @@ import styles from 'pages/name/Name.module.scss';
 import {ParsedUrlQuery} from 'querystring';
 import {FC} from 'react';
 import mainStyles from 'styles/main.module.scss';
+import {ArrowLeftOutlined} from '@ant-design/icons';
+import {IPerson} from 'Common/Models';
+import {Services} from 'Common/Services';
+import {T} from 'Common/Text';
 
 type Props = {
     person: IPerson;

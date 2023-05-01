@@ -19,7 +19,7 @@ import mainStyles from 'styles/main.module.scss';
 
 type Props = {
     movie: IMovieDetails;
-    movieBox: IMovieBox;
+    movieBox: IMovieBox[];
     movieStaff: IMovieStaff[];
 };
 

@@ -1,9 +1,4 @@
 import {ConfigProvider, Pagination} from 'antd';
-import {CloseIcon} from 'Common/CloseIcon';
-import {IMAGES_DICTIONARY} from 'Common/Consts';
-import {IMovieImages, IMovieImage} from 'Common/Models';
-import {Services} from 'Common/Services';
-import {T} from 'Common/Text';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -14,6 +9,11 @@ import {FC, useEffect, useState} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import mainStyles from 'styles/main.module.scss';
+import {CloseIcon} from 'Common/CloseIcon';
+import {IMAGES_DICTIONARY} from 'Common/Consts';
+import {IMovieImages, IMovieImage} from 'Common/Models';
+import {Services} from 'Common/Services';
+import {T} from 'Common/Text';
 
 type Props = {
     movieName: string;
