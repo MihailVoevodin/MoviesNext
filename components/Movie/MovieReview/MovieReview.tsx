@@ -12,11 +12,17 @@ import {T} from 'Common/Text';
 import 'moment/locale/ru';
 moment.locale('ru');
 
-type Props = {
+/**
+ * @param review Детальная модель рецензии.
+ */
+interface IProps {
     review: IMovieReview;
-};
+}
 
-export const MovieReview: FC<Props> = ({review}) => {
+/**
+ * Компонент отображения рецензии.
+ */
+export const MovieReview: FC<IProps> = ({review}) => {
     const [colors, setColors] = useState<string[]>(['none', 'none']);
 
     useEffect(() => {

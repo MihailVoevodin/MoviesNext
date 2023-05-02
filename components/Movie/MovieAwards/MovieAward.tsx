@@ -5,12 +5,19 @@ import {FC} from 'react';
 import {CaretRightFilled} from '@ant-design/icons';
 import {IMovieAward, IPerson} from 'Common/Models';
 
-type Props = {
+/**
+ * @param movieAwards Массив наград фильма.
+ * @param text Текст типа награды.
+ */
+interface IProps {
     movieAwards: IMovieAward[];
     text: string;
-};
+}
 
-export const MovieAward: FC<Props> = ({movieAwards, text}) => {
+/**
+ * Компонент отображения наград фильма.
+ */
+export const MovieAward: FC<IProps> = ({movieAwards, text}) => {
     const filteredMovieAwards = movieAwards.filter((award) => award.name === text);
     const filteredMovieAwardsWin = movieAwards.filter((award) => award.name === text && award.win);
     const filteredMovieAwardsLose = movieAwards.filter((award) => award.name === text && !award.win);

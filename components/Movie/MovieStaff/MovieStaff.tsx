@@ -5,13 +5,21 @@ import {FC} from 'react';
 import {EMovieStaff} from 'Common/Enums';
 import {IMovieStaff} from 'Common/Models';
 
-type Props = {
+/**
+ * @param movieStaff Массив создателей фильма.
+ * @param type Профессия создателей.
+ * @param text Текст профессии создателей.
+ */
+interface IProps {
     movieStaff: IMovieStaff[];
     type: EMovieStaff;
     text: string[];
-};
+}
 
-export const MovieStaff: FC<Props> = ({movieStaff, type, text}) => {
+/**
+ * Компонент отображения создателей фильма по профессиям.
+ */
+export const MovieStaff: FC<IProps> = ({movieStaff, type, text}) => {
     const filteredMovieStaff = movieStaff.filter((person) => person.professionKey === type);
 
     if (filteredMovieStaff.length === 0) {

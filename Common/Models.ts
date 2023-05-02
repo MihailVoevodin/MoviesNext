@@ -118,7 +118,7 @@ export interface IMovieBox {
 }
 
 /**
- * Модель списка создателей фильма
+ * Модель личности создателя фильма
  *
  * @param staffId - Идентификатор личности.
  * @param description - Описание.

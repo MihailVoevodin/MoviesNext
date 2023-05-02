@@ -3,6 +3,9 @@ import Link from 'next/link';
 import {FC} from 'react';
 import {useAppSelector} from 'store/hooks';
 
+/**
+ * Компонент навигационной панели.
+ */
 const Navbar: FC = () => {
     const {pageId} = useAppSelector((state) => state.films);
 

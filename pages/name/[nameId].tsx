@@ -12,15 +12,21 @@ import {IPerson} from 'Common/Models';
 import {Services} from 'Common/Services';
 import {T} from 'Common/Text';
 
-type Props = {
+/**
+ * @param person Модель личности.
+ */
+interface IProps {
     person: IPerson;
-};
+}
 
+/**
+ * @param nameId Идентификатор личности.
+ */
 interface Params extends ParsedUrlQuery {
     nameId: string;
 }
 
-export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
+export const getServerSideProps: GetServerSideProps<IProps, Params> = async (context) => {
     const {nameId} = context.params!;
     const personResponse = await Services.getPerson(nameId);
     const person = personResponse.data;
@@ -29,7 +35,10 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
     };
 };
 
-const Person: FC<Props> = ({person}) => {
+/**
+ * Страница отображения детальной информации о личности.
+ */
+const Person: FC<IProps> = ({person}) => {
     const router = useRouter();
     console.log(person);
 

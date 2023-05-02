@@ -15,17 +15,25 @@ import {IMovieImages, IMovieImage} from 'Common/Models';
 import {Services} from 'Common/Services';
 import {T} from 'Common/Text';
 
-type Props = {
+/**
+ * @param movieName Название фильма.
+ * @param movieImages Массив изображений фильма.
+ */
+interface IProps {
     movieName: string;
     movieImages: IMovieImages;
-};
+}
 
+/**
+ * @param movieId Идентификатор фильма.
+ * @param pageId Номер страницы изображений.
+ */
 interface Params extends ParsedUrlQuery {
     movieId: string;
     pageId: string;
 }
 
-export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
+export const getServerSideProps: GetServerSideProps<IProps, Params> = async (context) => {
     const {movieId, pageId} = context.params!;
     const {type} = context.query;
     const movieResponse = await Services.getMovie(movieId);
@@ -37,7 +45,10 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
     };
 };
 
-const Images: FC<Props> = ({movieName, movieImages}) => {
+/**
+ * Страница отображения изображений фильма.
+ */
+const Images: FC<IProps> = ({movieName, movieImages}) => {
     const [image, setImage] = useState<string>('');
     const router = useRouter();
     const {imagesPageId} = useAppSelector((state) => state.films);

@@ -10,15 +10,22 @@ import {IMovieVideo} from 'Common/Models';
 import {Services} from 'Common/Services';
 import {T} from 'Common/Text';
 
-type Props = {
+/**
+ * @param movieName Название фильма.
+ * @param movieVideos Массив видео о фильме.
+ */
+interface IProps {
     movieName: string;
     movieVideos: IMovieVideo[];
-};
+}
 
+/**
+ * @param movieId Идентификатор фильма.
+ */
 interface Params extends ParsedUrlQuery {
     movieId: string;
 }
-export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
+export const getServerSideProps: GetServerSideProps<IProps, Params> = async (context) => {
     const {movieId} = context.params!;
     const movieResponse = await Services.getMovie(movieId);
     const videoResponse = await Services.getMovieVideos(movieId);
@@ -29,7 +36,10 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
     };
 };
 
-const Videos: FC<Props> = ({movieVideos, movieName}) => {
+/**
+ * Страница отображения видео о фильме.
+ */
+const Videos: FC<IProps> = ({movieVideos, movieName}) => {
     const router = useRouter();
 
     return (

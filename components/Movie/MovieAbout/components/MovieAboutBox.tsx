@@ -3,13 +3,21 @@ import {FC} from 'react';
 import {EMovieBox} from 'Common/Enums';
 import {IMovieBox} from 'Common/Models';
 
-type Props = {
+/**
+ * @param movieBox Массив бюджета фильма.
+ * @param type Тип бюджета.
+ * @param text Описание типа бюджета.
+ */
+interface IProps {
     movieBox: IMovieBox[];
     type: EMovieBox;
     text: string;
-};
+}
 
-export const MovieAboutBox: FC<Props> = ({movieBox, type, text}) => {
+/**
+ * Компонент отображения бюджета.
+ */
+export const MovieAboutBox: FC<IProps> = ({movieBox, type, text}) => {
     const filteredMovieBox = movieBox.filter((box) => box.type == type);
 
     return (

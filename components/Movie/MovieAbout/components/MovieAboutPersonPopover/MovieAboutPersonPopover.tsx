@@ -4,11 +4,17 @@ import Link from 'next/link';
 import {FC} from 'react';
 import {IMovieStaff} from 'Common/Models';
 
-type Props = {
+/**
+ * @param person Модель личности создателя фильма.
+ */
+interface IProps {
     person: IMovieStaff;
-};
+}
 
-export const MovieAboutPersonPopover: FC<Props> = ({person}) => {
+/**
+ * Компонент выпадашки при наведении на персону.
+ */
+export const MovieAboutPersonPopover: FC<IProps> = ({person}) => {
     return (
         <div className={styles.personCard}>
             <Link href={`/name/${person.staffId}`}>

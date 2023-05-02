@@ -13,15 +13,21 @@ import mainStyles from 'styles/main.module.scss';
 import {IMovie} from 'Common/Models';
 import {Services} from 'Common/Services';
 
-type Props = {
+/**
+ * @param movies Массив топа фильмов.
+ */
+interface IProps {
     movies: IMovie[];
-};
+}
 
+/**
+ * @param pageId Номер страницы списка фильмов.
+ */
 interface Params extends ParsedUrlQuery {
     pageId: string;
 }
 
-export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
+export const getServerSideProps: GetServerSideProps<IProps, Params> = async (context) => {
     const {pageId} = context.params!;
     const moviesResponse = await Services.getMoviesTop_250(pageId);
     const movies = moviesResponse.data.films;
@@ -30,7 +36,10 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
     };
 };
 
-const Movie: FC<Props> = ({movies}) => {
+/**
+ * Страница отображения топа фильмов.
+ */
+const Movie: FC<IProps> = ({movies}) => {
     const router = useRouter();
     const dispatch = useAppDispatch();
     const {pageId} = useAppSelector((state) => state.films);

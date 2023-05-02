@@ -11,13 +11,21 @@ import {CountableTexts} from 'Common/Helpers';
 import {IMovieBox, IMovieDetails, IMovieStaff} from 'Common/Models';
 import {T} from 'Common/Text';
 
-type Props = {
+/**
+ * @param movie Детальная модель фильма.
+ * @param movieBox Массив бюджета фильма.
+ * @param movieStaff Массив создателей фильма.
+ */
+interface IProps {
     movie: IMovieDetails;
     movieBox: IMovieBox[];
     movieStaff: IMovieStaff[];
-};
+}
 
-const MovieAbout: FC<Props> = ({movie, movieStaff, movieBox}) => {
+/**
+ * Компонент отображения информации о фильме.
+ */
+const MovieAbout: FC<IProps> = ({movie, movieStaff, movieBox}) => {
     const numberOfActors = movieStaff.filter((person) => person.professionKey == EMovieStaff.ACTOR).length;
 
     return (

@@ -8,11 +8,17 @@ import {IPerson} from 'Common/Models';
 import {T} from 'Common/Text';
 moment.locale('ru');
 
-type Props = {
+/**
+ * @param person Модель личности.
+ */
+interface IProps {
     person: IPerson;
-};
+}
 
-export const PersonAbout: FC<Props> = ({person}) => {
+/**
+ * Компонент отображения детальной информации о личности.
+ */
+export const PersonAbout: FC<IProps> = ({person}) => {
     return (
         <>
             <div className={styles.personNameRu}>{person.nameRu}</div>

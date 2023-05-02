@@ -1,5 +1,8 @@
 import {FC} from 'react';
 
+/**
+ * Компонент отображения ошибки.
+ */
 const PathErrorPage: FC = () => {
     return (
         <>

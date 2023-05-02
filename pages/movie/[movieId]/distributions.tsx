@@ -10,16 +10,23 @@ import {FC} from 'react';
 import mainStyles from 'styles/main.module.scss';
 import {T} from 'Common/Text';
 
-type Props = {
+/**
+ * @param movieName Название фильма.
+ * @param movieDistributions Массив премьер фильма.
+ */
+interface IProps {
     movieName: string;
     movieDistributions: IMovieDistribution[];
-};
+}
 
+/**
+ * @param movieId Идентификатор фильма.
+ */
 interface Params extends ParsedUrlQuery {
     movieId: string;
 }
 
-export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
+export const getServerSideProps: GetServerSideProps<IProps, Params> = async (context) => {
     const {movieId} = context.params!;
     const movieResponse = await Services.getMovie(movieId);
     const distributionsResponse = await Services.getMovieDistributions(movieId);
@@ -30,7 +37,10 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
     };
 };
 
-const Distributions: FC<Props> = ({movieDistributions, movieName}) => {
+/**
+ * Страница отображения премьер фильма.
+ */
+const Distributions: FC<IProps> = ({movieDistributions, movieName}) => {
     const router = useRouter();
 
     return (

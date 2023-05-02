@@ -5,11 +5,17 @@ import {CountableTexts} from 'Common/Helpers';
 import {IMovieDetails} from 'Common/Models';
 import {T} from 'Common/Text';
 
-type Props = {
+/**
+ * @param movie Детальная модель фильма.
+ */
+interface IProps {
     movie: IMovieDetails;
-};
+}
 
-const MovieMainInfo: FC<Props> = ({movie}) => {
+/**
+ * Компонент отображения главной информации о фильме.
+ */
+const MovieMainInfo: FC<IProps> = ({movie}) => {
     return (
         <div className={styles.movieInfo}>
             <div className={styles.movieMainInfo}>

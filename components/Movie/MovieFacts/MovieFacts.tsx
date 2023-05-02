@@ -4,13 +4,21 @@ import {Regulars} from 'Common/Consts';
 import {EMovieFacts} from 'Common/Enums';
 import {IMovieFact} from 'Common/Models';
 
-type Props = {
+/**
+ * @param movieFacts Массив фактов о фильме.
+ * @param type Тип фактов о фильме.
+ * @param text Текст типа фактов.
+ */
+interface IProps {
     movieFacts: IMovieFact[];
     type: EMovieFacts;
     text: string;
-};
+}
 
-export const MovieFacts: FC<Props> = ({movieFacts, type, text}) => {
+/**
+ * Компонент отображения типа фактов фильма.
+ */
+export const MovieFacts: FC<IProps> = ({movieFacts, type, text}) => {
     const filteredMovieFacts = movieFacts.filter((fact) => fact.type == type);
     console.log(movieFacts);
 

@@ -1,6 +1,9 @@
 import filmsSlice, {IState} from 'store/filmsSlice';
 import {configureStore} from '@reduxjs/toolkit';
 
+/**
+ * @param films - Стор фильмов.
+ */
 export interface IAppState {
     films: IState;
 }

@@ -5,12 +5,19 @@ import Link from 'next/link';
 import {FC} from 'react';
 import {IMovieStaff} from 'Common/Models';
 
-type Props = {
+/**
+ * @param movieStaff Массив создателей фильма.
+ * @param professionKey Ключ профессии личности.
+ */
+interface IProps {
     movieStaff: IMovieStaff[];
     professionKey: string;
-};
+}
 
-export const MovieAboutActors: FC<Props> = ({movieStaff, professionKey}) => {
+/**
+ * Компонент отображения списка актеров фильма.
+ */
+export const MovieAboutActors: FC<IProps> = ({movieStaff, professionKey}) => {
     const filteredMovieStaff = movieStaff.filter((actor) => actor.professionKey == professionKey);
 
     return (

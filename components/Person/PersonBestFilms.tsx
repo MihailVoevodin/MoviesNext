@@ -3,11 +3,17 @@ import Link from 'next/link';
 import {FC} from 'react';
 import {IPersonFilm} from 'Common/Models';
 
-type Props = {
+/**
+ * @param films Массив лучших фильмов личности.
+ */
+interface IProps {
     films: IPersonFilm[];
-};
+}
 
-export const PersonBestFilms: FC<Props> = ({films}) => {
+/**
+ * Компонент отображения лучших фильмов личности.
+ */
+export const PersonBestFilms: FC<IProps> = ({films}) => {
     let filteredArray: string[] = [];
 
     const sortedBestFilms = films

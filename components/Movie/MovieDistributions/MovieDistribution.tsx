@@ -7,13 +7,21 @@ import {T} from 'Common/Text';
 import 'moment/locale/ru';
 moment.locale('ru');
 
-type Props = {
+/**
+ * @param movieDistributions Массив премьер фильма.
+ * @param type Тип премьеры фильма.
+ * @param text Текст типа премьеры.
+ */
+interface IProps {
     movieDistributions: IMovieDistribution[];
     type: EMovieDistributions;
     text: string;
-};
+}
 
-export const MovieDistribution: FC<Props> = ({movieDistributions, type, text}) => {
+/**
+ * Компонент отображения типа премьер фильма.
+ */
+export const MovieDistribution: FC<IProps> = ({movieDistributions, type, text}) => {
     const filteredMovieDistributions = movieDistributions.filter((distribution) => distribution.type == type);
 
     return (

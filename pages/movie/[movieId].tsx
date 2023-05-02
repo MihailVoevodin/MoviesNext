@@ -1,7 +1,3 @@
-import {ArrowLeftOutlined} from '@ant-design/icons';
-import {IMovieDetails, IMovieBox, IMovieStaff} from 'Common/Models';
-import {Services} from 'Common/Services';
-import {T} from 'Common/Text';
 import {MovieAbout} from 'components/Movie/MovieAbout/MovieAbout';
 import {MovieDetailsReview} from 'components/Movie/MovieDetailsReview/MovieDetailsReview';
 import {MovieMainInfo} from 'components/Movie/MovieMainInfo/MovieMainInfo';
@@ -16,24 +12,36 @@ import {FC, useEffect} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch} from 'store/hooks';
 import mainStyles from 'styles/main.module.scss';
+import {ArrowLeftOutlined} from '@ant-design/icons';
+import {IMovieDetails, IMovieBox, IMovieStaff} from 'Common/Models';
+import {Services} from 'Common/Services';
+import {T} from 'Common/Text';
 
-type Props = {
+/**
+ * @param movie Детальная модель фильма.
+ * @param movieBox Массив бюджета фильма.
+ * @param movieStaff Массив создателей фильма.
+ */
+interface IProps {
     movie: IMovieDetails;
     movieBox: IMovieBox[];
     movieStaff: IMovieStaff[];
-};
+}
 
+/**
+ * @param movieId Идентификатор фильма.
+ */
 interface Params extends ParsedUrlQuery {
     movieId: string;
 }
 
-export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
+export const getServerSideProps: GetServerSideProps<IProps, Params> = async (context) => {
     const {movieId} = context.params!;
     const movieResponse = await Services.getMovie(movieId);
     const responseBox = await Services.getMovieBox(movieId);
     const responseStaff = await Services.getMovieStaff(movieId);
     const movie = movieResponse.data;
-    const movieBox = responseBox.data;
+    const movieBox = responseBox.data.items;
     const movieStaff = responseStaff.data;
 
     return {
@@ -41,7 +49,10 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
     };
 };
 
-const Movie: FC<Props> = ({movie, movieBox, movieStaff}) => {
+/**
+ * Страница отображения информации о фильме.
+ */
+const Movie: FC<IProps> = ({movie, movieBox, movieStaff}) => {
     const dispatch = useAppDispatch();
     const router = useRouter();
 

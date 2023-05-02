@@ -15,17 +15,25 @@ import {IMovieReviews} from 'Common/Models';
 import {Services} from 'Common/Services';
 import {T} from 'Common/Text';
 
-type Props = {
+/**
+ * @param movieName Название фильма.
+ * @param movieReviews Массив рецензий фильма.
+ */
+interface IProps {
     movieName: string;
     movieReviews: IMovieReviews;
-};
+}
 
+/**
+ * @param movieId Идентификатор фильма.
+ * @param pageId Номер страницы рецензий.
+ */
 interface Params extends ParsedUrlQuery {
     movieId: string;
     pageId: string;
 }
 
-export const getServerSideProps: GetServerSideProps<Props, Params> = async (context) => {
+export const getServerSideProps: GetServerSideProps<IProps, Params> = async (context) => {
     const {movieId, pageId} = context.params!;
     const {order} = context.query;
     const responseFilm = await Services.getMovie(movieId);
@@ -37,7 +45,10 @@ export const getServerSideProps: GetServerSideProps<Props, Params> = async (cont
     };
 };
 
-const Reviews: FC<Props> = ({movieReviews, movieName}) => {
+/**
+ * Страница отображения рецензий на фильм.
+ */
+const Reviews: FC<IProps> = ({movieReviews, movieName}) => {
     const router = useRouter();
     const {total, totalPositiveReviews, totalNegativeReviews, totalNeutralReviews, items: reviews} = movieReviews;
     const dispatch = useAppDispatch();

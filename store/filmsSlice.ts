@@ -1,5 +1,10 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
+/**
+ * @param pageId - Номер страницы топа фильмов.
+ * @param imagesPageId - Номер страницы изображений.
+ * @param reviewsPageId - Номер страницы рецензий.
+ */
 export interface IState {
     pageId: number;
     imagesPageId: number;
