@@ -1,9 +1,11 @@
+import {Collapse} from 'antd';
 import styles from 'pages/movie/[movieId]/facts/Facts.module.scss';
 import {FC} from 'react';
 import {Regulars} from 'Common/Consts';
 import {EMovieFacts} from 'Common/Enums';
 import {IMovieFact} from 'Common/Models';
 
+const {Panel} = Collapse;
 /**
  * @param movieFacts Массив фактов о фильме.
  * @param type Тип фактов о фильме.
@@ -32,7 +34,15 @@ export const MovieFacts: FC<IProps> = ({movieFacts, type, text}) => {
                         {filteredMovieFacts.map((fact, id: number) => (
                             <>
                                 <li key={type + id} className={styles.listItem}>
-                                    {fact.text.replace(Regulars.fixTagsInText, '')}
+                                    {fact.spoiler ? (
+                                        <Collapse bordered={false} style={{backgroundColor: 'white', fontSize: 16}}>
+                                            <Panel key="1" header="Спойлер" showArrow={false}>
+                                                {fact.text.replace(Regulars.fixTagsInText, '')}
+                                            </Panel>
+                                        </Collapse>
+                                    ) : (
+                                        <span>{fact.text.replace(Regulars.fixTagsInText, '')}</span>
+                                    )}
                                 </li>
                                 <hr />
                             </>

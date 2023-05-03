@@ -10,7 +10,7 @@ import styles from 'pages/movie/Movie.module.scss';
 import {ParsedUrlQuery} from 'querystring';
 import {FC, useEffect} from 'react';
 import {setImagesPageId} from 'store/filmsSlice';
-import {useAppDispatch} from 'store/hooks';
+import {useAppDispatch, useAppSelector} from 'store/hooks';
 import mainStyles from 'styles/main.module.scss';
 import {ArrowLeftOutlined} from '@ant-design/icons';
 import {IMovieDetails, IMovieBox, IMovieStaff} from 'Common/Models';
@@ -55,6 +55,7 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
 const Movie: FC<IProps> = ({movie, movieBox, movieStaff}) => {
     const dispatch = useAppDispatch();
     const router = useRouter();
+    const {pageId} = useAppSelector((state) => state.films);
 
     useEffect(() => {
         dispatch(setImagesPageId(1));
@@ -75,7 +76,7 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff}) => {
                     </div>
                 </div>
                 <div className={mainStyles.backBtn}>
-                    <button onClick={() => router.back()}>
+                    <button onClick={() => router.replace(`/movies/page/${pageId}`)}>
                         <ArrowLeftOutlined />
                     </button>
                 </div>
