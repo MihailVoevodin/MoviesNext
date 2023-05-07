@@ -189,4 +189,7 @@ export const T = {
         filmsCount: 'Всего фильмов',
         bestFilms: 'Лучшие фильмы',
     },
+    Persons: {
+        searchPlaceholder: 'Актеры, режиссёры,и т.д.'
+    }
 };

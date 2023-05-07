@@ -12,7 +12,7 @@ const Navbar: FC = () => {
     const NavigationItems = [
         {id: 1, title: 'Главная', path: '/'},
         {id: 2, title: 'Фильмы', path: `/movies/page/${pageId}`},
-        {id: 3, title: 'Сериалы', path: '/series'},
+        {id: 3, title: 'Личности', path: '/persons'},
     ];
 
     return (
