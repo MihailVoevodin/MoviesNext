@@ -47,4 +47,8 @@ export const Services = {
     async getPerson(nameId: string): Promise<AxiosResponse> {
         return await axios.get(`https://kinopoiskapiunofficial.tech/api/v1/staff/${nameId}`);
     },
+    /** Получение списка личностей по поиску. */
+    async getPersonsList(name: string): Promise<AxiosResponse> {
+        return await axios.get(`https://kinopoiskapiunofficial.tech/api/v1/persons?name=${name}`);
+    },
 };

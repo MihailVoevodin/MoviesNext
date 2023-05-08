@@ -5,13 +5,13 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
  * @param imagesPageId - Номер страницы изображений.
  * @param reviewsPageId - Номер страницы рецензий.
  */
-export interface IState {
+export interface IFilmsState {
     pageId: number;
     imagesPageId: number;
     reviewsPageId: number;
 }
 
-const initialState: IState = {
+const initialState: IFilmsState = {
     pageId: 1,
     imagesPageId: 1,
     reviewsPageId: 1,
