@@ -190,6 +190,6 @@ export const T = {
         bestFilms: 'Лучшие фильмы',
     },
     Persons: {
-        searchPlaceholder: 'Актеры, режиссёры,и т.д.'
-    }
+        searchPlaceholder: 'Актеры, режиссёры,и т.д.',
+    },
 };
