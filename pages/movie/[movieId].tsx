@@ -9,11 +9,12 @@ import {useRouter} from 'next/router';
 import styles from 'pages/movie/Movie.module.scss';
 import {ParsedUrlQuery} from 'querystring';
 import {FC, useEffect} from 'react';
+import Slider from 'react-slick';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import mainStyles from 'styles/main.module.scss';
 import {ArrowLeftOutlined} from '@ant-design/icons';
-import {IMovieDetails, IMovieBox, IMovieStaff} from 'Common/Models';
+import {IMovieDetails, IMovieBox, IMovieStaff, IMovieSimilars} from 'Common/Models';
 import {Services} from 'Common/Services';
 import {T} from 'Common/Text';
 
@@ -26,6 +27,7 @@ interface IProps {
     movie: IMovieDetails;
     movieBox: IMovieBox[];
     movieStaff: IMovieStaff[];
+    movieSimilars: IMovieSimilars[];
 }
 
 /**
@@ -40,26 +42,37 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
     const movieResponse = await Services.getMovie(movieId);
     const responseBox = await Services.getMovieBox(movieId);
     const responseStaff = await Services.getMovieStaff(movieId);
+    const responseSimilars = await Services.getMovieSimilars(movieId);
     const movie = movieResponse.data;
     const movieBox = responseBox.data.items;
     const movieStaff = responseStaff.data;
+    const movieSimilars = responseSimilars.data.items;
 
     return {
-        props: {movie, movieBox, movieStaff},
+        props: {movie, movieBox, movieStaff, movieSimilars},
     };
 };
 
 /**
  * Страница отображения информации о фильме.
  */
-const Movie: FC<IProps> = ({movie, movieBox, movieStaff}) => {
+const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
     const dispatch = useAppDispatch();
     const router = useRouter();
     const {pageId} = useAppSelector((state) => state.films);
+    console.log(movieSimilars);
 
     useEffect(() => {
         dispatch(setImagesPageId(1));
     });
+
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+    };
 
     return (
         <>
@@ -89,6 +102,14 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff}) => {
                             <MovieMainInfo movie={movie} />
                             <MovieAbout movie={movie} movieStaff={movieStaff} movieBox={movieBox} />
                         </div>
+                        <Slider {...settings}>
+                            {movieSimilars.map((movie) => (
+                                <div key={movie.filmId}>
+                                    <Image src={movie.posterUrlPreview} width={100} height={50} alt={movie.nameEn} />
+                                    <div>{movie.nameRu}</div>
+                                </div>
+                            ))}
+                        </Slider>
                     </div>
                 </div>
             </main>

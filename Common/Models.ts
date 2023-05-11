@@ -273,6 +273,16 @@ export interface IMovieReview {
     description: string;
 }
 
+export interface IMovieSimilars {
+    filmId: number;
+    nameRu: string;
+    nameEn: string;
+    nameOriginal: string;
+    posterUrl: string;
+    posterUrlPreview: string;
+    relationType: string;
+}
+
 /**
  * Модель личности
  *

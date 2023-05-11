@@ -51,4 +51,8 @@ export const Services = {
     async getPersonsList(name: string): Promise<AxiosResponse> {
         return await axios.get(`https://kinopoiskapiunofficial.tech/api/v1/persons?name=${name}`);
     },
+    /** Получение списка похожих фильмов. */
+    async getMovieSimilars(movieId: string): Promise<AxiosResponse> {
+        return await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}/similars`);
+    },
 };
