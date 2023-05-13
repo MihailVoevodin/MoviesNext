@@ -72,6 +72,7 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
         speed: 500,
         slidesToShow: 4,
         slidesToScroll: 1,
+        variableWidth: true,
     };
 
     return (
@@ -102,11 +103,14 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                             <MovieMainInfo movie={movie} />
                             <MovieAbout movie={movie} movieStaff={movieStaff} movieBox={movieBox} />
                         </div>
+                    </div>
+                    <div className={styles.similarsContainer}>
+                        <h3 className={styles.similarsTitle}>Похожие фильмы</h3>
                         <Slider {...settings}>
                             {movieSimilars.map((movie) => (
-                                <div key={movie.filmId}>
-                                    <Image src={movie.posterUrlPreview} width={100} height={50} alt={movie.nameEn} />
-                                    <div>{movie.nameRu}</div>
+                                <div key={movie.filmId} style={{width: 200}}>
+                                    <Image src={movie.posterUrlPreview} width={200} height={280} alt={movie.nameEn} />
+                                    <div className={styles.similarsText}>{movie.nameRu}</div>
                                 </div>
                             ))}
                         </Slider>
