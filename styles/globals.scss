@@ -10,7 +10,6 @@
 }
 
 body {
-  height: 100vh;
   color: $white;
   background-color: $primary;
 }
@@ -20,13 +19,8 @@ a {
   text-decoration: none;
 }
 
-header,
-footer {
+header {
   background-color: $darkGrey;
-}
-
-footer {
-  text-align: center;
 }
 
 main {

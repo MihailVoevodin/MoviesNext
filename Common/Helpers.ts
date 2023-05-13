@@ -1,4 +1,5 @@
-import {EReviewsType} from 'Common/Enums';
+import {EMpaaRating, EReviewsType} from 'Common/Enums';
+import {T} from 'Common/Text';
 
 /** Определение цвета заднего фона рецензии в зависимости от типа. */
 export const MovieReviewBgColor = (type: string) => {
@@ -17,4 +18,20 @@ export const CountableTexts = (num: number, arr: string[]) => {
     if (lastDigit === 1) return arr[0];
     if (lastDigit >= 2 && lastDigit <= 4) return arr[1];
     return arr[2];
+};
+
+/** Возвращение строки рейтинга MPAA. */
+export const MpaaTooltipText = (str: string) => {
+    switch (str) {
+        case EMpaaRating.g:
+            return T.Movie.MpaaRatng[EMpaaRating.g];
+        case EMpaaRating.pg:
+            return T.Movie.MpaaRatng[EMpaaRating.pg];
+        case EMpaaRating.pg13:
+            return T.Movie.MpaaRatng[EMpaaRating.pg13];
+        case EMpaaRating.r:
+            return T.Movie.MpaaRatng[EMpaaRating.r];
+        case EMpaaRating.nc17:
+            return T.Movie.MpaaRatng[EMpaaRating.nc17];
+    }
 };

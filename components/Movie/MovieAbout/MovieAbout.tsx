@@ -1,3 +1,4 @@
+import {Tooltip} from 'antd';
 import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
 import {MovieAboutActors} from 'components/Movie/MovieAbout/components/MovieAboutActors';
 import {MovieAboutBox} from 'components/Movie/MovieAbout/components/MovieAboutBox';
@@ -7,7 +8,7 @@ import {FC} from 'react';
 import {RightOutlined} from '@ant-design/icons';
 import {BOX_DICTIONARY, MAIN_STAFF_DICTIONARY} from 'Common/Consts';
 import {EMovieStaff} from 'Common/Enums';
-import {CountableTexts} from 'Common/Helpers';
+import {CountableTexts, MpaaTooltipText} from 'Common/Helpers';
 import {IMovieBox, IMovieDetails, IMovieStaff} from 'Common/Models';
 import {T} from 'Common/Text';
 
@@ -85,7 +86,16 @@ const MovieAbout: FC<IProps> = ({movie, movieStaff, movieBox}) => {
                 {movie.ratingMpaa && (
                     <div className={styles.aboutItem}>
                         <div className={styles.aboutItemText}>{T.Movie.ratingMPAA}</div>
-                        <div className={styles.aboutItemBorder}>{movie.ratingMpaa.toUpperCase()}</div>
+                        <div className={styles.aboutItemBorder}>
+                            <Tooltip
+                                color="white"
+                                overlayInnerStyle={{color: '#000'}}
+                                placement="right"
+                                title={MpaaTooltipText(movie.ratingMpaa)}
+                            >
+                                {movie.ratingMpaa.toUpperCase()}
+                            </Tooltip>
+                        </div>
                     </div>
                 )}
                 <div className={styles.aboutItem}>

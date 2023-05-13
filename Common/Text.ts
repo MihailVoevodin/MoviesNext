@@ -7,6 +7,7 @@ import {
     EMovieFacts,
     EMovieStaff,
     EReviewsSelect,
+    EMpaaRating,
 } from 'Common/Enums';
 
 export const T = {
@@ -167,6 +168,13 @@ export const T = {
                 [EMovieImages.COVER]: 'Обложки',
                 [EMovieImages.SCREENSHOT]: 'Скриншоты',
             },
+        },
+        MpaaRatng: {
+            [EMpaaRating.g]: 'Нет возрастных ограничений',
+            [EMpaaRating.pg]: 'Рекомендуется присутствие родителей',
+            [EMpaaRating.pg13]: 'Детям до 13 лет просмотр не желателен',
+            [EMpaaRating.r]: 'Лицам до 17 лет обязательно присутствие взрослого',
+            [EMpaaRating.nc17]: 'Лицам до 18 лет просмотр запрещен',
         },
     },
     Person: {
