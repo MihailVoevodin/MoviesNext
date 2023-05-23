@@ -15,7 +15,7 @@ export const T = {
     dateAndTime: 'DD MMMM YYYY | hh:mm',
     Pages: {
         backToMovie: 'Информация о фильме',
-        default: 'Обзор',
+        MovieDefault: 'Обзор',
         Facts: {
             label: 'Факты',
             route: 'facts',

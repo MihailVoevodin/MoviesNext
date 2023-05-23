@@ -10,21 +10,16 @@ const Navbar: FC = () => {
     const {pageId} = useAppSelector((state) => state.films);
 
     const NavigationItems = [
-        {id: 0, title: 'Главная', path: '/', active: true},
-        {id: 1, title: 'Фильмы', path: `/movies/page/${pageId}`, active: false},
-        {id: 2, title: 'Личности', path: '/persons', active: false},
+        {id: 0, title: 'Главная', path: '/'},
+        {id: 1, title: 'Фильмы', path: `/movies/page/${pageId}`},
+        {id: 2, title: 'Личности', path: '/persons'},
     ];
-    const [items, setItems] = useState(NavigationItems);
-
-    const handleSelectMenuItem = (id: number) => {
-        setItems(items.map((item) => (item.id === id ? {...item, active: true} : {...item, active: false})));
-    };
 
     return (
         <nav>
             <ul className={styles.navbarList}>
-                {items.map(({id, title, path, active}) => (
-                    <Link className={active ? styles.active : ''} onClick={() => handleSelectMenuItem(id)} key={id} href={path}>
+                {NavigationItems.map(({id, title, path}) => (
+                    <Link key={id} href={path}>
                         {title}
                     </Link>
                 ))}

@@ -60,7 +60,6 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
     const dispatch = useAppDispatch();
     const router = useRouter();
     const {pageId} = useAppSelector((state) => state.films);
-    console.log(movieSimilars);
 
     useEffect(() => {
         dispatch(setImagesPageId(1));
@@ -84,7 +83,7 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                 <div className={styles.background}>
                     <div className={styles.movieMain}>
                         <div className={styles.movieCoverImg}>
-                            <Image width={700} height={500} src={movie.coverUrl} alt="." />
+                            {movie.coverUrl && <Image width={700} height={500} src={movie.coverUrl} alt={movie.nameRu} />}
                             <div className={styles.gradient}></div>
                         </div>
                     </div>
@@ -104,23 +103,25 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                             <MovieAbout movie={movie} movieStaff={movieStaff} movieBox={movieBox} />
                         </div>
                     </div>
-                    <div className={styles.similarsContainer}>
+                    {movieSimilars.length > 0 && <div className={styles.similarsContainer}>
                         <h3 className={styles.similarsTitle}>Похожие фильмы</h3>
                         <Slider {...settings}>
                             {movieSimilars.map((movie) => (
+                              <Link className={styles.similarsLink} href={`/movie/${movie.filmId}`}>
                                 <div key={movie.filmId} style={{width: 200}}>
-                                    <Image src={movie.posterUrlPreview} width={200} height={280} alt={movie.nameEn} />
+                                    {movie.posterUrl && <Image src={movie.posterUrl} width={200} height={280} alt={movie.nameRu} />}
                                     <div className={styles.similarsText}>{movie.nameRu}</div>
                                 </div>
+                              </Link>
                             ))}
                         </Slider>
-                    </div>
+                    </div>}
                 </div>
             </main>
             <div className={styles.movieDetails}>
                 <div className={styles.movieDetailsContainer}>
                     <ul className={styles.movieTabsList}>
-                        <li className={styles.movieListDefault}>{T.Pages.default}</li>
+                        <li className={styles.movieListDefault}>{T.Pages.MovieDefault}</li>
                         <li>
                             <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Awards.route}`}>{T.Pages.Awards.label}</Link>
                         </li>

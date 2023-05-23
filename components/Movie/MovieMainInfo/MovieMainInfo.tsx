@@ -24,7 +24,7 @@ const MovieMainInfo: FC<IProps> = ({movie}) => {
                 </div>
                 <div className={styles.movieNameOriginal}>
                     {movie.nameOriginal && <span>{movie.nameOriginal}</span>}
-                    <span>{movie.ratingAgeLimits.slice(3, 5)}+</span>
+                    <span>{movie.ratingAgeLimits && movie.ratingAgeLimits.slice(3, 5) + '+'}</span>
                 </div>
                 <p className={styles.movieDescription}>{movie.shortDescription}</p>
                 <div className={styles.kinopoiskUrl}>

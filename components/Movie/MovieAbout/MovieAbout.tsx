@@ -79,10 +79,10 @@ const MovieAbout: FC<IProps> = ({movie, movieStaff, movieBox}) => {
                 {BOX_DICTIONARY.map((box) => (
                     <MovieAboutBox key={box.type} movieBox={movieBox} type={box.type} text={box.text} />
                 ))}
-                <div className={styles.aboutItem}>
+                {movie.ratingAgeLimits && <div className={styles.aboutItem}>
                     <div className={styles.aboutItemText}>{T.Movie.age}</div>
                     <div className={styles.aboutItemBorder}>{movie.ratingAgeLimits.slice(3, 5)}+</div>
-                </div>
+                </div>}
                 {movie.ratingMpaa && (
                     <div className={styles.aboutItem}>
                         <div className={styles.aboutItemText}>{T.Movie.ratingMPAA}</div>

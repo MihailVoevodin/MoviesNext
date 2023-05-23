@@ -31,7 +31,7 @@ export const MovieAboutStaff: FC<IProps> = ({movieStaff, type, text}) => {
                     <div className={styles.aboutItemContent}>
                         {filteredMovieStaff.slice(0, 3).map((person, id: number) => (
                             <Link key={id} href={`/name/${person.staffId}`}>
-                                <Popover content={<MovieAboutPersonPopover person={person} />}>{person.nameRu}</Popover>
+                                <Popover content={<MovieAboutPersonPopover person={person} />}>{person.nameRu || person.nameEn}</Popover>
                                 {id !== filteredMovieStaff.length - 1 ? ', ' : ''}
                             </Link>
                         ))}

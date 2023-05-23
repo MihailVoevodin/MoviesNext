@@ -7,6 +7,14 @@ export const Services = {
     async getMoviesTop_250(pageId: string): Promise<AxiosResponse> {
         return await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=${pageId}`);
     },
+    /** Получение топ 100 популярных фильмов. */
+    async getMoviesTop_100(pageId: string): Promise<AxiosResponse> {
+        return await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_100_POPULAR_FILMS&page=${pageId}`);
+    },
+    /** Получение топа ожидаемых фильмов. */
+    async getMoviesAwait(pageId: string): Promise<AxiosResponse> {
+        return await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_AWAIT_FILMS&page=${pageId}`);
+    },
     /** Получение фильма. */
     async getMovie(movieId: string): Promise<AxiosResponse> {
         return await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}`);
