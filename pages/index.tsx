@@ -1,17 +1,16 @@
 import Head from 'next/head';
 import {FC} from 'react';
-import Link from "next/link";
 import { useAppSelector } from "store/hooks";
 import { GetServerSideProps } from "next";
 import { Services } from "Common/Services";
-import Slider from "react-slick";
-import Image from "next/image";
 import styles from "styles/main.module.scss";
 import { IMovie } from "Common/Models";
 import { HomePageTop } from "components/HomePageTop/HomePageTop";
 
 /**
- * @param movies Массив топа фильмов.
+ * @param top250Movies Массив топ 250 фильмов фильмов.
+ * @param top100Movies Массив топ 100 популярных фильмов.
+ * @param topAwaitMovies Массив топа ожидаемых фильмов.
  */
 interface IProps {
   top250Movies: IMovie[];
@@ -19,7 +18,7 @@ interface IProps {
   topAwaitMovies: IMovie[];
 }
 
-export const getServerSideProps: GetServerSideProps<IProps> = async (context) => {
+export const getServerSideProps: GetServerSideProps<IProps> = async () => {
   const top250MoviesResponse = await Services.getMoviesTop_250('1');
   const top100MoviesResponse = await Services.getMoviesTop_100('1');
   const topAwaitMoviesResponse = await Services.getMoviesAwait('1');
@@ -31,6 +30,9 @@ export const getServerSideProps: GetServerSideProps<IProps> = async (context) =>
   };
 };
 
+/**
+ * Компонент отображения главной страницы.
+ */
 const Home: FC<IProps> = ({top250Movies, top100Movies, topAwaitMovies}) => {
   const {pageId} = useAppSelector((state) => state.films);
 
@@ -39,6 +41,9 @@ const Home: FC<IProps> = ({top250Movies, top100Movies, topAwaitMovies}) => {
             <Head>
                 <title>Movies</title>
             </Head>
+          <div className={styles.homePreview}>
+            <span>Узнай больше про свои любимые фильмы, сериалы или актёров</span>
+          </div>
             <main>
               <HomePageTop movies={top250Movies} link={`/movies/page/${pageId}`} text={'Топ 250 фильмов'} />
               <HomePageTop movies={top100Movies} link={`/movies/page/${pageId}`} text={'Топ 100 популярных фильмов'} />

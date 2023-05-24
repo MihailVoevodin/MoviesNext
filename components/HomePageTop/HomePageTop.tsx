@@ -4,15 +4,21 @@ import Slider from "react-slick";
 import Image from "next/image";
 import { FC } from "react";
 import { IMovie } from "Common/Models";
-import { T } from "Common/Text";
 
+/**
+ * @param movies Массив фильмов.
+ * @param link Ссылка на полный топ фильмов.
+ * @param text Название топа фильмов.
+ */
 interface IProps {
   movies: IMovie[];
   link: string;
   text: string;
 }
 
-
+/**
+ * Компонент отображения слайдера одного из топов на главной странице.
+ */
 export const HomePageTop: FC<IProps> = ({movies, link, text}) => {
 
   const settings = {
