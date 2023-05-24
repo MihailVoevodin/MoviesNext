@@ -63,11 +63,11 @@ const Facts: FC<IProps> = ({movieFacts, movieName}) => {
                         </span>
                         <hr />
                     </div>
-                    <div>
+                    {movieFacts.length > 0 ? <div>
                         {FACTS_DICTIONARY.map((fact) => (
                             <MovieFacts key={fact.type} movieFacts={movieFacts} type={fact.type} text={fact.text} />
                         ))}
-                    </div>
+                    </div> : <div className={mainStyles.emptyPage}>{T.Pages.Facts.empty}</div>}
                 </div>
             </div>
         </>

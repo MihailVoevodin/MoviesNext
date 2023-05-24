@@ -19,30 +19,37 @@ export const T = {
         Facts: {
             label: 'Факты',
             route: 'facts',
+            empty: 'Интересные факты о фильме не найдены',
         },
         Images: {
             label: 'Изображения',
             route: 'images',
+            empty: 'Нет данных об изображениях',
         },
         Reviews: {
             label: 'Рецензии',
             route: 'reviews',
+            empty: 'Рецензии на фильм отсутствуют',
         },
         Staff: {
             label: 'Создатели',
             route: 'staff',
+            empty: 'Нет данных о создателях',
         },
         Videos: {
             label: 'Видео',
             route: 'videos',
+            empty: 'Видеоматериалы отсутствуют',
         },
         Awards: {
             label: 'Награды',
             route: 'awards',
+            empty: 'Нет данных о наградах',
         },
         Distributions: {
             label: 'Прокат',
             route: 'distributions',
+            empty: 'Нет данных о прокате',
         },
     },
     Movie: {

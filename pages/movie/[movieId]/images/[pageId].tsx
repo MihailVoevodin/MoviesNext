@@ -52,7 +52,7 @@ const Images: FC<IProps> = ({movieName, movieImages}) => {
     const [image, setImage] = useState<string>('');
     const router = useRouter();
     const {imagesPageId} = useAppSelector((state) => state.films);
-    const {total, totalPages, items} = movieImages;
+    const {total, totalPages, items: images} = movieImages;
     const dispatch = useAppDispatch();
     const [filter, setFilter] = useState<string>(IMAGES_DICTIONARY[0].type);
 
@@ -114,7 +114,7 @@ const Images: FC<IProps> = ({movieName, movieImages}) => {
                             </span>
                             <hr />
                         </div>
-                        <div>
+                        {images.length > 0 ? <div>
                             <ul className={styles.titlesList}>
                                 {IMAGES_DICTIONARY.map((type) => {
                                     return (
@@ -133,7 +133,7 @@ const Images: FC<IProps> = ({movieName, movieImages}) => {
                                 })}
                             </ul>
                             <div className={styles.container}>
-                                {items.map((image, id: number) => (
+                                {images.map((image, id: number) => (
                                     <div key={id}>
                                         <Image
                                             className={styles.image}
@@ -166,7 +166,7 @@ const Images: FC<IProps> = ({movieName, movieImages}) => {
                                     showSizeChanger={false}
                                 />
                             )}
-                        </div>
+                        </div> : <div className={mainStyles.emptyPage}>{T.Pages.Images.empty}</div>}
                     </div>
                 </div>
             </ConfigProvider>

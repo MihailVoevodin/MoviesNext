@@ -61,7 +61,7 @@ const Videos: FC<IProps> = ({movieVideos, movieName}) => {
                         </span>
                         <hr />
                     </div>
-                    <div>
+                    {movieVideos.length > 0 ? <div>
                         {movieVideos
                             .filter((video) => video.site === 'YOUTUBE')
                             .map((video, id: number) => (
@@ -72,7 +72,7 @@ const Videos: FC<IProps> = ({movieVideos, movieName}) => {
                                     </div>
                                 </>
                             ))}
-                    </div>
+                    </div> : <div className={mainStyles.emptyPage}>{T.Pages.Videos.empty}</div>}
                 </div>
             </div>
         </>

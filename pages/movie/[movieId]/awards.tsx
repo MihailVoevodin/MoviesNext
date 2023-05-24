@@ -62,11 +62,11 @@ const Awards: FC<IProps> = ({movieAwards, movieName}) => {
                         </span>
                         <hr />
                     </div>
-                    <div>
+                    {movieAwards.length > 0 ? <div>
                         {AWARDS_DICTIONARY.map((award) => (
                             <MovieAward key={award.type} movieAwards={movieAwards} text={award.text} />
                         ))}
-                    </div>
+                    </div> : <div className={mainStyles.emptyPage}>{T.Pages.Awards.empty}</div>}
                 </div>
             </div>
         </>

@@ -104,7 +104,7 @@ const Reviews: FC<IProps> = ({movieReviews, movieName}) => {
                             </span>
                             <hr />
                         </div>
-                        <div>
+                        {reviews.length > 0 ? <div>
                             <div className={styles.countsReviewsContainer}>
                                 <div>
                                     <>
@@ -155,7 +155,7 @@ const Reviews: FC<IProps> = ({movieReviews, movieName}) => {
                                 onChange={onChange}
                                 showSizeChanger={false}
                             />
-                        </div>
+                        </div> : <div className={mainStyles.emptyPage}>{T.Pages.Reviews.empty}</div>}
                     </div>
                 </div>
             </ConfigProvider>
