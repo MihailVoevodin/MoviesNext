@@ -12,6 +12,7 @@ import {useAppDispatch, useAppSelector} from 'store/hooks';
 import mainStyles from 'styles/main.module.scss';
 import {IMovie} from 'Common/Models';
 import {Services} from 'Common/Services';
+import { Filters } from "components/Filters/Filters";
 
 /**
  * @param movies Массив топа фильмов.
@@ -71,6 +72,7 @@ const Movie: FC<IProps> = ({movies}) => {
                 }}
             >
                 <main>
+                    <Filters />
                     <div className={styles.movies}>
                         {movies.map((movie) => (
                             <div className={styles.moviesItem} key={movie.filmId}>
