@@ -210,1129 +210,1129 @@ export const T = {
     Filters: {
         genres: [
             {
-                value: 1,
+                value: "1",
                 label: "триллер"
             },
             {
-                value: 2,
+                value: "2",
                 label: "драма"
             },
             {
-                value: 3,
+                value: "3",
                 label: "криминал"
             },
             {
-                value: 4,
+                value: "4",
                 label: "мелодрама"
             },
             {
-                value: 5,
+                value: "5",
                 label: "детектив"
             },
             {
-                value: 6,
+                value: "6",
                 label: "фантастика"
             },
             {
-                value: 7,
+                value: "7",
                 label: "приключения"
             },
             {
-                value: 8,
+                value: "8",
                 label: "биография"
             },
             {
-                value: 9,
+                value: "9",
                 label: "фильм-нуар"
             },
             {
-                value: 10,
+                value: "10",
                 label: "вестерн"
             },
             {
-                value: 11,
+                value: "11",
                 label: "боевик"
             },
             {
-                value: 12,
+                value: "12",
                 label: "фэнтези"
             },
             {
-                value: 13,
+                value: "13",
                 label: "комедия"
             },
             {
-                value: 14,
+                value: "14",
                 label: "военный"
             },
             {
-                value: 15,
+                value: "15",
                 label: "история"
             },
             {
-                value: 16,
+                value: "16",
                 label: "музыка"
             },
             {
-                value: 17,
+                value: "17",
                 label: "ужасы"
             },
             {
-                value: 18,
+                value: "18",
                 label: "мультфильм"
             },
             {
-                value: 19,
+                value: "19",
                 label: "семейный"
             },
             {
-                value: 20,
+                value: "20",
                 label: "мюзикл"
             },
             {
-                value: 21,
+                value: "21",
                 label: "спорт"
             },
             {
-                value: 22,
+                value: "22",
                 label: "документальный"
             },
             {
-                value: 23,
+                value: "23",
                 label: "короткометражка"
             },
             {
-                value: 24,
+                value: "24",
                 label: "аниме"
             },
             {
-                value: 25,
+                value: "25",
                 label: "без жанра"
             },
             {
-                value: 26,
+                value: "26",
                 label: "новости"
             },
             {
-                value: 27,
+                value: "27",
                 label: "концерт"
             },
             {
-                value: 28,
+                value: "28",
                 label: "для взрослых"
             },
             {
-                value: 29,
+                value: "29",
                 label: "церемония"
             },
             {
-                value: 30,
+                value: "30",
                 label: "реальное ТВ"
             },
             {
-                value: 31,
+                value: "31",
                 label: "игра"
             },
             {
-                value: 32,
+                value: "32",
                 label: "ток-шоу"
             },
             {
-                value: 33,
+                value: "33",
                 label: "детский"
             }
         ],
         countries: [
             {
-                value: 1,
+                value: "1",
                 label: "США"
             },
             {
-                value: 2,
+                value: "2",
                 label: "Швейцария"
             },
             {
-                value: 3,
+                value: "3",
                 label: "Франция"
             },
             {
-                value: 4,
+                value: "4",
                 label: "Польша"
             },
             {
-                value: 5,
+                value: "5",
                 label: "Великобритания"
             },
             {
-                value: 6,
+                value: "6",
                 label: "Швеция"
             },
             {
-                value: 7,
+                value: "7",
                 label: "Индия"
             },
             {
-                value: 8,
+                value: "8",
                 label: "Испания"
             },
             {
-                value: 9,
+                value: "9",
                 label: "Германия"
             },
             {
-                value: 10,
+                value: "10",
                 label: "Италия"
             },
             {
-                value: 11,
+                value: "11",
                 label: "Гонконг"
             },
             {
-                value: 12,
+                value: "12",
                 label: "Германия (ФРГ)"
             },
             {
-                value: 13,
+                value: "13",
                 label: "Австралия"
             },
             {
-                value: 14,
+                value: "14",
                 label: "Канада"
             },
             {
-                value: 15,
+                value: "15",
                 label: "Мексика"
             },
             {
-                value: 16,
+                value: "16",
                 label: "Япония"
             },
             {
-                value: 17,
+                value: "17",
                 label: "Дания"
             },
             {
-                value: 18,
+                value: "18",
                 label: "Чехия"
             },
             {
-                value: 19,
+                value: "19",
                 label: "Ирландия"
             },
             {
-                value: 20,
+                value: "20",
                 label: "Люксембург"
             },
             {
-                value: 21,
+                value: "21",
                 label: "Китай"
             },
             {
-                value: 22,
+                value: "22",
                 label: "Норвегия"
             },
             {
-                value: 23,
+                value: "23",
                 label: "Нидерланды"
             },
             {
-                value: 24,
+                value: "24",
                 label: "Аргентина"
             },
             {
-                value: 25,
+                value: "25",
                 label: "Финляндия"
             },
             {
-                value: 26,
+                value: "26",
                 label: "Босния и Герцеговина"
             },
             {
-                value: 27,
+                value: "27",
                 label: "Австрия"
             },
             {
-                value: 28,
+                value: "28",
                 label: "Тайвань"
             },
             {
-                value: 29,
+                value: "29",
                 label: "Новая Зеландия"
             },
             {
-                value: 30,
+                value: "30",
                 label: "Бразилия"
             },
             {
-                value: 31,
+                value: "31",
                 label: "Чехословакия"
             },
             {
-                value: 32,
+                value: "32",
                 label: "Мальта"
             },
             {
-                value: 33,
+                value: "33",
                 label: "СССР"
             },
             {
-                value: 34,
+                value: "34",
                 label: "Россия"
             },
             {
-                value: 35,
+                value: "35",
                 label: "Югославия"
             },
             {
-                value: 36,
+                value: "36",
                 label: "Португалия"
             },
             {
-                value: 37,
+                value: "37",
                 label: "Румыния"
             },
             {
-                value: 38,
+                value: "38",
                 label: "Хорватия"
             },
             {
-                value: 39,
+                value: "39",
                 label: "ЮАР"
             },
             {
-                value: 40,
+                value: "40",
                 label: "Куба"
             },
             {
-                value: 41,
+                value: "41",
                 label: "Колумбия"
             },
             {
-                value: 42,
+                value: "42",
                 label: "Израиль"
             },
             {
-                value: 43,
+                value: "43",
                 label: "Намибия"
             },
             {
-                value: 44,
+                value: "44",
                 label: "Турция"
             },
             {
-                value: 45,
+                value: "45",
                 label: "Бельгия"
             },
             {
-                value: 46,
+                value: "46",
                 label: "Сальвадор"
             },
             {
-                value: 47,
+                value: "47",
                 label: "Исландия"
             },
             {
-                value: 48,
+                value: "48",
                 label: "Венгрия"
             },
             {
-                value: 49,
+                value: "49",
                 label: "Корея Южная"
             },
             {
-                value: 50,
+                value: "50",
                 label: "Лихтенштейн"
             },
             {
-                value: 51,
+                value: "51",
                 label: "Болгария"
             },
             {
-                value: 52,
+                value: "52",
                 label: "Филиппины"
             },
             {
-                value: 53,
+                value: "53",
                 label: "Доминикана"
             },
             {
-                value: 54,
+                value: "54",
                 label: ""
             },
             {
-                value: 55,
+                value: "55",
                 label: "Марокко"
             },
             {
-                value: 56,
+                value: "56",
                 label: "Таиланд"
             },
             {
-                value: 57,
+                value: "57",
                 label: "Кения"
             },
             {
-                value: 58,
+                value: "58",
                 label: "Пакистан"
             },
             {
-                value: 59,
+                value: "59",
                 label: "Иран"
             },
             {
-                value: 60,
+                value: "60",
                 label: "Панама"
             },
             {
-                value: 61,
+                value: "61",
                 label: "Аруба"
             },
             {
-                value: 62,
+                value: "62",
                 label: "Ямайка"
             },
             {
-                value: 63,
+                value: "63",
                 label: "Греция"
             },
             {
-                value: 64,
+                value: "64",
                 label: "Тунис"
             },
             {
-                value: 65,
+                value: "65",
                 label: "Кыргызстан"
             },
             {
-                value: 66,
+                value: "66",
                 label: "Пуэрто Рико"
             },
             {
-                value: 67,
+                value: "67",
                 label: "Казахстан"
             },
             {
-                value: 68,
+                value: "68",
                 label: "Югославия (ФР)"
             },
             {
-                value: 69,
+                value: "69",
                 label: "Алжир"
             },
             {
-                value: 70,
+                value: "70",
                 label: "Германия (ГДР)"
             },
             {
-                value: 71,
+                value: "71",
                 label: "Сингапур"
             },
             {
-                value: 72,
+                value: "72",
                 label: "Словакия"
             },
             {
-                value: 73,
+                value: "73",
                 label: "Афганистан"
             },
             {
-                value: 74,
+                value: "74",
                 label: "Индонезия"
             },
             {
-                value: 75,
+                value: "75",
                 label: "Перу"
             },
             {
-                value: 76,
+                value: "76",
                 label: "Бермуды"
             },
             {
-                value: 77,
+                value: "77",
                 label: "Монако"
             },
             {
-                value: 78,
+                value: "78",
                 label: "Зимбабве"
             },
             {
-                value: 79,
+                value: "79",
                 label: "Вьетнам"
             },
             {
-                value: 80,
+                value: "80",
                 label: "Антильские Острова"
             },
             {
-                value: 81,
+                value: "81",
                 label: "Саудовская Аравия"
             },
             {
-                value: 82,
+                value: "82",
                 label: "Танзания"
             },
             {
-                value: 83,
+                value: "83",
                 label: "Ливия"
             },
             {
-                value: 84,
+                value: "84",
                 label: "Ливан"
             },
             {
-                value: 85,
+                value: "85",
                 label: "Кувейт"
             },
             {
-                value: 86,
+                value: "86",
                 label: "Египет"
             },
             {
-                value: 87,
+                value: "87",
                 label: "Литва"
             },
             {
-                value: 88,
+                value: "88",
                 label: "Венесуэла"
             },
             {
-                value: 89,
+                value: "89",
                 label: "Словения"
             },
             {
-                value: 90,
+                value: "90",
                 label: "Чили"
             },
             {
-                value: 91,
+                value: "91",
                 label: "Багамы"
             },
             {
-                value: 92,
+                value: "92",
                 label: "Эквадор"
             },
             {
-                value: 93,
+                value: "93",
                 label: "Коста-Рика"
             },
             {
-                value: 94,
+                value: "94",
                 label: "Кипр"
             },
             {
-                value: 95,
+                value: "95",
                 label: "Уругвай"
             },
             {
-                value: 96,
+                value: "96",
                 label: "Ирак"
             },
             {
-                value: 97,
+                value: "97",
                 label: "Мартиника"
             },
             {
-                value: 98,
+                value: "98",
                 label: "Эстония"
             },
             {
-                value: 99,
+                value: "99",
                 label: "ОАЭ"
             },
             {
-                value: 100,
+                value: "100",
                 label: "Бангладеш"
             },
             {
-                value: 101,
+                value: "101",
                 label: "Македония"
             },
             {
-                value: 102,
+                value: "102",
                 label: "Гвинея"
             },
             {
-                value: 103,
+                value: "103",
                 label: "Иордания"
             },
             {
-                value: 104,
+                value: "104",
                 label: "Латвия"
             },
             {
-                value: 105,
+                value: "105",
                 label: "Армения"
             },
             {
-                value: 106,
+                value: "106",
                 label: "Украина"
             },
             {
-                value: 107,
+                value: "107",
                 label: "Сирия"
             },
             {
-                value: 108,
+                value: "108",
                 label: "Шри-Ланка"
             },
             {
-                value: 109,
+                value: "109",
                 label: "Нигерия"
             },
             {
-                value: 110,
+                value: "110",
                 label: "Берег Слоновой кости"
             },
             {
-                value: 111,
+                value: "111",
                 label: "Грузия"
             },
             {
-                value: 112,
+                value: "112",
                 label: "Сенегал"
             },
             {
-                value: 113,
+                value: "113",
                 label: "Монголия"
             },
             {
-                value: 114,
+                value: "114",
                 label: "Габон"
             },
             {
-                value: 115,
+                value: "115",
                 label: "Замбия"
             },
             {
-                value: 116,
+                value: "116",
                 label: "Албания"
             },
             {
-                value: 117,
+                value: "117",
                 label: "Камерун"
             },
             {
-                value: 118,
+                value: "118",
                 label: "Буркина-Фасо"
             },
             {
-                value: 119,
+                value: "119",
                 label: "Узбекистан"
             },
             {
-                value: 120,
+                value: "120",
                 label: "Малайзия"
             },
             {
-                value: 121,
+                value: "121",
                 label: "Сербия"
             },
             {
-                value: 122,
+                value: "122",
                 label: "Гана"
             },
             {
-                value: 123,
+                value: "123",
                 label: "Таджикистан"
             },
             {
-                value: 124,
+                value: "124",
                 label: "Гаити"
             },
             {
-                value: 125,
+                value: "125",
                 label: "Конго (ДРК)"
             },
             {
-                value: 126,
+                value: "126",
                 label: "Гватемала"
             },
             {
-                value: 127,
+                value: "127",
                 label: "Российская империя"
             },
             {
-                value: 128,
+                value: "128",
                 label: "Беларусь"
             },
             {
-                value: 129,
+                value: "129",
                 label: "Молдова"
             },
             {
-                value: 130,
+                value: "130",
                 label: "Азербайджан"
             },
             {
-                value: 131,
+                value: "131",
                 label: "Палестина"
             },
             {
-                value: 132,
+                value: "132",
                 label: "Оккупированная Палестинская территория"
             },
             {
-                value: 133,
+                value: "133",
                 label: "Корея Северная"
             },
             {
-                value: 134,
+                value: "134",
                 label: "Никарагуа"
             },
             {
-                value: 135,
+                value: "135",
                 label: "Камбоджа"
             },
             {
-                value: 136,
+                value: "136",
                 label: "Ангола"
             },
             {
-                value: 137,
+                value: "137",
                 label: "Сербия и Черногория"
             },
             {
-                value: 138,
+                value: "138",
                 label: "Непал"
             },
             {
-                value: 139,
+                value: "139",
                 label: "Бенин"
             },
             {
-                value: 140,
+                value: "140",
                 label: "Гваделупа"
             },
             {
-                value: 141,
+                value: "141",
                 label: "Гренландия"
             },
             {
-                value: 142,
+                value: "142",
                 label: "Гвинея-Бисау"
             },
             {
-                value: 143,
+                value: "143",
                 label: "Макао"
             },
             {
-                value: 144,
+                value: "144",
                 label: "Парагвай"
             },
             {
-                value: 145,
+                value: "145",
                 label: "Мавритания"
             },
             {
-                value: 146,
+                value: "146",
                 label: "Руанда"
             },
             {
-                value: 147,
+                value: "147",
                 label: "Фарерские острова"
             },
             {
-                value: 148,
+                value: "148",
                 label: "Кот-д’Ивуар"
             },
             {
-                value: 149,
+                value: "149",
                 label: "Гибралтар"
             },
             {
-                value: 150,
+                value: "150",
                 label: "Ботсвана"
             },
             {
-                value: 151,
+                value: "151",
                 label: "Боливия"
             },
             {
-                value: 152,
+                value: "152",
                 label: "Мадагаскар"
             },
             {
-                value: 153,
+                value: "153",
                 label: "Кабо-Верде"
             },
             {
-                value: 154,
+                value: "154",
                 label: "Чад"
             },
             {
-                value: 155,
+                value: "155",
                 label: "Мали"
             },
             {
-                value: 156,
+                value: "156",
                 label: "Фиджи"
             },
             {
-                value: 157,
+                value: "157",
                 label: "Бутан"
             },
             {
-                value: 158,
+                value: "158",
                 label: "Барбадос"
             },
             {
-                value: 159,
+                value: "159",
                 label: "Тринидад и Тобаго"
             },
             {
-                value: 160,
+                value: "160",
                 label: "Мозамбик"
             },
             {
-                value: 161,
+                value: "161",
                 label: "Заир"
             },
             {
-                value: 162,
+                value: "162",
                 label: "Андорра"
             },
             {
-                value: 163,
+                value: "163",
                 label: "Туркменистан"
             },
             {
-                value: 164,
+                value: "164",
                 label: "Гайана"
             },
             {
-                value: 165,
+                value: "165",
                 label: "Корея"
             },
             {
-                value: 166,
+                value: "166",
                 label: "Нигер"
             },
             {
-                value: 167,
+                value: "167",
                 label: "Конго"
             },
             {
-                value: 168,
+                value: "168",
                 label: "Того"
             },
             {
-                value: 169,
+                value: "169",
                 label: "Ватикан"
             },
             {
-                value: 170,
+                value: "170",
                 label: "Черногория"
             },
             {
-                value: 171,
+                value: "171",
                 label: "Бурунди"
             },
             {
-                value: 172,
+                value: "172",
                 label: "Папуа - Новая Гвинея"
             },
             {
-                value: 173,
+                value: "173",
                 label: "Бахрейн"
             },
             {
-                value: 174,
+                value: "174",
                 label: "Гондурас"
             },
             {
-                value: 175,
+                value: "175",
                 label: "Судан"
             },
             {
-                value: 176,
+                value: "176",
                 label: "Эфиопия"
             },
             {
-                value: 177,
+                value: "177",
                 label: "Йемен"
             },
             {
-                value: 178,
+                value: "178",
                 label: "Вьетнам Северный"
             },
             {
-                value: 179,
+                value: "179",
                 label: "Суринам"
             },
             {
-                value: 180,
+                value: "180",
                 label: "Маврикий"
             },
             {
-                value: 181,
+                value: "181",
                 label: "Белиз"
             },
             {
-                value: 182,
+                value: "182",
                 label: "Либерия"
             },
             {
-                value: 183,
+                value: "183",
                 label: "Лесото"
             },
             {
-                value: 184,
+                value: "184",
                 label: "Уганда"
             },
             {
-                value: 185,
+                value: "185",
                 label: "Каймановы острова"
             },
             {
-                value: 186,
+                value: "186",
                 label: "Антигуа и Барбуда"
             },
             {
-                value: 187,
+                value: "187",
                 label: "Западная Сахара"
             },
             {
-                value: 188,
+                value: "188",
                 label: "Сан-Марино"
             },
             {
-                value: 189,
+                value: "189",
                 label: "Гуам"
             },
             {
-                value: 190,
+                value: "190",
                 label: "Косово"
             },
             {
-                value: 191,
+                value: "191",
                 label: "Лаос"
             },
             {
-                value: 192,
+                value: "192",
                 label: "Катар"
             },
             {
-                value: 193,
+                value: "193",
                 label: "Оман"
             },
             {
-                value: 194,
+                value: "194",
                 label: "Американские Виргинские острова"
             },
             {
-                value: 195,
+                value: "195",
                 label: "Сиам"
             },
             {
-                value: 196,
+                value: "196",
                 label: "Сьерра-Леоне"
             },
             {
-                value: 197,
+                value: "197",
                 label: "Эритрея"
             },
             {
-                value: 198,
+                value: "198",
                 label: "Сомали"
             },
             {
-                value: 199,
+                value: "199",
                 label: "Доминика"
             },
             {
-                value: 200,
+                value: "200",
                 label: "Бирма"
             },
             {
-                value: 201,
+                value: "201",
                 label: "Реюньон"
             },
             {
-                value: 202,
+                value: "202",
                 label: "Федеративные Штаты Микронезии"
             },
             {
-                value: 203,
+                value: "203",
                 label: "Самоа"
             },
             {
-                value: 204,
+                value: "204",
                 label: "Американское Самоа"
             },
             {
-                value: 205,
+                value: "205",
                 label: "Свазиленд"
             },
             {
-                value: 206,
+                value: "206",
                 label: "Французская Полинезия"
             },
             {
-                value: 207,
+                value: "207",
                 label: "Мьянма"
             },
             {
-                value: 208,
+                value: "208",
                 label: "Новая Каледония"
             },
             {
-                value: 209,
+                value: "209",
                 label: "Французская Гвиана"
             },
             {
-                value: 210,
+                value: "210",
                 label: "Сент-Винсент и Гренадины"
             },
             {
-                value: 211,
+                value: "211",
                 label: "Малави"
             },
             {
-                value: 212,
+                value: "212",
                 label: "Экваториальная Гвинея"
             },
             {
-                value: 213,
+                value: "213",
                 label: "Коморы"
             },
             {
-                value: 214,
+                value: "214",
                 label: "Кирибати"
             },
             {
-                value: 215,
+                value: "215",
                 label: "Тувалу"
             },
             {
-                value: 216,
+                value: "216",
                 label: "Тимор-Лесте"
             },
             {
-                value: 217,
+                value: "217",
                 label: "ЦАР"
             },
             {
-                value: 218,
+                value: "218",
                 label: "Тонга"
             },
             {
-                value: 219,
+                value: "219",
                 label: "Гренада"
             },
             {
-                value: 220,
+                value: "220",
                 label: "Гамбия"
             },
             {
-                value: 221,
+                value: "221",
                 label: "Антарктида"
             },
             {
-                value: 222,
+                value: "222",
                 label: "Острова Кука"
             },
             {
-                value: 223,
+                value: "223",
                 label: "Остров Мэн"
             },
             {
-                value: 224,
+                value: "224",
                 label: "Внешние малые острова США"
             },
             {
-                value: 225,
+                value: "225",
                 label: "Монтсеррат"
             },
             {
-                value: 226,
+                value: "226",
                 label: "Маршалловы острова"
             },
             {
-                value: 227,
+                value: "227",
                 label: "Бруней-Даруссалам"
             },
             {
-                value: 228,
+                value: "228",
                 label: "Сейшельские острова"
             },
             {
-                value: 229,
+                value: "229",
                 label: "Палау"
             },
             {
-                value: 230,
+                value: "230",
                 label: "Сент-Люсия"
             },
             {
-                value: 231,
+                value: "231",
                 label: "Вануату"
             },
             {
-                value: 232,
+                value: "232",
                 label: "Мальдивы"
             },
             {
-                value: 233,
+                value: "233",
                 label: "Босния"
             },
             {
-                value: 234,
+                value: "234",
                 label: "Уоллис и Футуна"
             },
             {
-                value: 235,
+                value: "235",
                 label: "Белоруссия"
             },
             {
-                value: 236,
+                value: "236",
                 label: "Киргизия"
             },
             {
-                value: 239,
+                value: "239",
                 label: "Джибути"
             },
             {
-                value: 240,
+                value: "240",
                 label: "Виргинские Острова (США)"
             },
             {
-                value: 241,
+                value: "241",
                 label: "Северная Македония"
             },
             {
-                value: 242,
+                value: "242",
                 label: "Виргинские Острова (Великобритания)"
             },
             {
-                value: 3545269,
+                value: "3545269",
                 label: "Сент-Люсия "
             },
             {
-                value: 3781461,
+                value: "3781461",
                 label: "Сент-Китс и Невис"
             },
             {
-                value: 3985922,
+                value: "3985922",
                 label: "Соломоновы Острова"
             },
             {
-                value: 4336645,
+                value: "4336645",
                 label: "Виргинские Острова"
             },
             {
-                value: 7801402,
+                value: "7801402",
                 label: "Фолклендские острова"
             },
             {
-                value: 10842163,
+                value: "10842163",
                 label: "Остров Святой Елены"
             },
             {
-                value: 32518739,
+                value: "32518739",
                 label: "острова Теркс и Кайкос"
             },
             {
-                value: 47738117,
+                value: "47738117",
                 label: "Мелкие отдаленные острова США"
             }
         ],

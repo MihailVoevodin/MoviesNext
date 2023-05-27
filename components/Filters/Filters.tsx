@@ -1,36 +1,35 @@
-import { Input, Select } from "antd";
+import { Button, Input, Select } from "antd";
 import { T } from "Common/Text";
 import { ChangeEvent, useState } from "react";
 import { Regulars } from "Common/Consts";
+import { useAppDispatch, useAppSelector } from "store/hooks";
+import { setCountryId, setGenreId, setOrderId, setTypeId, setRatingFrom, setRatingTo, setYearFrom, setYearTo, setKeyword } from "store/filtersSlice";
 
 export const Filters = () => {
-  const [ratingFrom, setRatingFrom] = useState<string>('')
-  const [ratingTo, setRatingTo] = useState<string>('')
-  const [yearFrom, setYearFrom] = useState<string>('')
-  const [yearTo, setYearTo] = useState<string>('')
-  const [keyword, setKeyword] = useState<string>('')
+  const dispatch = useAppDispatch();
+  const {orderId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword} = useAppSelector((state) => state.filters)
 
-  const onChangeGenres = (value: string) => {
-    console.log(`selected ${value}`);
+  const handleChangeGenres = (value: string) => {
+    dispatch(setGenreId(value));
   };
 
-  const onChangeCountries = (value: string) => {
-    console.log(`selected ${value}`);
+  const handleChangeCountries = (value: string) => {
+    dispatch(setCountryId(value));
   };
 
   const handleChangeOrder = (value: string) => {
-    console.log(`selected ${value}`);
+    dispatch(setOrderId(value));
   };
 
   const handleChangeType = (value: string) => {
-    console.log(`selected ${value}`);
+    dispatch(setTypeId(value));
   };
 
   const handleChangeRatingFrom = (e: ChangeEvent<HTMLInputElement>) => {
     const { value: inputValue } = e.target;
     const reg = Regulars.numbers;
     if (reg.test(inputValue) || inputValue === '.') {
-      setRatingFrom(inputValue);
+      dispatch(setRatingFrom(inputValue));
     }
   };
 
@@ -38,7 +37,7 @@ export const Filters = () => {
     const { value: inputValue } = e.target;
     const reg = Regulars.numbers;
     if (reg.test(inputValue) || inputValue === '.') {
-      setRatingTo(inputValue);
+      dispatch(setRatingTo(inputValue));
     }
   };
 
@@ -46,7 +45,7 @@ export const Filters = () => {
     const { value: inputValue } = e.target;
     const reg = Regulars.numbers;
     if (reg.test(inputValue)) {
-      setYearFrom(inputValue);
+      dispatch(setYearFrom(inputValue));
     }
   };
 
@@ -54,13 +53,13 @@ export const Filters = () => {
     const { value: inputValue } = e.target;
     const reg = Regulars.numbers;
     if (reg.test(inputValue)) {
-      setYearTo(inputValue);
+      dispatch(setYearTo(inputValue));
     }
   };
 
   const handleChangeKeyword = (e: ChangeEvent<HTMLInputElement>) => {
       const { value: inputValue } = e.target;
-      setKeyword(inputValue);
+      dispatch(setKeyword(inputValue));
   };
 
   return (
@@ -71,7 +70,7 @@ export const Filters = () => {
           style={{width: 200}}
           showSearch
           placeholder="Выберите жанр"
-          onChange={onChangeGenres}
+          onChange={handleChangeGenres}
           filterOption={(input, option) =>
             (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
           }
@@ -84,7 +83,7 @@ export const Filters = () => {
           style={{width: 200}}
           showSearch
           placeholder="Выберите страну"
-          onChange={onChangeCountries}
+          onChange={handleChangeCountries}
           filterOption={(input, option) =>
             (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
           }
@@ -94,7 +93,7 @@ export const Filters = () => {
       <div>
         <span>Сортировка</span>
         <Select
-          defaultValue={T.Filters.order[0].value}
+          defaultValue={orderId}
           style={{ width: 200 }}
           onChange={handleChangeOrder}
           options={T.Filters.order}
@@ -103,7 +102,7 @@ export const Filters = () => {
       <div>
         <span>Тип видеоматериала</span>
         <Select
-          defaultValue={T.Filters.type[0].value}
+          defaultValue={typeId}
           style={{ width: 200 }}
           onChange={handleChangeType}
           options={T.Filters.type}
@@ -154,6 +153,7 @@ export const Filters = () => {
           maxLength={16}
         />
       </div>
+      <Button>Найти фильмы</Button>
     </div>
   )
 }
