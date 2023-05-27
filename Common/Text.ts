@@ -1335,6 +1335,42 @@ export const T = {
                 value: 47738117,
                 label: "Мелкие отдаленные острова США"
             }
-        ]
+        ],
+        order: [
+            {
+                value: "RATING",
+                label: "по рейтингу",
+            },
+            {
+                value: "NUM_VOTE",
+                label: "количество голосов",
+            },
+            {
+                value: "YEAR",
+                label: "по году",
+            },
+        ],
+        type: [
+            {
+                value: "ALL",
+                label: "все",
+            },
+            {
+                value: "FILM",
+                label: "фильм",
+            },
+            {
+                value: "TV_SHOW",
+                label: "ТВ-Шоу",
+            },
+            {
+                value: "TV_SERIES",
+                label: "сериал",
+            },
+            {
+                value: "MINI_SERIES",
+                label: "мини-сериал",
+            },
+        ],
     },
 };

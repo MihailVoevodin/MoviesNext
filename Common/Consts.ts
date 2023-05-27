@@ -321,4 +321,5 @@ export const REVIEWS_SELECT_DICTIONARY = [
 /** Константа для регулярных выражений. */
 export const Regulars = {
     fixTagsInText: /<[^>]+>|&[^>]+;/g,
+    numbers: /^-?\d*(\.\d*)?$/,
 };
