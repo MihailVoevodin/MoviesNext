@@ -62,16 +62,20 @@ const Distributions: FC<IProps> = ({movieDistributions, movieName}) => {
                         </span>
                         <hr />
                     </div>
-                    {movieDistributions.length > 0 ? <div>
-                        {DISTRIBUTIONS_DICTIONARY.map((distribution) => (
-                            <MovieDistribution
-                                key={distribution.type}
-                                movieDistributions={movieDistributions}
-                                type={distribution.type}
-                                text={distribution.text}
-                            />
-                        ))}
-                    </div> : <div className={mainStyles.emptyPage}>{T.Pages.Distributions.empty}</div>}
+                    {movieDistributions.length > 0 ? (
+                        <div>
+                            {DISTRIBUTIONS_DICTIONARY.map((distribution) => (
+                                <MovieDistribution
+                                    key={distribution.type}
+                                    movieDistributions={movieDistributions}
+                                    type={distribution.type}
+                                    text={distribution.text}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className={mainStyles.emptyPage}>{T.Pages.Distributions.empty}</div>
+                    )}
                 </div>
             </div>
         </>

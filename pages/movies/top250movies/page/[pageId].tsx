@@ -1,10 +1,11 @@
 import {ConfigProvider, Pagination} from 'antd';
+import {Filters} from 'components/Filters/Filters';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import styles from 'pages/movies/page/Movies.module.scss';
+import styles from 'pages/movies/top100popular/page/Movies.module.scss';
 import {ParsedUrlQuery} from 'querystring';
 import {FC} from 'react';
 import {setPageId} from 'store/filmsSlice';
@@ -12,7 +13,6 @@ import {useAppDispatch, useAppSelector} from 'store/hooks';
 import mainStyles from 'styles/main.module.scss';
 import {IMovie} from 'Common/Models';
 import {Services} from 'Common/Services';
-import { Filters } from "components/Filters/Filters";
 
 /**
  * @param movies Массив топа фильмов.
@@ -47,7 +47,7 @@ const Movie: FC<IProps> = ({movies}) => {
 
     const onChange = (pageId: number) => {
         dispatch(setPageId(pageId));
-        void router.replace(`/movies/page/${pageId}`);
+        void router.replace(`/movies/top250movies/page/${pageId}`);
     };
 
     return (

@@ -1,5 +1,8 @@
 import {Html, Head, Main, NextScript} from 'next/document';
 
+/**
+ *  Основной компонент документа
+ */
 export default function Document() {
     return (
         <Html>

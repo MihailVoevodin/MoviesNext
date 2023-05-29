@@ -104,58 +104,62 @@ const Reviews: FC<IProps> = ({movieReviews, movieName}) => {
                             </span>
                             <hr />
                         </div>
-                        {reviews.length > 0 ? <div>
-                            <div className={styles.countsReviewsContainer}>
-                                <div>
-                                    <>
-                                        {T.Movie.Reviews.Types.all} <span>{total}</span>
-                                    </>
+                        {reviews.length > 0 ? (
+                            <div>
+                                <div className={styles.countsReviewsContainer}>
+                                    <div>
+                                        <>
+                                            {T.Movie.Reviews.Types.all} <span>{total}</span>
+                                        </>
+                                    </div>
+                                    <div>
+                                        <>
+                                            {T.Movie.Reviews.Types.positive} <span>{totalPositiveReviews}</span>
+                                        </>
+                                    </div>
+                                    <div>
+                                        <>
+                                            {T.Movie.Reviews.Types.negative} <span>{totalNegativeReviews}</span>
+                                        </>
+                                    </div>
+                                    <div>
+                                        <>
+                                            {T.Movie.Reviews.Types.neutral} <span>{totalNeutralReviews}</span>
+                                        </>
+                                    </div>
                                 </div>
-                                <div>
-                                    <>
-                                        {T.Movie.Reviews.Types.positive} <span>{totalPositiveReviews}</span>
-                                    </>
+                                <div className={styles.sorting}>
+                                    <span className={styles.text}>{T.Movie.Reviews.SortingSelect.label}</span>
+                                    <Select
+                                        defaultValue={REVIEWS_SELECT_DICTIONARY[0].value}
+                                        style={{width: 300}}
+                                        onChange={handleFilterChange}
+                                        options={REVIEWS_SELECT_DICTIONARY}
+                                    />
                                 </div>
-                                <div>
-                                    <>
-                                        {T.Movie.Reviews.Types.negative} <span>{totalNegativeReviews}</span>
-                                    </>
-                                </div>
-                                <div>
-                                    <>
-                                        {T.Movie.Reviews.Types.neutral} <span>{totalNeutralReviews}</span>
-                                    </>
-                                </div>
-                            </div>
-                            <div className={styles.sorting}>
-                                <span className={styles.text}>{T.Movie.Reviews.SortingSelect.label}</span>
-                                <Select
-                                    defaultValue={REVIEWS_SELECT_DICTIONARY[0].value}
-                                    style={{width: 300}}
-                                    onChange={handleFilterChange}
-                                    options={REVIEWS_SELECT_DICTIONARY}
+                                <Pagination
+                                    className={mainStyles.pagination}
+                                    current={reviewsPageId}
+                                    total={total}
+                                    defaultPageSize={20}
+                                    onChange={onChange}
+                                    showSizeChanger={false}
+                                />
+                                {reviews.map((review) => (
+                                    <MovieReview key={review.kinopoiskId} review={review} />
+                                ))}
+                                <Pagination
+                                    className={mainStyles.pagination}
+                                    current={reviewsPageId}
+                                    total={total}
+                                    defaultPageSize={20}
+                                    onChange={onChange}
+                                    showSizeChanger={false}
                                 />
                             </div>
-                            <Pagination
-                                className={mainStyles.pagination}
-                                current={reviewsPageId}
-                                total={total}
-                                defaultPageSize={20}
-                                onChange={onChange}
-                                showSizeChanger={false}
-                            />
-                            {reviews.map((review) => (
-                                <MovieReview key={review.kinopoiskId} review={review} />
-                            ))}
-                            <Pagination
-                                className={mainStyles.pagination}
-                                current={reviewsPageId}
-                                total={total}
-                                defaultPageSize={20}
-                                onChange={onChange}
-                                showSizeChanger={false}
-                            />
-                        </div> : <div className={mainStyles.emptyPage}>{T.Pages.Reviews.empty}</div>}
+                        ) : (
+                            <div className={mainStyles.emptyPage}>{T.Pages.Reviews.empty}</div>
+                        )}
                     </div>
                 </div>
             </ConfigProvider>

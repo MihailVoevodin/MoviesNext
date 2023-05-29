@@ -1,7 +1,7 @@
 import filmsSlice, {IFilmsState} from 'store/filmsSlice';
+import filtersSlice, {IFiltersState} from 'store/filtersSlice';
 import personsSlice, {IPersonsState} from 'store/personsSlice';
 import {configureStore} from '@reduxjs/toolkit';
-import filtersSlice, { IFiltersState } from "store/filtersSlice";
 
 /**
  * @param films - Стор фильмов.

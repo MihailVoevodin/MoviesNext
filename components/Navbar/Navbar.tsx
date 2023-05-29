@@ -1,6 +1,6 @@
 import styles from 'components/Navbar/Navbar.module.scss';
 import Link from 'next/link';
-import {FC, useState} from 'react';
+import {FC} from 'react';
 import {useAppSelector} from 'store/hooks';
 
 /**

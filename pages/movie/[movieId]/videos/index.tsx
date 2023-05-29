@@ -61,18 +61,22 @@ const Videos: FC<IProps> = ({movieVideos, movieName}) => {
                         </span>
                         <hr />
                     </div>
-                    {movieVideos.length > 0 ? <div>
-                        {movieVideos
-                            .filter((video) => video.site === 'YOUTUBE')
-                            .map((video, id: number) => (
-                                <>
-                                    <div className={styles.videoName}>{video.name}</div>
-                                    <div className={styles.video}>
-                                        <ReactPlayer key={id} url={video.url} />
-                                    </div>
-                                </>
-                            ))}
-                    </div> : <div className={mainStyles.emptyPage}>{T.Pages.Videos.empty}</div>}
+                    {movieVideos.length > 0 ? (
+                        <div>
+                            {movieVideos
+                                .filter((video) => video.site === 'YOUTUBE')
+                                .map((video, id: number) => (
+                                    <>
+                                        <div className={styles.videoName}>{video.name}</div>
+                                        <div className={styles.video}>
+                                            <ReactPlayer key={id} url={video.url} />
+                                        </div>
+                                    </>
+                                ))}
+                        </div>
+                    ) : (
+                        <div className={mainStyles.emptyPage}>{T.Pages.Videos.empty}</div>
+                    )}
                 </div>
             </div>
         </>

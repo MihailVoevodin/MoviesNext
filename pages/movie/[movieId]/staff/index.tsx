@@ -62,11 +62,15 @@ const Cast: FC<IProps> = ({movieStaff, movieName}) => {
                         </span>
                         <hr />
                     </div>
-                    {movieStaff.length > 0 ? <div>
-                        {STAFF_DICTIONARY.map((profession) => (
-                            <MovieStaff key={profession.type} movieStaff={movieStaff} type={profession.type} text={profession.text} />
-                        ))}
-                    </div> : <div className={mainStyles.emptyPage}>{T.Pages.Staff.empty}</div>}
+                    {movieStaff.length > 0 ? (
+                        <div>
+                            {STAFF_DICTIONARY.map((profession) => (
+                                <MovieStaff key={profession.type} movieStaff={movieStaff} type={profession.type} text={profession.text} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className={mainStyles.emptyPage}>{T.Pages.Staff.empty}</div>
+                    )}
                 </div>
             </div>
         </>

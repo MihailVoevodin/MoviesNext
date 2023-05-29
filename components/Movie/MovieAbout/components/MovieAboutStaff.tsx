@@ -5,7 +5,7 @@ import Link from 'next/link';
 import {FC} from 'react';
 import {EMovieMainStaff} from 'Common/Enums';
 import {IMovieStaff} from 'Common/Models';
-import { useRouter } from "next/router";
+import {useRouter} from 'next/router';
 
 /**
  * @param movieStaff Массив создателей фильма.
@@ -37,7 +37,11 @@ export const MovieAboutStaff: FC<IProps> = ({movieStaff, type, text}) => {
                                 {id !== filteredMovieStaff.length - 1 ? ', ' : ''}
                             </Link>
                         ))}
-                        {filteredMovieStaff.length > 3 ? <span><Link href={`/movie/${router.query.movieId}/staff`}> ...</Link></span> : null}
+                        {filteredMovieStaff.length > 3 ? (
+                            <span>
+                                <Link href={`/movie/${router.query.movieId}/staff`}> ...</Link>
+                            </span>
+                        ) : null}
                     </div>
                 </div>
             )}

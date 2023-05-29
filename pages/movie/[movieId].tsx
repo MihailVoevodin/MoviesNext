@@ -103,19 +103,21 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                             <MovieAbout movie={movie} movieStaff={movieStaff} movieBox={movieBox} />
                         </div>
                     </div>
-                    {movieSimilars.length > 0 && <div className={styles.similarsContainer}>
-                        <h3 className={styles.similarsTitle}>Похожие фильмы</h3>
-                        <Slider {...settings}>
-                            {movieSimilars.map((movie) => (
-                              <Link className={styles.similarsLink} href={`/movie/${movie.filmId}`}>
-                                <div key={movie.filmId} style={{width: 200}}>
-                                    {movie.posterUrl && <Image src={movie.posterUrl} width={200} height={280} alt={movie.nameRu} />}
-                                    <div className={styles.similarsText}>{movie.nameRu}</div>
-                                </div>
-                              </Link>
-                            ))}
-                        </Slider>
-                    </div>}
+                    {movieSimilars.length > 0 && (
+                        <div className={styles.similarsContainer}>
+                            <h3 className={styles.similarsTitle}>Похожие фильмы</h3>
+                            <Slider {...settings}>
+                                {movieSimilars.map((movie) => (
+                                    <Link key={movie.filmId} className={styles.similarsLink} href={`/movie/${movie.filmId}`}>
+                                        <div style={{width: 200}}>
+                                            {movie.posterUrl && <Image src={movie.posterUrl} width={200} height={280} alt={movie.nameRu} />}
+                                            <div className={styles.similarsText}>{movie.nameRu}</div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </Slider>
+                        </div>
+                    )}
                 </div>
             </main>
             <div className={styles.movieDetails}>

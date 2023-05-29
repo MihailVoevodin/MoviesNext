@@ -114,59 +114,63 @@ const Images: FC<IProps> = ({movieName, movieImages}) => {
                             </span>
                             <hr />
                         </div>
-                        {images.length > 0 ? <div>
-                            <ul className={styles.titlesList}>
-                                {IMAGES_DICTIONARY.map((type) => {
-                                    return (
-                                        <li
-                                            key={type.type}
-                                            className={
-                                                router.query.type === type.type
-                                                    ? `${mainStyles.imagesType} ${mainStyles.activeImagesType}`
-                                                    : `${mainStyles.imagesType}`
-                                            }
-                                            onClick={() => handleChangeFilter(type.type)}
-                                        >
-                                            {type.text} {router.query.type === type.type && total}
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                            <div className={styles.container}>
-                                {images.map((image, id: number) => (
-                                    <div key={id}>
-                                        <Image
-                                            className={styles.image}
-                                            onClick={() => handleOpenImage(image)}
-                                            width={200}
-                                            height={150}
-                                            src={image.previewUrl}
-                                            alt="."
-                                        />
-                                    </div>
-                                ))}
-                                {image && (
-                                    <div className={styles.modal}>
-                                        <div className={styles.modalContainer}>
-                                            <img className={styles.modalImage} src={image} alt="." />
+                        {images.length > 0 ? (
+                            <div>
+                                <ul className={styles.titlesList}>
+                                    {IMAGES_DICTIONARY.map((type) => {
+                                        return (
+                                            <li
+                                                key={type.type}
+                                                className={
+                                                    router.query.type === type.type
+                                                        ? `${mainStyles.imagesType} ${mainStyles.activeImagesType}`
+                                                        : `${mainStyles.imagesType}`
+                                                }
+                                                onClick={() => handleChangeFilter(type.type)}
+                                            >
+                                                {type.text} {router.query.type === type.type && total}
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                                <div className={styles.container}>
+                                    {images.map((image, id: number) => (
+                                        <div key={id}>
+                                            <Image
+                                                className={styles.image}
+                                                onClick={() => handleOpenImage(image)}
+                                                width={200}
+                                                height={150}
+                                                src={image.previewUrl}
+                                                alt="."
+                                            />
                                         </div>
-                                        <div className={styles.modalClose} onClick={handleCloseImage}>
-                                            <CloseIcon />
+                                    ))}
+                                    {image && (
+                                        <div className={styles.modal}>
+                                            <div className={styles.modalContainer}>
+                                                <img className={styles.modalImage} src={image} alt="." />
+                                            </div>
+                                            <div className={styles.modalClose} onClick={handleCloseImage}>
+                                                <CloseIcon />
+                                            </div>
                                         </div>
-                                    </div>
+                                    )}
+                                </div>
+                                {totalPages > 1 && (
+                                    <Pagination
+                                        className={mainStyles.pagination}
+                                        current={imagesPageId}
+                                        total={total}
+                                        onChange={onChange}
+                                        defaultPageSize={20}
+                                        showSizeChanger={false}
+                                    />
                                 )}
                             </div>
-                            {totalPages > 1 && (
-                                <Pagination
-                                    className={mainStyles.pagination}
-                                    current={imagesPageId}
-                                    total={total}
-                                    onChange={onChange}
-                                    defaultPageSize={20}
-                                    showSizeChanger={false}
-                                />
-                            )}
-                        </div> : <div className={mainStyles.emptyPage}>{T.Pages.Images.empty}</div>}
+                        ) : (
+                            <div className={mainStyles.emptyPage}>{T.Pages.Images.empty}</div>
+                        )}
                     </div>
                 </div>
             </ConfigProvider>

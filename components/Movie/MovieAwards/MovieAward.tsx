@@ -58,7 +58,7 @@ type AwardProps = {
     award: IMovieAward;
 };
 
-const Award: React.FC<AwardProps> = ({award}) => {
+const Award: FC<AwardProps> = ({award}) => {
     return (
         <div className={styles.awardList}>
             <CaretRightFilled />
