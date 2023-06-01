@@ -34,7 +34,7 @@ export const getServerSideProps: GetServerSideProps<IProps> = async () => {
  * Компонент отображения главной страницы.
  */
 const Home: FC<IProps> = ({top250Movies, top100Movies, topAwaitMovies}) => {
-    const {pageId} = useAppSelector((state) => state.films);
+    const {top250PageId, top100PageId, topAwaitPageId} = useAppSelector((state) => state.films);
 
     return (
         <>
@@ -45,9 +45,17 @@ const Home: FC<IProps> = ({top250Movies, top100Movies, topAwaitMovies}) => {
                 <span>Узнай больше про свои любимые фильмы, сериалы или актёров</span>
             </div>
             <main>
-                <HomePageTop movies={top250Movies} link={`/movies/top250movies/page/${pageId}`} text={'Топ 250 фильмов'} />
-                <HomePageTop movies={top100Movies} link={`/movies/top100popular/page/${pageId}`} text={'Топ 100 популярных фильмов'} />
-                <HomePageTop movies={topAwaitMovies} link={`/movies/topAwaitMovies/page/${pageId}`} text={'Топ ожидаемых фильмов'} />
+                <HomePageTop movies={top250Movies} link={`/movies/top250movies/page/${top250PageId}`} text={'Топ 250 фильмов'} />
+                <HomePageTop
+                    movies={top100Movies}
+                    link={`/movies/top100popular/page/${top100PageId}`}
+                    text={'Топ 100 популярных фильмов'}
+                />
+                <HomePageTop
+                    movies={topAwaitMovies}
+                    link={`/movies/topAwaitMovies/page/${topAwaitPageId}`}
+                    text={'Топ ожидаемых фильмов'}
+                />
             </main>
         </>
     );

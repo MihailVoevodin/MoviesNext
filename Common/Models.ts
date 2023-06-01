@@ -26,6 +26,15 @@ export interface IMovie {
 }
 
 /**
+ * @param pagesCount Количество страниц.
+ * @param films Массив фильмов топа.
+ */
+export interface IMovies {
+    pagesCount: number;
+    films: IMovie[];
+}
+
+/**
  * Детальная модель фильма
  *
  * @param kinopoiskId - Идентификатор фильма.

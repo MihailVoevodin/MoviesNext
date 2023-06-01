@@ -7,11 +7,11 @@ import {useAppSelector} from 'store/hooks';
  * Компонент навигационной панели.
  */
 const Navbar: FC = () => {
-    const {pageId} = useAppSelector((state) => state.films);
+    const {top250PageId} = useAppSelector((state) => state.films);
 
     const NavigationItems = [
         {id: 0, title: 'Главная', path: '/'},
-        {id: 1, title: 'Фильмы', path: `/movies/page/${pageId}`},
+        {id: 1, title: 'Фильмы', path: `/movies/top250movies/page/${top250PageId}`},
         {id: 2, title: 'Личности', path: '/persons'},
     ];
 

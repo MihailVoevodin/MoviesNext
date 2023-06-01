@@ -1,18 +1,24 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 /**
- * @param pageId - Номер страницы топа фильмов.
+ * @param top250PageId - Номер страницы топ 250 фильмов.
+ * @param top100PageId - Номер страницы топ 100 популярных фильмов.
+ * @param topAwaitPageId - Номер страницы топа ожидаемых фильмов.
  * @param imagesPageId - Номер страницы изображений.
  * @param reviewsPageId - Номер страницы рецензий.
  */
 export interface IFilmsState {
-    pageId: number;
+    top250PageId: number;
+    top100PageId: number;
+    topAwaitPageId: number;
     imagesPageId: number;
     reviewsPageId: number;
 }
 
 const initialState: IFilmsState = {
-    pageId: 1,
+    top250PageId: 1,
+    top100PageId: 1,
+    topAwaitPageId: 1,
     imagesPageId: 1,
     reviewsPageId: 1,
 };
@@ -24,8 +30,14 @@ const filmsSlice = createSlice({
     name: 'films',
     initialState: initialState,
     reducers: {
-        setPageId(state, action: PayloadAction<number>) {
-            state.pageId = action.payload;
+        setTop250PageId(state, action: PayloadAction<number>) {
+            state.top250PageId = action.payload;
+        },
+        setTop100PageId(state, action: PayloadAction<number>) {
+            state.top100PageId = action.payload;
+        },
+        setTopAwaitPageId(state, action: PayloadAction<number>) {
+            state.topAwaitPageId = action.payload;
         },
         setImagesPageId(state, action: PayloadAction<number>) {
             state.imagesPageId = action.payload;
@@ -36,6 +48,6 @@ const filmsSlice = createSlice({
     },
 });
 
-export const {setPageId, setImagesPageId, setReviewsPageId} = filmsSlice.actions;
+export const {setTop250PageId, setTop100PageId, setTopAwaitPageId, setImagesPageId, setReviewsPageId} = filmsSlice.actions;
 
 export default filmsSlice.reducer;

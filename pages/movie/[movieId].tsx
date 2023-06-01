@@ -59,7 +59,7 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
 const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
     const dispatch = useAppDispatch();
     const router = useRouter();
-    const {pageId} = useAppSelector((state) => state.films);
+    const {top250PageId} = useAppSelector((state) => state.films);
 
     useEffect(() => {
         dispatch(setImagesPageId(1));
@@ -89,14 +89,14 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                     </div>
                 </div>
                 <div className={mainStyles.backBtn}>
-                    <button onClick={() => router.replace(`/movies/page/${pageId}`)}>
+                    <button onClick={() => router.replace(`/movies/page/${top250PageId}`)}>
                         <ArrowLeftOutlined />
                     </button>
                 </div>
                 <div className={styles.movie}>
                     <div className={styles.movieContainer}>
                         <div>
-                            <Image width={300} height={450} src={movie.posterUrl} alt={movie.nameRu} />
+                            <Image width={300} height={450} src={movie.posterUrl} alt={movie.nameRu || movie.nameOriginal} />
                         </div>
                         <div>
                             <MovieMainInfo movie={movie} />
@@ -110,7 +110,14 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                                 {movieSimilars.map((movie) => (
                                     <Link key={movie.filmId} className={styles.similarsLink} href={`/movie/${movie.filmId}`}>
                                         <div style={{width: 200}}>
-                                            {movie.posterUrl && <Image src={movie.posterUrl} width={200} height={280} alt={movie.nameRu} />}
+                                            {movie.posterUrl && (
+                                                <Image
+                                                    src={movie.posterUrl}
+                                                    width={200}
+                                                    height={280}
+                                                    alt={movie.nameRu || movie.nameOriginal}
+                                                />
+                                            )}
                                             <div className={styles.similarsText}>{movie.nameRu}</div>
                                         </div>
                                     </Link>
