@@ -5,15 +5,12 @@ import {GetServerSideProps} from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import {useRouter} from 'next/router';
 import styles from 'pages/movie/Movie.module.scss';
 import {ParsedUrlQuery} from 'querystring';
 import {FC, useEffect} from 'react';
 import Slider from 'react-slick';
 import {setImagesPageId} from 'store/filmsSlice';
-import {useAppDispatch, useAppSelector} from 'store/hooks';
-import mainStyles from 'styles/main.module.scss';
-import {ArrowLeftOutlined} from '@ant-design/icons';
+import {useAppDispatch} from 'store/hooks';
 import {IMovieDetails, IMovieBox, IMovieStaff, IMovieSimilars} from 'Common/Models';
 import {Services} from 'Common/Services';
 import {T} from 'Common/Text';
@@ -58,8 +55,6 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
  */
 const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
     const dispatch = useAppDispatch();
-    const router = useRouter();
-    const {top250PageId} = useAppSelector((state) => state.films);
 
     useEffect(() => {
         dispatch(setImagesPageId(1));
@@ -87,11 +82,6 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                             <div className={styles.gradient}></div>
                         </div>
                     </div>
-                </div>
-                <div className={mainStyles.backBtn}>
-                    <button onClick={() => router.replace(`/movies/page/${top250PageId}`)}>
-                        <ArrowLeftOutlined />
-                    </button>
                 </div>
                 <div className={styles.movie}>
                     <div className={styles.movieContainer}>
