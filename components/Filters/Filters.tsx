@@ -1,159 +1,138 @@
-import { Button, Input, Select } from "antd";
-import { T } from "Common/Text";
-import { ChangeEvent, useState } from "react";
-import { Regulars } from "Common/Consts";
-import { useAppDispatch, useAppSelector } from "store/hooks";
-import { setCountryId, setGenreId, setOrderId, setTypeId, setRatingFrom, setRatingTo, setYearFrom, setYearTo, setKeyword } from "store/filtersSlice";
+import {Button, Input, Select, Form} from 'antd';
+import {ChangeEvent, useState} from 'react';
+import {Regulars} from 'Common/Consts';
+import {T} from 'Common/Text';
 
 export const Filters = () => {
-  const dispatch = useAppDispatch();
-  const {orderId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword} = useAppSelector((state) => state.filters)
+    const [orderId, setOrderId] = useState<string>('RATING');
+    const [, setGenreId] = useState<string>('');
+    const [, setCountryId] = useState<string>('');
+    const [typeId, setTypeId] = useState<string>('ALL');
+    const [ratingFrom, setRatingFrom] = useState<string>('0');
+    const [ratingTo, setRatingTo] = useState<string>('10');
+    const [yearFrom, setYearFrom] = useState<string>('1000');
+    const [yearTo, setYearTo] = useState<string>('3000');
+    const [keyword, setKeyword] = useState<string>('');
 
-  const handleChangeGenres = (value: string) => {
-    dispatch(setGenreId(value));
-  };
+    const handleChangeGenre = (value: string) => {
+        console.log(value);
+        setGenreId(value);
+    };
 
-  const handleChangeCountries = (value: string) => {
-    dispatch(setCountryId(value));
-  };
+    const handleChangeCountry = (value: string) => {
+        console.log(value);
+        setCountryId(value);
+    };
 
-  const handleChangeOrder = (value: string) => {
-    dispatch(setOrderId(value));
-  };
+    const handleChangeOrder = (value: string) => {
+        console.log(value);
+        setOrderId(value);
+    };
 
-  const handleChangeType = (value: string) => {
-    dispatch(setTypeId(value));
-  };
+    const handleChangeType = (value: string) => {
+        console.log(value);
+        setTypeId(value);
+    };
 
-  const handleChangeRatingFrom = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value: inputValue } = e.target;
-    const reg = Regulars.numbers;
-    if (reg.test(inputValue) || inputValue === '.') {
-      dispatch(setRatingFrom(inputValue));
-    }
-  };
+    const handleChangeRatingFrom = (e: ChangeEvent<HTMLInputElement>) => {
+        const {value: inputValue} = e.target;
+        const reg = Regulars.numbers;
+        if (reg.test(inputValue) || inputValue === '.') {
+            console.log(inputValue);
+            setRatingFrom(inputValue);
+        }
+    };
 
-  const handleChangeRatingTo = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value: inputValue } = e.target;
-    const reg = Regulars.numbers;
-    if (reg.test(inputValue) || inputValue === '.') {
-      dispatch(setRatingTo(inputValue));
-    }
-  };
+    const handleChangeRatingTo = (e: ChangeEvent<HTMLInputElement>) => {
+        const {value: inputValue} = e.target;
+        const reg = Regulars.numbers;
+        if (reg.test(inputValue) || inputValue === '.') {
+            console.log(inputValue);
+            setRatingTo(inputValue);
+        }
+    };
 
-  const handleChangeYearFrom = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value: inputValue } = e.target;
-    const reg = Regulars.numbers;
-    if (reg.test(inputValue)) {
-      dispatch(setYearFrom(inputValue));
-    }
-  };
+    const handleChangeYearFrom = (e: ChangeEvent<HTMLInputElement>) => {
+        const {value: inputValue} = e.target;
+        const reg = Regulars.numbers;
+        if (reg.test(inputValue)) {
+            console.log(inputValue);
+            setYearFrom(inputValue);
+        }
+    };
 
-  const handleChangeYearTo = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value: inputValue } = e.target;
-    const reg = Regulars.numbers;
-    if (reg.test(inputValue)) {
-      dispatch(setYearTo(inputValue));
-    }
-  };
+    const handleChangeYearTo = (e: ChangeEvent<HTMLInputElement>) => {
+        const {value: inputValue} = e.target;
+        const reg = Regulars.numbers;
+        if (reg.test(inputValue)) {
+            console.log(inputValue);
+            setYearTo(inputValue);
+        }
+    };
 
-  const handleChangeKeyword = (e: ChangeEvent<HTMLInputElement>) => {
-      const { value: inputValue } = e.target;
-      dispatch(setKeyword(inputValue));
-  };
+    const handleChangeKeyword = (e: ChangeEvent<HTMLInputElement>) => {
+        const {value: inputValue} = e.target;
+        console.log(inputValue);
+        setKeyword(inputValue);
+    };
 
-  return (
-    <div>
-      <div>
-        <span>Жанр</span>
-        <Select
-          style={{width: 200}}
-          showSearch
-          placeholder="Выберите жанр"
-          onChange={handleChangeGenres}
-          filterOption={(input, option) =>
-            (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-          }
-          options={T.Filters.genres}
-        />
-      </div>
-      <div>
-        <span>Страна</span>
-        <Select
-          style={{width: 200}}
-          showSearch
-          placeholder="Выберите страну"
-          onChange={handleChangeCountries}
-          filterOption={(input, option) =>
-            (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
-          }
-          options={T.Filters.countries}
-        />
-      </div>
-      <div>
-        <span>Сортировка</span>
-        <Select
-          defaultValue={orderId}
-          style={{ width: 200 }}
-          onChange={handleChangeOrder}
-          options={T.Filters.order}
-        />
-      </div>
-      <div>
-        <span>Тип видеоматериала</span>
-        <Select
-          defaultValue={typeId}
-          style={{ width: 200 }}
-          onChange={handleChangeType}
-          options={T.Filters.type}
-        />
-      </div>
-      <div>
-        <span>Рейтинг от</span>
-        <Input
-          value={ratingFrom}
-          onChange={handleChangeRatingFrom}
-          placeholder="Введите рейтинг"
-          maxLength={3}
-        />
-      </div>
-      <div>
-        <span>Рейтинг до</span>
-        <Input
-          value={ratingTo}
-          onChange={handleChangeRatingTo}
-          placeholder="Введите рейтинг"
-          maxLength={3}
-        />
-      </div>
-      <div>
-        <span>Год от</span>
-        <Input
-          value={yearFrom}
-          onChange={handleChangeYearFrom}
-          placeholder="Введите год"
-          maxLength={4}
-        />
-      </div>
-      <div>
-        <span>Год до</span>
-        <Input
-          value={yearTo}
-          onChange={handleChangeYearTo}
-          placeholder="Введите год"
-          maxLength={4}
-        />
-      </div>
-      <div>
-        <span>Ключевое слово</span>
-        <Input
-          value={keyword}
-          onChange={handleChangeKeyword}
-          placeholder="Введите ключевое слово"
-          maxLength={16}
-        />
-      </div>
-      <Button>Найти фильмы</Button>
-    </div>
-  )
-}
+    const layout = {
+        labelCol: {span: 8},
+        wrapperCol: {span: 16},
+    };
+
+    const onFinish = (values: any) => {
+        console.log(values);
+    };
+
+    return (
+        <Form {...layout} onFinish={onFinish}>
+            <Form.Item name={['filters', 'genre']} label="Жанр">
+                <Select
+                    style={{width: 200}}
+                    showSearch
+                    placeholder="Выберите жанр"
+                    onChange={handleChangeGenre}
+                    filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
+                    options={T.Filters.genres}
+                />
+            </Form.Item>
+            <Form.Item name={['filters', 'country']} label="Страна">
+                <Select
+                    style={{width: 200}}
+                    showSearch
+                    placeholder="Выберите страну"
+                    onChange={handleChangeCountry}
+                    filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
+                    options={T.Filters.countries}
+                />
+            </Form.Item>
+            <Form.Item name={['filters', 'order']} label="Сортировка" initialValue={orderId}>
+                <Select style={{width: 200}} onChange={handleChangeOrder} options={T.Filters.order} />
+            </Form.Item>
+            <Form.Item name={['filters', 'type']} label="Тип видеоматериала" initialValue={typeId}>
+                <Select style={{width: 200}} onChange={handleChangeType} options={T.Filters.type} />
+            </Form.Item>
+            <Form.Item name={['filters', 'ratingFrom']} label="Рейтинг от" initialValue={ratingFrom}>
+                <Input value={ratingFrom} onChange={handleChangeRatingFrom} placeholder="Введите рейтинг" maxLength={3} />
+            </Form.Item>
+            <Form.Item name={['filters', 'ratingTo']} label="Рейтинг до" initialValue={ratingTo}>
+                <Input value={ratingTo} onChange={handleChangeRatingTo} placeholder="Введите рейтинг" maxLength={3} />
+            </Form.Item>
+            <Form.Item name={['filters', 'yearFrom']} label="Год от" initialValue={yearFrom}>
+                <Input value={yearFrom} onChange={handleChangeYearFrom} placeholder="Введите год" maxLength={4} />
+            </Form.Item>
+            <Form.Item name={['filters', 'yearTo']} label="Год до" initialValue={yearTo}>
+                <Input value={yearTo} onChange={handleChangeYearTo} placeholder="Введите год" maxLength={4} />
+            </Form.Item>
+            <Form.Item name={['filters', 'keyword']} label="Ключевое слово" initialValue={keyword}>
+                <Input value={keyword} onChange={handleChangeKeyword} placeholder="Введите ключевое слово" maxLength={16} />
+            </Form.Item>
+            <Form.Item wrapperCol={{...layout.wrapperCol, offset: 8}}>
+                <Button type="primary" htmlType="submit">
+                    Найти фильмы
+                </Button>
+            </Form.Item>
+        </Form>
+    );
+};
