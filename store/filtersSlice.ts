@@ -1,27 +1,31 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 export interface IFiltersState {
-    genreId: string;
-    countryId: string;
-    orderId: string;
-    typeId: string;
-    ratingFrom: string;
-    ratingTo: string;
-    yearFrom: string;
-    yearTo: string;
-    keyword: string;
+    filters: {
+        genreId: string | null;
+        countryId: string | null;
+        orderId: string;
+        typeId: string;
+        ratingFrom: string;
+        ratingTo: string;
+        yearFrom: string;
+        yearTo: string;
+        keyword: string | undefined;
+    };
 }
 
 const initialState: IFiltersState = {
-    genreId: '',
-    countryId: '',
-    orderId: 'RATING',
-    typeId: 'ALL',
-    ratingFrom: '0',
-    ratingTo: '10',
-    yearFrom: '1000',
-    yearTo: '3000',
-    keyword: '',
+    filters: {
+        genreId: null,
+        countryId: null,
+        orderId: 'RATING',
+        typeId: 'ALL',
+        ratingFrom: '0',
+        ratingTo: '10',
+        yearFrom: '1000',
+        yearTo: '3000',
+        keyword: undefined,
+    },
 };
 
 /**
@@ -32,31 +36,31 @@ const filtersSlice = createSlice({
     initialState: initialState,
     reducers: {
         setGenreId(state, action: PayloadAction<string>) {
-            state.genreId = action.payload;
+            state.filters.genreId = action.payload;
         },
         setCountryId(state, action: PayloadAction<string>) {
-            state.countryId = action.payload;
+            state.filters.countryId = action.payload;
         },
         setOrderId(state, action: PayloadAction<string>) {
-            state.orderId = action.payload;
+            state.filters.orderId = action.payload;
         },
         setTypeId(state, action: PayloadAction<string>) {
-            state.typeId = action.payload;
+            state.filters.typeId = action.payload;
         },
         setRatingFrom(state, action: PayloadAction<string>) {
-            state.ratingFrom = action.payload;
+            state.filters.ratingFrom = action.payload;
         },
         setRatingTo(state, action: PayloadAction<string>) {
-            state.ratingTo = action.payload;
+            state.filters.ratingTo = action.payload;
         },
         setYearFrom(state, action: PayloadAction<string>) {
-            state.yearFrom = action.payload;
+            state.filters.yearFrom = action.payload;
         },
         setYearTo(state, action: PayloadAction<string>) {
-            state.yearTo = action.payload;
+            state.filters.yearTo = action.payload;
         },
         setKeyword(state, action: PayloadAction<string>) {
-            state.keyword = action.payload;
+            state.filters.keyword = action.payload;
         },
     },
 });

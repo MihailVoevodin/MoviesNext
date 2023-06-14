@@ -1,45 +1,47 @@
 import {Button, Input, Select, Form} from 'antd';
-import {ChangeEvent, useState} from 'react';
+import {ChangeEvent} from 'react';
+import {
+    setTypeId,
+    setKeyword,
+    setRatingFrom,
+    setRatingTo,
+    setYearFrom,
+    setYearTo,
+    setCountryId,
+    setGenreId,
+    setOrderId,
+} from 'store/filtersSlice';
+import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {Regulars} from 'Common/Consts';
 import {T} from 'Common/Text';
 
 export const Filters = () => {
-    const [orderId, setOrderId] = useState<string>('RATING');
-    const [, setGenreId] = useState<string>('');
-    const [, setCountryId] = useState<string>('');
-    const [typeId, setTypeId] = useState<string>('ALL');
-    const [ratingFrom, setRatingFrom] = useState<string>('0');
-    const [ratingTo, setRatingTo] = useState<string>('10');
-    const [yearFrom, setYearFrom] = useState<string>('1000');
-    const [yearTo, setYearTo] = useState<string>('3000');
-    const [keyword, setKeyword] = useState<string>('');
+    const dispatch = useAppDispatch();
+    const {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword} = useAppSelector(
+        (state) => state.filters.filters
+    );
 
     const handleChangeGenre = (value: string) => {
-        console.log(value);
-        setGenreId(value);
+        dispatch(setGenreId(value));
     };
 
     const handleChangeCountry = (value: string) => {
-        console.log(value);
-        setCountryId(value);
+        dispatch(setCountryId(value));
     };
 
     const handleChangeOrder = (value: string) => {
-        console.log(value);
-        setOrderId(value);
+        dispatch(setOrderId(value));
     };
 
     const handleChangeType = (value: string) => {
-        console.log(value);
-        setTypeId(value);
+        dispatch(setTypeId(value));
     };
 
     const handleChangeRatingFrom = (e: ChangeEvent<HTMLInputElement>) => {
         const {value: inputValue} = e.target;
         const reg = Regulars.numbers;
         if (reg.test(inputValue) || inputValue === '.') {
-            console.log(inputValue);
-            setRatingFrom(inputValue);
+            dispatch(setRatingFrom(inputValue));
         }
     };
 
@@ -47,8 +49,7 @@ export const Filters = () => {
         const {value: inputValue} = e.target;
         const reg = Regulars.numbers;
         if (reg.test(inputValue) || inputValue === '.') {
-            console.log(inputValue);
-            setRatingTo(inputValue);
+            dispatch(setRatingTo(inputValue));
         }
     };
 
@@ -56,8 +57,7 @@ export const Filters = () => {
         const {value: inputValue} = e.target;
         const reg = Regulars.numbers;
         if (reg.test(inputValue)) {
-            console.log(inputValue);
-            setYearFrom(inputValue);
+            dispatch(setYearFrom(inputValue));
         }
     };
 
@@ -65,15 +65,13 @@ export const Filters = () => {
         const {value: inputValue} = e.target;
         const reg = Regulars.numbers;
         if (reg.test(inputValue)) {
-            console.log(inputValue);
-            setYearTo(inputValue);
+            dispatch(setYearTo(inputValue));
         }
     };
 
     const handleChangeKeyword = (e: ChangeEvent<HTMLInputElement>) => {
         const {value: inputValue} = e.target;
-        console.log(inputValue);
-        setKeyword(inputValue);
+        dispatch(setKeyword(inputValue));
     };
 
     const layout = {
@@ -87,7 +85,7 @@ export const Filters = () => {
 
     return (
         <Form {...layout} onFinish={onFinish}>
-            <Form.Item name={['filters', 'genre']} label="Жанр">
+            <Form.Item name={['filters', 'genreId']} label="Жанр" initialValue={genreId}>
                 <Select
                     style={{width: 200}}
                     showSearch
@@ -97,7 +95,7 @@ export const Filters = () => {
                     options={T.Filters.genres}
                 />
             </Form.Item>
-            <Form.Item name={['filters', 'country']} label="Страна">
+            <Form.Item name={['filters', 'countryId']} label="Страна" initialValue={countryId}>
                 <Select
                     style={{width: 200}}
                     showSearch
@@ -107,10 +105,10 @@ export const Filters = () => {
                     options={T.Filters.countries}
                 />
             </Form.Item>
-            <Form.Item name={['filters', 'order']} label="Сортировка" initialValue={orderId}>
+            <Form.Item name={['filters', 'orderId']} label="Сортировка" initialValue={orderId}>
                 <Select style={{width: 200}} onChange={handleChangeOrder} options={T.Filters.order} />
             </Form.Item>
-            <Form.Item name={['filters', 'type']} label="Тип видеоматериала" initialValue={typeId}>
+            <Form.Item name={['filters', 'typeId']} label="Тип видеоматериала" initialValue={typeId}>
                 <Select style={{width: 200}} onChange={handleChangeType} options={T.Filters.type} />
             </Form.Item>
             <Form.Item name={['filters', 'ratingFrom']} label="Рейтинг от" initialValue={ratingFrom}>
