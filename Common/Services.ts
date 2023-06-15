@@ -63,4 +63,20 @@ export const Services = {
     async getMovieSimilars(movieId: string): Promise<AxiosResponse> {
         return await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}/similars`);
     },
+    /** Получение списка фильмов по фильтрам. */
+    async getFilmsByFilters(
+        orderId: string,
+        genreId: string | null,
+        countryId: string | null,
+        typeId: string,
+        ratingFrom: string,
+        ratingTo: string,
+        yearFrom: string,
+        yearTo: string,
+        keyword: string
+    ): Promise<AxiosResponse> {
+        return await axios.get(
+            `https://kinopoiskapiunofficial.tech/api/v2.2/films?countries=${countryId}&genres=${genreId}&order=${orderId}&type=${typeId}&ratingFrom=${ratingFrom}&ratingTo=${ratingTo}&yearFrom=${yearFrom}&yearTo=${yearTo}&keyword=${keyword}&page=1`
+        );
+    },
 };
