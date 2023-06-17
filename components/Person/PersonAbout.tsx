@@ -1,5 +1,5 @@
 import styles from 'components/Person/PersonAbout.module.scss';
-import {PersonBestFilms} from 'components/Person/PersonBestFilms';
+import {PersonBestMovies} from 'components/Person/PersonBestMovies';
 import moment from 'moment';
 import 'moment/locale/ru';
 import Link from 'next/link';
@@ -96,7 +96,7 @@ export const PersonAbout: FC<IProps> = ({person}) => {
                 </div>
                 <div>
                     <h3 className={styles.personAboutTitle}>{T.Person.bestFilms}</h3>
-                    <PersonBestFilms films={person.films} />
+                    <PersonBestMovies films={person.films} />
                 </div>
             </div>
         </>

@@ -1,6 +1,7 @@
 import {TopPage} from 'components/Movies/TopPage';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {ParsedUrlQuery} from 'querystring';
 import {FC} from 'react';
@@ -35,11 +36,11 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
 /**
  * Страница отображения топа ожидаемых фильмов.
  */
-const Movie: FC<IProps> = ({movies}) => {
+const TopAwaitMovies: FC<IProps> = ({movies}) => {
     const {pagesCount, films} = movies;
     const router = useRouter();
     const dispatch = useAppDispatch();
-    const {topAwaitPageId} = useAppSelector((state) => state.films);
+    const {top100PageId, top250PageId, topAwaitPageId, findMoviesPageId} = useAppSelector((state) => state.films);
 
     const onChangePage = (pageId: number) => {
         dispatch(setTopAwaitPageId(pageId));
@@ -51,9 +52,15 @@ const Movie: FC<IProps> = ({movies}) => {
             <Head>
                 <title>Фильмы: Ожидаемые</title>
             </Head>
-            <TopPage films={films} pageId={topAwaitPageId} pagesCount={pagesCount} onChangePage={onChangePage} />
+            <div>
+                <Link href={`/movies/top250movies/page/${top250PageId}`}>Топ 250 фильмов</Link>
+                <Link href={`/movies/top100popular/page/${top100PageId}`}>Топ 100 фильмов</Link>
+                <Link href={`/movies/topAwaitMovies/page/${topAwaitPageId}`}>Топ ожидаемых фильмов</Link>
+                <Link href={`/movies/findMovies/page/${findMoviesPageId}`}>Найти фильмы</Link>
+            </div>
+            <TopPage movies={films} pageId={topAwaitPageId} pagesCount={pagesCount} onChangePage={onChangePage} />
         </>
     );
 };
 
-export default Movie;
+export default TopAwaitMovies;

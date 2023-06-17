@@ -86,7 +86,7 @@ export const Filters = () => {
 
     return (
         <Form {...layout} onFinish={onFinish}>
-            <Form.Item name={'genreId'} label="Жанр" initialValue={genreId}>
+            <Form.Item name={'genreId'} label={<label style={{color: 'white'}}>Жанр:</label>} initialValue={genreId}>
                 <Select
                     style={{width: 200}}
                     showSearch
@@ -96,7 +96,7 @@ export const Filters = () => {
                     options={T.Filters.genres}
                 />
             </Form.Item>
-            <Form.Item name={'countryId'} label="Страна" initialValue={countryId}>
+            <Form.Item name={'countryId'} label={<label style={{color: 'white'}}>Страна:</label>} initialValue={countryId}>
                 <Select
                     style={{width: 200}}
                     showSearch
@@ -106,25 +106,25 @@ export const Filters = () => {
                     options={T.Filters.countries}
                 />
             </Form.Item>
-            <Form.Item name={'orderId'} label="Сортировка" initialValue={orderId}>
+            <Form.Item name={'orderId'} label={<label style={{color: 'white'}}>Сортировка:</label>} initialValue={orderId}>
                 <Select style={{width: 200}} onChange={handleChangeOrder} options={T.Filters.order} />
             </Form.Item>
-            <Form.Item name={'typeId'} label="Тип видеоматериала" initialValue={typeId}>
+            <Form.Item name={'typeId'} label={<label style={{color: 'white'}}>Тип видеоматериала:</label>} initialValue={typeId}>
                 <Select style={{width: 200}} onChange={handleChangeType} options={T.Filters.type} />
             </Form.Item>
-            <Form.Item name={'ratingFrom'} label="Рейтинг от" initialValue={ratingFrom}>
+            <Form.Item name={'ratingFrom'} label={<label style={{color: 'white'}}>Рейтинг от:</label>} initialValue={ratingFrom}>
                 <Input value={ratingFrom} onChange={handleChangeRatingFrom} placeholder="Введите рейтинг" maxLength={3} />
             </Form.Item>
-            <Form.Item name={'ratingTo'} label="Рейтинг до" initialValue={ratingTo}>
+            <Form.Item name={'ratingTo'} label={<label style={{color: 'white'}}>Рейтинг до:</label>} initialValue={ratingTo}>
                 <Input value={ratingTo} onChange={handleChangeRatingTo} placeholder="Введите рейтинг" maxLength={3} />
             </Form.Item>
-            <Form.Item name={'yearFrom'} label="Год от" initialValue={yearFrom}>
+            <Form.Item name={'yearFrom'} label={<label style={{color: 'white'}}>Год от:</label>} initialValue={yearFrom}>
                 <Input value={yearFrom} onChange={handleChangeYearFrom} placeholder="Введите год" maxLength={4} />
             </Form.Item>
-            <Form.Item name={'yearTo'} label="Год до" initialValue={yearTo}>
+            <Form.Item name={'yearTo'} label={<label style={{color: 'white'}}>Год до:</label>} initialValue={yearTo}>
                 <Input value={yearTo} onChange={handleChangeYearTo} placeholder="Введите год" maxLength={4} />
             </Form.Item>
-            <Form.Item name={'keyword'} label="Ключевое слово" initialValue={keyword}>
+            <Form.Item name={'keyword'} label={<label style={{color: 'white'}}>Ключевое слово:</label>} initialValue={keyword}>
                 <Input value={keyword} onChange={handleChangeKeyword} placeholder="Введите ключевое слово" maxLength={16} />
             </Form.Item>
             <Form.Item wrapperCol={{...layout.wrapperCol, offset: 8}}>

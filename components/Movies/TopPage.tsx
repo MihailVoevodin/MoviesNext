@@ -14,7 +14,7 @@ import {IMovie} from 'Common/Models';
  * @param onChangePage Функция изменения страницы.
  */
 interface IProps {
-    films: IMovie[];
+    movies: IMovie[];
     pageId: number;
     pagesCount: number;
     onChangePage: (pageId: number) => void;
@@ -23,7 +23,7 @@ interface IProps {
 /**
  * Компонент топа фильмов.
  */
-export const TopPage: FC<IProps> = ({films, pageId, pagesCount, onChangePage}) => {
+export const TopPage: FC<IProps> = ({movies, pageId, pagesCount, onChangePage}) => {
     return (
         <ConfigProvider
             theme={{
@@ -42,9 +42,8 @@ export const TopPage: FC<IProps> = ({films, pageId, pagesCount, onChangePage}) =
             }}
         >
             <main>
-                <Filters />
                 <div className={styles.movies}>
-                    {films.map((movie) => (
+                    {movies.map((movie) => (
                         <div className={styles.moviesItem} key={movie.filmId}>
                             <div className={styles.moviesItemContent}>
                                 <Link href={`/movie/${movie.filmId}`}>

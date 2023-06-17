@@ -13,7 +13,7 @@ interface IProps {
 /**
  * Компонент отображения лучших фильмов личности.
  */
-export const PersonBestFilms: FC<IProps> = ({films}) => {
+export const PersonBestMovies: FC<IProps> = ({films}) => {
     let filteredArray: string[] = [];
 
     const sortedBestFilms = films
