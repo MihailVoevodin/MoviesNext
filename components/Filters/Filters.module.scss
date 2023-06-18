@@ -1,0 +1,12 @@
+.form {
+    margin: 0 auto;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px;
+}
+
+.btn {
+    grid-column: 1;
+    margin-top: 20px;
+}

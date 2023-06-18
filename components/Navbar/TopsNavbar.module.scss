@@ -1,0 +1,22 @@
+@import 'styles/variables';
+
+.topsNavbarContainer {
+    margin: 0 auto;
+    display: flex;
+    background-color: $darkGrey;
+    justify-content: center;
+    border-top: 2px solid #000000;
+    a {
+        display: inline-block;
+        margin: 20px 0;
+        padding: 10px;
+        border-radius: 10px;
+        transition: all .5s;
+        &:not(:first-child) {
+            margin-left: 20px;
+        }
+        &:hover {
+            background-color: $secondary;
+        }
+    }
+}

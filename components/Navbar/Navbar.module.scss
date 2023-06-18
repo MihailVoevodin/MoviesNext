@@ -4,10 +4,14 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    :hover {
+    a {
+        transition: all .5s;
         border-radius: 15px;
-        background-color: $secondary;
+        &:hover {
+            background-color: $secondary;
+        }
     }
+
 }
 
 .navbarList {

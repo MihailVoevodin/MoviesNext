@@ -11,7 +11,6 @@ export interface IFilmsState {
     top250PageId: number;
     top100PageId: number;
     topAwaitPageId: number;
-    findMoviesPageId: number;
     imagesPageId: number;
     reviewsPageId: number;
 }
@@ -20,7 +19,6 @@ const initialState: IFilmsState = {
     top250PageId: 1,
     top100PageId: 1,
     topAwaitPageId: 1,
-    findMoviesPageId: 1,
     imagesPageId: 1,
     reviewsPageId: 1,
 };
@@ -47,13 +45,9 @@ const filmsSlice = createSlice({
         setReviewsPageId(state, action: PayloadAction<number>) {
             state.reviewsPageId = action.payload;
         },
-        setFindMoviesPageId(state, action: PayloadAction<number>) {
-            state.findMoviesPageId = action.payload;
-        },
     },
 });
 
-export const {setTop250PageId, setTop100PageId, setTopAwaitPageId, setImagesPageId, setReviewsPageId, setFindMoviesPageId} =
-    filmsSlice.actions;
+export const {setTop250PageId, setTop100PageId, setTopAwaitPageId, setImagesPageId, setReviewsPageId} = filmsSlice.actions;
 
 export default filmsSlice.reducer;

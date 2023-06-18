@@ -1,5 +1,4 @@
 import {ConfigProvider, Pagination} from 'antd';
-import {Filters} from 'components/Filters/Filters';
 import styles from 'components/Movies/Movies.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -14,7 +13,7 @@ import {IMovie} from 'Common/Models';
  * @param onChangePage Функция изменения страницы.
  */
 interface IProps {
-    movies: IMovie[];
+    movies?: IMovie[];
     pageId: number;
     pagesCount: number;
     onChangePage: (pageId: number) => void;
@@ -43,28 +42,29 @@ export const TopPage: FC<IProps> = ({movies, pageId, pagesCount, onChangePage}) 
         >
             <main>
                 <div className={styles.movies}>
-                    {movies.map((movie) => (
-                        <div className={styles.moviesItem} key={movie.filmId}>
-                            <div className={styles.moviesItemContent}>
-                                <Link href={`/movie/${movie.filmId}`}>
-                                    <div className={styles.moviesItemInnerContent}>
-                                        <div className={styles.movieItemRating}>{movie.rating}</div>
-                                        <div>{movie.year}</div>
-                                        <div>{movie.countries[0].country}</div>
-                                        <div>{movie.filmLength}</div>
-                                    </div>
-                                    <Image
-                                        className={styles.movieItemImg}
-                                        width={200}
-                                        height={300}
-                                        src={movie.posterUrl}
-                                        alt={movie.nameRu}
-                                    />
-                                    <div className={styles.moviesItemName}>{movie.nameRu}</div>
-                                </Link>
+                    {movies &&
+                        movies.map((movie) => (
+                            <div className={styles.moviesItem} key={movie.filmId || movie.kinopoiskId}>
+                                <div className={styles.moviesItemContent}>
+                                    <Link href={`/movie/${movie.filmId || movie.kinopoiskId}`}>
+                                        <div className={styles.moviesItemInnerContent}>
+                                            <div className={styles.movieItemRating}>{movie.rating || movie.ratingKinopoisk}</div>
+                                            <div>{movie.year}</div>
+                                            <div>{movie.countries[0].country}</div>
+                                            <div>{movie.filmLength}</div>
+                                        </div>
+                                        <Image
+                                            className={styles.movieItemImg}
+                                            width={200}
+                                            height={300}
+                                            src={movie.posterUrl}
+                                            alt={movie.nameRu || movie.nameOriginal}
+                                        />
+                                        <div className={styles.moviesItemName}>{movie.nameRu}</div>
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
                 </div>
                 <Pagination
                     className={mainStyles.pagination}

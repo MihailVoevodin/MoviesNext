@@ -1,4 +1,6 @@
 import {Button, Input, Select, Form} from 'antd';
+import styles from 'components/Filters/Filters.module.scss';
+import {useRouter} from 'next/router';
 import {ChangeEvent} from 'react';
 import {
     setTypeId,
@@ -11,14 +13,19 @@ import {
     setGenreId,
     setOrderId,
     loadFilmsByFilters,
+    IFiltersState,
+    setFindMoviesPageId,
 } from 'store/filtersSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {Regulars} from 'Common/Consts';
 import {T} from 'Common/Text';
 
 export const Filters = () => {
+    const router = useRouter();
     const dispatch = useAppDispatch();
-    const {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword} = useAppSelector((state) => state.filters);
+    const {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword, findMoviesPageId} = useAppSelector(
+        (state) => state.filters
+    );
 
     const handleChangeGenre = (value: string) => {
         dispatch(setGenreId(value));
@@ -78,17 +85,23 @@ export const Filters = () => {
         wrapperCol: {span: 16},
     };
 
-    const onFinish = (values: any) => {
+    const onFinish = (values: IFiltersState) => {
+        const {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword} = values;
+        dispatch(setFindMoviesPageId(1));
         if (values) {
-            dispatch(loadFilmsByFilters(values));
+            dispatch(
+                loadFilmsByFilters({orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword, findMoviesPageId})
+            );
         }
+        void router.replace(`/movies/findMovies/page/${findMoviesPageId}`);
     };
 
     return (
-        <Form {...layout} onFinish={onFinish}>
+        <Form {...layout} onFinish={onFinish} className={styles.form}>
             <Form.Item name={'genreId'} label={<label style={{color: 'white'}}>Жанр:</label>} initialValue={genreId}>
                 <Select
                     style={{width: 200}}
+                    className={styles.formItem}
                     showSearch
                     placeholder="Выберите жанр"
                     onChange={handleChangeGenre}
@@ -113,22 +126,39 @@ export const Filters = () => {
                 <Select style={{width: 200}} onChange={handleChangeType} options={T.Filters.type} />
             </Form.Item>
             <Form.Item name={'ratingFrom'} label={<label style={{color: 'white'}}>Рейтинг от:</label>} initialValue={ratingFrom}>
-                <Input value={ratingFrom} onChange={handleChangeRatingFrom} placeholder="Введите рейтинг" maxLength={3} />
+                <Input
+                    style={{width: 200}}
+                    value={ratingFrom}
+                    onChange={handleChangeRatingFrom}
+                    placeholder="Введите рейтинг"
+                    maxLength={3}
+                />
             </Form.Item>
             <Form.Item name={'ratingTo'} label={<label style={{color: 'white'}}>Рейтинг до:</label>} initialValue={ratingTo}>
-                <Input value={ratingTo} onChange={handleChangeRatingTo} placeholder="Введите рейтинг" maxLength={3} />
+                <Input style={{width: 200}} value={ratingTo} onChange={handleChangeRatingTo} placeholder="Введите рейтинг" maxLength={3} />
             </Form.Item>
             <Form.Item name={'yearFrom'} label={<label style={{color: 'white'}}>Год от:</label>} initialValue={yearFrom}>
-                <Input value={yearFrom} onChange={handleChangeYearFrom} placeholder="Введите год" maxLength={4} />
+                <Input style={{width: 200}} value={yearFrom} onChange={handleChangeYearFrom} placeholder="Введите год" maxLength={4} />
             </Form.Item>
             <Form.Item name={'yearTo'} label={<label style={{color: 'white'}}>Год до:</label>} initialValue={yearTo}>
-                <Input value={yearTo} onChange={handleChangeYearTo} placeholder="Введите год" maxLength={4} />
+                <Input style={{width: 200}} value={yearTo} onChange={handleChangeYearTo} placeholder="Введите год" maxLength={4} />
             </Form.Item>
-            <Form.Item name={'keyword'} label={<label style={{color: 'white'}}>Ключевое слово:</label>} initialValue={keyword}>
-                <Input value={keyword} onChange={handleChangeKeyword} placeholder="Введите ключевое слово" maxLength={16} />
+            <Form.Item
+                className={styles.keyword}
+                name={'keyword'}
+                label={<label style={{color: 'white'}}>Ключевое слово:</label>}
+                initialValue={keyword}
+            >
+                <Input
+                    style={{width: 200}}
+                    value={keyword}
+                    onChange={handleChangeKeyword}
+                    placeholder="Введите ключевое слово"
+                    maxLength={16}
+                />
             </Form.Item>
-            <Form.Item wrapperCol={{...layout.wrapperCol, offset: 8}}>
-                <Button type="primary" htmlType="submit">
+            <Form.Item className={styles.btn} wrapperCol={{...layout.wrapperCol, offset: 8}}>
+                <Button style={{backgroundColor: '#ff6200'}} type="primary" htmlType="submit">
                     Найти фильмы
                 </Button>
             </Form.Item>

@@ -66,17 +66,18 @@ export const Services = {
     /** Получение списка фильмов по фильтрам. */
     async getFilmsByFilters(
         orderId: string,
-        genreId: string | null,
-        countryId: string | null,
+        genreId: string,
+        countryId: string,
         typeId: string,
         ratingFrom: string,
         ratingTo: string,
         yearFrom: string,
         yearTo: string,
-        keyword: string
+        keyword: string,
+        findMoviesPageId: number
     ): Promise<AxiosResponse> {
         return await axios.get(
-            `https://kinopoiskapiunofficial.tech/api/v2.2/films?countries=${countryId}&genres=${genreId}&order=${orderId}&type=${typeId}&ratingFrom=${ratingFrom}&ratingTo=${ratingTo}&yearFrom=${yearFrom}&yearTo=${yearTo}&keyword=${keyword}&page=1`
+            `https://kinopoiskapiunofficial.tech/api/v2.2/films?countries=${countryId}&genres=${genreId}&order=${orderId}&type=${typeId}&ratingFrom=${ratingFrom}&ratingTo=${ratingTo}&yearFrom=${yearFrom}&yearTo=${yearTo}&keyword=${keyword}&page=${findMoviesPageId}`
         );
     },
 };

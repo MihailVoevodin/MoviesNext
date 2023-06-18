@@ -1,7 +1,7 @@
 import {TopPage} from 'components/Movies/TopPage';
+import {TopsNavbar} from 'components/Navbar/TopsNavbar';
 import {GetServerSideProps} from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {ParsedUrlQuery} from 'querystring';
 import {FC} from 'react';
@@ -40,7 +40,8 @@ const Top250Movies: FC<IProps> = ({movies}) => {
     const {pagesCount, films} = movies;
     const router = useRouter();
     const dispatch = useAppDispatch();
-    const {top100PageId, top250PageId, topAwaitPageId, findMoviesPageId} = useAppSelector((state) => state.films);
+    const {top100PageId, top250PageId, topAwaitPageId} = useAppSelector((state) => state.films);
+    const {findMoviesPageId} = useAppSelector((state) => state.filters);
 
     const onChangePage = (pageId: number) => {
         dispatch(setTop250PageId(pageId));
@@ -52,12 +53,12 @@ const Top250Movies: FC<IProps> = ({movies}) => {
             <Head>
                 <title>Фильмы: Топ 250</title>
             </Head>
-            <div>
-                <Link href={`/movies/top250movies/page/${top250PageId}`}>Топ 250 фильмов</Link>
-                <Link href={`/movies/top100popular/page/${top100PageId}`}>Топ 100 фильмов</Link>
-                <Link href={`/movies/topAwaitMovies/page/${topAwaitPageId}`}>Топ ожидаемых фильмов</Link>
-                <Link href={`/movies/findMovies/page/${findMoviesPageId}`}>Найти фильмы</Link>
-            </div>
+            <TopsNavbar
+                top100PageId={top100PageId}
+                top250PageId={top250PageId}
+                topAwaitPageId={topAwaitPageId}
+                findMoviesPageId={findMoviesPageId}
+            />
             <TopPage movies={films} pageId={top250PageId} pagesCount={pagesCount} onChangePage={onChangePage} />
         </>
     );

@@ -1,9 +1,11 @@
 import {createSlice, PayloadAction, createAsyncThunk} from '@reduxjs/toolkit';
+import {IMovie} from 'Common/Models';
 import {Services} from 'Common/Services';
 
 export interface IFiltersState {
-    genreId: string | null;
-    countryId: string | null;
+    movies?: IMovie[];
+    genreId: string;
+    countryId: string;
     orderId: string;
     typeId: string;
     ratingFrom: string;
@@ -11,11 +13,13 @@ export interface IFiltersState {
     yearFrom: string;
     yearTo: string;
     keyword: string;
+    findMoviesPageId: number;
 }
 
 const initialState: IFiltersState = {
-    genreId: null,
-    countryId: null,
+    movies: [],
+    genreId: '1',
+    countryId: '1',
     orderId: 'RATING',
     typeId: 'ALL',
     ratingFrom: '0',
@@ -23,11 +27,16 @@ const initialState: IFiltersState = {
     yearFrom: '1000',
     yearTo: '3000',
     keyword: '',
+    findMoviesPageId: 1,
 };
 
 export const loadFilmsByFilters = createAsyncThunk(
     'filters/getFilmsByFilters',
-    async ({orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword}: IFiltersState, {rejectWithValue}) => {
+    async (
+        {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword, findMoviesPageId}: IFiltersState,
+        {rejectWithValue}
+    ) => {
+        console.log(findMoviesPageId);
         const response = await Services.getFilmsByFilters(
             orderId,
             genreId,
@@ -37,16 +46,15 @@ export const loadFilmsByFilters = createAsyncThunk(
             ratingTo,
             yearFrom,
             yearTo,
-            keyword
+            keyword,
+            findMoviesPageId
         );
-
-        console.log(response);
 
         if (response.status !== 200) {
             return rejectWithValue('Server Error!');
         }
 
-        return response.data;
+        return response.data.items;
     }
 );
 
@@ -84,10 +92,29 @@ const filtersSlice = createSlice({
         setKeyword(state, action: PayloadAction<string>) {
             state.keyword = action.payload;
         },
+        setFindMoviesPageId(state, action: PayloadAction<number>) {
+            state.findMoviesPageId = action.payload;
+        },
+    },
+    extraReducers: (builder) => {
+        builder.addCase(loadFilmsByFilters.fulfilled, (state, action) => {
+            console.log(action.payload);
+            state.movies = action.payload;
+        });
     },
 });
 
-export const {setGenreId, setCountryId, setOrderId, setTypeId, setRatingFrom, setRatingTo, setYearFrom, setYearTo, setKeyword} =
-    filtersSlice.actions;
+export const {
+    setGenreId,
+    setCountryId,
+    setOrderId,
+    setTypeId,
+    setRatingFrom,
+    setRatingTo,
+    setYearFrom,
+    setYearTo,
+    setKeyword,
+    setFindMoviesPageId,
+} = filtersSlice.actions;
 
 export default filtersSlice.reducer;

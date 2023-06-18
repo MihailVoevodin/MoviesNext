@@ -14,11 +14,14 @@
  */
 export interface IMovie {
     filmId: number;
+    kinopoiskId: number;
     filmLength: string;
     nameRu: string;
     nameEn: string;
+    nameOriginal: string;
     posterUrl: string;
     rating: string;
+    ratingKinopoisk: number;
     ratingVoteCount?: number;
     year: string;
     countries: ICountries[];
