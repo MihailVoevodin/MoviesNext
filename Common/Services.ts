@@ -80,4 +80,8 @@ export const Services = {
             `https://kinopoiskapiunofficial.tech/api/v2.2/films?countries=${countryId}&genres=${genreId}&order=${orderId}&type=${typeId}&ratingFrom=${ratingFrom}&ratingTo=${ratingTo}&yearFrom=${yearFrom}&yearTo=${yearTo}&keyword=${keyword}&page=${findMoviesPageId}`
         );
     },
+    /** Получение списка похожих фильмов. */
+    async getMoviesBySearch(keyword: string): Promise<AxiosResponse> {
+        return await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=${keyword}`);
+    },
 };
