@@ -36,9 +36,16 @@ const Navbar: FC = () => {
                         {title}
                     </Link>
                 ))}
-                <div>
-                    <SearchOutlined onClick={onClickSearch} />
-                    {isSearch && <Input onChange={onChangeSearch} placeholder="Введите название" />}
+                <div className={styles.searchContainer}>
+                    {isSearch && (
+                        <Input
+                            autoFocus={true}
+                            className={styles.searchInput}
+                            onChange={onChangeSearch}
+                            placeholder="Введите название фильма"
+                        />
+                    )}
+                    <SearchOutlined className={styles.searchBtn} onClick={onClickSearch} />
                 </div>
             </ul>
         </nav>

@@ -21,3 +21,37 @@
         margin: 10px;
     }
 }
+
+.searchContainer {
+    position: relative;
+}
+
+.searchInput {
+    width: 0;
+    opacity: 0;
+    animation: anim 1s linear forwards;
+    margin-right: 10px;
+    border-color: $secondary;
+    &:focus {
+        border-color: $secondary;
+    }
+    &::placeholder {
+        opacity: 0.3;
+        color: $secondary;
+    }
+}
+
+.searchBtn {
+    color: $secondary;
+}
+
+@keyframes anim{
+    50%{
+        opacity: 0.5;
+        width: 100px;
+    }
+    100%{
+        opacity: 1;
+        width: 200px;
+    }
+}
