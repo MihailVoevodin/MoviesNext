@@ -1,4 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {IMovie} from 'Common/Models';
 import {Services} from 'Common/Services';
 
 /**
@@ -9,6 +10,7 @@ import {Services} from 'Common/Services';
  * @param reviewsPageId - Номер страницы рецензий.
  */
 export interface IFilmsState {
+    searchMovies: IMovie[];
     top250PageId: number;
     top100PageId: number;
     topAwaitPageId: number;
@@ -18,6 +20,7 @@ export interface IFilmsState {
 }
 
 const initialState: IFilmsState = {
+    searchMovies: [],
     top250PageId: 1,
     top100PageId: 1,
     topAwaitPageId: 1,
@@ -26,13 +29,15 @@ const initialState: IFilmsState = {
     isSearch: false,
 };
 
-export const loadMoviesBySearch = createAsyncThunk('films/loadMoviesBySearch', async (keyword: string, {rejectWithValue}) => {
+export const loadMoviesBySearch = createAsyncThunk('films/loadMoviesBySearch', async (keyword: string, {rejectWithValue, dispatch}) => {
     const response = await Services.getMoviesBySearch(keyword);
 
     if (response.status !== 200) {
         return rejectWithValue('Server Error!');
     }
     console.log(response.data.films);
+
+    dispatch(setSearchMovies(response.data.films));
 
     return response.data.films;
 });
@@ -62,9 +67,13 @@ const filmsSlice = createSlice({
         setIsSearch(state) {
             state.isSearch = !state.isSearch;
         },
+        setSearchMovies(state, action: PayloadAction<IMovie[]>) {
+            state.searchMovies = action.payload;
+        },
     },
 });
 
-export const {setTop250PageId, setTop100PageId, setTopAwaitPageId, setImagesPageId, setReviewsPageId, setIsSearch} = filmsSlice.actions;
+export const {setTop250PageId, setTop100PageId, setTopAwaitPageId, setImagesPageId, setReviewsPageId, setIsSearch, setSearchMovies} =
+    filmsSlice.actions;
 
 export default filmsSlice.reducer;

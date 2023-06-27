@@ -7,18 +7,12 @@
     a {
         transition: all .5s;
         border-radius: 15px;
-        &:hover {
-            background-color: $secondary;
-        }
-    }
-
-}
-
-.navbarList {
-    a {
         text-align: center;
         padding: 10px;
         margin: 10px;
+        &:hover {
+            background-color: $secondary;
+        }
     }
 }
 
@@ -45,13 +39,52 @@
     color: $secondary;
 }
 
+.searchMovies {
+    color: $primary;
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: 35px;
+    border-radius: 6px;
+    overflow-y: auto;
+    background-color: $white;
+    z-index: 2;
+    padding: 10px;
+    a {
+        border-radius: 0;
+        padding: 0;
+        margin: 10px;
+    }
+}
+
+.searchMovie {
+    display: flex;
+    align-items: center;
+    transition: all 1s;
+    text-align: start;
+    img {
+        margin-right: 30px;
+    }
+    &:hover {
+        background-color: $lightGrey;
+    }
+}
+
+.searchMovieText {
+    display: flex;
+    opacity: .5;
+    .searchMovieRating {
+        margin-right: 20px;
+    }
+}
+
 @keyframes anim{
     50%{
         opacity: 0.5;
-        width: 100px;
+        width: 250px;
     }
     100%{
         opacity: 1;
-        width: 200px;
+        width: 500px;
     }
 }

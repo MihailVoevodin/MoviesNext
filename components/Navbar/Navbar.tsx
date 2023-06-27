@@ -1,5 +1,6 @@
 import {Input} from 'antd';
 import styles from 'components/Navbar/Navbar.module.scss';
+import Image from 'next/image';
 import Link from 'next/link';
 import {FC, ChangeEvent} from 'react';
 import {loadMoviesBySearch, setIsSearch} from 'store/filmsSlice';
@@ -11,7 +12,7 @@ import {SearchOutlined} from '@ant-design/icons';
  */
 const Navbar: FC = () => {
     const dispatch = useAppDispatch();
-    const {top250PageId, isSearch} = useAppSelector((state) => state.films);
+    const {top250PageId, isSearch, searchMovies} = useAppSelector((state) => state.films);
 
     const NavigationItems = [
         {id: 0, title: 'Главная', path: '/'},
@@ -44,6 +45,27 @@ const Navbar: FC = () => {
                             onChange={onChangeSearch}
                             placeholder="Введите название фильма"
                         />
+                    )}
+                    {isSearch && (
+                        <div className={styles.searchMovies}>
+                            Возможно, вы искали:
+                            <div>
+                                {searchMovies.map((movie) => (
+                                    <Link className={styles.searchMovieLink} key={movie.filmId} href={`/movie/${movie.filmId}`}>
+                                        <div className={styles.searchMovie}>
+                                            <Image width={80} height={120} src={movie.posterUrl} alt={movie.nameRu || movie.nameEn} />
+                                            <div>
+                                                <div>{movie.nameRu || movie.nameEn}</div>
+                                                <div className={styles.searchMovieText}>
+                                                    <div className={styles.searchMovieRating}>{movie.rating}</div>
+                                                    <div>{movie.year}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
                     )}
                     <SearchOutlined className={styles.searchBtn} onClick={onClickSearch} />
                 </div>

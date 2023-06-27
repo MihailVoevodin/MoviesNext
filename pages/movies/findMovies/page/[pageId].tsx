@@ -4,7 +4,7 @@ import {TopsNavbar} from 'components/Navbar/TopsNavbar';
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {FC, useEffect} from 'react';
-import {loadFilmsByFilters, setFindMoviesPageId} from 'store/filtersSlice';
+import {loadMoviesByFilters, setFindMoviesPageId} from 'store/filtersSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {IMovies} from 'Common/Models';
 
@@ -28,7 +28,7 @@ const FindMovies: FC<IProps> = () => {
 
     useEffect(() => {
         dispatch(
-            loadFilmsByFilters({orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword, findMoviesPageId})
+            loadMoviesByFilters({orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword, findMoviesPageId})
         );
     }, [findMoviesPageId]);
 

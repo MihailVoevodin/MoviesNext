@@ -64,7 +64,7 @@ export const Services = {
         return await axios.get(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${movieId}/similars`);
     },
     /** Получение списка фильмов по фильтрам. */
-    async getFilmsByFilters(
+    async getMoviesByFilters(
         orderId: string,
         genreId: string,
         countryId: string,

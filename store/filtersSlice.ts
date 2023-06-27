@@ -30,14 +30,14 @@ const initialState: IFiltersState = {
     findMoviesPageId: 1,
 };
 
-export const loadFilmsByFilters = createAsyncThunk(
+export const loadMoviesByFilters = createAsyncThunk(
     'filters/getFilmsByFilters',
     async (
         {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword, findMoviesPageId}: IFiltersState,
         {rejectWithValue}
     ) => {
         console.log(findMoviesPageId);
-        const response = await Services.getFilmsByFilters(
+        const response = await Services.getMoviesByFilters(
             orderId,
             genreId,
             countryId,
@@ -97,7 +97,7 @@ const filtersSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(loadFilmsByFilters.fulfilled, (state, action) => {
+        builder.addCase(loadMoviesByFilters.fulfilled, (state, action) => {
             console.log(action.payload);
             state.movies = action.payload;
         });

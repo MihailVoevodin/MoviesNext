@@ -12,7 +12,7 @@ import {
     setCountryId,
     setGenreId,
     setOrderId,
-    loadFilmsByFilters,
+    loadMoviesByFilters,
     IFiltersState,
     setFindMoviesPageId,
 } from 'store/filtersSlice';
@@ -90,7 +90,18 @@ export const Filters = () => {
         dispatch(setFindMoviesPageId(1));
         if (values) {
             dispatch(
-                loadFilmsByFilters({orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword, findMoviesPageId})
+                loadMoviesByFilters({
+                    orderId,
+                    genreId,
+                    countryId,
+                    typeId,
+                    ratingFrom,
+                    ratingTo,
+                    yearFrom,
+                    yearTo,
+                    keyword,
+                    findMoviesPageId,
+                })
             );
         }
         void router.replace(`/movies/findMovies/page/${findMoviesPageId}`);
