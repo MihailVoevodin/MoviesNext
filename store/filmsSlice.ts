@@ -16,7 +16,6 @@ export interface IFilmsState {
     topAwaitPageId: number;
     imagesPageId: number;
     reviewsPageId: number;
-    isSearch: boolean;
 }
 
 const initialState: IFilmsState = {
@@ -26,7 +25,6 @@ const initialState: IFilmsState = {
     topAwaitPageId: 1,
     imagesPageId: 1,
     reviewsPageId: 1,
-    isSearch: false,
 };
 
 export const loadMoviesBySearch = createAsyncThunk('films/loadMoviesBySearch', async (keyword: string, {rejectWithValue, dispatch}) => {
@@ -64,16 +62,12 @@ const filmsSlice = createSlice({
         setReviewsPageId(state, action: PayloadAction<number>) {
             state.reviewsPageId = action.payload;
         },
-        setIsSearch(state) {
-            state.isSearch = !state.isSearch;
-        },
         setSearchMovies(state, action: PayloadAction<IMovie[]>) {
             state.searchMovies = action.payload;
         },
     },
 });
 
-export const {setTop250PageId, setTop100PageId, setTopAwaitPageId, setImagesPageId, setReviewsPageId, setIsSearch, setSearchMovies} =
-    filmsSlice.actions;
+export const {setTop250PageId, setTop100PageId, setTopAwaitPageId, setImagesPageId, setReviewsPageId, setSearchMovies} = filmsSlice.actions;
 
 export default filmsSlice.reducer;

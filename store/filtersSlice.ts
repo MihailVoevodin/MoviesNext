@@ -36,7 +36,6 @@ export const loadMoviesByFilters = createAsyncThunk(
         {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword, findMoviesPageId}: IFiltersState,
         {rejectWithValue}
     ) => {
-        console.log(findMoviesPageId);
         const response = await Services.getMoviesByFilters(
             orderId,
             genreId,

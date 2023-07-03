@@ -104,7 +104,7 @@ export const Filters = () => {
                 })
             );
         }
-        void router.replace(`/movies/findMovies/page/${findMoviesPageId}`);
+        void router.replace(`/movies/findMovies/page/${1}`);
     };
 
     return (
