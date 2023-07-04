@@ -59,7 +59,10 @@ const Top250Movies: FC<IProps> = ({movies}) => {
                 topAwaitPageId={topAwaitPageId}
                 findMoviesPageId={findMoviesPageId}
             />
-            <TopPage movies={films} pageId={top250PageId} pagesCount={pagesCount} onChangePage={onChangePage} />
+            <main>
+                <h3>Топ 250 фильмов</h3>
+                <TopPage movies={films} pageId={top250PageId} pagesCount={pagesCount} onChangePage={onChangePage} />
+            </main>
         </>
     );
 };

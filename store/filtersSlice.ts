@@ -14,6 +14,7 @@ export interface IFiltersState {
     yearTo: string;
     keyword: string;
     findMoviesPageId: number;
+    moviesCountPages: number;
 }
 
 const initialState: IFiltersState = {
@@ -28,12 +29,15 @@ const initialState: IFiltersState = {
     yearTo: '3000',
     keyword: '',
     findMoviesPageId: 1,
+    moviesCountPages: 5,
 };
 
+type LoadMovies = Omit<IFiltersState, 'moviesCountPages'>;
+
 export const loadMoviesByFilters = createAsyncThunk(
-    'filters/getFilmsByFilters',
+    'filters/getMoviesByFilters',
     async (
-        {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword, findMoviesPageId}: IFiltersState,
+        {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword, findMoviesPageId}: LoadMovies,
         {rejectWithValue}
     ) => {
         const response = await Services.getMoviesByFilters(
@@ -53,7 +57,7 @@ export const loadMoviesByFilters = createAsyncThunk(
             return rejectWithValue('Server Error!');
         }
 
-        return response.data.items;
+        return response.data;
     }
 );
 
@@ -98,7 +102,9 @@ const filtersSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(loadMoviesByFilters.fulfilled, (state, action) => {
             console.log(action.payload);
-            state.movies = action.payload;
+            const {items, totalPages} = action.payload;
+            state.movies = items;
+            state.moviesCountPages = totalPages;
         });
     },
 });

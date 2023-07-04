@@ -20,7 +20,7 @@ const MovieMainInfo: FC<IProps> = ({movie}) => {
         <div className={styles.movieInfo}>
             <div className={styles.movieMainInfo}>
                 <div className={styles.movieName}>
-                    {movie.nameRu} ({movie.serial ? movie.startYear - movie.endYear : movie.year})
+                    {movie.nameRu} ({movie.serial ? `${movie.endYear - movie.startYear} сезонов` : movie.year})
                 </div>
                 <div className={styles.movieNameOriginal}>
                     {movie.nameOriginal && <span>{movie.nameOriginal}</span>}

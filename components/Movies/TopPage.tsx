@@ -40,41 +40,39 @@ export const TopPage: FC<IProps> = ({movies, pageId, pagesCount, onChangePage}) 
                 },
             }}
         >
-            <main>
-                <div className={styles.movies}>
-                    {movies &&
-                        movies.map((movie) => (
-                            <div className={styles.moviesItem} key={movie.filmId || movie.kinopoiskId}>
-                                <div className={styles.moviesItemContent}>
-                                    <Link href={`/movie/${movie.filmId || movie.kinopoiskId}`}>
-                                        <div className={styles.moviesItemInnerContent}>
-                                            <div className={styles.movieItemRating}>{movie.rating || movie.ratingKinopoisk}</div>
-                                            <div>{movie.year}</div>
-                                            <div>{movie.countries[0].country}</div>
-                                            <div>{movie.filmLength}</div>
-                                        </div>
-                                        <Image
-                                            className={styles.movieItemImg}
-                                            width={200}
-                                            height={300}
-                                            src={movie.posterUrl}
-                                            alt={movie.nameRu || movie.nameOriginal}
-                                        />
-                                        <div className={styles.moviesItemName}>{movie.nameRu}</div>
-                                    </Link>
-                                </div>
+            <div className={styles.movies}>
+                {movies &&
+                    movies.map((movie) => (
+                        <div className={styles.moviesItem} key={movie.filmId || movie.kinopoiskId}>
+                            <div className={styles.moviesItemContent}>
+                                <Link href={`/movie/${movie.filmId || movie.kinopoiskId}`}>
+                                    <div className={styles.moviesItemInnerContent}>
+                                        <div className={styles.movieItemRating}>{movie.rating || movie.ratingKinopoisk}</div>
+                                        <div>{movie.year}</div>
+                                        <div>{movie.countries[0].country}</div>
+                                        <div>{movie.filmLength}</div>
+                                    </div>
+                                    <Image
+                                        className={styles.movieItemImg}
+                                        width={200}
+                                        height={300}
+                                        src={movie.posterUrl}
+                                        alt={movie.nameRu || movie.nameOriginal}
+                                    />
+                                    <div className={styles.moviesItemName}>{movie.nameRu}</div>
+                                </Link>
                             </div>
-                        ))}
-                </div>
-                <Pagination
-                    className={mainStyles.pagination}
-                    current={pageId}
-                    onChange={onChangePage}
-                    total={pagesCount * 20}
-                    defaultPageSize={20}
-                    showSizeChanger={false}
-                />
-            </main>
+                        </div>
+                    ))}
+            </div>
+            <Pagination
+                className={mainStyles.pagination}
+                current={pageId}
+                onChange={onChangePage}
+                total={pagesCount * 20}
+                defaultPageSize={20}
+                showSizeChanger={false}
+            />
         </ConfigProvider>
     );
 };

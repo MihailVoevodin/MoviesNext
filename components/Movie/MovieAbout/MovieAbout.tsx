@@ -32,7 +32,7 @@ const MovieAbout: FC<IProps> = ({movie, movieStaff, movieBox}) => {
     return (
         <div className={styles.aboutContainer}>
             <div className={styles.about}>
-                <h3>{movie.serial ? T.Movie.movieTitle : T.Movie.serialTitle}</h3>
+                <h3>{movie.serial ? T.Movie.serialTitle : T.Movie.movieTitle}</h3>
                 <div className={styles.aboutItem}>
                     <div className={styles.aboutItemText}>{T.Movie.year}</div>
                     <div>

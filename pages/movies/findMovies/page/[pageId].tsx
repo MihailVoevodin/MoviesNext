@@ -6,25 +6,29 @@ import {useRouter} from 'next/router';
 import {FC, useEffect} from 'react';
 import {loadMoviesByFilters, setFindMoviesPageId} from 'store/filtersSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
-import {IMovies} from 'Common/Models';
-
-/**
- * @param movies Массив топа фильмов.
- */
-interface IProps {
-    movies: IMovies;
-}
 
 /**
  * Страница отображения поиска фильмов.
  */
-const FindMovies: FC<IProps> = () => {
+const FindMovies: FC = () => {
     const dispatch = useAppDispatch();
     const router = useRouter();
     const {top100PageId, top250PageId, topAwaitPageId} = useAppSelector((state) => state.films);
-    const {movies, orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword, findMoviesPageId} = useAppSelector(
-        (state) => state.filters
-    );
+    const {
+        movies,
+        orderId,
+        genreId,
+        countryId,
+        typeId,
+        ratingFrom,
+        ratingTo,
+        yearFrom,
+        yearTo,
+        keyword,
+        findMoviesPageId,
+        moviesCountPages,
+    } = useAppSelector((state) => state.filters);
+    console.log(moviesCountPages);
 
     useEffect(() => {
         dispatch(
@@ -40,7 +44,7 @@ const FindMovies: FC<IProps> = () => {
     return (
         <>
             <Head>
-                <title>Фильмы: Найти фильм</title>
+                <title>Фильмы: Поиск фильмов</title>
             </Head>
             <TopsNavbar
                 top100PageId={top100PageId}
@@ -48,8 +52,11 @@ const FindMovies: FC<IProps> = () => {
                 topAwaitPageId={topAwaitPageId}
                 findMoviesPageId={findMoviesPageId}
             />
-            <Filters />
-            <TopPage movies={movies} pageId={findMoviesPageId} pagesCount={5} onChangePage={onChangePage} />
+            <main>
+                <h3>Поиск фильмов</h3>
+                <Filters />
+                <TopPage movies={movies} pageId={findMoviesPageId} pagesCount={moviesCountPages} onChangePage={onChangePage} />
+            </main>
         </>
     );
 };
