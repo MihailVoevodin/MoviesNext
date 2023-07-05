@@ -66,7 +66,6 @@ export const T = {
         countable: {
             grade: ['оценка', 'оценки', 'оценок'],
             actors: ['актер', 'актера', 'актеров'],
-            seasons: ['сезон', 'сезона', 'сезонов'],
         },
         Reviews: {
             SortingSelect: {

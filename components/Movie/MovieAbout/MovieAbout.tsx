@@ -36,13 +36,9 @@ const MovieAbout: FC<IProps> = ({movie, movieStaff, movieBox}) => {
                 <div className={styles.aboutItem}>
                     <div className={styles.aboutItemText}>{T.Movie.year}</div>
                     <div>
-                        {movie.year}{' '}
-                        {movie.serial && (
-                            <span>
-                                {movie.endYear - movie.startYear}{' '}
-                                {CountableTexts(movie.endYear - movie.startYear, T.Movie.countable.seasons)}
-                            </span>
-                        )}
+                        {movie.serial && movie.endYear - movie.startYear !== 0
+                            ? `${movie.startYear} - ${movie.endYear || '...'}`
+                            : movie.year}
                     </div>
                 </div>
                 <div className={styles.aboutItem}>
