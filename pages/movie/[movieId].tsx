@@ -11,7 +11,7 @@ import {FC, useEffect} from 'react';
 import Slider from 'react-slick';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch} from 'store/hooks';
-import {IMovieDetails, IMovieBox, IMovieStaff, IMovieSimilars} from 'Common/Models';
+import {IMovieDetails, IMovieBox, IMovieStaff, IMovie} from 'Common/Models';
 import {Services} from 'Common/Services';
 import {T} from 'Common/Text';
 
@@ -24,7 +24,7 @@ interface IProps {
     movie: IMovieDetails;
     movieBox: IMovieBox[];
     movieStaff: IMovieStaff[];
-    movieSimilars: IMovieSimilars[];
+    movieSimilars: IMovie[];
 }
 
 /**
@@ -55,6 +55,7 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
  */
 const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
     const dispatch = useAppDispatch();
+    console.log(movieSimilars);
 
     useEffect(() => {
         dispatch(setImagesPageId(1));
@@ -64,7 +65,7 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
+        slidesToShow: movieSimilars.length >= 4 ? 4 : 2,
         slidesToScroll: 1,
         variableWidth: true,
     };

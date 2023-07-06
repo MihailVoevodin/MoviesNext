@@ -23,7 +23,7 @@ const MovieDetailsReview: FC<IProps> = ({movie}) => {
             <div className={styles.ratingContainer}>
                 <span>Рейтинг фильма</span>
                 <div className={styles.ratingContent}>
-                    <Rate style={{color: '#ff6200'}} defaultValue={Math.round(movie.ratingKinopoisk)} count={10} />
+                    <Rate style={{color: '#ff6200'}} value={Math.round(movie.ratingKinopoisk)} count={10} />
                     <div className={styles.ratingNumbers}>
                         <div className={styles.ratingKinopoisk}>{movie.ratingKinopoisk}</div>
                         <div className={styles.ratingCount}>

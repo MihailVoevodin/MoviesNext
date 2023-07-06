@@ -2,7 +2,7 @@ import {Input} from 'antd';
 import styles from 'components/Navbar/Navbar.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-import {FC, ChangeEvent} from 'react';
+import {FC, ChangeEvent, useState} from 'react';
 import {loadMoviesBySearch} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 
@@ -11,6 +11,7 @@ import {useAppDispatch, useAppSelector} from 'store/hooks';
  */
 const Navbar: FC = () => {
     const dispatch = useAppDispatch();
+    const [inputValue, setInputValue] = useState<string>('');
     const {top250PageId, searchMovies} = useAppSelector((state) => state.films);
 
     const NavigationItems = [
@@ -21,17 +22,25 @@ const Navbar: FC = () => {
 
     const onChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
         console.log(e.target.value);
+        setInputValue(e.target.value);
         dispatch(loadMoviesBySearch(e.target.value));
     };
 
     const onSearchMovie = () => {
+        setInputValue('');
         dispatch(loadMoviesBySearch(''));
     };
 
     return (
         <nav className={styles.headerNav}>
             <div className={styles.searchContainer}>
-                <Input autoFocus={true} className={styles.searchInput} onChange={onChangeSearch} placeholder="Введите название фильма" />
+                <Input
+                    autoFocus={true}
+                    className={styles.searchInput}
+                    value={inputValue}
+                    onChange={onChangeSearch}
+                    placeholder="Введите название фильма"
+                />
                 {searchMovies.length > 0 && (
                     <div className={styles.searchMovies}>
                         Возможно, вы искали:
