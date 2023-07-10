@@ -9,6 +9,7 @@ import {setTopAwaitPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {IMovies} from 'Common/Models';
 import {Services} from 'Common/Services';
+import {T} from 'Common/Text';
 
 /**
  * @param movies Массив топа фильмов.
@@ -51,7 +52,7 @@ const TopAwaitMovies: FC<IProps> = ({movies}) => {
     return (
         <>
             <Head>
-                <title>Фильмы: Ожидаемые</title>
+                <title>{T.Pages.MainPages.TopAwaitMovies.title}</title>
             </Head>
             <TopsNavbar
                 top100PageId={top100PageId}
@@ -60,7 +61,7 @@ const TopAwaitMovies: FC<IProps> = ({movies}) => {
                 findMoviesPageId={findMoviesPageId}
             />
             <main>
-                <h3>Ожидаемые фильмы</h3>
+                <h3>{T.Pages.MainPages.TopAwaitMovies.text}</h3>
                 <TopPage movies={films} pageId={topAwaitPageId} pagesCount={pagesCount} onChangePage={onChangePage} />
             </main>
         </>

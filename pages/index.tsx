@@ -6,6 +6,7 @@ import {useAppSelector} from 'store/hooks';
 import styles from 'styles/main.module.scss';
 import {IMovie} from 'Common/Models';
 import {Services} from 'Common/Services';
+import {T} from 'Common/Text';
 
 /**
  * @param top250Movies Массив топ 250 фильмов фильмов.
@@ -39,22 +40,26 @@ const Home: FC<IProps> = ({top250Movies, top100Movies, topAwaitMovies}) => {
     return (
         <>
             <Head>
-                <title>Movies</title>
+                <title>Фильмы</title>
             </Head>
             <div className={styles.homePreview}>
                 <span>Узнай больше про свои любимые фильмы, сериалы или актёров</span>
             </div>
             <main>
-                <HomePageTop movies={top250Movies} link={`/movies/top250movies/page/${top250PageId}`} text={'Топ 250 фильмов'} />
+                <HomePageTop
+                    movies={top250Movies}
+                    link={`/movies/top250movies/page/${top250PageId}`}
+                    text={T.Pages.MainPages.Top250Movies.text}
+                />
                 <HomePageTop
                     movies={top100Movies}
                     link={`/movies/top100popular/page/${top100PageId}`}
-                    text={'Топ 100 популярных фильмов'}
+                    text={T.Pages.MainPages.Top100Movies.text}
                 />
                 <HomePageTop
                     movies={topAwaitMovies}
                     link={`/movies/topAwaitMovies/page/${topAwaitPageId}`}
-                    text={'Топ ожидаемых фильмов'}
+                    text={T.Pages.MainPages.TopAwaitMovies.text}
                 />
             </main>
         </>

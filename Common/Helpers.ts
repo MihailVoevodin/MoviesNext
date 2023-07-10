@@ -1,3 +1,4 @@
+import {Dispatch, SetStateAction} from 'react';
 import {EMpaaRating, EReviewsType} from 'Common/Enums';
 import {T} from 'Common/Text';
 
@@ -10,6 +11,16 @@ export const MovieReviewBgColor = (type: string) => {
         return '#ffe3e3';
     }
     return '#f2f2f2';
+};
+
+/** Определение цвета лайка или дизлайка в зависимости от типа рецензии. */
+export const ReviewColors = (type: string, setColors: Dispatch<SetStateAction<string[]>>) => {
+    if (type === EReviewsType.POSITIVE) {
+        setColors(['green', 'none']);
+    }
+    if (type === EReviewsType.NEGATIVE) {
+        setColors(['none', 'red']);
+    }
 };
 
 /** Склонение существительных в зависимости от числа. */

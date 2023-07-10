@@ -14,6 +14,24 @@ export const T = {
     date: 'D MMMM YYYY',
     dateAndTime: 'DD MMMM YYYY | hh:mm',
     Pages: {
+        MainPages: {
+            FindMovies: {
+                title: 'Фильмы: Поиск фильмов',
+                text: 'Поиск фильмов',
+            },
+            Top100Movies: {
+                title: 'Фильмы: Топ 100 популярных',
+                text: 'Топ 100 популярных фильмов',
+            },
+            Top250Movies: {
+                title: 'Фильмы: Топ 250',
+                text: 'Топ 250 фильмов',
+            },
+            TopAwaitMovies: {
+                title: 'Фильмы: Ожидаемые',
+                text: 'Ожидаемые фильмы',
+            },
+        },
         backToMovie: 'Информация о фильме',
         MovieDefault: 'Обзор',
         Facts: {
@@ -50,6 +68,59 @@ export const T = {
             label: 'Прокат',
             route: 'distributions',
             empty: 'Нет данных о прокате',
+        },
+        Persons: {
+            label: 'Личности',
+        },
+    },
+    FiltersInputs: {
+        genre: {
+            name: 'genreId',
+            placeholder: 'Выберите жанр',
+            text: 'Жанр:',
+        },
+        country: {
+            name: 'countryId',
+            placeholder: 'Выберите страну',
+            text: 'Страна:',
+        },
+        order: {
+            name: 'orderId',
+            placeholder: 'Выберите порядок',
+            text: 'Сортировка:',
+        },
+        type: {
+            name: 'typeId',
+            placeholder: 'Выберите тип видео',
+            text: 'Тип видеоматериала:',
+        },
+        ratingFrom: {
+            name: 'ratingFrom',
+            placeholder: 'Введите рейтинг',
+            text: 'Рейтинг от:',
+        },
+        ratingTo: {
+            name: 'ratingTo',
+            placeholder: 'Введите рейтинг',
+            text: 'Рейтинг до:',
+        },
+        yearFrom: {
+            name: 'yearFrom',
+            placeholder: 'Введите год',
+            text: 'Год от:',
+        },
+        yearTo: {
+            name: 'yearTo',
+            placeholder: 'Введите год',
+            text: 'Год до:',
+        },
+        keyword: {
+            name: 'keyword',
+            placeholder: 'Введите ключевое слово',
+            text: 'Ключевое слово:',
+        },
+        button: {
+            text: 'Найти фильмы',
         },
     },
     Movie: {

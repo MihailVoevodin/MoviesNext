@@ -109,68 +109,128 @@ export const Filters = () => {
 
     return (
         <Form {...layout} onFinish={onFinish} className={styles.form}>
-            <Form.Item name={'genreId'} label={<label style={{color: 'white'}}>Жанр:</label>} initialValue={genreId}>
+            <Form.Item
+                name={T.FiltersInputs.genre.name}
+                label={<label style={{color: 'white'}}>{T.FiltersInputs.genre.text}</label>}
+                initialValue={genreId}
+            >
                 <Select
                     style={{width: 200}}
                     className={styles.formItem}
-                    showSearch
-                    placeholder="Выберите жанр"
+                    placeholder={T.FiltersInputs.genre.placeholder}
                     onChange={handleChangeGenre}
                     filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
                     options={T.Filters.genres}
                 />
             </Form.Item>
-            <Form.Item name={'countryId'} label={<label style={{color: 'white'}}>Страна:</label>} initialValue={countryId}>
+            <Form.Item
+                name={T.FiltersInputs.country.name}
+                label={<label style={{color: 'white'}}>{T.FiltersInputs.country.text}</label>}
+                initialValue={countryId}
+            >
                 <Select
                     style={{width: 200}}
-                    showSearch
-                    placeholder="Выберите страну"
+                    placeholder={T.FiltersInputs.country.placeholder}
                     onChange={handleChangeCountry}
                     filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
                     options={T.Filters.countries}
                 />
             </Form.Item>
-            <Form.Item name={'orderId'} label={<label style={{color: 'white'}}>Сортировка:</label>} initialValue={orderId}>
-                <Select style={{width: 200}} onChange={handleChangeOrder} options={T.Filters.order} />
+            <Form.Item
+                name={T.FiltersInputs.order.name}
+                label={<label style={{color: 'white'}}>{T.FiltersInputs.order.text}</label>}
+                initialValue={orderId}
+            >
+                <Select
+                    style={{width: 200}}
+                    placeholder={T.FiltersInputs.order.placeholder}
+                    onChange={handleChangeOrder}
+                    filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
+                    options={T.Filters.order}
+                />
             </Form.Item>
-            <Form.Item name={'typeId'} label={<label style={{color: 'white'}}>Тип видеоматериала:</label>} initialValue={typeId}>
-                <Select style={{width: 200}} onChange={handleChangeType} options={T.Filters.type} />
+            <Form.Item
+                name={T.FiltersInputs.type.name}
+                label={<label style={{color: 'white'}}>{T.FiltersInputs.type.text}</label>}
+                initialValue={typeId}
+            >
+                <Select
+                    style={{width: 200}}
+                    placeholder={T.FiltersInputs.type.placeholder}
+                    onChange={handleChangeType}
+                    filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
+                    options={T.Filters.type}
+                />
             </Form.Item>
-            <Form.Item name={'ratingFrom'} label={<label style={{color: 'white'}}>Рейтинг от:</label>} initialValue={ratingFrom}>
+            <Form.Item
+                name={T.FiltersInputs.ratingFrom.name}
+                label={<label style={{color: 'white'}}>{T.FiltersInputs.ratingFrom.text}</label>}
+                initialValue={ratingFrom}
+            >
                 <Input
                     style={{width: 200}}
                     value={ratingFrom}
                     onChange={handleChangeRatingFrom}
-                    placeholder="Введите рейтинг"
+                    placeholder={T.FiltersInputs.ratingFrom.placeholder}
                     maxLength={3}
                 />
             </Form.Item>
-            <Form.Item name={'ratingTo'} label={<label style={{color: 'white'}}>Рейтинг до:</label>} initialValue={ratingTo}>
-                <Input style={{width: 200}} value={ratingTo} onChange={handleChangeRatingTo} placeholder="Введите рейтинг" maxLength={3} />
+            <Form.Item
+                name={T.FiltersInputs.ratingTo.name}
+                label={<label style={{color: 'white'}}>{T.FiltersInputs.ratingTo.text}</label>}
+                initialValue={ratingTo}
+            >
+                <Input
+                    style={{width: 200}}
+                    value={ratingTo}
+                    onChange={handleChangeRatingTo}
+                    placeholder={T.FiltersInputs.ratingTo.placeholder}
+                    maxLength={3}
+                />
             </Form.Item>
-            <Form.Item name={'yearFrom'} label={<label style={{color: 'white'}}>Год от:</label>} initialValue={yearFrom}>
-                <Input style={{width: 200}} value={yearFrom} onChange={handleChangeYearFrom} placeholder="Введите год" maxLength={4} />
+            <Form.Item
+                name={T.FiltersInputs.yearFrom.name}
+                label={<label style={{color: 'white'}}>{T.FiltersInputs.yearFrom.text}</label>}
+                initialValue={yearFrom}
+            >
+                <Input
+                    style={{width: 200}}
+                    value={yearFrom}
+                    onChange={handleChangeYearFrom}
+                    placeholder={T.FiltersInputs.yearFrom.placeholder}
+                    maxLength={4}
+                />
             </Form.Item>
-            <Form.Item name={'yearTo'} label={<label style={{color: 'white'}}>Год до:</label>} initialValue={yearTo}>
-                <Input style={{width: 200}} value={yearTo} onChange={handleChangeYearTo} placeholder="Введите год" maxLength={4} />
+            <Form.Item
+                name={T.FiltersInputs.yearTo.name}
+                label={<label style={{color: 'white'}}>{T.FiltersInputs.yearTo.text}</label>}
+                initialValue={yearTo}
+            >
+                <Input
+                    style={{width: 200}}
+                    value={yearTo}
+                    onChange={handleChangeYearTo}
+                    placeholder={T.FiltersInputs.yearTo.placeholder}
+                    maxLength={4}
+                />
             </Form.Item>
             <Form.Item
                 className={styles.keyword}
-                name={'keyword'}
-                label={<label style={{color: 'white'}}>Ключевое слово:</label>}
+                name={T.FiltersInputs.keyword.name}
+                label={<label style={{color: 'white'}}>{T.FiltersInputs.keyword.text}</label>}
                 initialValue={keyword}
             >
                 <Input
                     style={{width: 200}}
                     value={keyword}
                     onChange={handleChangeKeyword}
-                    placeholder="Введите ключевое слово"
+                    placeholder={T.FiltersInputs.keyword.placeholder}
                     maxLength={16}
                 />
             </Form.Item>
             <Form.Item className={styles.btn} wrapperCol={{...layout.wrapperCol, offset: 8}}>
                 <Button style={{backgroundColor: '#ff6200'}} type="primary" htmlType="submit">
-                    Найти фильмы
+                    {T.FiltersInputs.button.text}
                 </Button>
             </Form.Item>
         </Form>

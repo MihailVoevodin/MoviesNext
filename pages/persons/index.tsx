@@ -46,7 +46,7 @@ const Persons: FC<IProps> = () => {
     return (
         <>
             <Head>
-                <title>Личности</title>
+                <title>{T.Pages.Persons.label}</title>
             </Head>
             <ConfigProvider
                 theme={{

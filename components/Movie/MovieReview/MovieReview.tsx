@@ -5,8 +5,7 @@ import User from 'public/User.png';
 import {FC, useEffect, useState} from 'react';
 import {LikeOutlined, DislikeOutlined} from '@ant-design/icons';
 import {Regulars} from 'Common/Consts';
-import {EReviewsType} from 'Common/Enums';
-import {MovieReviewBgColor} from 'Common/Helpers';
+import {MovieReviewBgColor, ReviewColors} from 'Common/Helpers';
 import {IMovieReview} from 'Common/Models';
 import {T} from 'Common/Text';
 import 'moment/locale/ru';
@@ -26,12 +25,7 @@ export const MovieReview: FC<IProps> = ({review}) => {
     const [colors, setColors] = useState<string[]>(['none', 'none']);
 
     useEffect(() => {
-        if (review.type === EReviewsType.POSITIVE) {
-            setColors(['green', 'none']);
-        }
-        if (review.type === EReviewsType.NEGATIVE) {
-            setColors(['none', 'red']);
-        }
+        ReviewColors(review.type, setColors);
     }, []);
 
     return (

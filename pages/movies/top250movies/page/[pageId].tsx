@@ -9,6 +9,7 @@ import {setTop250PageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {IMovies} from 'Common/Models';
 import {Services} from 'Common/Services';
+import {T} from 'Common/Text';
 
 /**
  * @param movies Массив топа фильмов.
@@ -51,7 +52,7 @@ const Top250Movies: FC<IProps> = ({movies}) => {
     return (
         <>
             <Head>
-                <title>Фильмы: Топ 250</title>
+                <title>{T.Pages.MainPages.Top250Movies.title}</title>
             </Head>
             <TopsNavbar
                 top100PageId={top100PageId}
@@ -60,7 +61,7 @@ const Top250Movies: FC<IProps> = ({movies}) => {
                 findMoviesPageId={findMoviesPageId}
             />
             <main>
-                <h3>Топ 250 фильмов</h3>
+                <h3>{T.Pages.MainPages.Top250Movies.text}</h3>
                 <TopPage movies={films} pageId={top250PageId} pagesCount={pagesCount} onChangePage={onChangePage} />
             </main>
         </>
