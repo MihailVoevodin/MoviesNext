@@ -46,7 +46,7 @@ const Top250Movies: FC<IProps> = ({movies}) => {
 
     const onChangePage = (pageId: number) => {
         dispatch(setTop250PageId(pageId));
-        void router.replace(`/movies/top250movies/page/${pageId}`);
+        void router.replace(T.Pages.MainPages.Top250Movies.link(pageId));
     };
 
     return (

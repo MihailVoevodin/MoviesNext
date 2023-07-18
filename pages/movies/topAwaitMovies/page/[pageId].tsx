@@ -46,7 +46,7 @@ const TopAwaitMovies: FC<IProps> = ({movies}) => {
 
     const onChangePage = (pageId: number) => {
         dispatch(setTopAwaitPageId(pageId));
-        void router.replace(`/movies/topAwaitMovies/page/${pageId}`);
+        void router.replace(T.Pages.MainPages.TopAwaitMovies.link(pageId));
     };
 
     return (

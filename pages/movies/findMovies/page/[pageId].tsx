@@ -6,6 +6,7 @@ import {useRouter} from 'next/router';
 import {FC, useEffect} from 'react';
 import {loadMoviesByFilters, setFindMoviesPageId} from 'store/filtersSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
+import {T} from 'Common/Text';
 
 /**
  * Страница отображения поиска фильмов.
@@ -38,13 +39,13 @@ const FindMovies: FC = () => {
 
     const onChangePage = (pageId: number) => {
         dispatch(setFindMoviesPageId(pageId));
-        void router.replace(`/movies/findMovies/page/${pageId}`);
+        void router.replace(T.Pages.MainPages.FindMovies.link(pageId));
     };
 
     return (
         <>
             <Head>
-                <title>Фильмы: Поиск фильмов</title>
+                <title>{T.Pages.MainPages.FindMovies.title}</title>
             </Head>
             <TopsNavbar
                 top100PageId={top100PageId}
@@ -53,7 +54,7 @@ const FindMovies: FC = () => {
                 findMoviesPageId={findMoviesPageId}
             />
             <main>
-                <h3>Поиск фильмов</h3>
+                <h3>{T.Pages.MainPages.FindMovies.text}</h3>
                 <Filters />
                 <TopPage movies={movies} pageId={findMoviesPageId} pagesCount={moviesCountPages} onChangePage={onChangePage} />
             </main>

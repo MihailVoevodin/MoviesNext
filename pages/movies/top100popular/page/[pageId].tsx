@@ -45,7 +45,7 @@ const Top100Movies: FC<IProps> = ({movies}) => {
 
     const onChangePage = (pageId: number) => {
         dispatch(setTop100PageId(pageId));
-        void router.replace(`/movies/top100popular/page/${pageId}`);
+        void router.replace(T.Pages.MainPages.Top100Movies.link(pageId));
     };
 
     console.log(movies);

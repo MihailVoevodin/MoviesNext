@@ -2,10 +2,10 @@ import {Popover} from 'antd';
 import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
 import {MovieAboutPersonPopover} from 'components/Movie/MovieAbout/components/MovieAboutPersonPopover/MovieAboutPersonPopover';
 import Link from 'next/link';
+import {useRouter} from 'next/router';
 import {FC} from 'react';
 import {EMovieMainStaff} from 'Common/Enums';
 import {IMovieStaff} from 'Common/Models';
-import {useRouter} from 'next/router';
 
 /**
  * @param movieStaff Массив создателей фильма.

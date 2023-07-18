@@ -48,17 +48,17 @@ const Home: FC<IProps> = ({top250Movies, top100Movies, topAwaitMovies}) => {
             <main>
                 <HomePageTop
                     movies={top250Movies}
-                    link={`/movies/top250movies/page/${top250PageId}`}
+                    link={T.Pages.MainPages.Top250Movies.link(top250PageId)}
                     text={T.Pages.MainPages.Top250Movies.text}
                 />
                 <HomePageTop
                     movies={top100Movies}
-                    link={`/movies/top100popular/page/${top100PageId}`}
+                    link={T.Pages.MainPages.Top100Movies.link(top100PageId)}
                     text={T.Pages.MainPages.Top100Movies.text}
                 />
                 <HomePageTop
                     movies={topAwaitMovies}
-                    link={`/movies/topAwaitMovies/page/${topAwaitPageId}`}
+                    link={T.Pages.MainPages.TopAwaitMovies.link(topAwaitPageId)}
                     text={T.Pages.MainPages.TopAwaitMovies.text}
                 />
             </main>

@@ -18,18 +18,22 @@ export const T = {
             FindMovies: {
                 title: 'Фильмы: Поиск фильмов',
                 text: 'Поиск фильмов',
+                link: (pageId: number): string => `/movies/findMovies/page/${pageId}`,
             },
             Top100Movies: {
                 title: 'Фильмы: Топ 100 популярных',
                 text: 'Топ 100 популярных фильмов',
+                link: (pageId: number): string => `/movies/top100popular/page/${pageId}`,
             },
             Top250Movies: {
                 title: 'Фильмы: Топ 250',
                 text: 'Топ 250 фильмов',
+                link: (pageId: number): string => `/movies/top250movies/page/${pageId}`,
             },
             TopAwaitMovies: {
                 title: 'Фильмы: Ожидаемые',
                 text: 'Ожидаемые фильмы',
+                link: (pageId: number): string => `/movies/topAwaitMovies/page/${pageId}`,
             },
         },
         backToMovie: 'Информация о фильме',

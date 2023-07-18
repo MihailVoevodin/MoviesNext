@@ -1,6 +1,7 @@
 import styles from 'components/Navbar/TopsNavbar.module.scss';
 import Link from 'next/link';
 import {FC} from 'react';
+import {T} from 'Common/Text';
 
 /**
  * @param top250PageId Id страницы с топ 250 фильмов.
@@ -18,10 +19,10 @@ interface IProps {
 export const TopsNavbar: FC<IProps> = ({top250PageId, top100PageId, topAwaitPageId, findMoviesPageId}) => {
     return (
         <div className={styles.topsNavbarContainer}>
-            <Link href={`/movies/top250movies/page/${top250PageId}`}>Топ 250 фильмов</Link>
-            <Link href={`/movies/top100popular/page/${top100PageId}`}>Топ 100 фильмов</Link>
-            <Link href={`/movies/topAwaitMovies/page/${topAwaitPageId}`}>Топ ожидаемых фильмов</Link>
-            <Link href={`/movies/findMovies/page/${findMoviesPageId}`}>Найти фильмы</Link>
+            <Link href={T.Pages.MainPages.Top250Movies.link(top250PageId)}>{T.Pages.MainPages.Top250Movies.text}</Link>
+            <Link href={T.Pages.MainPages.Top100Movies.link(top100PageId)}>{T.Pages.MainPages.Top100Movies.text}</Link>
+            <Link href={T.Pages.MainPages.TopAwaitMovies.link(topAwaitPageId)}>{T.Pages.MainPages.TopAwaitMovies.text}</Link>
+            <Link href={T.Pages.MainPages.FindMovies.link(findMoviesPageId)}>{T.Pages.MainPages.FindMovies.text}</Link>
         </div>
     );
 };
