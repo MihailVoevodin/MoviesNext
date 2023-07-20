@@ -53,19 +53,19 @@ const Reviews: FC<IProps> = ({movieReviews, movieName}) => {
     const {total, totalPositiveReviews, totalNegativeReviews, totalNeutralReviews, items: reviews} = movieReviews;
     const dispatch = useAppDispatch();
     const {reviewsPageId} = useAppSelector((state) => state.films);
-    const [filter, setFilter] = useState<string>(EReviewsSelect.DATE_ASC);
+    const [order, setOrder] = useState<string>(EReviewsSelect.DATE_ASC);
 
     useEffect(() => {
-        void router.push(`/movie/${router.query.movieId}/${T.Pages.Reviews.route}/${reviewsPageId}/?&order=${filter}`);
-    }, [filter]);
+        void router.push(T.Pages.Reviews.link(router.query.movieId, order, reviewsPageId));
+    }, [order]);
 
     const onChange = (pageId: number) => {
         dispatch(setReviewsPageId(pageId));
-        void router.replace(`/movie/${router.query.movieId}/${T.Pages.Reviews.route}/${pageId}/?&order=${filter}`);
+        void router.replace(T.Pages.Reviews.link(router.query.movieId, order, pageId));
     };
 
     const handleFilterChange = (value: string) => {
-        setFilter(value);
+        setOrder(value);
         dispatch(setReviewsPageId(1));
     };
 
@@ -99,7 +99,10 @@ const Reviews: FC<IProps> = ({movieReviews, movieName}) => {
                         </div>
                         <div className={mainStyles.backToMovieContainer}>
                             <hr />
-                            <span className={mainStyles.backToMovie} onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
+                            <span
+                                className={mainStyles.backToMovie}
+                                onClick={() => router.replace(T.Pages.MovieLink(router.query.movieId))}
+                            >
                                 {T.Pages.backToMovie}
                             </span>
                             <hr />

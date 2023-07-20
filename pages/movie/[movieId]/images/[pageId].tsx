@@ -61,7 +61,7 @@ const Images: FC<IProps> = ({movieName, movieImages}) => {
     }, []);
 
     useEffect(() => {
-        void router.push(`/movie/${router.query.movieId}/${T.Pages.Images.route}/${imagesPageId}?&type=${filter}`);
+        void router.push(T.Pages.Images.link(router.query.movieId, filter, imagesPageId));
     }, [filter]);
 
     const handleChangeFilter = (type: string) => {
@@ -79,7 +79,7 @@ const Images: FC<IProps> = ({movieName, movieImages}) => {
 
     const onChange = (pageId: number) => {
         dispatch(setImagesPageId(pageId));
-        void router.replace(`/movie/${router.query.movieId}/${T.Pages.Images.route}/${pageId}?&type=${filter}`);
+        void router.replace(T.Pages.Images.link(router.query.movieId, filter, pageId));
     };
 
     return (
@@ -109,7 +109,10 @@ const Images: FC<IProps> = ({movieName, movieImages}) => {
                         </div>
                         <div className={mainStyles.backToMovieContainer}>
                             <hr />
-                            <span className={mainStyles.backToMovie} onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
+                            <span
+                                className={mainStyles.backToMovie}
+                                onClick={() => router.replace(T.Pages.MovieLink(router.query.movieId))}
+                            >
                                 {T.Pages.backToMovie}
                             </span>
                             <hr />

@@ -105,14 +105,14 @@ const MovieAbout: FC<IProps> = ({movie, movieStaff, movieBox}) => {
                 </div>
             </div>
             <div className={styles.actors}>
-                <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Staff.route}`}>
+                <Link href={T.Pages.Staff.link(movie.kinopoiskId)}>
                     <h3>
                         {T.Movie.castTitle} <RightOutlined />
                     </h3>
                 </Link>
                 <MovieAboutActors movieStaff={movieStaff} professionKey={EMovieStaff.ACTOR} />
                 <div className={styles.actorsCount}>
-                    <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Staff.route}`}>
+                    <Link href={T.Pages.Staff.link(movie.kinopoiskId)}>
                         {numberOfActors} {CountableTexts(numberOfActors, T.Movie.countable.actors)}
                     </Link>
                 </div>

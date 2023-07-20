@@ -11,6 +11,7 @@ import {FC, useEffect} from 'react';
 import Slider from 'react-slick';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch} from 'store/hooks';
+import {EMovieImages, EReviewsSelect} from 'Common/Enums';
 import {IMovieDetails, IMovieBox, IMovieStaff, IMovie} from 'Common/Models';
 import {Services} from 'Common/Services';
 import {T} from 'Common/Text';
@@ -99,7 +100,7 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                             <h3 className={styles.similarsTitle}>Похожие фильмы</h3>
                             <Slider {...settings}>
                                 {movieSimilars.map((movie) => (
-                                    <Link key={movie.filmId} className={styles.similarsLink} href={`/movie/${movie.filmId}`}>
+                                    <Link key={movie.filmId} className={styles.similarsLink} href={T.Pages.MovieLink(movie.filmId)}>
                                         <div style={{width: 200}}>
                                             {movie.posterUrl && (
                                                 <Image
@@ -123,24 +124,22 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                     <ul className={styles.movieTabsList}>
                         <li className={styles.movieListDefault}>{T.Pages.MovieDefault}</li>
                         <li>
-                            <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Awards.route}`}>{T.Pages.Awards.label}</Link>
+                            <Link href={T.Pages.Awards.link(movie.kinopoiskId)}>{T.Pages.Awards.label}</Link>
                         </li>
                         <li>
-                            <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Distributions.route}`}>{T.Pages.Distributions.label}</Link>
+                            <Link href={T.Pages.Distributions.link(movie.kinopoiskId)}>{T.Pages.Distributions.label}</Link>
                         </li>
                         <li>
-                            <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Images.route}/1?&type=STILL`}>{T.Pages.Images.label}</Link>
+                            <Link href={T.Pages.Images.link(movie.kinopoiskId, EMovieImages.STILL, 1)}>{T.Pages.Images.label}</Link>
                         </li>
                         <li>
-                            <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Videos.route}`}>{T.Pages.Videos.label}</Link>
+                            <Link href={T.Pages.Videos.link(movie.kinopoiskId)}>{T.Pages.Videos.label}</Link>
                         </li>
                         <li>
-                            <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Facts.route}`}>{T.Pages.Facts.label}</Link>
+                            <Link href={T.Pages.Facts.link(movie.kinopoiskId)}>{T.Pages.Facts.label}</Link>
                         </li>
                         <li>
-                            <Link href={`/movie/${movie.kinopoiskId}/${T.Pages.Reviews.route}/1?&order=DATE_ASC`}>
-                                {T.Pages.Reviews.label}
-                            </Link>
+                            <Link href={T.Pages.Reviews.link(movie.kinopoiskId, EReviewsSelect.DATE_ASC, 1)}>{T.Pages.Reviews.label}</Link>
                         </li>
                     </ul>
                     <hr />

@@ -4,6 +4,7 @@ import styles from 'pages/movie/[movieId]/staff/Staff.module.scss';
 import {FC} from 'react';
 import {EMovieStaff} from 'Common/Enums';
 import {IMovieStaff} from 'Common/Models';
+import {T} from 'Common/Text';
 
 /**
  * @param movieStaff Массив создателей фильма.
@@ -35,7 +36,7 @@ export const MovieStaff: FC<IProps> = ({movieStaff, type, text}) => {
                         <li className={styles.castPerson} key={person.staffId}>
                             <Image className={styles.castImg} src={person.posterUrl} width={70} height={100} alt={person.nameRu} />
                             <div className={styles.castPersonAbout}>
-                                <Link href={`/name/${person.staffId}`} className={styles.castPersonNameRu}>
+                                <Link href={T.Pages.Persons.link(person.staffId)} className={styles.castPersonNameRu}>
                                     {person.nameRu}
                                 </Link>
                                 <div className={styles.castPersonNameEn}>{person.nameEn}</div>

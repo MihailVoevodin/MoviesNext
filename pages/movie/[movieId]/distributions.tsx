@@ -57,7 +57,7 @@ const Distributions: FC<IProps> = ({movieDistributions, movieName}) => {
                     </div>
                     <div className={mainStyles.backToMovieContainer}>
                         <hr />
-                        <span className={mainStyles.backToMovie} onClick={() => router.replace(`/movie/${router.query.movieId}`)}>
+                        <span className={mainStyles.backToMovie} onClick={() => router.replace(T.Pages.MovieLink(router.query.movieId))}>
                             {T.Pages.backToMovie}
                         </span>
                         <hr />

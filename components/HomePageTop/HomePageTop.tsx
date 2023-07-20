@@ -4,6 +4,7 @@ import Link from 'next/link';
 import {FC} from 'react';
 import Slider from 'react-slick';
 import {IMovie} from 'Common/Models';
+import {T} from 'Common/Text';
 
 /**
  * @param movies Массив фильмов.
@@ -36,7 +37,7 @@ export const HomePageTop: FC<IProps> = ({movies, link, text}) => {
             </h3>
             <Slider {...settings}>
                 {movies.map((movie) => (
-                    <Link key={movie.filmId} href={`/movie/${movie.filmId}`}>
+                    <Link key={movie.filmId} href={T.Pages.MovieLink(movie.filmId)}>
                         <div className={styles.topsItem} style={{width: 230}}>
                             <div className={styles.topsInnerContent}>
                                 <div className={styles.topsRating}>{movie.rating}</div>

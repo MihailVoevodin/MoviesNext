@@ -4,6 +4,7 @@ import Link from 'next/link';
 import {FC} from 'react';
 import {CaretRightFilled} from '@ant-design/icons';
 import {IMovieAward, IPerson} from 'Common/Models';
+import {T} from 'Common/Text';
 
 /**
  * @param movieAwards Массив наград фильма.
@@ -70,7 +71,7 @@ const Award: FC<AwardProps> = ({award}) => {
                         (
                         {award.persons.map((person: IPerson, id: number) => {
                             return (
-                                <Link key={id} href={`/name/${person.kinopoiskId}`}>
+                                <Link key={id} href={T.Pages.Persons.link(person.kinopoiskId)}>
                                     {person.nameRu || person.nameEn}
                                     {id !== award.persons.length - 1 ? ', ' : ''}
                                 </Link>

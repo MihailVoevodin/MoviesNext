@@ -4,6 +4,7 @@ import {MovieAboutPersonPopover} from 'components/Movie/MovieAbout/components/Mo
 import Link from 'next/link';
 import {FC} from 'react';
 import {IMovieStaff} from 'Common/Models';
+import {T} from 'Common/Text';
 
 /**
  * @param movieStaff Массив создателей фильма.
@@ -25,7 +26,7 @@ export const MovieAboutActors: FC<IProps> = ({movieStaff, professionKey}) => {
             {filteredMovieStaff.slice(0, 10).map((actor) => {
                 return (
                     <li key={actor.staffId}>
-                        <Link href={`/name/${actor.staffId}`}>
+                        <Link href={T.Pages.Persons.link(actor.staffId)}>
                             <Popover content={<MovieAboutPersonPopover person={actor} />}>{actor.nameRu}</Popover>
                         </Link>
                     </li>

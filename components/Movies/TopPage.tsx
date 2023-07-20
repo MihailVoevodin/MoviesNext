@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {FC} from 'react';
 import mainStyles from 'styles/main.module.scss';
 import {IMovie} from 'Common/Models';
+import {T} from 'Common/Text';
 
 /**
  * @param films Массив фильмов топа.
@@ -45,7 +46,7 @@ export const TopPage: FC<IProps> = ({movies, pageId, pagesCount, onChangePage}) 
                     movies.map((movie) => (
                         <div className={styles.moviesItem} key={movie.filmId || movie.kinopoiskId}>
                             <div className={styles.moviesItemContent}>
-                                <Link href={`/movie/${movie.filmId || movie.kinopoiskId}`}>
+                                <Link href={T.Pages.MovieLink(movie.filmId || movie.kinopoiskId)}>
                                     <div className={styles.moviesItemInnerContent}>
                                         <div className={styles.movieItemRating}>{movie.rating || movie.ratingKinopoisk}</div>
                                         <div>{movie.year}</div>

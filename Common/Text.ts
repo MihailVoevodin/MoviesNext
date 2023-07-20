@@ -9,11 +9,15 @@ import {
     EReviewsSelect,
     EMpaaRating,
 } from 'Common/Enums';
+import movieId from 'pages/movie/[movieId]';
 
 export const T = {
     date: 'D MMMM YYYY',
     dateAndTime: 'DD MMMM YYYY | hh:mm',
     Pages: {
+        backToMovie: 'Информация о фильме',
+        MovieDefault: 'Обзор',
+        MovieLink: (movieId: number | string | string[] | undefined): string => `/movie/${movieId}`,
         MainPages: {
             FindMovies: {
                 title: 'Фильмы: Поиск фильмов',
@@ -36,45 +40,46 @@ export const T = {
                 link: (pageId: number): string => `/movies/topAwaitMovies/page/${pageId}`,
             },
         },
-        backToMovie: 'Информация о фильме',
-        MovieDefault: 'Обзор',
         Facts: {
             label: 'Факты',
-            route: 'facts',
+            link: (movieId: number): string => `/movie/${movieId}/facts`,
             empty: 'Интересные факты о фильме не найдены',
-        },
-        Images: {
-            label: 'Изображения',
-            route: 'images',
-            empty: 'Нет данных об изображениях',
-        },
-        Reviews: {
-            label: 'Рецензии',
-            route: 'reviews',
-            empty: 'Рецензии на фильм отсутствуют',
         },
         Staff: {
             label: 'Создатели',
-            route: 'staff',
+            link: (movieId: number | string | string[] | undefined): string => `/movie/${movieId}/staff`,
             empty: 'Нет данных о создателях',
         },
         Videos: {
             label: 'Видео',
-            route: 'videos',
+            link: (movieId: number): string => `/movie/${movieId}/videos`,
             empty: 'Видеоматериалы отсутствуют',
         },
         Awards: {
             label: 'Награды',
-            route: 'awards',
+            link: (movieId: number): string => `/movie/${movieId}/awards`,
             empty: 'Нет данных о наградах',
         },
         Distributions: {
             label: 'Прокат',
-            route: 'distributions',
+            link: (movieId: number): string => `/movie/${movieId}/distributions`,
             empty: 'Нет данных о прокате',
+        },
+        Images: {
+            label: 'Изображения',
+            link: (movieId: number | string | string[] | undefined, type: string, pageId: number): string =>
+                `/movie/${movieId}/images/${pageId}?&type=${type}`,
+            empty: 'Нет данных об изображениях',
+        },
+        Reviews: {
+            label: 'Рецензии',
+            link: (movieId: number | string | string[] | undefined, order: string, pageId: number): string =>
+                `/movie/${movieId}/reviews/${pageId}?&order=${order}`,
+            empty: 'Рецензии на фильм отсутствуют',
         },
         Persons: {
             label: 'Личности',
+            link: (personId: number): string => `/name/${personId}`,
         },
     },
     FiltersInputs: {

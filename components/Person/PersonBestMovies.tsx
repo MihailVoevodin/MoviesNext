@@ -2,6 +2,7 @@ import styles from 'components/Person/PersonAbout.module.scss';
 import Link from 'next/link';
 import {FC} from 'react';
 import {IPersonFilm} from 'Common/Models';
+import {T} from 'Common/Text';
 
 /**
  * @param films Массив лучших фильмов личности.
@@ -31,7 +32,7 @@ export const PersonBestMovies: FC<IProps> = ({films}) => {
             {sortedBestFilms.slice(0, 10).map((film) => {
                 return (
                     <li className={styles.personBestFilmsItem} key={film.filmId}>
-                        <Link href={`/movie/${film.filmId}`}>{film.nameRu}</Link>
+                        <Link href={T.Pages.MovieLink(film.filmId)}>{film.nameRu}</Link>
                     </li>
                 );
             })}

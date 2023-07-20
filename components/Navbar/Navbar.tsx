@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {FC, ChangeEvent, useState} from 'react';
 import {loadMoviesBySearch} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
+import {T} from 'Common/Text';
 
 /**
  * Компонент навигационной панели.
@@ -49,7 +50,7 @@ const Navbar: FC = () => {
                                 <Link
                                     className={styles.searchMovieLink}
                                     key={movie.filmId}
-                                    href={`/movie/${movie.filmId}`}
+                                    href={T.Pages.MovieLink(movie.filmId)}
                                     onClick={onSearchMovie}
                                 >
                                     <div className={styles.searchMovie}>
