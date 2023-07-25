@@ -17,6 +17,7 @@ import {
     setFindMoviesPageId,
 } from 'store/filtersSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
+import {ActionCreatorWithPayload} from '@reduxjs/toolkit';
 import {Regulars} from 'Common/Consts';
 import {T} from 'Common/Text';
 
@@ -26,6 +27,13 @@ export const Filters = () => {
     const {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword, findMoviesPageId} = useAppSelector(
         (state) => state.filters
     );
+
+    const handleChangeInputFilters = (value: string, setFilter: ActionCreatorWithPayload<string>) => {
+        const reg = Regulars.numbers;
+        if (reg.test(value) || value === '.') {
+            dispatch(setFilter(value));
+        }
+    };
 
     const handleChangeGenre = (value: string) => {
         dispatch(setGenreId(value));
@@ -43,41 +51,24 @@ export const Filters = () => {
         dispatch(setTypeId(value));
     };
 
-    const handleChangeRatingFrom = (e: ChangeEvent<HTMLInputElement>) => {
-        const {value: inputValue} = e.target;
-        const reg = Regulars.numbers;
-        if (reg.test(inputValue) || inputValue === '.') {
-            dispatch(setRatingFrom(inputValue));
-        }
+    const handleChangeRatingFrom = ({target}: ChangeEvent<HTMLInputElement>) => {
+        handleChangeInputFilters(target.value, setRatingFrom);
     };
 
-    const handleChangeRatingTo = (e: ChangeEvent<HTMLInputElement>) => {
-        const {value: inputValue} = e.target;
-        const reg = Regulars.numbers;
-        if (reg.test(inputValue) || inputValue === '.') {
-            dispatch(setRatingTo(inputValue));
-        }
+    const handleChangeRatingTo = ({target}: ChangeEvent<HTMLInputElement>) => {
+        handleChangeInputFilters(target.value, setRatingTo);
     };
 
-    const handleChangeYearFrom = (e: ChangeEvent<HTMLInputElement>) => {
-        const {value: inputValue} = e.target;
-        const reg = Regulars.numbers;
-        if (reg.test(inputValue)) {
-            dispatch(setYearFrom(inputValue));
-        }
+    const handleChangeYearFrom = ({target}: ChangeEvent<HTMLInputElement>) => {
+        handleChangeInputFilters(target.value, setYearFrom);
     };
 
-    const handleChangeYearTo = (e: ChangeEvent<HTMLInputElement>) => {
-        const {value: inputValue} = e.target;
-        const reg = Regulars.numbers;
-        if (reg.test(inputValue)) {
-            dispatch(setYearTo(inputValue));
-        }
+    const handleChangeYearTo = ({target}: ChangeEvent<HTMLInputElement>) => {
+        handleChangeInputFilters(target.value, setYearTo);
     };
 
-    const handleChangeKeyword = (e: ChangeEvent<HTMLInputElement>) => {
-        const {value: inputValue} = e.target;
-        dispatch(setKeyword(inputValue));
+    const handleChangeKeyword = ({target}: ChangeEvent<HTMLInputElement>) => {
+        dispatch(setKeyword(target.value));
     };
 
     const layout = {

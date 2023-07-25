@@ -1,4 +1,5 @@
 import {Dispatch, SetStateAction} from 'react';
+import {Regulars} from 'Common/Consts';
 import {EMpaaRating, EReviewsType} from 'Common/Enums';
 import {T} from 'Common/Text';
 

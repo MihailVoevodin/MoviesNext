@@ -9,7 +9,6 @@ import {
     EReviewsSelect,
     EMpaaRating,
 } from 'Common/Enums';
-import movieId from 'pages/movie/[movieId]';
 
 export const T = {
     date: 'D MMMM YYYY',
@@ -80,6 +79,7 @@ export const T = {
         Persons: {
             label: 'Личности',
             link: (personId: number): string => `/name/${personId}`,
+            searchLink: (name: string): string => `/persons?name=${name}`,
         },
     },
     FiltersInputs: {

@@ -29,7 +29,7 @@ const Persons: FC<IProps> = () => {
 
     const onPersonsSearch = (name: string) => {
         dispatch(setName(name));
-        void router.replace(`/persons?name=${name}`);
+        void router.replace(T.Pages.Persons.searchLink(name));
     };
 
     const handleChangeSearchValue = ({target}: ChangeEvent<HTMLInputElement>) => {
