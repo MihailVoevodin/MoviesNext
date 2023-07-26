@@ -76,6 +76,14 @@ export const Filters = () => {
         wrapperCol: {span: 16},
     };
 
+    const color = {
+        color: 'white',
+    };
+
+    const width = {
+        width: 200,
+    };
+
     const onFinish = (values: IFiltersState) => {
         const {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword} = values;
         dispatch(setFindMoviesPageId(1));
@@ -102,11 +110,11 @@ export const Filters = () => {
         <Form {...layout} onFinish={onFinish} className={styles.form}>
             <Form.Item
                 name={T.FiltersInputs.genre.name}
-                label={<label style={{color: 'white'}}>{T.FiltersInputs.genre.text}</label>}
+                label={<label style={color}>{T.FiltersInputs.genre.text}</label>}
                 initialValue={genreId}
             >
                 <Select
-                    style={{width: 200}}
+                    style={width}
                     className={styles.formItem}
                     placeholder={T.FiltersInputs.genre.placeholder}
                     onChange={handleChangeGenre}
@@ -116,11 +124,11 @@ export const Filters = () => {
             </Form.Item>
             <Form.Item
                 name={T.FiltersInputs.country.name}
-                label={<label style={{color: 'white'}}>{T.FiltersInputs.country.text}</label>}
+                label={<label style={color}>{T.FiltersInputs.country.text}</label>}
                 initialValue={countryId}
             >
                 <Select
-                    style={{width: 200}}
+                    style={width}
                     placeholder={T.FiltersInputs.country.placeholder}
                     onChange={handleChangeCountry}
                     filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
@@ -129,11 +137,11 @@ export const Filters = () => {
             </Form.Item>
             <Form.Item
                 name={T.FiltersInputs.order.name}
-                label={<label style={{color: 'white'}}>{T.FiltersInputs.order.text}</label>}
+                label={<label style={color}>{T.FiltersInputs.order.text}</label>}
                 initialValue={orderId}
             >
                 <Select
-                    style={{width: 200}}
+                    style={width}
                     placeholder={T.FiltersInputs.order.placeholder}
                     onChange={handleChangeOrder}
                     filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
@@ -142,11 +150,11 @@ export const Filters = () => {
             </Form.Item>
             <Form.Item
                 name={T.FiltersInputs.type.name}
-                label={<label style={{color: 'white'}}>{T.FiltersInputs.type.text}</label>}
+                label={<label style={color}>{T.FiltersInputs.type.text}</label>}
                 initialValue={typeId}
             >
                 <Select
-                    style={{width: 200}}
+                    style={width}
                     placeholder={T.FiltersInputs.type.placeholder}
                     onChange={handleChangeType}
                     filterOption={(input, option) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())}
@@ -155,11 +163,11 @@ export const Filters = () => {
             </Form.Item>
             <Form.Item
                 name={T.FiltersInputs.ratingFrom.name}
-                label={<label style={{color: 'white'}}>{T.FiltersInputs.ratingFrom.text}</label>}
+                label={<label style={color}>{T.FiltersInputs.ratingFrom.text}</label>}
                 initialValue={ratingFrom}
             >
                 <Input
-                    style={{width: 200}}
+                    style={width}
                     value={ratingFrom}
                     onChange={handleChangeRatingFrom}
                     placeholder={T.FiltersInputs.ratingFrom.placeholder}
@@ -168,11 +176,11 @@ export const Filters = () => {
             </Form.Item>
             <Form.Item
                 name={T.FiltersInputs.ratingTo.name}
-                label={<label style={{color: 'white'}}>{T.FiltersInputs.ratingTo.text}</label>}
+                label={<label style={color}>{T.FiltersInputs.ratingTo.text}</label>}
                 initialValue={ratingTo}
             >
                 <Input
-                    style={{width: 200}}
+                    style={width}
                     value={ratingTo}
                     onChange={handleChangeRatingTo}
                     placeholder={T.FiltersInputs.ratingTo.placeholder}
@@ -181,11 +189,11 @@ export const Filters = () => {
             </Form.Item>
             <Form.Item
                 name={T.FiltersInputs.yearFrom.name}
-                label={<label style={{color: 'white'}}>{T.FiltersInputs.yearFrom.text}</label>}
+                label={<label style={color}>{T.FiltersInputs.yearFrom.text}</label>}
                 initialValue={yearFrom}
             >
                 <Input
-                    style={{width: 200}}
+                    style={width}
                     value={yearFrom}
                     onChange={handleChangeYearFrom}
                     placeholder={T.FiltersInputs.yearFrom.placeholder}
@@ -194,11 +202,11 @@ export const Filters = () => {
             </Form.Item>
             <Form.Item
                 name={T.FiltersInputs.yearTo.name}
-                label={<label style={{color: 'white'}}>{T.FiltersInputs.yearTo.text}</label>}
+                label={<label style={color}>{T.FiltersInputs.yearTo.text}</label>}
                 initialValue={yearTo}
             >
                 <Input
-                    style={{width: 200}}
+                    style={width}
                     value={yearTo}
                     onChange={handleChangeYearTo}
                     placeholder={T.FiltersInputs.yearTo.placeholder}
@@ -208,11 +216,11 @@ export const Filters = () => {
             <Form.Item
                 className={styles.keyword}
                 name={T.FiltersInputs.keyword.name}
-                label={<label style={{color: 'white'}}>{T.FiltersInputs.keyword.text}</label>}
+                label={<label style={color}>{T.FiltersInputs.keyword.text}</label>}
                 initialValue={keyword}
             >
                 <Input
-                    style={{width: 200}}
+                    style={width}
                     value={keyword}
                     onChange={handleChangeKeyword}
                     placeholder={T.FiltersInputs.keyword.placeholder}
