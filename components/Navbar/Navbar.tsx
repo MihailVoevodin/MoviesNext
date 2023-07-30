@@ -2,6 +2,7 @@ import {Input} from 'antd';
 import styles from 'components/Navbar/Navbar.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
+import {useRouter} from 'next/router';
 import {FC, ChangeEvent, useState} from 'react';
 import {loadMoviesBySearch} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
@@ -12,12 +13,13 @@ import {T} from 'Common/Text';
  */
 const Navbar: FC = () => {
     const dispatch = useAppDispatch();
+    const router = useRouter();
     const [inputValue, setInputValue] = useState<string>('');
-    const {top250PageId, searchMovies} = useAppSelector((state) => state.films);
+    const {top250PageId, searchMovies, activeTabName} = useAppSelector((state) => state.films);
 
     const NavigationItems = [
         {id: 0, title: 'Главная', path: '/'},
-        {id: 1, title: 'Фильмы', path: `/movies/top250movies/page/${top250PageId}`},
+        {id: 1, title: 'Фильмы', path: `/movies/${activeTabName}/page/${top250PageId}`},
         {id: 2, title: 'Личности', path: '/persons'},
     ];
 
@@ -71,7 +73,7 @@ const Navbar: FC = () => {
             </div>
             <ul className={styles.navbarList}>
                 {NavigationItems.map(({id, title, path}) => (
-                    <Link key={id} href={path}>
+                    <Link className={router.asPath === path ? styles.active : undefined} key={id} href={path}>
                         {title}
                     </Link>
                 ))}

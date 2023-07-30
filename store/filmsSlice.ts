@@ -11,6 +11,7 @@ import {Services} from 'Common/Services';
  */
 export interface IFilmsState {
     searchMovies: IMovie[];
+    activeTabName: string;
     top250PageId: number;
     top100PageId: number;
     topAwaitPageId: number;
@@ -20,6 +21,7 @@ export interface IFilmsState {
 
 const initialState: IFilmsState = {
     searchMovies: [],
+    activeTabName: 'top250movies',
     top250PageId: 1,
     top100PageId: 1,
     topAwaitPageId: 1,
@@ -47,6 +49,9 @@ const filmsSlice = createSlice({
     name: 'films',
     initialState: initialState,
     reducers: {
+        setActiveTabName(state, action: PayloadAction<string>) {
+            state.activeTabName = action.payload;
+        },
         setTop250PageId(state, action: PayloadAction<number>) {
             state.top250PageId = action.payload;
         },
@@ -68,6 +73,7 @@ const filmsSlice = createSlice({
     },
 });
 
-export const {setTop250PageId, setTop100PageId, setTopAwaitPageId, setImagesPageId, setReviewsPageId, setSearchMovies} = filmsSlice.actions;
+export const {setActiveTabName, setTop250PageId, setTop100PageId, setTopAwaitPageId, setImagesPageId, setReviewsPageId, setSearchMovies} =
+    filmsSlice.actions;
 
 export default filmsSlice.reducer;
