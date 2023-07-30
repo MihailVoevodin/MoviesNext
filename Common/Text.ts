@@ -22,21 +22,25 @@ export const T = {
                 title: 'Фильмы: Поиск фильмов',
                 text: 'Поиск фильмов',
                 link: (pageId: number): string => `/movies/findMovies/page/${pageId}`,
+                path: 'findMovies',
             },
-            Top100Movies: {
+            Top100: {
                 title: 'Фильмы: Топ 100 популярных',
                 text: 'Топ 100 популярных фильмов',
                 link: (pageId: number): string => `/movies/top100popular/page/${pageId}`,
+                path: 'top100popular',
             },
-            Top250Movies: {
+            Top250: {
                 title: 'Фильмы: Топ 250',
                 text: 'Топ 250 фильмов',
                 link: (pageId: number): string => `/movies/top250movies/page/${pageId}`,
+                path: 'top250movies',
             },
-            TopAwaitMovies: {
+            TopAwait: {
                 title: 'Фильмы: Ожидаемые',
                 text: 'Ожидаемые фильмы',
                 link: (pageId: number): string => `/movies/topAwaitMovies/page/${pageId}`,
+                path: 'topAwaitMovies',
             },
         },
         Facts: {

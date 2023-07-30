@@ -21,6 +21,9 @@ import {ActionCreatorWithPayload} from '@reduxjs/toolkit';
 import {Regulars} from 'Common/Consts';
 import {T} from 'Common/Text';
 
+/**
+ * Компонент фильтров.
+ */
 export const Filters = () => {
     const router = useRouter();
     const dispatch = useAppDispatch();

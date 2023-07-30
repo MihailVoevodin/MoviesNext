@@ -45,7 +45,7 @@ const Top100Movies: FC<IProps> = ({movies}) => {
 
     const onChangePage = (pageId: number) => {
         dispatch(setTop100PageId(pageId));
-        void router.replace(T.Pages.MainPages.Top100Movies.link(pageId));
+        void router.replace(T.Pages.MainPages.Top100.link(pageId));
     };
 
     console.log(movies);
@@ -53,7 +53,7 @@ const Top100Movies: FC<IProps> = ({movies}) => {
     return (
         <>
             <Head>
-                <title>{T.Pages.MainPages.Top100Movies.title}</title>
+                <title>{T.Pages.MainPages.Top100.title}</title>
             </Head>
             <TopsNavbar
                 top100PageId={top100PageId}
@@ -62,7 +62,7 @@ const Top100Movies: FC<IProps> = ({movies}) => {
                 findMoviesPageId={findMoviesPageId}
             />
             <main>
-                <h3>{T.Pages.MainPages.Top100Movies.text}</h3>
+                <h3>{T.Pages.MainPages.Top100.text}</h3>
                 <TopPage movies={movies} pageId={top100PageId} pagesCount={5} onChangePage={onChangePage} />
             </main>
         </>

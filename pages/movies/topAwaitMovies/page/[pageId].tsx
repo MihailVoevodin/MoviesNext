@@ -46,13 +46,13 @@ const TopAwaitMovies: FC<IProps> = ({movies}) => {
 
     const onChangePage = (pageId: number) => {
         dispatch(setTopAwaitPageId(pageId));
-        void router.replace(T.Pages.MainPages.TopAwaitMovies.link(pageId));
+        void router.replace(T.Pages.MainPages.TopAwait.link(pageId));
     };
 
     return (
         <>
             <Head>
-                <title>{T.Pages.MainPages.TopAwaitMovies.title}</title>
+                <title>{T.Pages.MainPages.TopAwait.title}</title>
             </Head>
             <TopsNavbar
                 top100PageId={top100PageId}
@@ -61,7 +61,7 @@ const TopAwaitMovies: FC<IProps> = ({movies}) => {
                 findMoviesPageId={findMoviesPageId}
             />
             <main>
-                <h3>{T.Pages.MainPages.TopAwaitMovies.text}</h3>
+                <h3>{T.Pages.MainPages.TopAwait.text}</h3>
                 <TopPage movies={films} pageId={topAwaitPageId} pagesCount={pagesCount} onChangePage={onChangePage} />
             </main>
         </>

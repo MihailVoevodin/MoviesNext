@@ -19,6 +19,9 @@ interface IProps {
     findMoviesPageId: number;
 }
 
+/**
+ * Компонент отображения табов на топы фильмов.
+ */
 export const TopsNavbar: FC<IProps> = ({top250PageId, top100PageId, topAwaitPageId, findMoviesPageId}) => {
     const router = useRouter();
     const dispatch = useAppDispatch();
@@ -26,29 +29,29 @@ export const TopsNavbar: FC<IProps> = ({top250PageId, top100PageId, topAwaitPage
     return (
         <div className={styles.topsNavbarContainer}>
             <Link
-                onClick={() => dispatch(setActiveTabName('top250movies'))}
-                className={router.pathname.includes('top250movies') ? styles.active : undefined}
-                href={T.Pages.MainPages.Top250Movies.link(top250PageId)}
+                onClick={() => dispatch(setActiveTabName(T.Pages.MainPages.Top250.path))}
+                className={router.pathname.includes(T.Pages.MainPages.Top250.path) ? styles.active : undefined}
+                href={T.Pages.MainPages.Top250.link(top250PageId)}
             >
-                {T.Pages.MainPages.Top250Movies.text}
+                {T.Pages.MainPages.Top250.text}
             </Link>
             <Link
-                onClick={() => dispatch(setActiveTabName('top100popular'))}
-                className={router.pathname.includes('top100popular') ? styles.active : undefined}
-                href={T.Pages.MainPages.Top100Movies.link(top100PageId)}
+                onClick={() => dispatch(setActiveTabName(T.Pages.MainPages.Top100.path))}
+                className={router.pathname.includes(T.Pages.MainPages.Top100.path) ? styles.active : undefined}
+                href={T.Pages.MainPages.Top100.link(top100PageId)}
             >
-                {T.Pages.MainPages.Top100Movies.text}
+                {T.Pages.MainPages.Top100.text}
             </Link>
             <Link
-                onClick={() => dispatch(setActiveTabName('topAwaitMovies'))}
-                className={router.pathname.includes('topAwaitMovies') ? styles.active : undefined}
-                href={T.Pages.MainPages.TopAwaitMovies.link(topAwaitPageId)}
+                onClick={() => dispatch(setActiveTabName(T.Pages.MainPages.TopAwait.path))}
+                className={router.pathname.includes(T.Pages.MainPages.TopAwait.path) ? styles.active : undefined}
+                href={T.Pages.MainPages.TopAwait.link(topAwaitPageId)}
             >
-                {T.Pages.MainPages.TopAwaitMovies.text}
+                {T.Pages.MainPages.TopAwait.text}
             </Link>
             <Link
-                onClick={() => dispatch(setActiveTabName('findMovies'))}
-                className={router.pathname.includes('findMovies') ? styles.active : undefined}
+                onClick={() => dispatch(setActiveTabName(T.Pages.MainPages.TopAwait.path))}
+                className={router.pathname.includes(T.Pages.MainPages.TopAwait.path) ? styles.active : undefined}
                 href={T.Pages.MainPages.FindMovies.link(findMoviesPageId)}
             >
                 {T.Pages.MainPages.FindMovies.text}
