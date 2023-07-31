@@ -39,13 +39,13 @@ const FindMovies: FC = () => {
 
     const onChangePage = (pageId: number) => {
         dispatch(setFindMoviesPageId(pageId));
-        void router.replace(T.Pages.MainPages.FindMovies.link(pageId));
+        void router.replace(T.Pages.MainPages[3].link(pageId));
     };
 
     return (
         <>
             <Head>
-                <title>{T.Pages.MainPages.FindMovies.title}</title>
+                <title>{T.Pages.MainPages[3].title}</title>
             </Head>
             <TopsNavbar
                 top100PageId={top100PageId}
@@ -54,7 +54,7 @@ const FindMovies: FC = () => {
                 findMoviesPageId={findMoviesPageId}
             />
             <main>
-                <h3>{T.Pages.MainPages.FindMovies.text}</h3>
+                <h3>{T.Pages.MainPages[3].text}</h3>
                 <Filters />
                 <TopPage movies={movies} pageId={findMoviesPageId} pagesCount={moviesCountPages} onChangePage={onChangePage} />
             </main>

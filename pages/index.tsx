@@ -46,21 +46,9 @@ const Home: FC<IProps> = ({top250Movies, top100Movies, topAwaitMovies}) => {
                 <span>Узнай больше про свои любимые фильмы, сериалы или актёров</span>
             </div>
             <main>
-                <HomePageTop
-                    movies={top250Movies}
-                    link={T.Pages.MainPages.Top250.link(top250PageId)}
-                    text={T.Pages.MainPages.Top250.text}
-                />
-                <HomePageTop
-                    movies={top100Movies}
-                    link={T.Pages.MainPages.Top100.link(top100PageId)}
-                    text={T.Pages.MainPages.Top100.text}
-                />
-                <HomePageTop
-                    movies={topAwaitMovies}
-                    link={T.Pages.MainPages.TopAwait.link(topAwaitPageId)}
-                    text={T.Pages.MainPages.TopAwait.text}
-                />
+                <HomePageTop movies={top250Movies} link={T.Pages.MainPages[0].link(top250PageId)} text={T.Pages.MainPages[0].text} />
+                <HomePageTop movies={top100Movies} link={T.Pages.MainPages[1].link(top100PageId)} text={T.Pages.MainPages[1].text} />
+                <HomePageTop movies={topAwaitMovies} link={T.Pages.MainPages[2].link(topAwaitPageId)} text={T.Pages.MainPages[2].text} />
             </main>
         </>
     );

@@ -106,7 +106,7 @@ export const Filters = () => {
                 })
             );
         }
-        void router.replace(T.Pages.MainPages.FindMovies.link(1));
+        void router.replace(T.Pages.MainPages[3].link(1));
     };
 
     return (

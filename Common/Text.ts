@@ -17,32 +17,32 @@ export const T = {
         backToMovie: 'Информация о фильме',
         MovieDefault: 'Обзор',
         MovieLink: (movieId: number | string | string[] | undefined): string => `/movie/${movieId}`,
-        MainPages: {
-            FindMovies: {
-                title: 'Фильмы: Поиск фильмов',
-                text: 'Поиск фильмов',
-                link: (pageId: number): string => `/movies/findMovies/page/${pageId}`,
-                path: 'findMovies',
-            },
-            Top100: {
-                title: 'Фильмы: Топ 100 популярных',
-                text: 'Топ 100 популярных фильмов',
-                link: (pageId: number): string => `/movies/top100popular/page/${pageId}`,
-                path: 'top100popular',
-            },
-            Top250: {
+        MainPages: [
+            {
                 title: 'Фильмы: Топ 250',
                 text: 'Топ 250 фильмов',
                 link: (pageId: number): string => `/movies/top250movies/page/${pageId}`,
                 path: 'top250movies',
             },
-            TopAwait: {
+            {
+                title: 'Фильмы: Топ 100 популярных',
+                text: 'Топ 100 популярных фильмов',
+                link: (pageId: number): string => `/movies/top100popular/page/${pageId}`,
+                path: 'top100popular',
+            },
+            {
                 title: 'Фильмы: Ожидаемые',
                 text: 'Ожидаемые фильмы',
                 link: (pageId: number): string => `/movies/topAwaitMovies/page/${pageId}`,
                 path: 'topAwaitMovies',
             },
-        },
+            {
+                title: 'Фильмы: Поиск фильмов',
+                text: 'Поиск фильмов',
+                link: (pageId: number): string => `/movies/findMovies/page/${pageId}`,
+                path: 'findMovies',
+            },
+        ],
         Facts: {
             label: 'Факты',
             link: (movieId: number): string => `/movie/${movieId}/facts`,
