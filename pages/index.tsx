@@ -36,6 +36,8 @@ export const getServerSideProps: GetServerSideProps<IProps> = async () => {
  */
 const Home: FC<IProps> = ({top250Movies, top100Movies, topAwaitMovies}) => {
     const {top250PageId, top100PageId, topAwaitPageId} = useAppSelector((state) => state.films);
+    const pagesIdArray = [top250PageId, top100PageId, topAwaitPageId];
+    const moviesArrays = [top250Movies, top100Movies, topAwaitMovies];
 
     return (
         <>
@@ -46,9 +48,9 @@ const Home: FC<IProps> = ({top250Movies, top100Movies, topAwaitMovies}) => {
                 <span>Узнай больше про свои любимые фильмы, сериалы или актёров</span>
             </div>
             <main>
-                <HomePageTop movies={top250Movies} link={T.Pages.MainPages[0].link(top250PageId)} text={T.Pages.MainPages[0].text} />
-                <HomePageTop movies={top100Movies} link={T.Pages.MainPages[1].link(top100PageId)} text={T.Pages.MainPages[1].text} />
-                <HomePageTop movies={topAwaitMovies} link={T.Pages.MainPages[2].link(topAwaitPageId)} text={T.Pages.MainPages[2].text} />
+                {T.Pages.MainPages.slice(0, 3).map((page, id) => (
+                    <HomePageTop key={id} movies={moviesArrays[id]} link={page.link(pagesIdArray[id])} text={page.text} />
+                ))}
             </main>
         </>
     );
