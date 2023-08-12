@@ -41,7 +41,8 @@ header {
 
 footer {
     text-align: center;
-    margin: 20px;
+    padding: 30px;
+    border-top: 1px solid $secondary;
 }
 
 main {
@@ -58,4 +59,11 @@ main {
 
 .ant-select-item-option-selected {
   background-color: $secondary !important;
+}
+
+.spinner {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    color: $secondary;
 }

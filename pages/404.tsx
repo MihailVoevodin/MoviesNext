@@ -1,4 +1,3 @@
-import {T} from 'Common/Text';
 import Head from 'next/head';
 import {FC} from 'react';
 
@@ -9,9 +8,9 @@ const PathErrorPage: FC = () => {
     return (
         <>
             <Head>
-                <title>404</title>
+                <title>404 Not Found</title>
             </Head>
-            <h1>Error 404</h1>
+            <h1>404</h1>
             <div>Path not found</div>
         </>
     );

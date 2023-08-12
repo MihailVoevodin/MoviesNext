@@ -32,7 +32,7 @@ export const MovieReview: FC<IProps> = ({review}) => {
         <div style={{backgroundColor: MovieReviewBgColor(review.type)}} className={styles.review}>
             <div className={styles.reviewAbout}>
                 <div className={styles.reviewAuthor}>
-                    <Image src={User} alt={'.'} /> <span>{review.author}</span>
+                    <Image src={User} alt={'user'} /> <span>{review.author}</span>
                 </div>
                 <div>
                     <div>{moment(review.date).format(T.dateAndTime)}</div>

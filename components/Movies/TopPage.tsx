@@ -43,6 +43,7 @@ export const TopPage: FC<IProps> = ({movies, pageId, pagesCount, onChangePage}) 
         >
             <div className={styles.movies}>
                 {movies &&
+                    movies.length > 0 &&
                     movies.map((movie) => (
                         <div className={styles.moviesItem} key={movie.filmId || movie.kinopoiskId}>
                             <div className={styles.moviesItemContent}>
@@ -50,7 +51,7 @@ export const TopPage: FC<IProps> = ({movies, pageId, pagesCount, onChangePage}) 
                                     <div className={styles.moviesItemInnerContent}>
                                         <div className={styles.movieItemRating}>{movie.rating || movie.ratingKinopoisk}</div>
                                         <div>{movie.year}</div>
-                                        <div>{movie.countries[0].country}</div>
+                                        <div>{movie.countries.length > 0 && movie.countries[0].country}</div>
                                         <div>{movie.filmLength}</div>
                                     </div>
                                     <Image

@@ -69,16 +69,18 @@ const Persons: FC<IProps> = () => {
                         onSearch={onPersonsSearch}
                         style={{width: 300}}
                     />
-                    <ul className={styles.personsList}>
-                        {persons.map((person: IPerson) => (
-                            <li key={person.kinopoiskId}>
-                                <Link href={T.Pages.Persons.link(person.kinopoiskId)}>
-                                    <Image src={person.posterUrl} width={150} height={200} alt={person.nameEn} />
-                                    <div className={styles.personName}>{person.nameRu}</div>
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+                    {persons.length > 0 && (
+                        <ul className={styles.personsList}>
+                            {persons.map((person: IPerson) => (
+                                <li key={person.kinopoiskId}>
+                                    <Link href={T.Pages.Persons.link(person.kinopoiskId)}>
+                                        <Image src={person.posterUrl} width={150} height={200} alt={person.nameEn} />
+                                        <div className={styles.personName}>{person.nameRu}</div>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </main>
             </ConfigProvider>
         </>

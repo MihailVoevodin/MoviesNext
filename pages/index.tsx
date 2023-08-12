@@ -1,5 +1,5 @@
 import {HomePageTop} from 'components/HomePageTop/HomePageTop';
-import {GetServerSideProps} from 'next';
+import {GetStaticProps} from 'next';
 import Head from 'next/head';
 import {FC} from 'react';
 import {useAppSelector} from 'store/hooks';
@@ -19,15 +19,17 @@ interface IProps {
     topAwaitMovies: IMovie[];
 }
 
-export const getServerSideProps: GetServerSideProps<IProps> = async () => {
+export const getStaticProps: GetStaticProps<IProps> = async () => {
     const top250MoviesResponse = await Services.getMoviesTop_250('1');
     const top100MoviesResponse = await Services.getMoviesTop_100('1');
     const topAwaitMoviesResponse = await Services.getMoviesAwait('1');
     const top250Movies = top250MoviesResponse.data.films;
     const top100Movies = top100MoviesResponse.data.films;
     const topAwaitMovies = topAwaitMoviesResponse.data.films;
+
     return {
         props: {top250Movies, top100Movies, topAwaitMovies},
+        revalidate: 60,
     };
 };
 

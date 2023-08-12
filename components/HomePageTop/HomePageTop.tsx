@@ -36,14 +36,14 @@ export const HomePageTop: FC<IProps> = ({movies, link, text}) => {
                 <Link href={link}>{text}</Link>
             </h3>
             <Slider {...settings}>
-                {movies &&
+                {movies.length > 0 &&
                     movies.map((movie) => (
                         <Link key={movie.filmId} href={T.Pages.MovieLink(movie.filmId)}>
                             <div className={styles.topsItem} style={{width: 230}}>
                                 <div className={styles.topsInnerContent}>
                                     <div className={styles.topsRating}>{movie.rating}</div>
                                     <div>{movie.year}</div>
-                                    <div>{movie.countries[0].country}</div>
+                                    <div>{movie.countries.length > 0 && movie.countries[0].country}</div>
                                     <div>{movie.filmLength}</div>
                                 </div>
                                 {movie.posterUrl && (

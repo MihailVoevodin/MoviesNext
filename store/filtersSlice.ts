@@ -15,6 +15,7 @@ export interface IFiltersState {
     keyword: string;
     findMoviesPageId: number;
     moviesCountPages: number;
+    isLoading?: boolean;
 }
 
 const initialState: IFiltersState = {
@@ -23,16 +24,17 @@ const initialState: IFiltersState = {
     countryId: '1',
     orderId: 'RATING',
     typeId: 'ALL',
-    ratingFrom: '0',
-    ratingTo: '10',
-    yearFrom: '1000',
-    yearTo: '3000',
+    ratingFrom: '',
+    ratingTo: '',
+    yearFrom: '',
+    yearTo: '',
     keyword: '',
     findMoviesPageId: 1,
     moviesCountPages: 5,
+    isLoading: false,
 };
 
-type LoadMovies = Omit<IFiltersState, 'moviesCountPages'>;
+export type LoadMovies = Omit<IFiltersState, 'moviesCountPages'>;
 
 export const loadMoviesByFilters = createAsyncThunk(
     'filters/getMoviesByFilters',
@@ -100,12 +102,17 @@ const filtersSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
-        builder.addCase(loadMoviesByFilters.fulfilled, (state, action) => {
-            console.log(action.payload);
-            const {items, totalPages} = action.payload;
-            state.movies = items;
-            state.moviesCountPages = totalPages;
-        });
+        builder
+            .addCase(loadMoviesByFilters.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(loadMoviesByFilters.fulfilled, (state, action) => {
+                console.log(action.payload);
+                const {items, totalPages} = action.payload;
+                state.movies = items;
+                state.moviesCountPages = totalPages;
+                state.isLoading = false;
+            });
     },
 });
 

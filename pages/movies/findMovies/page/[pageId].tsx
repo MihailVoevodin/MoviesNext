@@ -1,3 +1,4 @@
+import {Spinner} from 'Common/Loading';
 import {Filters} from 'components/Filters/Filters';
 import {TopPage} from 'components/Movies/TopPage';
 import {TopsNavbar} from 'components/Navbar/TopsNavbar';
@@ -28,8 +29,8 @@ const FindMovies: FC = () => {
         keyword,
         findMoviesPageId,
         moviesCountPages,
+        isLoading,
     } = useAppSelector((state) => state.filters);
-    console.log(moviesCountPages);
 
     useEffect(() => {
         dispatch(
@@ -56,7 +57,11 @@ const FindMovies: FC = () => {
             <main>
                 <h3>{T.Pages.MainPages[3].text}</h3>
                 <Filters />
-                <TopPage movies={movies} pageId={findMoviesPageId} pagesCount={moviesCountPages} onChangePage={onChangePage} />
+                {isLoading ? (
+                    <Spinner />
+                ) : (
+                    <TopPage movies={movies} pageId={findMoviesPageId} pagesCount={moviesCountPages} onChangePage={onChangePage} />
+                )}
             </main>
         </>
     );

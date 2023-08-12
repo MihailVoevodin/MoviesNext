@@ -44,23 +44,25 @@ const MovieAbout: FC<IProps> = ({movie, movieStaff, movieBox}) => {
                 <div className={styles.aboutItem}>
                     <div className={styles.aboutItemText}>{T.Movie.country}</div>
                     <div className={styles.aboutItemContent}>
-                        {movie.countries.map((item, id: number) => (
-                            <span key={id}>
-                                {item.country}
-                                {id !== movie.countries.length - 1 ? ', ' : ''}
-                            </span>
-                        ))}
+                        {movie.countries.length > 0 &&
+                            movie.countries.map((item, id: number) => (
+                                <span key={id}>
+                                    {item.country}
+                                    {id !== movie.countries.length - 1 ? ', ' : ''}
+                                </span>
+                            ))}
                     </div>
                 </div>
                 <div className={styles.aboutItem}>
                     <div className={styles.aboutItemText}>{T.Movie.genre}</div>
                     <div className={styles.aboutItemContent}>
-                        {movie.genres.map((item, id: number) => (
-                            <span key={id}>
-                                {item.genre}
-                                {id !== movie.genres.length - 1 ? ', ' : ''}
-                            </span>
-                        ))}
+                        {movie.genres.length > 0 &&
+                            movie.genres.map((item, id: number) => (
+                                <span key={id}>
+                                    {item.genre}
+                                    {id !== movie.genres.length - 1 ? ', ' : ''}
+                                </span>
+                            ))}
                     </div>
                 </div>
                 <div className={styles.aboutItem}>
