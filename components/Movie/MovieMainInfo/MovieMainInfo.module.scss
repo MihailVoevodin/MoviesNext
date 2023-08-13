@@ -12,6 +12,9 @@
 .movieName {
     font-size: 40px;
     font-weight: 700;
+    span {
+        display: block;
+    }
 }
 
 .movieNameOriginal {

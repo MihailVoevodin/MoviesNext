@@ -20,8 +20,14 @@ const MovieMainInfo: FC<IProps> = ({movie}) => {
         <div className={styles.movieInfo}>
             <div className={styles.movieMainInfo}>
                 <div className={styles.movieName}>
-                    {movie.nameRu} (
-                    {movie.serial && movie.endYear - movie.startYear !== 0 ? `${movie.startYear} - ${movie.endYear || '...'}` : movie.year})
+                    {movie.nameRu}{' '}
+                    <span>
+                        (
+                        {movie.serial && movie.endYear - movie.startYear !== 0
+                            ? `сериал ${movie.startYear} - ${movie.endYear || '...'}`
+                            : movie.year}
+                        )
+                    </span>
                 </div>
                 <div className={styles.movieNameOriginal}>
                     {movie.nameOriginal && <span>{movie.nameOriginal}</span>}

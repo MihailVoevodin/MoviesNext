@@ -33,10 +33,10 @@ export const MovieFacts: FC<IProps> = ({movieFacts, type, text}) => {
                     <ul className={styles.list}>
                         {filteredMovieFacts.map((fact, id: number) => (
                             <>
-                                <li key={type + id} className={styles.listItem}>
+                                <li key={id} className={styles.listItem}>
                                     {fact.spoiler ? (
                                         <Collapse bordered={false} style={{backgroundColor: 'white', fontSize: 16}}>
-                                            <Panel key="1" header="Спойлер" showArrow={false}>
+                                            <Panel key={type + id} header="Спойлер" showArrow={false}>
                                                 {fact.text.replace(Regulars.fixTagsInText, '')}
                                             </Panel>
                                         </Collapse>
