@@ -11,7 +11,7 @@ const PathErrorPage: FC = () => {
                 <title>404 Not Found</title>
             </Head>
             <h1>404</h1>
-            <div>Path not found</div>
+            <div>Try again later</div>
         </>
     );
 };

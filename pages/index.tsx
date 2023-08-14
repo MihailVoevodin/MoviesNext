@@ -27,6 +27,12 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
     const top100Movies = top100MoviesResponse.data.films;
     const topAwaitMovies = topAwaitMoviesResponse.data.films;
 
+    if (!top250Movies || !top100Movies || !topAwaitMovies) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
         props: {top250Movies, top100Movies, topAwaitMovies},
         revalidate: 60,

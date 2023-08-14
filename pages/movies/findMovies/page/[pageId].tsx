@@ -30,6 +30,7 @@ const FindMovies: FC = () => {
         findMoviesPageId,
         moviesCountPages,
         isLoading,
+        isError,
     } = useAppSelector((state) => state.filters);
 
     useEffect(() => {
@@ -42,6 +43,10 @@ const FindMovies: FC = () => {
         dispatch(setFindMoviesPageId(pageId));
         void router.replace(T.Pages.MainPages[3].link(pageId));
     };
+
+    if (isError) {
+        void router.replace('/500');
+    }
 
     return (
         <>

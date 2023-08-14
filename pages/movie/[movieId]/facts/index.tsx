@@ -33,6 +33,12 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
     const movieName = movieResponse.data.nameRu;
     const movieFacts = factsResponse.data.items;
 
+    if (!movieFacts) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
         props: {movieFacts, movieName},
     };

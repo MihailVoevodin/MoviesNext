@@ -32,6 +32,13 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
     const distributionsResponse = await Services.getMovieDistributions(movieId);
     const movieName = movieResponse.data.nameRu;
     const movieDistributions = distributionsResponse.data.items;
+
+    if (!movieDistributions) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
         props: {movieDistributions, movieName},
     };

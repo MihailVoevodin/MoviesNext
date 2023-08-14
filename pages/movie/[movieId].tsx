@@ -46,6 +46,12 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
     const movieStaff = responseStaff.data;
     const movieSimilars = responseSimilars.data.items;
 
+    if (!movie || !movieBox || !movieStaff || !movieSimilars) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
         props: {movie, movieBox, movieStaff, movieSimilars},
     };

@@ -16,6 +16,7 @@ export interface IFiltersState {
     findMoviesPageId: number;
     moviesCountPages: number;
     isLoading?: boolean;
+    isError?: boolean;
 }
 
 const initialState: IFiltersState = {
@@ -32,6 +33,7 @@ const initialState: IFiltersState = {
     findMoviesPageId: 1,
     moviesCountPages: 5,
     isLoading: false,
+    isError: false,
 };
 
 export type LoadMovies = Omit<IFiltersState, 'moviesCountPages'>;
@@ -106,12 +108,16 @@ const filtersSlice = createSlice({
             .addCase(loadMoviesByFilters.pending, (state) => {
                 state.isLoading = true;
             })
+            .addCase(loadMoviesByFilters.rejected, (state) => {
+                state.isError = true;
+            })
             .addCase(loadMoviesByFilters.fulfilled, (state, action) => {
                 console.log(action.payload);
                 const {items, totalPages} = action.payload;
                 state.movies = items;
                 state.moviesCountPages = totalPages;
                 state.isLoading = false;
+                state.isError = false;
             });
     },
 });

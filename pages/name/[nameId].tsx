@@ -30,6 +30,13 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
     const {nameId} = context.params!;
     const personResponse = await Services.getPerson(nameId);
     const person = personResponse.data;
+
+    if (!person) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
         props: {person},
     };

@@ -40,6 +40,13 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
     const imagesResponse = await Services.getMovieImages(movieId, type, pageId);
     const movieName = movieResponse.data.nameRu;
     const movieImages = imagesResponse.data;
+
+    if (!movieImages) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
         props: {movieName, movieImages},
     };

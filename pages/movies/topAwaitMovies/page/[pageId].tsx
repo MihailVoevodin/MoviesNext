@@ -29,6 +29,13 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
     const {pageId} = context.params!;
     const moviesResponse = await Services.getMoviesAwait(pageId);
     const movies = moviesResponse.data;
+
+    if (!movies) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
         props: {movies},
     };

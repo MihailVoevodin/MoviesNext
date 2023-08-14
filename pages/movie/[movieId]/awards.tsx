@@ -32,6 +32,13 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
     const awardsResponse = await Services.getMovieAwards(movieId);
     const movieName = movieResponse.data.nameRu;
     const movieAwards = awardsResponse.data.items;
+
+    if (!movieAwards) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
         props: {movieAwards, movieName},
     };

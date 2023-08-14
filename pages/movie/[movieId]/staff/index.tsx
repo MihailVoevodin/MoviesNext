@@ -32,6 +32,13 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
     const staffResponse = await Services.getMovieStaff(movieId);
     const movieName = movieResponse.data.nameRu;
     const movieStaff = staffResponse.data;
+
+    if (!movieStaff) {
+        return {
+            notFound: true,
+        };
+    }
+
     return {
         props: {movieStaff, movieName},
     };
