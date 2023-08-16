@@ -1,25 +1,25 @@
 @import 'styles/variables';
 
 .castTypeContainer {
-  padding: 10px 0;
+    padding: 10px 0;
 }
 
 .castTypeTitle {
-  padding-bottom: 3px;
-  border-bottom: 2px solid $secondary;
+    padding-bottom: 3px;
+    border-bottom: 2px solid $secondary;
 }
 
 .castTypeList {
-  list-style-position: inside;
-  margin-top: 20px;
-  display: grid;
-  gap: 15px;
-  grid-template-columns: repeat(3, auto);
+    list-style-position: inside;
+    margin-top: 20px;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(3, auto);
 }
 
 .castPerson {
-  width: 270px;
-  display: flex;
+    width: 270px;
+    display: flex;
 }
 
 .castImg {
@@ -28,18 +28,18 @@
 }
 
 .castPersonAbout {
-  padding-left: 10px;
-  font-size: 14px;
+    padding-left: 10px;
+    font-size: 14px;
 }
 
 .castPersonNameRu {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .castPersonNameEn {
-  opacity: .6;
+    opacity: .6;
 }
 
 .castPersonDescription {
-  padding-top: 10px;
+    padding-top: 10px;
 }

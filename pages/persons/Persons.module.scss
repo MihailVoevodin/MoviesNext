@@ -1,22 +1,22 @@
 .search {
-  display: block;
-  text-align: center;
-  margin: 30px auto;
+    display: block;
+    text-align: center;
+    margin: 30px auto;
 }
 
 .personsList {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  text-align: center;
-  list-style: none;
-  li {
-    min-width: 200px;
-    margin-bottom: 20px;
-    &:hover {
-      .personName {
-        text-decoration: underline;
-      }
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+    list-style: none;
+    li {
+        min-width: 200px;
+        margin-bottom: 20px;
+        &:hover {
+            .personName {
+                text-decoration: underline;
+            }
+        }
     }
-  }
 }

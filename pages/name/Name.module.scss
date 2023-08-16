@@ -1,11 +1,11 @@
 .person {
-  margin: 50px auto;
+    margin: 50px auto;
 }
 
 .personContainer {
-  display: grid;
-  gap: 30px;
-  grid-template-columns: 300px 1fr;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 300px 1fr;
 }
 
 .personFacts {

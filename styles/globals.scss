@@ -3,15 +3,15 @@
 @import "~slick-carousel/slick/slick-theme.css";
 
 * {
-  box-sizing: border-box;
-  font-family: Graphik Kinopoisk LC Web SB, sans-serif;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    font-family: 'Source Sans 3', sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
 body {
-  color: $white;
-  background-color: $primary;
+    color: $white;
+    background-color: $primary;
     scrollbar-color: $secondary;
 }
 
@@ -31,12 +31,12 @@ h3 {
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 header {
-  background-color: $darkGrey;
+    background-color: $darkGrey;
 }
 
 footer {
@@ -46,19 +46,19 @@ footer {
 }
 
 main {
-  min-height: calc(100vh - 195px);
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 15px;
+    min-height: calc(100vh - 195px);
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
 [data-icon="double-right"],
 [data-icon="double-left"] {
-  fill: $grey;
+    fill: $grey;
 }
 
 .ant-select-item-option-selected {
-  background-color: $secondary !important;
+    background-color: $secondary !important;
 }
 
 .spinner {

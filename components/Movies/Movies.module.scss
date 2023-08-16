@@ -17,10 +17,10 @@
     text-align: left;
     transition: all .5s;
     div {
-      padding-top: 5px;
+        padding-top: 5px;
     }
     span:not(:first-child) {
-      padding-left: 10px;
+        padding-left: 10px;
     }
 }
 
@@ -28,15 +28,15 @@
     max-width: 200px;
     margin: 0 auto;
     &:hover {
-      .moviesItemInnerContent {
-        opacity: 1;
-      }
-      .movieItemImg {
-        opacity: 0.2;
-      }
-      .moviesItemName {
-        text-decoration: underline;
-      }
+        .moviesItemInnerContent {
+            opacity: 1;
+        }
+        .movieItemImg {
+            opacity: 0.2;
+        }
+        .moviesItemName {
+            text-decoration: underline;
+        }
     }
  }
 
@@ -47,7 +47,7 @@
 }
 
 .movieItemRating {
-  font-size: 28px;
+    font-size: 28px;
 }
 
 .moviesItemName {

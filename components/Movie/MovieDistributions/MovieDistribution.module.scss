@@ -1,27 +1,27 @@
 @import 'styles/variables';
 
 .container {
-  margin: 20px;
-  border: 1px solid $primary;
-  padding: 10px;
+    margin: 20px;
+    border: 1px solid $primary;
+    padding: 10px;
 }
 
 .title {
-  font-weight: 700;
-  font-size: 20px;
+    font-weight: 700;
+    font-size: 20px;
 }
 
 .list {
-  list-style: none;
-  margin-top: 15px;
+    list-style: none;
+    margin-top: 15px;
 }
 
 .listItem {
-  display: flex;
-  align-items: center;
-  padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
 }
 
 .date {
-  width: 200px;
+    width: 200px;
 }
