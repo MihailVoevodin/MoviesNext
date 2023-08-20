@@ -1,10 +1,12 @@
 import {Rate} from 'antd';
 import styles from 'components/Movie/MovieDetailsReview/MovieDetailsReview.module.scss';
-import {FC} from 'react';
+import {FC, useEffect, useState} from 'react';
 import {StarFilled} from '@ant-design/icons';
 import {CountableTexts} from 'Common/Helpers';
 import {IMovieDetails} from 'Common/Models';
 import {T} from 'Common/Text';
+import {setFilmRating} from 'store/filmsSlice';
+import {useAppDispatch, useAppSelector} from 'store/hooks';
 
 /**
  * @param movie Детальная модель фильма.
@@ -17,13 +19,43 @@ interface IProps {
  * Компонент отображения оценок фильма по разным источникам.
  */
 const MovieDetailsReview: FC<IProps> = ({movie}) => {
+    const {filmRating} = useAppSelector((state) => state.films);
+    console.log(filmRating);
+
+    const dispatch = useAppDispatch();
+
+    useEffect(() => {
+        for (let i = 0; i < localStorage.length; i++) {
+            const myKey = localStorage.key(i);
+            if (myKey === movie.nameRu) {
+                console.log(myKey);
+                dispatch(setFilmRating({[myKey]: localStorage.getItem(myKey)}));
+            }
+        }
+
+        return () => {
+            dispatch(setFilmRating({}));
+        };
+    }, [movie.nameRu]);
+
+    const onChangeValue = (value: number) => {
+        localStorage.setItem(movie.nameRu, value.toString());
+        dispatch(setFilmRating({[movie.nameRu]: value.toString()}));
+    };
+
     return (
         <div className={styles.movieReview}>
             <div>{movie.description}</div>
             <div className={styles.ratingContainer}>
                 <span>Рейтинг фильма</span>
                 <div className={styles.ratingContent}>
-                    <Rate style={{color: '#ff6200'}} value={Math.round(movie.ratingKinopoisk)} count={10} />
+                    <Rate
+                        style={{color: '#ff6200'}}
+                        onChange={onChangeValue}
+                        value={Number(filmRating[movie.nameRu]) || movie.ratingKinopoisk}
+                        count={10}
+                    />
+                    {Object.prototype.hasOwnProperty.call(filmRating, movie.nameRu) && <div>Моя оценка {filmRating[movie.nameRu]}</div>}
                     <div className={styles.ratingNumbers}>
                         <div className={styles.ratingKinopoisk}>{movie.ratingKinopoisk}</div>
                         <div className={styles.ratingCount}>
