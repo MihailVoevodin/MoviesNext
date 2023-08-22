@@ -359,3 +359,6 @@ interface ISpouse {
     divorcedReason: string;
     name: string;
 }
+
+/** Тип для состояния рейтинга фильмов. */
+export type TFilmRating = {[key: string]: string};

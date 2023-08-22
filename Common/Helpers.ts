@@ -1,5 +1,4 @@
 import {Dispatch, SetStateAction} from 'react';
-import {Regulars} from 'Common/Consts';
 import {EMpaaRating, EReviewsType} from 'Common/Enums';
 import {T} from 'Common/Text';
 
@@ -46,4 +45,15 @@ export const MpaaTooltipText = (str: string) => {
         case EMpaaRating.nc17:
             return T.Movie.MpaaRatng[EMpaaRating.nc17];
     }
+};
+
+/** Вычисление цвета рейтинга. */
+export const CountRatingBackgroundColor = (digit: number): string => {
+    if (digit >= 1 && digit <= 4) {
+        return 'red';
+    }
+    if (digit > 4 && digit < 7) {
+        return 'gray';
+    }
+    return 'green';
 };

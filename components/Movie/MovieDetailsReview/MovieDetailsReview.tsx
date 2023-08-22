@@ -1,12 +1,12 @@
 import {Rate} from 'antd';
 import styles from 'components/Movie/MovieDetailsReview/MovieDetailsReview.module.scss';
-import {FC, useEffect, useState} from 'react';
-import {StarFilled} from '@ant-design/icons';
-import {CountableTexts} from 'Common/Helpers';
-import {IMovieDetails} from 'Common/Models';
-import {T} from 'Common/Text';
+import {FC, useEffect} from 'react';
 import {setFilmRating} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
+import {StarFilled} from '@ant-design/icons';
+import {CountableTexts, CountRatingBackgroundColor} from 'Common/Helpers';
+import {IMovieDetails} from 'Common/Models';
+import {T} from 'Common/Text';
 
 /**
  * @param movie Детальная модель фильма.
@@ -19,15 +19,14 @@ interface IProps {
  * Компонент отображения оценок фильма по разным источникам.
  */
 const MovieDetailsReview: FC<IProps> = ({movie}) => {
+    const dispatch = useAppDispatch();
     const {filmRating} = useAppSelector((state) => state.films);
     console.log(filmRating);
-
-    const dispatch = useAppDispatch();
 
     useEffect(() => {
         for (let i = 0; i < localStorage.length; i++) {
             const myKey = localStorage.key(i);
-            if (myKey === movie.nameRu) {
+            if (myKey === (movie.nameRu || movie.nameOriginal)) {
                 console.log(myKey);
                 dispatch(setFilmRating({[myKey]: localStorage.getItem(myKey)}));
             }
@@ -38,9 +37,14 @@ const MovieDetailsReview: FC<IProps> = ({movie}) => {
         };
     }, [movie.nameRu]);
 
-    const onChangeValue = (value: number) => {
-        localStorage.setItem(movie.nameRu, value.toString());
-        dispatch(setFilmRating({[movie.nameRu]: value.toString()}));
+    const onChangeFilmRating = (value: number) => {
+        localStorage.setItem(movie.nameRu || movie.nameOriginal, value.toString());
+        dispatch(setFilmRating({[movie.nameRu || movie.nameOriginal]: value.toString()}));
+    };
+
+    const onDeleteFilmRating = () => {
+        localStorage.removeItem(movie.nameRu || movie.nameOriginal);
+        dispatch(setFilmRating({}));
     };
 
     return (
@@ -51,13 +55,14 @@ const MovieDetailsReview: FC<IProps> = ({movie}) => {
                 <div className={styles.ratingContent}>
                     <Rate
                         style={{color: '#ff6200'}}
-                        onChange={onChangeValue}
+                        onChange={onChangeFilmRating}
                         value={Number(filmRating[movie.nameRu]) || movie.ratingKinopoisk}
                         count={10}
                     />
-                    {Object.prototype.hasOwnProperty.call(filmRating, movie.nameRu) && <div>Моя оценка {filmRating[movie.nameRu]}</div>}
                     <div className={styles.ratingNumbers}>
-                        <div className={styles.ratingKinopoisk}>{movie.ratingKinopoisk}</div>
+                        <div style={{color: CountRatingBackgroundColor(movie.ratingKinopoisk)}} className={styles.ratingKinopoisk}>
+                            {movie.ratingKinopoisk}
+                        </div>
                         <div className={styles.ratingCount}>
                             <div>
                                 {movie.ratingKinopoiskVoteCount} {CountableTexts(movie.ratingKinopoiskVoteCount, T.Movie.countable.grade)}
@@ -69,6 +74,18 @@ const MovieDetailsReview: FC<IProps> = ({movie}) => {
                         </div>
                     </div>
                 </div>
+                {Object.prototype.hasOwnProperty.call(filmRating, movie.nameRu) && (
+                    <div className={styles.myRating}>
+                        <div>Моя оценка</div>
+                        <div
+                            style={{backgroundColor: CountRatingBackgroundColor(Number(filmRating[movie.nameRu]))}}
+                            className={styles.rating}
+                        >
+                            {filmRating[movie.nameRu]}
+                        </div>
+                        <button onClick={onDeleteFilmRating}>Удалить</button>
+                    </div>
+                )}
             </div>
             <div className={styles.criticsContainer}>
                 <div>

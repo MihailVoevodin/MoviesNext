@@ -1,7 +1,7 @@
 import styles from 'components/Movie/MovieMainInfo/MovieMainInfo.module.scss';
 import Link from 'next/link';
 import {FC} from 'react';
-import {CountableTexts} from 'Common/Helpers';
+import {CountableTexts, CountRatingBackgroundColor} from 'Common/Helpers';
 import {IMovieDetails} from 'Common/Models';
 import {T} from 'Common/Text';
 
@@ -39,7 +39,9 @@ const MovieMainInfo: FC<IProps> = ({movie}) => {
                 </div>
             </div>
             <div className={styles.movieRatingInfo}>
-                <div className={styles.ratingKinopoisk}>{movie.ratingKinopoisk}</div>
+                <div style={{color: CountRatingBackgroundColor(movie.ratingKinopoisk)}} className={styles.ratingKinopoisk}>
+                    {movie.ratingKinopoisk}
+                </div>
                 <div className={styles.voteCount}>
                     {movie.ratingKinopoiskVoteCount} {CountableTexts(movie.ratingKinopoiskVoteCount, T.Movie.countable.grade)}
                 </div>

@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {IMovie} from 'Common/Models';
+import {TFilmRating} from 'Common/Models';
 import {Services} from 'Common/Services';
 
 /**
@@ -17,7 +18,7 @@ export interface IFilmsState {
     topAwaitPageId: number;
     imagesPageId: number;
     reviewsPageId: number;
-    filmRating: any;
+    filmRating: TFilmRating;
 }
 
 const initialState: IFilmsState = {
