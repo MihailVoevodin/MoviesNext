@@ -67,3 +67,8 @@ main {
     margin: 20px auto;
     color: $secondary;
 }
+
+.notFound,
+.serverError {
+    text-align: center;
+}

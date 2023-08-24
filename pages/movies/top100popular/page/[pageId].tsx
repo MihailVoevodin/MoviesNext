@@ -7,6 +7,7 @@ import {ParsedUrlQuery} from 'querystring';
 import {FC} from 'react';
 import {setTop100PageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
+import {defaultPagesCount} from 'Common/Consts';
 import {IMovie} from 'Common/Models';
 import {Services} from 'Common/Services';
 import {T} from 'Common/Text';
@@ -70,7 +71,7 @@ const Top100Movies: FC<IProps> = ({movies}) => {
             />
             <main>
                 <h3>{T.Pages.MainPages[1].text}</h3>
-                <TopPage movies={movies} pageId={top100PageId} pagesCount={5} onChangePage={onChangePage} />
+                <TopPage movies={movies} pageId={top100PageId} pagesCount={defaultPagesCount} onChangePage={onChangePage} />
             </main>
         </>
     );

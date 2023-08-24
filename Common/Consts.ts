@@ -323,3 +323,5 @@ export const Regulars = {
     fixTagsInText: /<[^>]+>|&[^>]+;/g,
     numbers: /^-?\d*(\.\d*)?$/,
 };
+
+export const defaultPagesCount: number = 5;
