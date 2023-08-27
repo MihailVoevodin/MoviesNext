@@ -6,9 +6,9 @@ import {useRouter} from 'next/router';
 import styles from 'pages/persons/Persons.module.scss';
 import {FC, ChangeEvent, useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
-import {setPersonsList, setName} from 'store/personsSlice';
+import {setName, loadPersonsList} from 'store/personsSlice';
+import {Spinner} from 'Common/Loading';
 import {IPerson} from 'Common/Models';
-import {Services} from 'Common/Services';
 import {T} from 'Common/Text';
 
 const {Search} = Input;
@@ -21,11 +21,10 @@ interface IProps {
 }
 
 const Persons: FC<IProps> = () => {
-    const {name, persons} = useAppSelector((state) => state.persons);
+    const {name, persons, isError, isLoading} = useAppSelector((state) => state.persons);
     const [searchName, setSearchName] = useState<string>(name);
     const router = useRouter();
     const dispatch = useAppDispatch();
-    console.log(persons);
 
     const onPersonsSearch = (name: string) => {
         dispatch(setName(name));
@@ -37,11 +36,12 @@ const Persons: FC<IProps> = () => {
     };
 
     useEffect(() => {
-        const personsResponse = async () => {
-            await Services.getPersonsList(name).then((response) => dispatch(setPersonsList(response.data.items)));
-        };
-        void personsResponse();
+        dispatch(loadPersonsList(name));
     }, [name]);
+
+    if (isError) {
+        void router.replace('/500');
+    }
 
     return (
         <>
@@ -69,7 +69,9 @@ const Persons: FC<IProps> = () => {
                         onSearch={onPersonsSearch}
                         style={{width: 300}}
                     />
-                    {persons.length > 0 && (
+                    {isLoading ? (
+                        <Spinner />
+                    ) : (
                         <ul className={styles.personsList}>
                             {persons.map((person: IPerson) => (
                                 <li key={person.kinopoiskId}>

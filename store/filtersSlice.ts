@@ -112,7 +112,6 @@ const filtersSlice = createSlice({
                 state.isError = true;
             })
             .addCase(loadMoviesByFilters.fulfilled, (state, action) => {
-                console.log(action.payload);
                 const {items, totalPages} = action.payload;
                 state.movies = items;
                 state.moviesCountPages = totalPages;

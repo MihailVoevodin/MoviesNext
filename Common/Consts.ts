@@ -324,4 +324,5 @@ export const Regulars = {
     numbers: /^-?\d*(\.\d*)?$/,
 };
 
+/** Константа дефолтного значения для количества страниц. */
 export const defaultPagesCount: number = 5;

@@ -19,6 +19,8 @@ export interface IFilmsState {
     imagesPageId: number;
     reviewsPageId: number;
     filmRating: TFilmRating;
+    isLoading: boolean;
+    isError: boolean;
 }
 
 const initialState: IFilmsState = {
@@ -30,6 +32,8 @@ const initialState: IFilmsState = {
     imagesPageId: 1,
     reviewsPageId: 1,
     filmRating: {},
+    isLoading: false,
+    isError: false,
 };
 
 export const loadMoviesBySearch = createAsyncThunk('films/loadMoviesBySearch', async (keyword: string, {rejectWithValue, dispatch}) => {
@@ -38,7 +42,6 @@ export const loadMoviesBySearch = createAsyncThunk('films/loadMoviesBySearch', a
     if (response.status !== 200) {
         return rejectWithValue('Server Error!');
     }
-    console.log(response.data.films);
 
     dispatch(setSearchMovies(response.data.films));
 
@@ -77,6 +80,20 @@ const filmsSlice = createSlice({
             state.filmRating = {};
             state.filmRating = {...action.payload};
         },
+    },
+    extraReducers: (builder) => {
+        builder
+            .addCase(loadMoviesBySearch.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(loadMoviesBySearch.rejected, (state) => {
+                state.isError = true;
+            })
+            .addCase(loadMoviesBySearch.fulfilled, (state, action: PayloadAction<IMovie[]>) => {
+                state.searchMovies = action.payload;
+                state.isLoading = false;
+                state.isError = false;
+            });
     },
 });
 
