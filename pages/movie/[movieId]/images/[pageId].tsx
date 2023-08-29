@@ -162,7 +162,7 @@ const Images: FC<IProps> = ({movieName, movieImages}) => {
                                                 <img className={styles.modalImage} src={image} alt="." />
                                             </div>
                                             <div className={styles.modalClose} onClick={handleCloseImage}>
-                                                <CloseIcon />
+                                                <CloseIcon fill="white" width="40px" height="40px" />
                                             </div>
                                         </div>
                                     )}

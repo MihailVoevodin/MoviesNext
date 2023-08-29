@@ -3,9 +3,11 @@ import styles from 'components/Navbar/Navbar.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import {FC, ChangeEvent, useState} from 'react';
+import {FC, ChangeEvent, useState, useRef} from 'react';
 import {loadMoviesBySearch} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
+import {CloseIcon} from 'Common/CloseIcon';
+import {useOnDocumentClick} from 'Common/Helpers';
 import {T} from 'Common/Text';
 
 /**
@@ -16,6 +18,7 @@ const Navbar: FC = () => {
     const router = useRouter();
     const [inputValue, setInputValue] = useState<string>('');
     const {top250PageId, searchMovies, activeTabName} = useAppSelector((state) => state.films);
+    const searchInput = useRef<HTMLDivElement>(null);
 
     const NavigationItems = [
         {id: 0, title: 'Главная', path: '/'},
@@ -29,6 +32,13 @@ const Navbar: FC = () => {
         dispatch(loadMoviesBySearch(e.target.value));
     };
 
+    const onCloseSearch = () => {
+        setInputValue('');
+        dispatch(loadMoviesBySearch(''));
+    };
+
+    useOnDocumentClick(searchInput.current, onCloseSearch);
+
     const onSearchMovie = () => {
         setInputValue('');
         dispatch(loadMoviesBySearch(''));
@@ -36,7 +46,7 @@ const Navbar: FC = () => {
 
     return (
         <nav className={styles.headerNav}>
-            <div className={styles.searchContainer}>
+            <div ref={searchInput} className={styles.searchContainer}>
                 <Input
                     autoFocus={true}
                     className={styles.searchInput}
@@ -44,6 +54,11 @@ const Navbar: FC = () => {
                     onChange={onChangeSearch}
                     placeholder="Введите название фильма"
                 />
+                {inputValue && (
+                    <div onClick={onCloseSearch} className={styles.closeIcon}>
+                        <CloseIcon fill="#ff6200" width="20px" height="20px" />
+                    </div>
+                )}
                 {searchMovies.length > 0 && (
                     <div className={styles.searchMovies}>
                         Возможно, вы искали:

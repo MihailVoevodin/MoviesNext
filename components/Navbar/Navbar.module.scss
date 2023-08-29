@@ -29,6 +29,7 @@
     width: 500px;
     margin-right: 80px;
     border-color: $secondary;
+    padding-right: 30px;
     &:focus {
         border-color: $secondary;
     }
@@ -79,4 +80,12 @@
 
 .active {
     background-color: $secondary;
+}
+
+.closeIcon {
+    position: absolute;
+    cursor: pointer;
+    right: 88px;
+    top: 5px;
+    height: 20px;
 }
