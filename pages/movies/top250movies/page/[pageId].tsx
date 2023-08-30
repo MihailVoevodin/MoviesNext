@@ -1,7 +1,7 @@
+import {HeadComponent} from 'components/Head/Head';
 import {TopPage} from 'components/Movies/TopPage';
 import {TopsNavbar} from 'components/Navbar/TopsNavbar';
 import {GetServerSideProps} from 'next';
-import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {ParsedUrlQuery} from 'querystring';
 import {FC} from 'react';
@@ -58,9 +58,7 @@ const Top250Movies: FC<IProps> = ({movies}) => {
 
     return (
         <>
-            <Head>
-                <title>{T.Pages.MainPages[0].title}</title>
-            </Head>
+            <HeadComponent title={T.Pages.MainPages[0].title} />
             <TopsNavbar
                 top100PageId={top100PageId}
                 top250PageId={top250PageId}
