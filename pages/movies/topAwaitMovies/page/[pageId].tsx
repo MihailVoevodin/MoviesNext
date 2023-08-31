@@ -1,3 +1,4 @@
+import {HeadComponent} from 'components/Head/Head';
 import {TopPage} from 'components/Movies/TopPage';
 import {TopsNavbar} from 'components/Navbar/TopsNavbar';
 import {GetServerSideProps} from 'next';
@@ -58,9 +59,7 @@ const TopAwaitMovies: FC<IProps> = ({movies}) => {
 
     return (
         <>
-            <Head>
-                <title>{T.Pages.MainPages[2].title}</title>
-            </Head>
+            <HeadComponent title={T.Pages.MainPages[2].title} />
             <TopsNavbar
                 top100PageId={top100PageId}
                 top250PageId={top250PageId}

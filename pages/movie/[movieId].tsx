@@ -1,8 +1,8 @@
+import {HeadComponent} from 'components/Head/Head';
 import {MovieAbout} from 'components/Movie/MovieAbout/MovieAbout';
 import {MovieDetailsReview} from 'components/Movie/MovieDetailsReview/MovieDetailsReview';
 import {MovieMainInfo} from 'components/Movie/MovieMainInfo/MovieMainInfo';
 import {GetServerSideProps} from 'next';
-import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from 'pages/movie/Movie.module.scss';
@@ -79,9 +79,7 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
 
     return (
         <>
-            <Head>
-                <title>{movie.nameRu}</title>
-            </Head>
+            <HeadComponent title={movie.nameRu} />
             <main>
                 <div className={styles.background}>
                     <div className={styles.movieMain}>

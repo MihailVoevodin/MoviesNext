@@ -1,5 +1,6 @@
 import {Spinner} from 'Common/Loading';
 import {Filters} from 'components/Filters/Filters';
+import {HeadComponent} from 'components/Head/Head';
 import {TopPage} from 'components/Movies/TopPage';
 import {TopsNavbar} from 'components/Navbar/TopsNavbar';
 import Head from 'next/head';
@@ -50,9 +51,7 @@ const FindMovies: FC = () => {
 
     return (
         <>
-            <Head>
-                <title>{T.Pages.MainPages[3].title}</title>
-            </Head>
+            <HeadComponent title={T.Pages.MainPages[3].title} />
             <TopsNavbar
                 top100PageId={top100PageId}
                 top250PageId={top250PageId}

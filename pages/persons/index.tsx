@@ -1,5 +1,5 @@
 import {ConfigProvider, Input} from 'antd';
-import Head from 'next/head';
+import {HeadComponent} from 'components/Head/Head';
 import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
@@ -45,9 +45,7 @@ const Persons: FC<IProps> = () => {
 
     return (
         <>
-            <Head>
-                <title>{T.Pages.Persons.label}</title>
-            </Head>
+            <HeadComponent title={T.Pages.Persons.label} />
             <ConfigProvider
                 theme={{
                     components: {

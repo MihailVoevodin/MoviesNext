@@ -1,6 +1,6 @@
+import {HeadComponent} from 'components/Head/Head';
 import {HomePageTop} from 'components/HomePageTop/HomePageTop';
 import {GetStaticProps} from 'next';
-import Head from 'next/head';
 import {FC} from 'react';
 import {useAppSelector} from 'store/hooks';
 import styles from 'styles/main.module.scss';
@@ -49,9 +49,7 @@ const Home: FC<IProps> = ({top250Movies, top100Movies, topAwaitMovies}) => {
 
     return (
         <>
-            <Head>
-                <title>Фильмы</title>
-            </Head>
+            <HeadComponent title="Фильмы" />
             <div className={styles.homePreview}>
                 <span>Узнай больше про свои любимые фильмы, сериалы или актёров</span>
             </div>

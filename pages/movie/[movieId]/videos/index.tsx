@@ -1,5 +1,5 @@
+import {HeadComponent} from 'components/Head/Head';
 import {GetServerSideProps} from 'next';
-import Head from 'next/head';
 import {useRouter} from 'next/router';
 import styles from 'pages/movie/[movieId]/videos/videos.module.scss';
 import {ParsedUrlQuery} from 'querystring';
@@ -51,11 +51,7 @@ const Videos: FC<IProps> = ({movieVideos, movieName}) => {
 
     return (
         <>
-            <Head>
-                <title>
-                    {T.Pages.Videos.label}: {movieName}
-                </title>
-            </Head>
+            <HeadComponent title={T.Pages.Videos.label} movieName={movieName} />
             <div className={mainStyles.movieDetailsPage}>
                 <div className={mainStyles.movieDetailsContainer}>
                     <div className={mainStyles.movieDetailsTitle}>

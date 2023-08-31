@@ -1,6 +1,6 @@
 import {ConfigProvider, Pagination} from 'antd';
+import {HeadComponent} from 'components/Head/Head';
 import {GetServerSideProps} from 'next';
-import Head from 'next/head';
 import Image from 'next/image';
 import {useRouter} from 'next/router';
 import styles from 'pages/movie/[movieId]/images/MovieImages.module.scss';
@@ -91,11 +91,7 @@ const Images: FC<IProps> = ({movieName, movieImages}) => {
 
     return (
         <>
-            <Head>
-                <title>
-                    {T.Pages.Images.label}: {movieName}
-                </title>
-            </Head>
+            <HeadComponent title={T.Pages.Images.label} movieName={movieName} />
             <ConfigProvider
                 theme={{
                     components: {

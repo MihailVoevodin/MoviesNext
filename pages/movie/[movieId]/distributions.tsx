@@ -1,6 +1,6 @@
+import {HeadComponent} from 'components/Head/Head';
 import {MovieDistribution} from 'components/Movie/MovieDistributions/MovieDistribution';
 import {GetServerSideProps} from 'next';
-import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {ParsedUrlQuery} from 'querystring';
 import {FC} from 'react';
@@ -52,11 +52,7 @@ const Distributions: FC<IProps> = ({movieDistributions, movieName}) => {
 
     return (
         <>
-            <Head>
-                <title>
-                    {T.Pages.Distributions.label}: {movieName}
-                </title>
-            </Head>
+            <HeadComponent title={T.Pages.Distributions.label} movieName={movieName} />
             <div className={mainStyles.movieDetailsPage}>
                 <div className={mainStyles.movieDetailsContainer}>
                     <div className={mainStyles.movieDetailsTitle}>

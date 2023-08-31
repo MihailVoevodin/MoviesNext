@@ -1,7 +1,7 @@
 import {ConfigProvider, Pagination, Select} from 'antd';
+import {HeadComponent} from 'components/Head/Head';
 import {MovieReview} from 'components/Movie/MovieReview/MovieReview';
 import {GetServerSideProps} from 'next';
-import Head from 'next/head';
 import {useRouter} from 'next/router';
 import styles from 'pages/movie/[movieId]/reviews/Reviews.module.scss';
 import {ParsedUrlQuery} from 'querystring';
@@ -78,11 +78,7 @@ const Reviews: FC<IProps> = ({movieReviews, movieName}) => {
 
     return (
         <>
-            <Head>
-                <title>
-                    {T.Pages.Reviews.label}: {movieName}
-                </title>
-            </Head>
+            <HeadComponent title={T.Pages.Reviews.label} movieName={movieName} />
             <ConfigProvider
                 theme={{
                     components: {

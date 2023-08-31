@@ -1,6 +1,6 @@
+import {HeadComponent} from 'components/Head/Head';
 import {PersonAbout} from 'components/Person/PersonAbout';
 import {GetServerSideProps} from 'next';
-import Head from 'next/head';
 import Image from 'next/image';
 import {useRouter} from 'next/router';
 import styles from 'pages/name/Name.module.scss';
@@ -51,9 +51,7 @@ const Person: FC<IProps> = ({person}) => {
 
     return (
         <>
-            <Head>
-                <title>{person.nameRu}</title>
-            </Head>
+            <HeadComponent title={person.nameRu} />
             <main>
                 <div className={mainStyles.backBtn}>
                     <button onClick={() => router.back()}>

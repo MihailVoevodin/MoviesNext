@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import {HeadComponent} from 'components/Head/Head';
 import Image from 'next/image';
 import serverErrorImg from 'public/500.png';
 import {FC} from 'react';
@@ -6,9 +6,7 @@ import {FC} from 'react';
 const ServerErrorPage: FC = () => {
     return (
         <>
-            <Head>
-                <title>500 Server Error</title>
-            </Head>
+            <HeadComponent title="500 Server Error" />
             <main>
                 <div className="serverError">
                     <Image src={serverErrorImg} alt="500" width={200} height={200} />
