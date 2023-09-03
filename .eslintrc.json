@@ -1,14 +1,25 @@
 {
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "jest": true
   },
   "extends": [
     "next/core-web-vitals",
     "eslint:recommended",
     "plugin:react/recommended",
-    "prettier"
+    "prettier",
+    "plugin:testing-library/react"
   ],
+  "overrides": [
+        // Only uses Testing Library lint rules in test files
+      {
+          "files": [
+              "**/__tests__/**/*.[jt]s?(x)",
+              "**/?(*.)+(spec|test).[jt]s?(x)"
+          ]
+      }
+          ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -19,7 +30,8 @@
     "prettier",
     "@typescript-eslint",
     "eslint-plugin-import-helpers",
-    "jsdoc"
+    "jsdoc",
+    "testing-library"
   ],
   "rules": {
     "prettier/prettier": "error",

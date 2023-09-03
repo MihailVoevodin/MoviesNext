@@ -16,6 +16,10 @@
     "incremental": true,
     "baseUrl": ".",
     "importHelpers": true,
+    "paths": {
+       "components/*": ["components/*"],
+       "pages/*": ["pages/*"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
