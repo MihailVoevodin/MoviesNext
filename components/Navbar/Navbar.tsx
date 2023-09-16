@@ -48,6 +48,7 @@ const Navbar: FC = () => {
         <nav className={styles.headerNav}>
             <div ref={searchInput} className={styles.searchContainer}>
                 <Input
+                    data-testid="searchInput"
                     autoFocus={true}
                     className={styles.searchInput}
                     value={inputValue}
@@ -55,12 +56,12 @@ const Navbar: FC = () => {
                     placeholder="Введите название фильма"
                 />
                 {inputValue && (
-                    <div onClick={onCloseSearch} className={styles.closeIcon}>
+                    <div data-testid="closeIcon" onClick={onCloseSearch} className={styles.closeIcon}>
                         <CloseIcon fill="#ff6200" width="20px" height="20px" />
                     </div>
                 )}
                 {searchMovies.length > 0 && (
-                    <div className={styles.searchMovies}>
+                    <div data-testid="searchMovies" className={styles.searchMovies}>
                         Возможно, вы искали:
                         <div>
                             {searchMovies.map((movie) => (
