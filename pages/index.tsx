@@ -2,6 +2,7 @@ import {HeadComponent} from 'components/Head/Head';
 import {HomePageTop} from 'components/HomePageTop/HomePageTop';
 import {GetStaticProps} from 'next';
 import {FC} from 'react';
+import {selectPagesIdArray} from 'store/filmsSelectors';
 import {useAppSelector} from 'store/hooks';
 import styles from 'styles/main.module.scss';
 import {IMovie} from 'Common/Models';
@@ -43,8 +44,7 @@ export const getStaticProps: GetStaticProps<IProps> = async () => {
  * Компонент отображения главной страницы.
  */
 const Home: FC<IProps> = ({top250Movies, top100Movies, topAwaitMovies}) => {
-    const {top250PageId, top100PageId, topAwaitPageId} = useAppSelector((state) => state.films);
-    const pagesIdArray = [top250PageId, top100PageId, topAwaitPageId];
+    const pagesIds = useAppSelector(selectPagesIdArray);
     const moviesArrays = [top250Movies, top100Movies, topAwaitMovies];
 
     return (
@@ -55,7 +55,7 @@ const Home: FC<IProps> = ({top250Movies, top100Movies, topAwaitMovies}) => {
             </div>
             <main>
                 {T.Pages.MainPages.slice(0, 3).map((page, id) => (
-                    <HomePageTop key={id} movies={moviesArrays[id]} link={page.link(pagesIdArray[id])} text={page.text} />
+                    <HomePageTop key={id} movies={moviesArrays[id]} link={page.link(pagesIds[id])} text={page.text} />
                 ))}
             </main>
         </>

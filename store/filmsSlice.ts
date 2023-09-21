@@ -13,11 +13,13 @@ import {Services} from 'Common/Services';
 export interface IFilmsState {
     searchMovies: IMovie[];
     activeTabName: string;
-    top250PageId: number;
-    top100PageId: number;
-    topAwaitPageId: number;
-    imagesPageId: number;
-    reviewsPageId: number;
+    pagesId: {
+        top250: number;
+        top100: number;
+        topAwait: number;
+        images: number;
+        reviews: number;
+    };
     filmRating: TFilmRating;
     isLoading: boolean;
     isError: boolean;
@@ -26,11 +28,13 @@ export interface IFilmsState {
 const initialState: IFilmsState = {
     searchMovies: [],
     activeTabName: 'top250movies',
-    top250PageId: 1,
-    top100PageId: 1,
-    topAwaitPageId: 1,
-    imagesPageId: 1,
-    reviewsPageId: 1,
+    pagesId: {
+        top250: 1,
+        top100: 1,
+        topAwait: 1,
+        images: 1,
+        reviews: 1,
+    },
     filmRating: {},
     isLoading: false,
     isError: false,
@@ -59,19 +63,19 @@ const filmsSlice = createSlice({
             state.activeTabName = action.payload;
         },
         setTop250PageId(state, action: PayloadAction<number>) {
-            state.top250PageId = action.payload;
+            state.pagesId.top250 = action.payload;
         },
         setTop100PageId(state, action: PayloadAction<number>) {
-            state.top100PageId = action.payload;
+            state.pagesId.top100 = action.payload;
         },
         setTopAwaitPageId(state, action: PayloadAction<number>) {
-            state.topAwaitPageId = action.payload;
+            state.pagesId.topAwait = action.payload;
         },
         setImagesPageId(state, action: PayloadAction<number>) {
-            state.imagesPageId = action.payload;
+            state.pagesId.images = action.payload;
         },
         setReviewsPageId(state, action: PayloadAction<number>) {
-            state.reviewsPageId = action.payload;
+            state.pagesId.reviews = action.payload;
         },
         setSearchMovies(state, action: PayloadAction<IMovie[]>) {
             state.searchMovies = action.payload;

@@ -72,10 +72,12 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: movieSimilars.length >= 4 ? 4 : 2,
+        slidesToShow: movieSimilars.length >= 4 ? 4 : 1,
         slidesToScroll: 1,
         variableWidth: true,
     };
+
+    console.log(settings.slidesToShow);
 
     return (
         <>
@@ -84,7 +86,7 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                 <div className={styles.background}>
                     <div className={styles.movieMain}>
                         <div className={styles.movieCoverImg}>
-                            {movie.coverUrl && <Image width={700} height={500} priority={true} src={movie.coverUrl} alt={movie.nameRu} />}
+                            {movie.coverUrl && <Image width={700} height={500} src={movie.coverUrl} alt={movie.nameRu} />}
                             <div className={styles.gradient}></div>
                         </div>
                     </div>
@@ -92,13 +94,7 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                 <div className={styles.movie}>
                     <div className={styles.movieContainer}>
                         <div>
-                            <Image
-                                width={300}
-                                height={450}
-                                priority={true}
-                                src={movie.posterUrl}
-                                alt={movie.nameRu || movie.nameOriginal}
-                            />
+                            <Image width={300} height={450} src={movie.posterUrl} alt={movie.nameRu || movie.nameOriginal} />
                         </div>
                         <div>
                             <MovieMainInfo movie={movie} />

@@ -6,6 +6,7 @@ import {useRouter} from 'next/router';
 import styles from 'pages/movie/[movieId]/images/MovieImages.module.scss';
 import {ParsedUrlQuery} from 'querystring';
 import {FC, useEffect, useState} from 'react';
+import {selectPagesId} from 'store/filmsSelectors';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import mainStyles from 'styles/main.module.scss';
@@ -58,18 +59,18 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
 const Images: FC<IProps> = ({movieName, movieImages}) => {
     const [image, setImage] = useState<string>('');
     const router = useRouter();
-    const {imagesPageId} = useAppSelector((state) => state.films);
+    const {images: imagesPageId} = useAppSelector(selectPagesId);
     const {total, totalPages, items: images} = movieImages;
     const dispatch = useAppDispatch();
     const [filter, setFilter] = useState<string>(IMAGES_DICTIONARY[0].type);
 
     useEffect(() => {
         dispatch(setImagesPageId(1));
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
         void router.push(T.Pages.Images.link(router.query.movieId, filter, imagesPageId));
-    }, [filter]);
+    }, [filter, imagesPageId]);
 
     const handleChangeFilter = (type: string) => {
         setFilter(type);

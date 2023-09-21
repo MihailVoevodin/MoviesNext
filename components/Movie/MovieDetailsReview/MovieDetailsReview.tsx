@@ -1,6 +1,7 @@
 import {Rate} from 'antd';
 import styles from 'components/Movie/MovieDetailsReview/MovieDetailsReview.module.scss';
 import {FC, useEffect} from 'react';
+import {selectFilmRating} from 'store/filmsSelectors';
 import {setFilmRating} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {StarFilled} from '@ant-design/icons';
@@ -20,8 +21,7 @@ interface IProps {
  */
 const MovieDetailsReview: FC<IProps> = ({movie}) => {
     const dispatch = useAppDispatch();
-    const {filmRating} = useAppSelector((state) => state.films);
-    console.log(filmRating);
+    const filmRating = useAppSelector(selectFilmRating);
 
     useEffect(() => {
         for (let i = 0; i < localStorage.length; i++) {

@@ -6,7 +6,7 @@ import Link from 'next/link';
 import {FC} from 'react';
 import {IPerson} from 'Common/Models';
 import {T} from 'Common/Text';
-moment.locale('ru');
+moment.locale('ru'); // TODO: переписать на dayjs
 
 /**
  * @param person Модель личности.

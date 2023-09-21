@@ -2,10 +2,10 @@ import {HeadComponent} from 'components/Head/Head';
 import {TopPage} from 'components/Movies/TopPage';
 import {TopsNavbar} from 'components/Navbar/TopsNavbar';
 import {GetServerSideProps} from 'next';
-import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {ParsedUrlQuery} from 'querystring';
 import {FC} from 'react';
+import {selectPagesId} from 'store/filmsSelectors';
 import {setTop100PageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {defaultPagesCount} from 'Common/Consts';
@@ -49,7 +49,7 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
 const Top100Movies: FC<IProps> = ({movies}) => {
     const router = useRouter();
     const dispatch = useAppDispatch();
-    const {top100PageId, top250PageId, topAwaitPageId} = useAppSelector((state) => state.films);
+    const {top100, top250, topAwait} = useAppSelector(selectPagesId);
     const {findMoviesPageId} = useAppSelector((state) => state.filters);
 
     const onChangePage = (pageId: number) => {
@@ -62,15 +62,10 @@ const Top100Movies: FC<IProps> = ({movies}) => {
     return (
         <>
             <HeadComponent title={T.Pages.MainPages[1].title} />
-            <TopsNavbar
-                top100PageId={top100PageId}
-                top250PageId={top250PageId}
-                topAwaitPageId={topAwaitPageId}
-                findMoviesPageId={findMoviesPageId}
-            />
+            <TopsNavbar top100PageId={top100} top250PageId={top250} topAwaitPageId={topAwait} findMoviesPageId={findMoviesPageId} />
             <main>
                 <h3>{T.Pages.MainPages[1].text}</h3>
-                <TopPage movies={movies} pageId={top100PageId} pagesCount={defaultPagesCount} onChangePage={onChangePage} />
+                <TopPage movies={movies} pageId={top100} pagesCount={defaultPagesCount} onChangePage={onChangePage} />
             </main>
         </>
     );

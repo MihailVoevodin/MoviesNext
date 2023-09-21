@@ -4,10 +4,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {FC, ChangeEvent, useState, useRef} from 'react';
+import {selectActiveTabName, selectPagesId, selectSearchMovies} from 'store/filmsSelectors';
 import {loadMoviesBySearch} from 'store/filmsSlice';
+import {selectFindMoviesPageId} from 'store/filtersSelectors';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {CloseIcon} from 'Common/CloseIcon';
-import {useOnDocumentClick} from 'Common/Helpers';
+import {setActiveTabNamePageId, useOnDocumentClick} from 'Common/Helpers';
 import {T} from 'Common/Text';
 
 /**
@@ -17,12 +19,19 @@ const Navbar: FC = () => {
     const dispatch = useAppDispatch();
     const router = useRouter();
     const [inputValue, setInputValue] = useState<string>('');
-    const {top250PageId, searchMovies, activeTabName} = useAppSelector((state) => state.films);
+    const {top250, top100, topAwait} = useAppSelector(selectPagesId);
+    const findMovies = useAppSelector(selectFindMoviesPageId);
+    const searchMovies = useAppSelector(selectSearchMovies);
+    const activeTabName = useAppSelector(selectActiveTabName);
     const searchInput = useRef<HTMLDivElement>(null);
 
     const NavigationItems = [
         {id: 0, title: 'Главная', path: '/'},
-        {id: 1, title: 'Фильмы', path: `/movies/${activeTabName}/page/${top250PageId}`},
+        {
+            id: 1,
+            title: 'Фильмы',
+            path: `/movies/${activeTabName}/page/${setActiveTabNamePageId(activeTabName, top250, top100, topAwait, findMovies)}`,
+        },
         {id: 2, title: 'Личности', path: '/persons'},
     ];
 

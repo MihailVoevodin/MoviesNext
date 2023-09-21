@@ -61,7 +61,7 @@ const Person: FC<IProps> = ({person}) => {
                 <div className={styles.person}>
                     <div className={styles.personContainer}>
                         <div>
-                            <Image width={300} height={450} priority={true} src={person.posterUrl} alt={person.nameRu} />
+                            <Image width={300} height={450} src={person.posterUrl} alt={person.nameRu} />
                         </div>
                         <div>
                             <PersonAbout person={person} />

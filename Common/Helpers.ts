@@ -80,3 +80,17 @@ export const useOnDocumentClick = (element: HTMLDivElement | null, onClickOutsid
         };
     });
 };
+
+/** Функция получения айди страницы в зависимости от активного таба. */
+export const setActiveTabNamePageId = (activeTabName: string, top250: number, top100: number, topAwait: number, findMovies: number) => {
+    switch (activeTabName) {
+        case T.Pages.MainPages[0].path:
+            return top250;
+        case T.Pages.MainPages[1].path:
+            return top100;
+        case T.Pages.MainPages[2].path:
+            return topAwait;
+        case T.Pages.MainPages[3].path:
+            return findMovies;
+    }
+};

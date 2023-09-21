@@ -6,6 +6,7 @@ import {useRouter} from 'next/router';
 import styles from 'pages/movie/[movieId]/reviews/Reviews.module.scss';
 import {ParsedUrlQuery} from 'querystring';
 import {FC, useEffect, useState} from 'react';
+import {selectPagesId} from 'store/filmsSelectors';
 import {setReviewsPageId} from 'store/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import mainStyles from 'styles/main.module.scss';
@@ -59,7 +60,7 @@ const Reviews: FC<IProps> = ({movieReviews, movieName}) => {
     const router = useRouter();
     const {total, totalPositiveReviews, totalNegativeReviews, totalNeutralReviews, items: reviews} = movieReviews;
     const dispatch = useAppDispatch();
-    const {reviewsPageId} = useAppSelector((state) => state.films);
+    const {reviews: reviewsPageId} = useAppSelector(selectPagesId);
     const [order, setOrder] = useState<string>(EReviewsSelect.DATE_ASC);
 
     useEffect(() => {
