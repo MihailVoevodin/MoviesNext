@@ -49,23 +49,20 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
 const Top100Movies: FC<IProps> = ({movies}) => {
     const router = useRouter();
     const dispatch = useAppDispatch();
-    const {top100, top250, topAwait} = useAppSelector(selectPagesId);
-    const {findMoviesPageId} = useAppSelector((state) => state.filters);
+    const {top100: pageId} = useAppSelector(selectPagesId);
 
     const onChangePage = (pageId: number) => {
         dispatch(setTop100PageId(pageId));
         void router.replace(T.Pages.MainPages[1].link(pageId));
     };
 
-    console.log(movies);
-
     return (
         <>
             <HeadComponent title={T.Pages.MainPages[1].title} />
-            <TopsNavbar top100PageId={top100} top250PageId={top250} topAwaitPageId={topAwait} findMoviesPageId={findMoviesPageId} />
+            <TopsNavbar />
             <main>
                 <h3>{T.Pages.MainPages[1].text}</h3>
-                <TopPage movies={movies} pageId={top100} pagesCount={defaultPagesCount} onChangePage={onChangePage} />
+                <TopPage movies={movies} pageId={pageId} pagesCount={defaultPagesCount} onChangePage={onChangePage} />
             </main>
         </>
     );

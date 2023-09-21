@@ -4,7 +4,7 @@ import {TopPage} from 'components/Movies/TopPage';
 import {TopsNavbar} from 'components/Navbar/TopsNavbar';
 import {useRouter} from 'next/router';
 import {FC, useEffect} from 'react';
-import {selectPagesId} from 'store/filmsSelectors';
+import {selectFindMoviesPageId} from 'store/filtersSelectors';
 import {loadMoviesByFilters, setFindMoviesPageId} from 'store/filtersSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {Spinner} from 'Common/Loading';
@@ -16,8 +16,7 @@ import {T} from 'Common/Text';
 const FindMovies: FC = () => {
     const dispatch = useAppDispatch();
     const router = useRouter();
-
-    const {top100, top250, topAwait} = useAppSelector(selectPagesId);
+    const findMoviesPageId = useAppSelector(selectFindMoviesPageId);
 
     const {
         movies,
@@ -30,7 +29,6 @@ const FindMovies: FC = () => {
         yearFrom,
         yearTo,
         keyword,
-        findMoviesPageId,
         moviesCountPages,
         isLoading,
         isError,
@@ -54,7 +52,7 @@ const FindMovies: FC = () => {
     return (
         <>
             <HeadComponent title={T.Pages.MainPages[3].title} />
-            <TopsNavbar top100PageId={top100} top250PageId={top250} topAwaitPageId={topAwait} findMoviesPageId={findMoviesPageId} />
+            <TopsNavbar />
             <main>
                 <h3>{T.Pages.MainPages[3].text}</h3>
                 <Filters />

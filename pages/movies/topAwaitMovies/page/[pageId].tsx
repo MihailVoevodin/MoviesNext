@@ -49,8 +49,7 @@ const TopAwaitMovies: FC<IProps> = ({movies}) => {
     const {pagesCount, films} = movies;
     const router = useRouter();
     const dispatch = useAppDispatch();
-    const {top100, top250, topAwait} = useAppSelector(selectPagesId);
-    const {findMoviesPageId} = useAppSelector((state) => state.filters);
+    const {topAwait: pageId} = useAppSelector(selectPagesId);
 
     const onChangePage = (pageId: number) => {
         dispatch(setTopAwaitPageId(pageId));
@@ -60,10 +59,10 @@ const TopAwaitMovies: FC<IProps> = ({movies}) => {
     return (
         <>
             <HeadComponent title={T.Pages.MainPages[2].title} />
-            <TopsNavbar top100PageId={top100} top250PageId={top250} topAwaitPageId={topAwait} findMoviesPageId={findMoviesPageId} />
+            <TopsNavbar />
             <main>
                 <h3>{T.Pages.MainPages[2].text}</h3>
-                <TopPage movies={films} pageId={topAwait} pagesCount={pagesCount} onChangePage={onChangePage} />
+                <TopPage movies={films} pageId={pageId} pagesCount={pagesCount} onChangePage={onChangePage} />
             </main>
         </>
     );
