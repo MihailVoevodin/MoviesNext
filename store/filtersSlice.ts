@@ -4,15 +4,17 @@ import {Services} from 'Common/Services';
 
 export interface IFiltersState {
     movies?: IMovie[];
-    genreId: string;
-    countryId: string;
-    orderId: string;
-    typeId: string;
-    ratingFrom: string;
-    ratingTo: string;
-    yearFrom: string;
-    yearTo: string;
-    keyword: string;
+    filters: {
+        genreId: string;
+        countryId: string;
+        orderId: string;
+        typeId: string;
+        ratingFrom: string;
+        ratingTo: string;
+        yearFrom: string;
+        yearTo: string;
+        keyword: string;
+    };
     findMoviesPageId: number;
     moviesCountPages: number;
     isLoading?: boolean;
@@ -21,15 +23,17 @@ export interface IFiltersState {
 
 const initialState: IFiltersState = {
     movies: [],
-    genreId: '1',
-    countryId: '1',
-    orderId: 'RATING',
-    typeId: 'ALL',
-    ratingFrom: '',
-    ratingTo: '',
-    yearFrom: '',
-    yearTo: '',
-    keyword: '',
+    filters: {
+        orderId: 'RATING',
+        genreId: '1',
+        countryId: '1',
+        typeId: 'ALL',
+        ratingFrom: '',
+        ratingTo: '',
+        yearFrom: '',
+        yearTo: '',
+        keyword: '',
+    },
     findMoviesPageId: 1,
     moviesCountPages: 5,
     isLoading: false,
@@ -37,11 +41,12 @@ const initialState: IFiltersState = {
 };
 
 export type LoadMovies = Omit<IFiltersState, 'moviesCountPages'>;
+export type TFilters = Omit<IFiltersState, 'movies' | 'moviesCountPages' | 'isError' | 'isLoading'>;
 
 export const loadMoviesByFilters = createAsyncThunk(
     'filters/getMoviesByFilters',
     async (
-        {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword, findMoviesPageId}: LoadMovies,
+        {filters: {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword}, findMoviesPageId}: TFilters,
         {rejectWithValue}
     ) => {
         const response = await Services.getMoviesByFilters(
@@ -73,31 +78,31 @@ const filtersSlice = createSlice({
     initialState: initialState,
     reducers: {
         setGenreId(state, action: PayloadAction<string>) {
-            state.genreId = action.payload;
+            state.filters.genreId = action.payload;
         },
         setCountryId(state, action: PayloadAction<string>) {
-            state.countryId = action.payload;
+            state.filters.countryId = action.payload;
         },
         setOrderId(state, action: PayloadAction<string>) {
-            state.orderId = action.payload;
+            state.filters.orderId = action.payload;
         },
         setTypeId(state, action: PayloadAction<string>) {
-            state.typeId = action.payload;
+            state.filters.typeId = action.payload;
         },
         setRatingFrom(state, action: PayloadAction<string>) {
-            state.ratingFrom = action.payload;
+            state.filters.ratingFrom = action.payload;
         },
         setRatingTo(state, action: PayloadAction<string>) {
-            state.ratingTo = action.payload;
+            state.filters.ratingTo = action.payload;
         },
         setYearFrom(state, action: PayloadAction<string>) {
-            state.yearFrom = action.payload;
+            state.filters.yearFrom = action.payload;
         },
         setYearTo(state, action: PayloadAction<string>) {
-            state.yearTo = action.payload;
+            state.filters.yearTo = action.payload;
         },
         setKeyword(state, action: PayloadAction<string>) {
-            state.keyword = action.payload;
+            state.filters.keyword = action.payload;
         },
         setFindMoviesPageId(state, action: PayloadAction<number>) {
             state.findMoviesPageId = action.payload;

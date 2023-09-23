@@ -12,6 +12,7 @@ import Slider from 'react-slick';
 import {setImagesPageId} from 'store/filmsSlice';
 import {useAppDispatch} from 'store/hooks';
 import {EMovieImages, EReviewsSelect} from 'Common/Enums';
+import {calcSlidesToShow} from 'Common/Helpers';
 import {IMovieDetails, IMovieBox, IMovieStaff, IMovie} from 'Common/Models';
 import {Services} from 'Common/Services';
 import {T} from 'Common/Text';
@@ -72,7 +73,7 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: movieSimilars.length >= 4 ? 4 : 1,
+        slidesToShow: calcSlidesToShow(movieSimilars.length),
         slidesToScroll: 1,
         variableWidth: true,
     };

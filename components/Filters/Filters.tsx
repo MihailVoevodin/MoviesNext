@@ -2,6 +2,7 @@ import {Button, Input, Select, Form} from 'antd';
 import styles from 'components/Filters/Filters.module.scss';
 import {useRouter} from 'next/router';
 import {ChangeEvent} from 'react';
+import {selectFilters, selectFindMoviesPageId} from 'store/filtersSelectors';
 import {
     setTypeId,
     setKeyword,
@@ -13,8 +14,9 @@ import {
     setGenreId,
     setOrderId,
     loadMoviesByFilters,
-    IFiltersState,
     setFindMoviesPageId,
+    TFilters,
+    LoadMovies,
 } from 'store/filtersSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {ActionCreatorWithPayload} from '@reduxjs/toolkit';
@@ -27,9 +29,8 @@ import {T} from 'Common/Text';
 export const Filters = () => {
     const router = useRouter();
     const dispatch = useAppDispatch();
-    const {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword, findMoviesPageId} = useAppSelector(
-        (state) => state.filters
-    );
+    const {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword} = useAppSelector(selectFilters);
+    const findMoviesPageId = useAppSelector(selectFindMoviesPageId);
 
     const handleChangeInputFilters = (value: string, setFilter: ActionCreatorWithPayload<string>) => {
         const reg = Regulars.numbers;
@@ -87,8 +88,10 @@ export const Filters = () => {
         width: 200,
     };
 
-    const onFinish = (values: IFiltersState) => {
-        const {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword} = values;
+    const onFinish = (values: LoadMovies) => {
+        const {
+            filters: {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword},
+        } = values;
         dispatch(setFindMoviesPageId(1));
         if (values) {
             dispatch(

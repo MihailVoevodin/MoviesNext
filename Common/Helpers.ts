@@ -1,5 +1,6 @@
 import {Dispatch, SetStateAction, useEffect} from 'react';
 import {EMpaaRating, EReviewsType} from 'Common/Enums';
+import {IMovie} from 'Common/Models';
 import {T} from 'Common/Text';
 
 /** Определение цвета заднего фона рецензии в зависимости от типа. */
@@ -92,5 +93,19 @@ export const setActiveTabNamePageId = (activeTabName: string, top250: number, to
             return topAwait;
         case T.Pages.MainPages[3].path:
             return findMovies;
+    }
+};
+
+/** Функция получения айди страницы в зависимости от активного таба. */
+export const calcSlidesToShow = (length: number) => {
+    switch (length) {
+        case 1:
+            return 1;
+        case 2:
+            return 2;
+        case 3:
+            return 3;
+        default:
+            return 4;
     }
 };
