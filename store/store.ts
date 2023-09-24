@@ -1,6 +1,6 @@
-import filmsSlice, {IFilmsState} from 'store/filmsSlice';
-import filtersSlice, {IFiltersState} from 'store/filtersSlice';
-import personsSlice, {IPersonsState} from 'store/personsSlice';
+import filmsSlice, {IFilmsState} from 'store/films/filmsSlice';
+import filtersSlice, {IFiltersState} from 'store/filters/filtersSlice';
+import personsSlice, {IPersonsState} from 'store/persons/personsSlice';
 import {configureStore} from '@reduxjs/toolkit';
 
 /**

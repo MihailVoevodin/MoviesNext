@@ -5,8 +5,8 @@ import {GetServerSideProps} from 'next';
 import {useRouter} from 'next/router';
 import {ParsedUrlQuery} from 'querystring';
 import {FC} from 'react';
-import {selectPagesId} from 'store/filmsSelectors';
-import {setTop100PageId} from 'store/filmsSlice';
+import {selectPagesId} from 'store/films/filmsSelectors';
+import {setTop100PageId} from 'store/films/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {defaultPagesCount} from 'Common/Consts';
 import {IMovie} from 'Common/Models';
@@ -47,8 +47,9 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
  * Страница отображения топ 100 популярных фильмов.
  */
 const Top100Movies: FC<IProps> = ({movies}) => {
-    const router = useRouter();
     const dispatch = useAppDispatch();
+    const router = useRouter();
+
     const {top100: pageId} = useAppSelector(selectPagesId);
 
     const onChangePage = (pageId: number) => {

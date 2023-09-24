@@ -5,8 +5,8 @@ import {GetServerSideProps} from 'next';
 import {useRouter} from 'next/router';
 import {ParsedUrlQuery} from 'querystring';
 import {FC} from 'react';
-import {selectPagesId} from 'store/filmsSelectors';
-import {setTopAwaitPageId} from 'store/filmsSlice';
+import {selectPagesId} from 'store/films/filmsSelectors';
+import {setTopAwaitPageId} from 'store/films/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {IMovies} from 'Common/Models';
 import {Services} from 'Common/Services';
@@ -46,9 +46,11 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
  * Страница отображения топа ожидаемых фильмов.
  */
 const TopAwaitMovies: FC<IProps> = ({movies}) => {
-    const {pagesCount, films} = movies;
-    const router = useRouter();
     const dispatch = useAppDispatch();
+    const router = useRouter();
+
+    const {pagesCount, films} = movies;
+
     const {topAwait: pageId} = useAppSelector(selectPagesId);
 
     const onChangePage = (pageId: number) => {

@@ -362,3 +362,28 @@ interface ISpouse {
 
 /** Тип для состояния рейтинга фильмов. */
 export type TFilmRating = {[key: string]: string};
+
+/**
+ * Модель стейта фильтров
+ *
+ * @param personId - Идентификатор жанра.
+ * @param countryId - Идентификатор страны.
+ * @param orderId - Строка идентификатор порядка сортировки.
+ * @param typeId - Строка идентификатор типа видеоматериала.
+ * @param ratingFrom - Рейтинг от которого идет фильтрация.
+ * @param ratingTo - Рейтинг до которого идет фильтрация.
+ * @param yearFrom - Год от которого идет фильтрация.
+ * @param yearTo - Год до которого идет фильтрация.
+ * @param keyword - Ключевое слово.
+ */
+export interface IFilters {
+    genreId: string;
+    countryId: string;
+    orderId: string;
+    typeId: string;
+    ratingFrom: string;
+    ratingTo: string;
+    yearFrom: string;
+    yearTo: string;
+    keyword: string;
+}

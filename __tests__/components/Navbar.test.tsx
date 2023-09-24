@@ -1,13 +1,13 @@
 import Navbar from 'components/Navbar/Navbar';
 import {useRouter} from 'next/router';
 import {Provider} from 'react-redux';
-import '@testing-library/jest-dom';
-import filmsSlice from 'store/filmsSlice';
-import filtersSlice from 'store/filtersSlice';
-import personsSlice from 'store/personsSlice';
+import filmsSlice from 'store/films/filmsSlice';
+import filtersSlice from 'store/filters/filtersSlice';
+import personsSlice from 'store/persons/personsSlice';
 import {configureStore} from '@reduxjs/toolkit';
 import {fireEvent, render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom';
 
 jest.mock('next/router', () => ({
     useRouter() {

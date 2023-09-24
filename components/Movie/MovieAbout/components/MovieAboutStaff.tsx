@@ -23,8 +23,9 @@ interface IProps {
  * Компонент отображения создателей фильма по типам.
  */
 export const MovieAboutStaff: FC<IProps> = ({movieStaff, type, text}) => {
-    const filteredMovieStaff = movieStaff.filter((person) => person.professionKey == type);
     const router = useRouter();
+
+    const filteredMovieStaff = movieStaff.filter((person) => person.professionKey == type);
 
     return (
         <>

@@ -1,12 +1,17 @@
-/** Иконка крестика для закрытия модального окна. */
 import {FC} from 'react';
 
+/**
+ * @param fill Цвет иконки.
+ * @param width Ширина иконки.
+ * @param height Высота иконки.
+ */
 interface IProps {
     fill: string;
     width: string;
     height: string;
 }
 
+/** Иконка крестика для закрытия модального окна. */
 export const CloseIcon: FC<IProps> = ({fill, width, height}) => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" fill={fill} viewBox="0 0 50 50" width={width} height={height}>

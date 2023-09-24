@@ -2,7 +2,7 @@ import {Button, Input, Select, Form} from 'antd';
 import styles from 'components/Filters/Filters.module.scss';
 import {useRouter} from 'next/router';
 import {ChangeEvent} from 'react';
-import {selectFilters, selectFindMoviesPageId} from 'store/filtersSelectors';
+import {selectFilters, selectFindMoviesPageId} from 'store/filters/filtersSelectors';
 import {
     setTypeId,
     setKeyword,
@@ -15,20 +15,20 @@ import {
     setOrderId,
     loadMoviesByFilters,
     setFindMoviesPageId,
-    TFilters,
-    LoadMovies,
-} from 'store/filtersSlice';
+} from 'store/filters/filtersSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {ActionCreatorWithPayload} from '@reduxjs/toolkit';
 import {Regulars} from 'Common/Consts';
+import {IFilters} from 'Common/Models';
 import {T} from 'Common/Text';
 
 /**
  * Компонент фильтров.
  */
 export const Filters = () => {
-    const router = useRouter();
     const dispatch = useAppDispatch();
+    const router = useRouter();
+
     const {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword} = useAppSelector(selectFilters);
     const findMoviesPageId = useAppSelector(selectFindMoviesPageId);
 
@@ -88,23 +88,13 @@ export const Filters = () => {
         width: 200,
     };
 
-    const onFinish = (values: LoadMovies) => {
-        const {
-            filters: {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword},
-        } = values;
+    const onFinish = (filters: IFilters) => {
         dispatch(setFindMoviesPageId(1));
-        if (values) {
+
+        if (filters) {
             dispatch(
                 loadMoviesByFilters({
-                    orderId,
-                    genreId,
-                    countryId,
-                    typeId,
-                    ratingFrom,
-                    ratingTo,
-                    yearFrom,
-                    yearTo,
-                    keyword,
+                    filters,
                     findMoviesPageId,
                 })
             );

@@ -1,13 +1,14 @@
 import {ConfigProvider, Input} from 'antd';
 import {HeadComponent} from 'components/Head/Head';
+import {Spinner} from 'components/Spinner';
 import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import styles from 'pages/persons/Persons.module.scss';
 import {FC, ChangeEvent, useEffect, useState} from 'react';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
-import {setName, loadPersonsList} from 'store/personsSlice';
-import {Spinner} from 'Common/Loading';
+import {selectIsErrorPersons, selectIsLoadingPersons, selectName, selectPersonsList} from 'store/persons/personsSelectors';
+import {setName, loadPersonsList} from 'store/persons/personsSlice';
 import {IPerson} from 'Common/Models';
 import {T} from 'Common/Text';
 
@@ -21,10 +22,15 @@ interface IProps {
 }
 
 const Persons: FC<IProps> = () => {
-    const {name, persons, isError, isLoading} = useAppSelector((state) => state.persons);
-    const [searchName, setSearchName] = useState<string>(name);
-    const router = useRouter();
     const dispatch = useAppDispatch();
+    const router = useRouter();
+
+    const persons = useAppSelector(selectPersonsList);
+    const name = useAppSelector(selectName);
+    const isError = useAppSelector(selectIsErrorPersons);
+    const isLoading = useAppSelector(selectIsLoadingPersons);
+
+    const [searchName, setSearchName] = useState<string>(name);
 
     const onPersonsSearch = (name: string) => {
         dispatch(setName(name));

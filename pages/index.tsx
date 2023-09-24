@@ -2,7 +2,7 @@ import {HeadComponent} from 'components/Head/Head';
 import {HomePageTop} from 'components/HomePageTop/HomePageTop';
 import {GetStaticProps} from 'next';
 import {FC} from 'react';
-import {selectPagesIdArray} from 'store/filmsSelectors';
+import {selectPagesIdArray} from 'store/films/filmsSelectors';
 import {useAppSelector} from 'store/hooks';
 import styles from 'styles/main.module.scss';
 import {IMovie} from 'Common/Models';

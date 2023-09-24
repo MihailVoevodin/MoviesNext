@@ -6,8 +6,8 @@ import {useRouter} from 'next/router';
 import styles from 'pages/movie/[movieId]/reviews/Reviews.module.scss';
 import {ParsedUrlQuery} from 'querystring';
 import {FC, useEffect, useState} from 'react';
-import {selectPagesId} from 'store/filmsSelectors';
-import {setReviewsPageId} from 'store/filmsSlice';
+import {selectPagesId} from 'store/films/filmsSelectors';
+import {setReviewsPageId} from 'store/films/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import mainStyles from 'styles/main.module.scss';
 import {REVIEWS_SELECT_DICTIONARY} from 'Common/Consts';
@@ -57,11 +57,14 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
  * Страница отображения рецензий на фильм.
  */
 const Reviews: FC<IProps> = ({movieReviews, movieName}) => {
-    const router = useRouter();
-    const {total, totalPositiveReviews, totalNegativeReviews, totalNeutralReviews, items: reviews} = movieReviews;
     const dispatch = useAppDispatch();
-    const {reviews: reviewsPageId} = useAppSelector(selectPagesId);
+    const router = useRouter();
+
     const [order, setOrder] = useState<string>(EReviewsSelect.DATE_ASC);
+
+    const {total, totalPositiveReviews, totalNegativeReviews, totalNeutralReviews, items: reviews} = movieReviews;
+
+    const {reviews: reviewsPageId} = useAppSelector(selectPagesId);
 
     useEffect(() => {
         void router.push(T.Pages.Reviews.link(router.query.movieId, order, reviewsPageId));

@@ -47,7 +47,6 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
  */
 const Person: FC<IProps> = ({person}) => {
     const router = useRouter();
-    console.log(person);
 
     return (
         <>

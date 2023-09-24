@@ -1,8 +1,8 @@
 import {Rate} from 'antd';
 import styles from 'components/Movie/MovieDetailsReview/MovieDetailsReview.module.scss';
 import {FC, useEffect} from 'react';
-import {selectFilmRating} from 'store/filmsSelectors';
-import {setFilmRating} from 'store/filmsSlice';
+import {selectFilmRating} from 'store/films/filmsSelectors';
+import {setFilmRating} from 'store/films/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {StarFilled} from '@ant-design/icons';
 import {CountableTexts, CountRatingBackgroundColor} from 'Common/Helpers';

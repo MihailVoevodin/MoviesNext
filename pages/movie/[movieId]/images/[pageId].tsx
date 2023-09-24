@@ -6,11 +6,11 @@ import {useRouter} from 'next/router';
 import styles from 'pages/movie/[movieId]/images/MovieImages.module.scss';
 import {ParsedUrlQuery} from 'querystring';
 import {FC, useEffect, useState} from 'react';
-import {selectPagesId} from 'store/filmsSelectors';
-import {setImagesPageId} from 'store/filmsSlice';
+import {selectPagesId} from 'store/films/filmsSelectors';
+import {setImagesPageId} from 'store/films/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import mainStyles from 'styles/main.module.scss';
-import {CloseIcon} from 'Common/CloseIcon';
+import {CloseIcon} from 'components/CloseIcon';
 import {IMAGES_DICTIONARY} from 'Common/Consts';
 import {IMovieImages, IMovieImage} from 'Common/Models';
 import {Services} from 'Common/Services';
@@ -57,12 +57,15 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
  * Страница отображения изображений фильма.
  */
 const Images: FC<IProps> = ({movieName, movieImages}) => {
-    const [image, setImage] = useState<string>('');
-    const router = useRouter();
-    const {images: imagesPageId} = useAppSelector(selectPagesId);
-    const {total, totalPages, items: images} = movieImages;
     const dispatch = useAppDispatch();
+    const router = useRouter();
+
+    const {total, totalPages, items: images} = movieImages;
+
+    const [image, setImage] = useState<string>('');
     const [filter, setFilter] = useState<string>(IMAGES_DICTIONARY[0].type);
+
+    const {images: imagesPageId} = useAppSelector(selectPagesId);
 
     useEffect(() => {
         dispatch(setImagesPageId(1));

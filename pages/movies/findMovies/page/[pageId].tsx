@@ -4,10 +4,17 @@ import {TopPage} from 'components/Movies/TopPage';
 import {TopsNavbar} from 'components/Navbar/TopsNavbar';
 import {useRouter} from 'next/router';
 import {FC, useEffect} from 'react';
-import {selectFilters, selectFindMoviesPageId} from 'store/filtersSelectors';
-import {loadMoviesByFilters, setFindMoviesPageId} from 'store/filtersSlice';
+import {
+    selectFilters,
+    selectFindMoviesPageId,
+    selectIsErrorFilters,
+    selectIsLoadingFilters,
+    selectMoviesByFilters,
+    selectNumberOfPages,
+} from 'store/filters/filtersSelectors';
+import {loadMoviesByFilters, setFindMoviesPageId} from 'store/filters/filtersSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
-import {Spinner} from 'Common/Loading';
+import {Spinner} from 'components/Spinner';
 import {T} from 'Common/Text';
 
 /**
@@ -16,9 +23,13 @@ import {T} from 'Common/Text';
 const FindMovies: FC = () => {
     const dispatch = useAppDispatch();
     const router = useRouter();
-    const findMoviesPageId = useAppSelector(selectFindMoviesPageId);
+
     const {orderId, genreId, countryId, typeId, ratingFrom, ratingTo, yearFrom, yearTo, keyword} = useAppSelector(selectFilters);
-    const {movies, moviesCountPages, isLoading, isError} = useAppSelector((state) => state.filters);
+    const findMoviesPageId = useAppSelector(selectFindMoviesPageId);
+    const movies = useAppSelector(selectMoviesByFilters);
+    const numberOfPages = useAppSelector(selectNumberOfPages);
+    const isLoading = useAppSelector(selectIsLoadingFilters);
+    const isError = useAppSelector(selectIsErrorFilters);
 
     useEffect(() => {
         dispatch(
@@ -48,7 +59,7 @@ const FindMovies: FC = () => {
                 {isLoading ? (
                     <Spinner />
                 ) : (
-                    <TopPage movies={movies} pageId={findMoviesPageId} pagesCount={moviesCountPages} onChangePage={onChangePage} />
+                    <TopPage movies={movies} pageId={findMoviesPageId} pagesCount={numberOfPages} onChangePage={onChangePage} />
                 )}
             </main>
         </>

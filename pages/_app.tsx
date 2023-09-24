@@ -3,7 +3,7 @@ import Layout from 'components/Layout/Layout';
 import type {AppProps} from 'next/app';
 import NextNProgress from 'nextjs-progressbar';
 import {Provider} from 'react-redux';
-import {store} from 'store/Store';
+import {store} from 'store/store';
 
 const App = ({Component, pageProps}: AppProps) => {
     return (

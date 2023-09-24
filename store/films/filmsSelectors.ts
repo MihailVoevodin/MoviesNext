@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
-import {IAppState} from 'store/Store';
-import {IFilmsState} from 'store/filmsSlice';
-import {selectFindMoviesPageId} from 'store/filtersSelectors';
+import {IAppState} from 'store/store';
+import {IFilmsState} from 'store/films/filmsSlice';
+import {selectFindMoviesPageId} from 'store/filters/filtersSelectors';
 
 /** Селектор фильмов найденных по поисковой строке. */
 export const selectSearchMovies = (state: IAppState): IFilmsState['searchMovies'] => state.films.searchMovies;

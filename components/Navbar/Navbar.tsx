@@ -1,15 +1,16 @@
 import {Input} from 'antd';
+import {CloseIcon} from 'components/CloseIcon';
 import styles from 'components/Navbar/Navbar.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {FC, ChangeEvent, useState, useRef} from 'react';
-import {selectActiveTabName, selectPagesId, selectSearchMovies} from 'store/filmsSelectors';
-import {loadMoviesBySearch} from 'store/filmsSlice';
-import {selectFindMoviesPageId} from 'store/filtersSelectors';
+import {selectActiveTabName, selectPagesId, selectSearchMovies} from 'store/films/filmsSelectors';
+import {loadMoviesBySearch} from 'store/films/filmsSlice';
+import {selectFindMoviesPageId} from 'store/filters/filtersSelectors';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
-import {CloseIcon} from 'Common/CloseIcon';
-import {setActiveTabNamePageId, useOnDocumentClick} from 'Common/Helpers';
+import {setActiveTabNamePageId} from 'Common/Helpers';
+import {useOnDocumentClick} from 'Common/Hooks';
 import {T} from 'Common/Text';
 
 /**
@@ -18,6 +19,7 @@ import {T} from 'Common/Text';
 const Navbar: FC = () => {
     const dispatch = useAppDispatch();
     const router = useRouter();
+
     const [inputValue, setInputValue] = useState<string>('');
     const {top250, top100, topAwait} = useAppSelector(selectPagesId);
     const findMovies = useAppSelector(selectFindMoviesPageId);

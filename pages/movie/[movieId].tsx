@@ -9,7 +9,7 @@ import styles from 'pages/movie/Movie.module.scss';
 import {ParsedUrlQuery} from 'querystring';
 import {FC, useEffect} from 'react';
 import Slider from 'react-slick';
-import {setImagesPageId} from 'store/filmsSlice';
+import {setImagesPageId} from 'store/films/filmsSlice';
 import {useAppDispatch} from 'store/hooks';
 import {EMovieImages, EReviewsSelect} from 'Common/Enums';
 import {calcSlidesToShow} from 'Common/Helpers';
@@ -63,7 +63,6 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
  */
 const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
     const dispatch = useAppDispatch();
-    console.log(movieSimilars);
 
     useEffect(() => {
         dispatch(setImagesPageId(1));

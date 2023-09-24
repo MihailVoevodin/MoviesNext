@@ -2,8 +2,8 @@ import styles from 'components/Navbar/TopsNavbar.module.scss';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {FC} from 'react';
-import {selectNavbarPagesIdArray} from 'store/filmsSelectors';
-import {setActiveTabName} from 'store/filmsSlice';
+import {selectNavbarPagesIdArray} from 'store/films/filmsSelectors';
+import {setActiveTabName} from 'store/films/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {T} from 'Common/Text';
 
@@ -11,8 +11,9 @@ import {T} from 'Common/Text';
  * Компонент отображения табов на топы фильмов.
  */
 export const TopsNavbar: FC = () => {
-    const router = useRouter();
     const dispatch = useAppDispatch();
+    const router = useRouter();
+
     const pagesIdArray = useAppSelector(selectNavbarPagesIdArray);
 
     return (
