@@ -48,6 +48,7 @@ const personsSlice = createSlice({
             })
             .addCase(loadPersonsList.rejected, (state) => {
                 state.isError = true;
+                state.isLoading = false;
             })
             .addCase(loadPersonsList.fulfilled, (state, action) => {
                 state.persons = action.payload;

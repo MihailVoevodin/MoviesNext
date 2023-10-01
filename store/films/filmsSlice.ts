@@ -92,6 +92,7 @@ const filmsSlice = createSlice({
             })
             .addCase(loadMoviesBySearch.rejected, (state) => {
                 state.isError = true;
+                state.isLoading = false;
             })
             .addCase(loadMoviesBySearch.fulfilled, (state, action: PayloadAction<IMovie[]>) => {
                 state.searchMovies = action.payload;

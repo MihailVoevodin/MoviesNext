@@ -102,6 +102,7 @@ const filtersSlice = createSlice({
             })
             .addCase(loadMoviesByFilters.rejected, (state) => {
                 state.isError = true;
+                state.isLoading = false;
             })
             .addCase(loadMoviesByFilters.fulfilled, (state, action) => {
                 const {items, totalPages} = action.payload;
