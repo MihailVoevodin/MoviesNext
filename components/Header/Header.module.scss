@@ -1,0 +1,41 @@
+@import 'styles/variables';
+
+.logo {
+    text-align: center;
+}
+
+.header {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.signIn,
+.signOut {
+    position: absolute;
+    margin-right: 50px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    &:hover {
+     color: $secondary;
+    }
+}
+
+.signIn {
+    cursor: pointer;
+}
+
+.signOut {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.profileImage {
+    margin-right: 20px;
+    border-radius: 50%;
+}
