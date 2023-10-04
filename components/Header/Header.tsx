@@ -30,7 +30,7 @@ const Header = () => {
                 <div className={styles.signOut}>
                     <Image
                         className={styles.profileImage}
-                        src={session.user?.image}
+                        src={`${session.user?.image}`}
                         alt={''}
                         width={50}
                         height={50}
