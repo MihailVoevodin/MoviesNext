@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
 import Image from 'next/image';
 import styles from 'pages/movie/[movieId]/reviews/Reviews.module.scss';
 import User from 'public/User.png';
@@ -8,8 +8,8 @@ import {Regulars} from 'Common/Consts';
 import {MovieReviewBgColor, ReviewColors} from 'Common/Helpers';
 import {IMovieReview} from 'Common/Models';
 import {T} from 'Common/Text';
-import 'moment/locale/ru';
-moment.locale('ru');
+import 'dayjs/locale/ru';
+dayjs.locale('ru');
 
 /**
  * @param review Детальная модель рецензии.
@@ -35,7 +35,7 @@ export const MovieReview: FC<IProps> = ({review}) => {
                     <Image src={User} alt={'user'} /> <span>{review.author}</span>
                 </div>
                 <div>
-                    <div>{moment(review.date).format(T.dateAndTime)}</div>
+                    <div>{dayjs(review.date).format(T.dateAndTime)}</div>
                     <div className={styles.reviewType}>
                         <span>Тип рецензии: </span>
                         <LikeOutlined style={{color: colors[0]}} />

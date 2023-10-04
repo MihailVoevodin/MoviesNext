@@ -1,11 +1,11 @@
 import styles from 'components/Movie/MovieDistributions/MovieDistribution.module.scss';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import {FC} from 'react';
 import {EMovieDistributions} from 'Common/Enums';
 import {IMovieDistribution} from 'Common/Models';
 import {T} from 'Common/Text';
-import 'moment/locale/ru';
-moment.locale('ru');
+import 'dayjs/locale/ru';
+dayjs.locale('ru');
 
 /**
  * @param movieDistributions Массив премьер фильма.
@@ -33,7 +33,7 @@ export const MovieDistribution: FC<IProps> = ({movieDistributions, type, text}) 
                         {filteredMovieDistributions.map((distribution, id: number) => {
                             return (
                                 <li className={styles.listItem} key={id}>
-                                    <div className={styles.date}>{moment(distribution.date).format(T.date)}</div>
+                                    <div className={styles.date}>{dayjs(distribution.date).format(T.date)}</div>
                                     <div>
                                         {distribution.companies.length > 0 ? distribution.companies[0].name : distribution.country.country}
                                     </div>

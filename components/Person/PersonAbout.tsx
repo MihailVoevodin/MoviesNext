@@ -1,12 +1,14 @@
 import styles from 'components/Person/PersonAbout.module.scss';
 import {PersonBestMovies} from 'components/Person/PersonBestMovies';
-import moment from 'moment';
-import 'moment/locale/ru';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import 'dayjs/locale/ru';
 import Link from 'next/link';
 import {FC} from 'react';
 import {IPerson} from 'Common/Models';
 import {T} from 'Common/Text';
-moment.locale('ru'); // TODO: переписать на dayjs
+dayjs.locale('ru');
+dayjs.extend(relativeTime);
 
 /**
  * @param person Модель личности.
@@ -43,7 +45,7 @@ export const PersonAbout: FC<IProps> = ({person}) => {
                         <div className={styles.personItem}>
                             <div className={styles.personItemText}>{T.Person.birthday}</div>
                             <div>
-                                {moment(person.birthday).format(T.date)} {!person.death && `• ${moment(person.birthday).fromNow(true)}`}
+                                {dayjs(person.birthday).format(T.date)} {!person.death && `• ${dayjs(person.birthday).fromNow(true)}`}
                             </div>
                         </div>
                     )}
@@ -58,7 +60,7 @@ export const PersonAbout: FC<IProps> = ({person}) => {
                             <div className={styles.personItem}>
                                 <div className={styles.personItemText}>{T.Person.death}</div>
                                 <div>
-                                    {moment(person.death).format(T.date)} • {moment(person.death).from(person.birthday, true)}
+                                    {dayjs(person.death).format(T.date)} • {dayjs(person.death).from(person.birthday, true)}
                                 </div>
                             </div>
                             <div className={styles.personItem}>
