@@ -40,14 +40,12 @@ const initialState: IFilmsState = {
     isError: false,
 };
 
-export const loadMoviesBySearch = createAsyncThunk('films/loadMoviesBySearch', async (keyword: string, {rejectWithValue, dispatch}) => {
+export const loadMoviesBySearch = createAsyncThunk('films/loadMoviesBySearch', async (keyword: string, {rejectWithValue}) => {
     const response = await Services.getMoviesBySearch(keyword);
 
     if (response.status !== 200) {
         return rejectWithValue('Server Error!');
     }
-
-    dispatch(setSearchMovies(response.data.films));
 
     return response.data.films;
 });

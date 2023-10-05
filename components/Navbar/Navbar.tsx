@@ -6,9 +6,10 @@ import Link from 'next/link';
 import {useRouter} from 'next/router';
 import {FC, ChangeEvent, useState, useRef} from 'react';
 import {selectActiveTabName, selectPagesId, selectSearchMovies} from 'store/films/filmsSelectors';
-import {loadMoviesBySearch} from 'store/films/filmsSlice';
+import {loadMoviesBySearch, setSearchMovies} from 'store/films/filmsSlice';
 import {selectFindMoviesPageId} from 'store/filters/filtersSelectors';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
+import {useDebouncedCallback} from 'use-debounce';
 import {setActiveTabNamePageId} from 'Common/Helpers';
 import {useOnDocumentClick} from 'Common/Hooks';
 import {T} from 'Common/Text';
@@ -37,22 +38,24 @@ const Navbar: FC = () => {
         {id: 2, title: 'Личности', path: '/persons'},
     ];
 
+    const debouncedLoadMovies = useDebouncedCallback((value) => dispatch(loadMoviesBySearch(value)), 500);
+
     const onChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
         console.log(e.target.value);
         setInputValue(e.target.value);
-        dispatch(loadMoviesBySearch(e.target.value));
+        debouncedLoadMovies(e.target.value);
     };
 
     const onCloseSearch = () => {
         setInputValue('');
-        dispatch(loadMoviesBySearch(''));
+        dispatch(setSearchMovies([]));
     };
 
     useOnDocumentClick(searchInput.current, onCloseSearch);
 
     const onSearchMovie = () => {
         setInputValue('');
-        dispatch(loadMoviesBySearch(''));
+        dispatch(setSearchMovies([]));
     };
 
     return (
