@@ -2,7 +2,7 @@ import styles from 'components/Header/Header.module.scss';
 import Navbar from 'components/Navbar/Navbar';
 import {signIn, signOut, useSession} from 'next-auth/react';
 import Image from 'next/image';
-import {useRouter} from 'next/router';
+import Link from 'next/link';
 import logo from 'public/logo.png';
 import {T} from 'Common/Text';
 
@@ -11,7 +11,6 @@ import {T} from 'Common/Text';
  */
 const Header = () => {
     const {data: session} = useSession();
-    const router = useRouter();
     console.log(session);
 
     return (
@@ -30,14 +29,9 @@ const Header = () => {
                 )}
                 {session && (
                     <div className={styles.signOutContainer}>
-                        <Image
-                            className={styles.profileImage}
-                            src={`${session.user?.image}`}
-                            alt={''}
-                            width={50}
-                            height={50}
-                            onClick={() => router.replace(T.Pages.Profile.link)}
-                        />
+                        <Link className={styles.profileLink} href={T.Pages.Profile.link}>
+                            <Image className={styles.profileImage} src={`${session.user?.image}`} alt={''} width={50} height={50} />
+                        </Link>
                         <button className={styles.signOutBtn} onClick={() => signOut()}>
                             {T.Auth.signOut}
                         </button>
