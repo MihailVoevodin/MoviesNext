@@ -11,7 +11,7 @@ interface IProps {
     height: string;
 }
 
-/** Иконка крестика для закрытия модального окна. */
+/** Иконка крестика для закрытия чего-либо. */
 export const CloseIcon: FC<IProps> = ({fill, width, height}) => {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" fill={fill} viewBox="0 0 50 50" width={width} height={height}>

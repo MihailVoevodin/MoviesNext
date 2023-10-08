@@ -13,26 +13,33 @@
     justify-content: space-between;
 }
 
-.signIn,
-.signOut {
+.auth {
     position: absolute;
     margin-right: 50px;
     right: 0;
     top: 50%;
     transform: translateY(-50%);
-    &:hover {
-     color: $secondary;
+}
+
+.signOutContainer {
+    display: flex;
+    align-items: center;
+    img {
+        cursor: pointer;
     }
 }
 
-.signIn {
-    cursor: pointer;
-}
-
-.signOut {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
+.signInBtn,
+.signOutBtn {
+    border: none;
+    background-color: $white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: all .5s;
+    &:hover {
+        color: $white;
+        background-color: $secondary;
+    }
 }
 
 .profileImage {

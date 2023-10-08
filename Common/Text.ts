@@ -85,6 +85,10 @@ export const T = {
             link: (personId: number): string => `/name/${personId}`,
             searchLink: (name: string): string => `/persons?name=${name}`,
         },
+        Profile: {
+            label: 'Профиль',
+            link: '/profile',
+        },
     },
     FiltersInputs: {
         genre: {
@@ -1455,5 +1459,10 @@ export const T = {
                 label: 'мини-сериал',
             },
         ],
+    },
+    Auth: {
+        signIn: 'Войти',
+        signOut: 'Выйти',
+        notAuth: 'Вы не авторизованы',
     },
 };

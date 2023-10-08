@@ -53,6 +53,10 @@ main {
     padding: 0 15px;
 }
 
+button {
+    cursor: pointer;
+}
+
 [data-icon="double-right"],
 [data-icon="double-left"] {
     fill: $grey;

@@ -4,6 +4,7 @@ import {signIn, signOut, useSession} from 'next-auth/react';
 import Image from 'next/image';
 import {useRouter} from 'next/router';
 import logo from 'public/logo.png';
+import {T} from 'Common/Text';
 
 /**
  * Компонент статичного хедера сайта.
@@ -21,24 +22,28 @@ const Header = () => {
                 </div>
                 <Navbar />
             </div>
-            {!session && (
-                <div className={styles.signIn} onClick={() => signIn()}>
-                    Войти
-                </div>
-            )}
-            {session && (
-                <div className={styles.signOut}>
-                    <Image
-                        className={styles.profileImage}
-                        src={`${session.user?.image}`}
-                        alt={''}
-                        width={50}
-                        height={50}
-                        onClick={() => router.replace('/profile')}
-                    />
-                    <div onClick={() => signOut()}>Выйти</div>
-                </div>
-            )}
+            <div className={styles.auth}>
+                {!session && (
+                    <button className={styles.signInBtn} onClick={() => signIn()}>
+                        {T.Auth.signIn}
+                    </button>
+                )}
+                {session && (
+                    <div className={styles.signOutContainer}>
+                        <Image
+                            className={styles.profileImage}
+                            src={`${session.user?.image}`}
+                            alt={''}
+                            width={50}
+                            height={50}
+                            onClick={() => router.replace(T.Pages.Profile.link)}
+                        />
+                        <button className={styles.signOutBtn} onClick={() => signOut()}>
+                            {T.Auth.signOut}
+                        </button>
+                    </div>
+                )}
+            </div>
         </header>
     );
 };
