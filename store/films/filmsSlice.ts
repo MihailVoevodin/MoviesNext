@@ -12,6 +12,7 @@ import {Services} from 'Common/Services';
  */
 export interface IFilmsState {
     searchMovies: IMovie[];
+    sequelsAndPrequels: IMovie[];
     activeTabName: string;
     pagesId: {
         top250: number;
@@ -27,6 +28,7 @@ export interface IFilmsState {
 
 const initialState: IFilmsState = {
     searchMovies: [],
+    sequelsAndPrequels: [],
     activeTabName: 'top250movies',
     pagesId: {
         top250: 1,
@@ -49,6 +51,20 @@ export const loadMoviesBySearch = createAsyncThunk('films/loadMoviesBySearch', a
 
     return response.data.films;
 });
+
+export const loadMovieSequelsAndPrequels = createAsyncThunk(
+    'films/loadMovieSequelsAndPrequels',
+    async (movieId: number, {rejectWithValue}) => {
+        const response = await Services.getMovieSequelsAndPrequels(movieId);
+
+        if (response.status !== 200) {
+            return rejectWithValue('Server Error!');
+        }
+        console.log(response);
+
+        return response.data.films;
+    }
+);
 
 /**
  * Срез списка фильмов.
@@ -94,6 +110,18 @@ const filmsSlice = createSlice({
             })
             .addCase(loadMoviesBySearch.fulfilled, (state, action: PayloadAction<IMovie[]>) => {
                 state.searchMovies = action.payload;
+                state.isLoading = false;
+                state.isError = false;
+            })
+            .addCase(loadMovieSequelsAndPrequels.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(loadMovieSequelsAndPrequels.rejected, (state) => {
+                state.isError = true;
+                state.isLoading = false;
+            })
+            .addCase(loadMovieSequelsAndPrequels.fulfilled, (state, action: PayloadAction<IMovie[]>) => {
+                state.sequelsAndPrequels = action.payload;
                 state.isLoading = false;
                 state.isError = false;
             });

@@ -9,8 +9,9 @@ import styles from 'pages/movie/Movie.module.scss';
 import {ParsedUrlQuery} from 'querystring';
 import {FC, useEffect} from 'react';
 import Slider from 'react-slick';
-import {setImagesPageId} from 'store/films/filmsSlice';
-import {useAppDispatch} from 'store/hooks';
+import {selectMovieSequelsAndPrequels} from 'store/films/filmsSelectors';
+import {loadMovieSequelsAndPrequels, setImagesPageId} from 'store/films/filmsSlice';
+import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {EMovieImages, EReviewsSelect} from 'Common/Enums';
 import {calcSlidesToShow} from 'Common/Helpers';
 import {IMovieDetails, IMovieBox, IMovieStaff, IMovie} from 'Common/Models';
@@ -63,10 +64,17 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
  */
 const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
     const dispatch = useAppDispatch();
+    const sequelsAndPrequels = useAppSelector(selectMovieSequelsAndPrequels);
+
+    useEffect(() => {
+        dispatch(loadMovieSequelsAndPrequels(movie.kinopoiskId));
+    }, [movie.kinopoiskId]);
 
     useEffect(() => {
         dispatch(setImagesPageId(1));
     });
+
+    console.log(sequelsAndPrequels);
 
     const settings = {
         dots: false,
@@ -86,7 +94,7 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                 <div className={styles.background}>
                     <div className={styles.movieMain}>
                         <div className={styles.movieCoverImg}>
-                            {movie.coverUrl && <Image width={700} height={500} src={movie.coverUrl} alt={movie.nameRu} />}
+                            {movie.coverUrl && <Image width={700} height={500} src={movie.coverUrl} alt={movie.nameRu} priority={true} />}
                             <div className={styles.gradient}></div>
                         </div>
                     </div>
