@@ -1,6 +1,7 @@
 @import 'variables';
 
 .movieDetailsPage {
+    min-height: calc(100vh - 195px);
     background-color: $lightGrey;
     color: $primary;
     padding: 20px 0;

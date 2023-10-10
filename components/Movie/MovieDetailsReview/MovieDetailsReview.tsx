@@ -98,9 +98,11 @@ const MovieDetailsReview: FC<IProps> = ({movie}) => {
                                 {CountableTexts(movie.ratingFilmCriticsVoteCount, T.Movie.countable.grade)}
                             </span>
                         </div>
-                        <div>
-                            <StarFilled /> {movie.ratingFilmCritics}
-                        </div>
+                        {movie.ratingFilmCritics && (
+                            <div>
+                                <StarFilled /> {movie.ratingFilmCritics}
+                            </div>
+                        )}
                     </div>
                 </div>
                 {movie.ratingRfCritics && (
