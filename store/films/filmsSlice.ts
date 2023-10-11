@@ -60,9 +60,8 @@ export const loadMovieSequelsAndPrequels = createAsyncThunk(
         if (response.status !== 200) {
             return rejectWithValue('Server Error!');
         }
-        console.log(response);
 
-        return response.data.films;
+        return response.data;
     }
 );
 

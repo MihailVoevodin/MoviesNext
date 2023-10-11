@@ -74,8 +74,6 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
         dispatch(setImagesPageId(1));
     });
 
-    console.log(sequelsAndPrequels);
-
     const settings = {
         dots: false,
         infinite: true,
@@ -84,8 +82,6 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
         slidesToScroll: 1,
         variableWidth: true,
     };
-
-    console.log(settings.slidesToShow);
 
     return (
         <>
@@ -107,30 +103,30 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                         <div>
                             <MovieMainInfo movie={movie} />
                             <MovieAbout movie={movie} movieStaff={movieStaff} movieBox={movieBox} />
+                            {sequelsAndPrequels.length > 0 && (
+                                <div className={styles.sequelsContainer}>
+                                    <h3 className={styles.sequelsTitle}>Сиквелы и приквелы</h3>
+                                    <Slider {...settings}>
+                                        {sequelsAndPrequels.map((movie) => (
+                                            <Link key={movie.filmId} className={styles.sequelsLink} href={T.Pages.MovieLink(movie.filmId)}>
+                                                <div style={{width: 200}}>
+                                                    {movie.posterUrl && (
+                                                        <Image
+                                                            src={movie.posterUrl}
+                                                            width={200}
+                                                            height={280}
+                                                            alt={movie.nameRu || movie.nameOriginal}
+                                                        />
+                                                    )}
+                                                    <div className={styles.sequelsText}>{movie.nameRu}</div>
+                                                </div>
+                                            </Link>
+                                        ))}
+                                    </Slider>
+                                </div>
+                            )}
                         </div>
                     </div>
-                    {movieSimilars.length > 0 && (
-                        <div className={styles.similarsContainer}>
-                            <h3 className={styles.similarsTitle}>Похожие фильмы</h3>
-                            <Slider {...settings}>
-                                {movieSimilars.map((movie) => (
-                                    <Link key={movie.filmId} className={styles.similarsLink} href={T.Pages.MovieLink(movie.filmId)}>
-                                        <div style={{width: 200}}>
-                                            {movie.posterUrl && (
-                                                <Image
-                                                    src={movie.posterUrl}
-                                                    width={200}
-                                                    height={280}
-                                                    alt={movie.nameRu || movie.nameOriginal}
-                                                />
-                                            )}
-                                            <div className={styles.similarsText}>{movie.nameRu}</div>
-                                        </div>
-                                    </Link>
-                                ))}
-                            </Slider>
-                        </div>
-                    )}
                 </div>
             </main>
             <div className={styles.movieDetails}>
@@ -158,6 +154,28 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                     </ul>
                     <hr />
                     <MovieDetailsReview movie={movie} />
+                    {movieSimilars.length > 0 && (
+                        <div className={styles.similarsContainer}>
+                            <h3 className={styles.similarsTitle}>Похожие фильмы</h3>
+                            <Slider {...settings}>
+                                {movieSimilars.map((movie) => (
+                                    <Link key={movie.filmId} className={styles.similarsLink} href={T.Pages.MovieLink(movie.filmId)}>
+                                        <div style={{width: 200}}>
+                                            {movie.posterUrl && (
+                                                <Image
+                                                    src={movie.posterUrl}
+                                                    width={200}
+                                                    height={280}
+                                                    alt={movie.nameRu || movie.nameOriginal}
+                                                />
+                                            )}
+                                            <div className={styles.similarsText}>{movie.nameRu}</div>
+                                        </div>
+                                    </Link>
+                                ))}
+                            </Slider>
+                        </div>
+                    )}
                 </div>
             </div>
         </>
