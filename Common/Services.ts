@@ -52,6 +52,10 @@ export const Services = {
     async getMovieBox(movieId: string): Promise<AxiosResponse> {
         return await axios.get(`/v2.2/films/${movieId}/box_office`);
     },
+    /** Получение списка сиквелов и приквелов. */
+    async getMovieSequelsAndPrequels(movieId: number): Promise<AxiosResponse> {
+        return await axios.get(`/v2.1/films/${movieId}/sequels_and_prequels`);
+    },
     /** Получение персоны. */
     async getPerson(nameId: string): Promise<AxiosResponse> {
         return await axios.get(`/v1/staff/${nameId}`);
