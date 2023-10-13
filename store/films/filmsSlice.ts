@@ -1,5 +1,5 @@
 import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {IMovie} from 'Common/Models';
+import {IMovie, ISeason} from 'Common/Models';
 import {TFilmRating} from 'Common/Models';
 import {Services} from 'Common/Services';
 
@@ -13,6 +13,7 @@ import {Services} from 'Common/Services';
 export interface IFilmsState {
     searchMovies: IMovie[];
     sequelsAndPrequels: IMovie[];
+    seasons: ISeason[];
     activeTabName: string;
     pagesId: {
         top250: number;
@@ -29,6 +30,7 @@ export interface IFilmsState {
 const initialState: IFilmsState = {
     searchMovies: [],
     sequelsAndPrequels: [],
+    seasons: [],
     activeTabName: 'top250movies',
     pagesId: {
         top250: 1,
@@ -64,6 +66,18 @@ export const loadMovieSequelsAndPrequels = createAsyncThunk(
         return response.data;
     }
 );
+
+export const loadSerialSeasons = createAsyncThunk('films/loadSerialSeasons', async (movieId: number, {rejectWithValue}) => {
+    const response = await Services.getSerialSeasons(movieId);
+
+    if (response.status !== 200) {
+        return rejectWithValue('Server Error!');
+    }
+
+    console.log(response.data.items);
+
+    return response.data.items;
+});
 
 /**
  * Срез списка фильмов.
@@ -121,6 +135,18 @@ const filmsSlice = createSlice({
             })
             .addCase(loadMovieSequelsAndPrequels.fulfilled, (state, action: PayloadAction<IMovie[]>) => {
                 state.sequelsAndPrequels = action.payload;
+                state.isLoading = false;
+                state.isError = false;
+            })
+            .addCase(loadSerialSeasons.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(loadSerialSeasons.rejected, (state) => {
+                state.isError = true;
+                state.isLoading = false;
+            })
+            .addCase(loadSerialSeasons.fulfilled, (state, action: PayloadAction<ISeason[]>) => {
+                state.seasons = action.payload;
                 state.isLoading = false;
                 state.isError = false;
             });

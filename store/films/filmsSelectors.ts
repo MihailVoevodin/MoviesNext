@@ -9,6 +9,9 @@ export const selectSearchMovies = (state: IAppState): IFilmsState['searchMovies'
 /** Селектор сиквелов и приквелов фильма. */
 export const selectMovieSequelsAndPrequels = (state: IAppState): IFilmsState['sequelsAndPrequels'] => state.films.sequelsAndPrequels;
 
+/** Селектор сезонов сериала. */
+export const selectSerialSeasons = (state: IAppState): IFilmsState['seasons'] => state.films.seasons;
+
 /** Селектор названия активного таба топов фильмов. */
 export const selectActiveTabName = (state: IAppState): IFilmsState['activeTabName'] => state.films.activeTabName;
 

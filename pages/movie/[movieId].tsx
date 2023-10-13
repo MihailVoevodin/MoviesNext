@@ -9,8 +9,8 @@ import styles from 'pages/movie/Movie.module.scss';
 import {ParsedUrlQuery} from 'querystring';
 import {FC, useEffect} from 'react';
 import Slider from 'react-slick';
-import {selectMovieSequelsAndPrequels} from 'store/films/filmsSelectors';
-import {loadMovieSequelsAndPrequels, setImagesPageId} from 'store/films/filmsSlice';
+import {selectMovieSequelsAndPrequels, selectSerialSeasons} from 'store/films/filmsSelectors';
+import {loadMovieSequelsAndPrequels, loadSerialSeasons, setImagesPageId} from 'store/films/filmsSlice';
 import {useAppDispatch, useAppSelector} from 'store/hooks';
 import {EMovieImages, EReviewsSelect} from 'Common/Enums';
 import {calcSlidesToShow} from 'Common/Helpers';
@@ -65,14 +65,21 @@ export const getServerSideProps: GetServerSideProps<IProps, Params> = async (con
 const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
     const dispatch = useAppDispatch();
     const sequelsAndPrequels = useAppSelector(selectMovieSequelsAndPrequels);
+    const seasons = useAppSelector(selectSerialSeasons);
 
     useEffect(() => {
         dispatch(loadMovieSequelsAndPrequels(movie.kinopoiskId));
+        if (movie.serial) {
+            dispatch(loadSerialSeasons(movie.kinopoiskId));
+        }
     }, [movie.kinopoiskId]);
 
     useEffect(() => {
         dispatch(setImagesPageId(1));
     });
+
+    console.log(seasons);
+    console.log(sequelsAndPrequels, sequelsAndPrequels.length);
 
     const settings = {
         dots: false,

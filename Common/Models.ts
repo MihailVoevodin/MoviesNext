@@ -387,3 +387,31 @@ export interface IFilters {
     yearTo: string;
     keyword: string;
 }
+
+/**
+ * Модель стейта сезона
+ *
+ * @param number - Номер сезона.
+ * @param episodes - Массив эпизодов.
+ */
+export interface ISeason {
+    number: number;
+    episodes: IEpisode[];
+}
+
+/**
+ * Модель стейта эпизода
+ *
+ * @param episodeNumber - Номер эпизода.
+ * @param seasonNumber - Номер сезона.
+ * @param nameEn - Название эпизода на английском.
+ * @param nameRu - Название эпизода на русском.
+ * @param releaseDate - Дата релиза эпизода.
+ */
+interface IEpisode {
+    episodeNumber: number;
+    seasonNumber: number;
+    nameEn: string;
+    nameRu: string;
+    releaseDate: string;
+}
