@@ -12,6 +12,7 @@ import {
 
 export const T = {
     date: 'D MMMM YYYY',
+    dateShort: 'DD.MM.YYYY',
     dateAndTime: 'DD MMMM YYYY | hh:mm',
     Pages: {
         backToMovie: 'Информация о фильме',
@@ -85,6 +86,11 @@ export const T = {
             link: (personId: number): string => `/name/${personId}`,
             searchLink: (name: string): string => `/persons?name=${name}`,
         },
+        Seasons: {
+            label: 'Сезоны',
+            link: (movieId: number | string | string[] | undefined): string => `/movie/${movieId}/seasons`,
+            empty: 'Нет данных о эпизодах',
+        },
         Profile: {
             label: 'Профиль',
             link: '/profile',
@@ -150,7 +156,8 @@ export const T = {
         age: 'Возраст',
         ratingMPAA: 'Рейтинг MPAA',
         duration: 'Время',
-        castTitle: 'В ролях',
+        cast: 'В ролях',
+        seasons: 'Сезоны',
         countable: {
             grade: ['оценка', 'оценки', 'оценок'],
             actors: ['актер', 'актера', 'актеров'],

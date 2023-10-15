@@ -3,13 +3,14 @@ import styles from 'components/Movie/MovieAbout/MovieAbout.module.scss';
 import {MovieAboutActors} from 'components/Movie/MovieAbout/components/MovieAboutActors';
 import {MovieAboutBox} from 'components/Movie/MovieAbout/components/MovieAboutBox';
 import {MovieAboutStaff} from 'components/Movie/MovieAbout/components/MovieAboutStaff';
+import dayjs from 'dayjs';
 import Link from 'next/link';
 import {FC} from 'react';
 import {RightOutlined} from '@ant-design/icons';
 import {BOX_DICTIONARY, MAIN_STAFF_DICTIONARY} from 'Common/Consts';
 import {EMovieStaff} from 'Common/Enums';
 import {CountableTexts, MpaaTooltipText} from 'Common/Helpers';
-import {IMovieBox, IMovieDetails, IMovieStaff} from 'Common/Models';
+import {IEpisode, IMovieBox, IMovieDetails, IMovieStaff, ISeason} from 'Common/Models';
 import {T} from 'Common/Text';
 
 /**
@@ -21,13 +22,21 @@ interface IProps {
     movie: IMovieDetails;
     movieBox: IMovieBox[];
     movieStaff: IMovieStaff[];
+    seasons: ISeason[];
 }
 
 /**
  * Компонент отображения информации о фильме.
  */
-const MovieAbout: FC<IProps> = ({movie, movieStaff, movieBox}) => {
+const MovieAbout: FC<IProps> = ({movie, movieStaff, movieBox, seasons}) => {
     const numberOfActors = movieStaff.filter((person) => person.professionKey == EMovieStaff.ACTOR).length;
+
+    let lastFiveEpisodes: IEpisode[] = [];
+
+    if (seasons.length > 0) {
+        const lastSeason = [...seasons[seasons.length - 1].episodes];
+        lastFiveEpisodes = [...lastSeason.sort((a, b) => b.episodeNumber - a.episodeNumber).slice(0, 5)];
+    }
 
     return (
         <div className={styles.aboutContainer}>
@@ -105,18 +114,42 @@ const MovieAbout: FC<IProps> = ({movie, movieStaff, movieBox}) => {
                         {movie.filmLength % 60}
                     </div>
                 </div>
-            </div>
-            <div className={styles.actors}>
-                <Link href={T.Pages.Staff.link(movie.kinopoiskId)}>
-                    <h3>
-                        {T.Movie.castTitle} <RightOutlined />
-                    </h3>
-                </Link>
-                <MovieAboutActors movieStaff={movieStaff} professionKey={EMovieStaff.ACTOR} />
-                <div className={styles.actorsCount}>
-                    <Link href={T.Pages.Staff.link(movie.kinopoiskId)}>
-                        {numberOfActors} {CountableTexts(numberOfActors, T.Movie.countable.actors)}
+                <div className={styles.seasons}>
+                    <Link href={T.Pages.Seasons.link(movie.kinopoiskId)}>
+                        <h3>
+                            {T.Movie.seasons} {seasons.length}
+                        </h3>
                     </Link>
+                    <div>
+                        {lastFiveEpisodes.length > 0 &&
+                            lastFiveEpisodes.map((episode) => (
+                                <div key={episode.episodeNumber} className={styles.episode}>
+                                    <div>
+                                        <div>{episode.episodeNumber} эпизод</div>
+                                        <div>{dayjs(episode.releaseDate).format(T.dateShort)}</div>
+                                    </div>
+                                    <div>
+                                        <div>{episode.nameRu}</div>
+                                        <div className={styles.episodeNameEn}>{episode.nameEn}</div>
+                                    </div>
+                                </div>
+                            ))}
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div className={styles.actors}>
+                    <Link href={T.Pages.Staff.link(movie.kinopoiskId)}>
+                        <h3>
+                            {T.Movie.cast} <RightOutlined />
+                        </h3>
+                    </Link>
+                    <MovieAboutActors movieStaff={movieStaff} professionKey={EMovieStaff.ACTOR} />
+                    <div className={styles.actorsCount}>
+                        <Link href={T.Pages.Staff.link(movie.kinopoiskId)}>
+                            {numberOfActors} {CountableTexts(numberOfActors, T.Movie.countable.actors)}
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

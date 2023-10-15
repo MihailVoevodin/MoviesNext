@@ -78,9 +78,6 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
         dispatch(setImagesPageId(1));
     });
 
-    console.log(seasons);
-    console.log(sequelsAndPrequels, sequelsAndPrequels.length);
-
     const settings = {
         dots: false,
         infinite: true,
@@ -109,7 +106,7 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                         </div>
                         <div>
                             <MovieMainInfo movie={movie} />
-                            <MovieAbout movie={movie} movieStaff={movieStaff} movieBox={movieBox} />
+                            <MovieAbout movie={movie} movieStaff={movieStaff} movieBox={movieBox} seasons={seasons} />
                             {sequelsAndPrequels.length > 0 && (
                                 <div className={styles.sequelsContainer}>
                                     <h3 className={styles.sequelsTitle}>Сиквелы и приквелы</h3>

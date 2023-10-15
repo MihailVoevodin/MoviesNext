@@ -408,7 +408,7 @@ export interface ISeason {
  * @param nameRu - Название эпизода на русском.
  * @param releaseDate - Дата релиза эпизода.
  */
-interface IEpisode {
+export interface IEpisode {
     episodeNumber: number;
     seasonNumber: number;
     nameEn: string;
