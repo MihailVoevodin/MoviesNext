@@ -70,7 +70,7 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
     useEffect(() => {
         dispatch(loadMovieSequelsAndPrequels(movie.kinopoiskId));
         if (movie.serial) {
-            dispatch(loadSerialSeasons(movie.kinopoiskId));
+            dispatch(loadSerialSeasons(movie.kinopoiskId.toString()));
         }
     }, [movie.kinopoiskId]);
 

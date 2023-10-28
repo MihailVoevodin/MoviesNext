@@ -90,7 +90,7 @@ export const Services = {
         return await axios.get(`/v2.1/films/search-by-keyword?keyword=${keyword}`);
     },
     /** Получение сезонов для сериала. */
-    async getSerialSeasons(movieId: number): Promise<AxiosResponse> {
+    async getSerialSeasons(movieId: string): Promise<AxiosResponse> {
         return await axios.get(`/v2.2/films/${movieId}/seasons`);
     },
 };

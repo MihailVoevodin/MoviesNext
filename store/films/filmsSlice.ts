@@ -67,7 +67,7 @@ export const loadMovieSequelsAndPrequels = createAsyncThunk(
     }
 );
 
-export const loadSerialSeasons = createAsyncThunk('films/loadSerialSeasons', async (movieId: number, {rejectWithValue}) => {
+export const loadSerialSeasons = createAsyncThunk('films/loadSerialSeasons', async (movieId: string, {rejectWithValue}) => {
     const response = await Services.getSerialSeasons(movieId);
 
     if (response.status !== 200) {
