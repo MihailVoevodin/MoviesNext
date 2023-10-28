@@ -127,6 +127,7 @@ const filmsSlice = createSlice({
                 state.isError = false;
             })
             .addCase(loadMovieSequelsAndPrequels.pending, (state) => {
+                state.sequelsAndPrequels = [];
                 state.isLoading = true;
             })
             .addCase(loadMovieSequelsAndPrequels.rejected, (state) => {
@@ -139,6 +140,7 @@ const filmsSlice = createSlice({
                 state.isError = false;
             })
             .addCase(loadSerialSeasons.pending, (state) => {
+                state.seasons = [];
                 state.isLoading = true;
             })
             .addCase(loadSerialSeasons.rejected, (state) => {

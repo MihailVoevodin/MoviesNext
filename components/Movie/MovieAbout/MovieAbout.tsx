@@ -114,15 +114,15 @@ const MovieAbout: FC<IProps> = ({movie, movieStaff, movieBox, seasons}) => {
                         {movie.filmLength % 60}
                     </div>
                 </div>
-                <div className={styles.seasons}>
-                    <Link href={T.Pages.Seasons.link(movie.kinopoiskId)}>
-                        <h3>
-                            {T.Movie.seasons} {seasons.length}
-                        </h3>
-                    </Link>
-                    <div>
-                        {lastFiveEpisodes.length > 0 &&
-                            lastFiveEpisodes.map((episode) => (
+                {lastFiveEpisodes.length > 0 && (
+                    <div className={styles.seasons}>
+                        <Link href={T.Pages.Seasons.link(movie.kinopoiskId)}>
+                            <h3>
+                                {T.Movie.seasons} {seasons.length}
+                            </h3>
+                        </Link>
+                        <div>
+                            {lastFiveEpisodes.map((episode) => (
                                 <div key={episode.episodeNumber} className={styles.episode}>
                                     <div>
                                         <div>{episode.episodeNumber} эпизод</div>
@@ -134,8 +134,9 @@ const MovieAbout: FC<IProps> = ({movie, movieStaff, movieBox, seasons}) => {
                                     </div>
                                 </div>
                             ))}
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
             <div>
                 <div className={styles.actors}>

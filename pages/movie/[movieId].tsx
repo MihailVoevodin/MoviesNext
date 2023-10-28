@@ -82,7 +82,6 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: calcSlidesToShow(movieSimilars.length),
         slidesToScroll: 1,
         variableWidth: true,
     };
@@ -110,7 +109,7 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                             {sequelsAndPrequels.length > 0 && (
                                 <div className={styles.sequelsContainer}>
                                     <h3 className={styles.sequelsTitle}>Сиквелы и приквелы</h3>
-                                    <Slider {...settings}>
+                                    <Slider {...settings} slidesToShow={calcSlidesToShow(sequelsAndPrequels.length)}>
                                         {sequelsAndPrequels.map((movie) => (
                                             <Link key={movie.filmId} className={styles.sequelsLink} href={T.Pages.MovieLink(movie.filmId)}>
                                                 <div style={{width: 200}}>
@@ -161,7 +160,7 @@ const Movie: FC<IProps> = ({movie, movieBox, movieStaff, movieSimilars}) => {
                     {movieSimilars.length > 0 && (
                         <div className={styles.similarsContainer}>
                             <h3 className={styles.similarsTitle}>Похожие фильмы</h3>
-                            <Slider {...settings}>
+                            <Slider {...settings} slidesToShow={calcSlidesToShow(movieSimilars.length)}>
                                 {movieSimilars.map((movie) => (
                                     <Link key={movie.filmId} className={styles.similarsLink} href={T.Pages.MovieLink(movie.filmId)}>
                                         <div style={{width: 200}}>
