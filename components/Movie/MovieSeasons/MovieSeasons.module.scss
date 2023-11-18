@@ -1,0 +1,17 @@
+@import 'styles/variables';
+
+.seasonNumberContainer {
+    display: flex;
+    align-items: center;
+}
+
+.seasonNumber {
+    padding: 0 6px;
+    margin: 0 3px;
+    background-color: $lightGrey;
+    transition: all .3s;
+    &:hover {
+        cursor: pointer;
+        color: $secondary;
+    }
+}
