@@ -90,6 +90,7 @@ export const T = {
             label: 'Сезоны',
             link: (movieId: number | string | string[] | undefined): string => `/movie/${movieId}/seasons`,
             empty: 'Нет данных о эпизодах',
+            numberOfEpisodes: 'Количество серий',
         },
         Profile: {
             label: 'Профиль',

@@ -10,6 +10,12 @@ interface IProps {
 export const MovieSeasons: FC<IProps> = ({movieSeasons}) => {
     console.log(movieSeasons);
 
+    let initialValue = 0;
+
+    let numberOfEpisodes: any = movieSeasons.reduce((acc, season) => {
+        return acc + season.episodes.length;
+    }, initialValue);
+
     return (
         <>
             <div className={styles.seasonNumberContainer}>
@@ -19,6 +25,10 @@ export const MovieSeasons: FC<IProps> = ({movieSeasons}) => {
                         {season.number}
                     </div>
                 ))}
+            </div>
+            <div>
+                <div>{T.Pages.Seasons.numberOfEpisodes}</div>
+                <div>{numberOfEpisodes}</div>
             </div>
         </>
     );
